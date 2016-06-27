@@ -1,0 +1,199 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>Windows下Emacs的shell-mode乱码解决 | Charles&#39;s Blog</title>
+  <meta name="author" content="Charles Pan">
+  
+  <meta name="description" content="Windows 下 Emacs24 的 shell-mode 中文乱码解决办公室电脑系统 Windows 7 ，装的是 Emacs24 。在 Emacs 中切到 shell-mode ，使用的是 windows 的 cmd 。使用 dir 命令可以看到中文目录名正常显示。但是输入的中文（外部输入法：微软拼音输入法）不能正常显示。如输入 “echo 是”回车后看到的是乱码。这种现象只在 shell-mode 中存在。
+根据网上搜到的方法，在 .emacs 中加入 (ansi-color-for-comint-mode-on) ，不能解决问题。">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta property="og:title" content="Windows下Emacs的shell-mode乱码解决"/>
+  <meta property="og:site_name" content="Charles&#39;s Blog"/>
+  
+  
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+
+<body>
+  <div class="wrapper">
+    <header id="header">
+  <div class="title">
+    <h1><a href="/">Charles&#39;s Blog</a></h1>
+    <p><a href="/">知行合一</a></p>
+  </div>
+  <nav class="nav">
+    <ul>
+      
+        <li><a href="/">首页</a></li>
+      
+        <li><a href="/archives">存档</a></li>
+      
+        <li><a href="/about">关于</a></li>
+      
+        <li><a href="/linklist">Link</a></li>
+      
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?ae6ec1bf0f932ae1f10539c999d3fa15";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script> 
+  <div class="clearfix"></div>
+</header>
+
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/2015/07/12/Windows下Emacs的shell-mode乱码解决/">
+  <time datetime="2015-07-12T05:26:04.000Z">
+    2015-07-12
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title">Windows下Emacs的shell-mode乱码解决</h1>
+  
+
+    <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?ae6ec1bf0f932ae1f10539c999d3fa15";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script> 
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  </header>
+  
+  <div class="entry">
+    
+      <h1 id="Windows-下-Emacs24-的-shell-mode-中文乱码解决"><a href="#Windows-下-Emacs24-的-shell-mode-中文乱码解决" class="headerlink" title="Windows 下 Emacs24 的 shell-mode 中文乱码解决"></a>Windows 下 Emacs24 的 shell-mode 中文乱码解决</h1><p>办公室电脑系统 Windows 7 ，装的是 Emacs24 。在 Emacs 中切到 shell-mode ，使用的是 windows 的 cmd 。使用 dir 命令可以看到中文目录名正常显示。但是输入的中文（外部输入法：微软拼音输入法）不能正常显示。如输入 “echo 是”<br>回车后看到的是乱码。这种现象只在 shell-mode 中存在。</p>
+<p>根据网上搜到的方法，在 .emacs 中加入 (ansi-color-for-comint-mode-on) ，不能解决问题。</p>
+<a id="more"></a>
+<p>起初的 .emacs 中，我是根据网上搜到的参数来配置如下：</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">;; 设置为中文简体语言环境</span></span><br><span class="line">(<span class="name">set-language-environment</span> 'Chinese-GB)</span><br><span class="line"><span class="comment">;; 设置emacs 使用 utf-8</span></span><br><span class="line">(<span class="name">setq</span> locale-coding-system 'utf-8)</span><br><span class="line"><span class="comment">;; 设置键盘输入时的字符编码</span></span><br><span class="line">(<span class="name">set-keyboard-coding-system</span> 'utf-8)</span><br><span class="line">(<span class="name">set-selection-coding-system</span> 'utf-8)</span><br><span class="line"><span class="comment">;; 文件默认保存为 utf-8</span></span><br><span class="line">(<span class="name">set-buffer-file-coding-system</span> 'utf-8)</span><br><span class="line">(<span class="name">set-default</span> buffer-file-coding-system 'utf8)</span><br><span class="line">(<span class="name">set-default-coding-systems</span> 'utf-8)</span><br><span class="line"><span class="comment">;; 解决粘贴中文出现乱码的问题</span></span><br><span class="line">(<span class="name">set-clipboard-coding-system</span> 'utf-8)</span><br><span class="line"><span class="comment">;; 终端中文乱码</span></span><br><span class="line">(<span class="name">set-terminal-coding-system</span> 'utf-8)</span><br><span class="line">(<span class="name">modify-coding-system-alist</span> 'process <span class="string">"*"</span> 'utf-8)</span><br><span class="line">(<span class="name">setq</span> default-process-coding-system '(utf-8 . utf-8))</span><br><span class="line">(<span class="name">setq-default</span> pathname-coding-system 'utf-8)</span><br><span class="line">(<span class="name">set-file-name-coding-system</span> 'utf-8)</span><br></pre></td></tr></table></figure>
+<p>经过多次尝试，发现修改以下参数时，对 shell-mode 下的中文显示和输入问题有效:</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name">modify-coding-system-alist</span> 'process <span class="string">"*"</span> 'gbk)</span><br><span class="line">(<span class="name">setq</span> default-process-coding-system '(gbk . gbk))</span><br><span class="line">(<span class="name">setq-default</span> pathname-coding-system 'gbk)</span><br><span class="line">(<span class="name">set-file-name-coding-system</span> 'gbk)</span><br></pre></td></tr></table></figure>
+<p>但是会影响到其他 mode 下的中文显示，比如我的 org-mode 就会受影响。最后的 .emacs 设置为：</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">;;;; 设置编辑环境</span></span><br><span class="line"><span class="comment">;; 设置为中文简体语言环境</span></span><br><span class="line">(<span class="name">set-language-environment</span> 'Chinese-GB)</span><br><span class="line"><span class="comment">;; 设置emacs 使用 utf-8</span></span><br><span class="line">(<span class="name">setq</span> locale-coding-system 'utf-8)</span><br><span class="line"><span class="comment">;; 设置键盘输入时的字符编码</span></span><br><span class="line">(<span class="name">set-keyboard-coding-system</span> 'utf-8)</span><br><span class="line">(<span class="name">set-selection-coding-system</span> 'utf-8)</span><br><span class="line"><span class="comment">;; 文件默认保存为 utf-8</span></span><br><span class="line">(<span class="name">set-buffer-file-coding-system</span> 'utf-8)</span><br><span class="line">(<span class="name">set-default</span> buffer-file-coding-system 'utf8)</span><br><span class="line">(<span class="name">set-default-coding-systems</span> 'utf-8)</span><br><span class="line"><span class="comment">;; 解决粘贴中文出现乱码的问题</span></span><br><span class="line">(<span class="name">set-clipboard-coding-system</span> 'utf-8)</span><br><span class="line"><span class="comment">;; 终端中文乱码</span></span><br><span class="line">(<span class="name">set-terminal-coding-system</span> 'utf-8)</span><br><span class="line">(<span class="name">modify-coding-system-alist</span> 'process <span class="string">"*"</span> 'utf-8)</span><br><span class="line">(<span class="name">setq</span> default-process-coding-system '(utf-8 . utf-8))</span><br><span class="line"><span class="comment">;; 解决文件目录的中文名乱码</span></span><br><span class="line">(<span class="name">setq-default</span> pathname-coding-system 'utf-8)</span><br><span class="line">(<span class="name">set-file-name-coding-system</span> 'utf-8)</span><br><span class="line"><span class="comment">;; 解决 Shell Mode(cmd) 下中文乱码问题</span></span><br><span class="line">(<span class="name">defun</span> change-shell-mode-coding ()</span><br><span class="line">  (<span class="name">progn</span></span><br><span class="line">    (<span class="name">set-terminal-coding-system</span> 'gbk)</span><br><span class="line">    (<span class="name">set-keyboard-coding-system</span> 'gbk)</span><br><span class="line">    (<span class="name">set-selection-coding-system</span> 'gbk)</span><br><span class="line">    (<span class="name">set-buffer-file-coding-system</span> 'gbk)</span><br><span class="line">    (<span class="name">set-file-name-coding-system</span> 'gbk)</span><br><span class="line">    (<span class="name">modify-coding-system-alist</span> 'process <span class="string">"*"</span> 'gbk)</span><br><span class="line">    (<span class="name">set-buffer-process-coding-system</span> 'gbk 'gbk)</span><br><span class="line">    (<span class="name">set-file-name-coding-system</span> 'gbk)))</span><br><span class="line">(<span class="name">add-hook</span> 'shell-mode-hook 'change-shell-mode-coding)</span><br><span class="line">(<span class="name">autoload</span> 'ansi-color-for-comint-mode-on <span class="string">"ansi-color"</span> <span class="literal">nil</span> <span class="literal">t</span>)</span><br><span class="line">(<span class="name">add-hook</span> 'shell-mode-hook 'ansi-color-for-comint-mode-on)</span><br></pre></td></tr></table></figure>
+<p>问题解决。</p>
+
+    
+  </div>
+  <footer>
+    
+      
+  <div class="categories">
+    <a class="categories-link" href="/categories/故障问题/">故障问题</a>
+  </div>
+
+      
+  <div class="tags">
+    <a class="tags-link" href="/tags/emacs/">emacs</a>, <a class="tags-link" href="/tags/shell-mode/">shell-mode</a>, <a class="tags-link" href="/tags/windows/">windows</a>
+  </div>
+
+    
+    <!-- JiaThis Button BEGIN -->
+    <div class="jiathis_style">
+    	<a class="jiathis_button_qzone"></a>
+    	<a class="jiathis_button_tsina"></a>
+    	<a class="jiathis_button_tqq"></a>
+    	<a class="jiathis_button_weixin"></a>
+    	<a class="jiathis_button_renren"></a>
+    	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+    	<a class="jiathis_counter_style"></a>
+    </div>
+    <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+    <!-- JiaThis Button END -->
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+  
+<section id="comment">
+  <h1 class="title">评论</h1>
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-title="Windows下Emacs的shell-mode乱码解决" data-url="http://yoursite.com/2015/07/12/Windows下Emacs的shell-mode乱码解决/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"charlesp"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</section>
+
+
+
+</div>
+  </div>
+  <footer id="footer"><span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<div class="copyright">
+  
+  &copy; 2016 <a href="/">Charles Pan</a>
+  
+</div>
+<div class="cc-license">
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/cn/"><img alt="知识共享许可协议" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/2.5/cn/88x31.png" /></a><br />本作品采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/cn/">知识共享署名-非商业性使用-相同方式共享 2.5 中国大陆许可协议</a>进行许可，欢迎转载，演绎，但是必须保留本文的署名 <a href="">Charles</a>（包含链接），且不得用于商业目的。</div>
+<div class="clearfix"></div>
+</footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+<script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = { short_name: 'charlesp' };
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';
+    ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+<a href="https://github.com/you"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/c6286ade715e9bea433b4705870de482a654f78a/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png"></a>
+</body>
+</html>
