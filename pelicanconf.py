@@ -9,11 +9,11 @@ AUTHOR = "Charles"
 SITENAME = "Charles's Blog"
 
 
-SITEURL = "http://panxinla.github.io"
+SITEURL = "http://paxinla.github.io"
 GUTHUB_URL = "https://github.com/paxinla"
 GITHUB_USER = "paxinla"
 GITHUB_SHOW_USER_LINK = True
-GITHUB_REPO = "paxinla/paxinla.github.io"
+GITHUB_REPO = "paxinla.github.io"
 INDEX_TITLE_UP = "作为思索的人而行动，"
 INDEX_TITLE_DOWN = "作为行动的人而思索"
 INDEX_DESCRIPTION = "这里只有我的呓语 ... ..."
