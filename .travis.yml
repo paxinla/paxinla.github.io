@@ -4,7 +4,7 @@ python:
 
 branches:
     only:
-        - master
+        - source
 
 install:
     - sudo locale-gen zh_CN.UTF-8
@@ -19,4 +19,4 @@ after_success:
     - cd output
     - git add -A .
     - git commit -m ":blush: Update from travis."
-    - git push -f -q https://paxinla:$GITHUB_TOKEN@github.com/paxinla/paxinla.github.io
+    - git push -f -q https://paxinla:$GITHUB_TOKEN@github.com/paxinla/paxinla.github.io master
