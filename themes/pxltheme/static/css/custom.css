@@ -143,3 +143,7 @@ ul.tagcloud .list-group-item <span>.badge {
 code[class*="language-"], pre[class*="language-"] {
   font-family: 'Dejavu Sans Mono', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 }
+
+div.code-toolbar {
+  margin-bottom: 1rem;
+}

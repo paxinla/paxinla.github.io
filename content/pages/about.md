@@ -6,6 +6,6 @@ TitleImage: /static/user_avatar.jpeg
 
 ## Charles Pan
 
-`数据开发工程师 @ 深圳`
+> 数据开发工程师 @ 深圳
 
 以后再写吧 ... ...

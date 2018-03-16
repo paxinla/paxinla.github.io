@@ -18,7 +18,7 @@ Tags: Pelican, Hexo
 
 ![Hexo时代用的主题](/images/hexo_blog_snapshot.png)
 
-Pelican 的代码高亮我是没用成功的，它解析我 Markdown 里的 Github 风格的代码块 [ps: 以 ``3个反引号 ` 加语言名称开头``的多行代码] 的结果，总是一对 <pre> 的标签，没有 <code> 标签，也没有把语言名称这个信息带出来。自带的 Markdown 扩展 fenced_code 是无效的。好在 Pelican 的插件机制提供了许多钩子，很容易就写了个自己的扩展，来将 Markdown 里的反引号代码块在 Pelican 将它转换为 HTML 前，包装在 <pre><code> 标签中，并在 <code> 标签里，加上 class="lang-语言名称"。然后在模板中引用 [Prism](http://prismjs.com/) 的 css 及 js ，就可以实现代码块高亮功能了。
+Pelican 的代码高亮我是没用成功的，它解析我 Markdown 里的 Github 风格的代码块 [ps: 以 `` 3个反引号 ` 加语言名称开头 ``的多行代码] 的结果，总是一对 pre 的标签，没有 code 标签，也没有把语言名称这个信息带出来。自带的 Markdown 扩展 fenced_code 是无效的。好在 Pelican 的插件机制提供了许多钩子，很容易就写了个自己的扩展，来将 Markdown 里的反引号代码块在 Pelican 将它转换为 HTML 前，包装在 pre>code 标签中，并在 code 标签里，加上 class="lang-语言名称"。然后在模板中引用 [Prism](http://prismjs.com/) 的 css 及 js ，就可以实现代码块高亮功能了。
 
 用 [Travis-CI](http://travis-ci.org) 来监控博客的 Github 库，在 Github 上直接用 Web 编辑器写 Markdown 格式的博客，保存后就会产生一个提交，自动触发页面的生成。
 
