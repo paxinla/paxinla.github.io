@@ -1,0 +1,119 @@
+<!Doctype html>
+<html lang="zh">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Test Blog Theme</title>
+        <meta name="author" content="{{ AUTHOR }}" />
+        <meta name="copyright" content="{{ AUTHOR }}" />
+        <meta name="description" content="Personal blog of {{ AUTHOR }}">
+
+        <link href="{{ SITEURL }}/theme/css/bootstrap.min.css" rel="stylesheet">
+        <link href="{{ SITEURL }}/theme/css/cachestocaches.min.css" rel="stylesheet">
+        <link href="{{ SITEURL }}/theme/css/prism.css" rel="stylesheet">
+        <link href="{{ SITEURL }}/theme/css/custom.css" rel="stylesheet">
+    </head>
+
+
+    <body data-spy="scroll" data-target="#left-navbar" data-offset="50" itemscope="" itemtype="http://schema.org/WebPage">
+        <!-- Fonts -->
+        <link href='http://fonts.googleapis.com/css?family=Unica+One' rel='stylesheet' type='text/css'>
+        <script src="https://use.typekit.net/qeu2zlf.js"></script>
+        <script type="text/javascript">try{Typekit.load({ async: false });}catch(e){}</script>
+        <script type="text/javascript">
+         var _hmt = _hmt || [];
+         (function() {
+             var hm = document.createElement("script");
+             hm.src = "//hm.baidu.com/hm.js?ae6ec1bf0f932ae1f10539c999d3fa15";
+             var s = document.getElementsByTagName("script")[0]; 
+             s.parentNode.insertBefore(hm, s);
+         })();
+        </script>
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+        <!-- Left Sidebar -->
+        <nav id="left-navbar" class="sidebar">
+            <div class="content">
+                <div><a href="/"><img src="{{ SITEURL }}/{{ AVATAR }}" class="img-responsive center-block" style="height:120px;width:120px;border-radius:120px;"/></a></div>
+                <br/>
+                <div class="center-text narrow-font">
+                    <span><a href="{{ SITEURL }}/">首页</a></span>
+                    <span class="center-dot"></span>
+                    <span><a href="{{ SITEURL }}/archives.html">过往文章</a></span>
+                    <span class="center-dot"></span>
+                    <span><a href="{{ SITEURL }}/tags.html">Tags</a></span>
+                    <span class="center-dot"></span>
+                    <span><a href="{{ SITEURL }}/categories.html">Category</a></span>
+                    <span class="center-dot"></span>
+                    <span><a href="{{ SITEURL }}/about.html">关于我</a></span>
+                </div>
+                <hr/> <br/>
+
+                {% block nav_big_title %}
+                {% endblock %}
+
+                <div id="nav-sidebar">
+                </div>
+
+                <div class="center-text floating-description">
+                    <span id="busuanzi_container_site_uv">本站总访问量: <span id="busuanzi_value_site_uv"></span>次</span><br/><br/>
+                    <div class="copyright"> &copy; {{ COPYRIGHT_YEAR }} <a href="/">{{ AUTHOR }}</a></div><br/>
+                    <a href="https://github.com/getpelican/pelican">Powered by<br/>Pelican</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Middle and right sections -->
+        <div class="page" itemsope="" itemtype="http://schema.org/Blog">
+            {% block content_top %}
+            {% endblock %}
+
+            <!-- Content -->
+            {% block content %}
+            {% endblock %}
+
+            <div class="cc-license">
+                <p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/cn/"><img alt="知识共享许可协议" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/2.5/cn/88x31.png" /></a><br/>本作品采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/cn/">知识共享署名-非商业性使用-相同方式共享 2.5 中国大陆许可协议</a>进行许可，欢迎转载，演绎，<br/>但是必须保留本文的署名 <a href="{{ SITEURL }}">{{ AUTHOR }}</a>（包含链接），且不得用于商业目的。</p>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        <!-- Scripts -->
+        {% block user_js %}
+        {% endblock %}
+        <script src="{{ SITEURL }}/theme/js/jquery.min.js"></script>
+        <script src="{{ SITEURL }}/theme/js/popper.min.js"></script>
+        <script src="{{ SITEURL }}/theme/js/bootstrap.min.js"></script>
+
+        <!-- Sidebar / Table of Contents -->
+        <script src="{{ SITEURL }}/theme/js/jquery.tableofcontents.g.min.js"></script>
+        <script src="{{ SITEURL }}/theme/js/sticky-nav.js"></script>
+        <script type="text/javascript">
+         $(function(){$("#toc").tableOfContents(null,{
+             startLevel: 2, depth: 1});
+             $('body').scrollspy({
+                 target: '#nav-sidebar',
+                 offset: 20});
+         });
+        </script>
+
+        <!-- Code Highlighting : highlight.js -->
+        <script src="{{ SITEURL }}/theme/js/highlight.pack.js"></script>
+        <script type="text/javascript">hljs.configure({languages:[]});hljs.initHighlightingOnLoad();</script>
+        <script src="{{ SITEURL }}/theme/js/anchor-scroll.js"></script>
+        <script src="{{ SITEURL }}/theme/js/prism.js"></script>
+
+        <!-- Equation Rendering : mathjax -->
+        <script type="text/x-mathjax-config">
+         MathJax.Hub.Config({
+             jax: ["input/TeX","output/CommonHTML"],
+             tex2jax: { inlineMath: [["$","$"]] },
+             CommonHTML: {
+                 linebreaks: { automatic: true, width: "container" }
+             }
+         });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML" type="text/javascript"></script>
+    </body>
+</html>

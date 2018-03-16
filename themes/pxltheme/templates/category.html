@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="title"><div><small>Category:</small><div>{{ category }}</h1>
+<br/>
+<hr/>
+<br/>
+{% if articles %}
+<div class="archive">
+    <div class="post-list">
+        <ul class="small-post-list">
+            {% for article in articles %}
+            <li><span class="invisible-sm marginnote">{{ article.locale_date }}</span><a class="small-title" href="{{ article.url }}">{{ article.title }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+<br/>
+{% endif %}
+{% endblock %}

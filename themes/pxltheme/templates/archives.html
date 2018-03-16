@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<section id="content">
+<h1>过往文章</h1>
+<br/>
+<hr/>
+<br/>
+<dl>
+{% for article in dates %}
+    <dt>{{ article.locale_date }}</dt>
+    <dd><a href='{{ article.url }}'>{{ article.title }}</a></dd>
+{% endfor %}
+</dl>
+</section>
+<br/>
+<hr/>
+<br/>
+{% endblock %}

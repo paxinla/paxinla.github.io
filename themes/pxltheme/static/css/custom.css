@@ -1,0 +1,145 @@
+html {
+  background: #ececec url(/theme/images/fabric_plaid.png);
+}
+
+body, a {
+  background-color: transparent;
+}
+
+
+/* 正文区域标题部分 */
+.content-top {
+  padding-right: 0;
+}
+
+.page blockquote {
+  font-size: 24px;
+  margin: 1rem 1rem 1rem 1rem;
+}
+
+.page h1, .page h2, .page h3, .page h4, .page h5, .page h6 {
+  margin-bottom: 1rem;
+}
+
+.page .content, .page .content-bottom, .page .content-top {
+  padding-right: 0;
+}
+
+.page .content pre, .page .content-bottom pre, .page .content-top pre {
+  margin: 0;
+}
+
+.page img {
+  max-width: 540px;
+}
+
+.big_title {
+  color: #293A5D;
+  padding-bottom: 0.5rem;
+}
+
+h1#index_big_title {
+  color: #293A5D;
+}
+
+.title, h1, h2, h3, h1 a, h2 a, h3 a {
+  color: #337ab7;
+  margin-bottom: 1rem;
+}
+
+.title span {
+  font-size: 38px;
+}
+
+#article_summary_part h1 {
+  font-size: 28px;
+  color: #e47911;
+}
+
+/*左侧导航栏*/
+.sidebar {
+  background: #293A5D;
+  color: #e47911;
+  border-left: 0px;
+}
+
+.sidebar .description a, .sidebar li a {
+  color: #FCD293;
+}
+
+.sidebar a {
+  color: #e47911;
+}
+
+.sidebar ul {
+  color: #FCD293;
+  padding-left: 2rem;
+}
+
+.sidebar .nav {
+  color: #FCD293;
+  padding-left: 0;
+}
+
+.sidebar li {
+  color: #FCD293;
+  border-left: 0px;
+}
+
+.sidebar .floating-description {
+  color: #FCD293;
+  border-left: 0px;
+}
+
+/*左侧导航栏--目录*/
+.nav-pills .nav-link.active {
+  color: #155580 !important;
+  background-color: #e6ff44 !important;
+}
+
+
+/* Tag cloud */
+ul.tagcloud {
+  list-style: none;
+  padding: 0;
+}
+
+ul.tagcloud li {
+  display: inline-block;
+  font-size: 5%;
+}
+
+li.tag-1 {
+  font-size: 150%;
+}
+
+li.tag-2 {
+  font-size: 120%;
+}
+
+li.tag-3 {
+  font-size: 90%;
+}
+
+li.tag-4 {
+  font-size: 60%;
+}
+
+li.tag-5 {
+  font-size: 30%;
+}
+
+li.tag-6 {
+  font-size: 10%;
+}
+
+ul.tagcloud .list-group-item <span>.badge {
+  background-color: grey;
+  color: white;
+}
+
+
+/* 代码块 */
+code[class*="language-"], pre[class*="language-"] {
+  font-family: 'Dejavu Sans Mono', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+}

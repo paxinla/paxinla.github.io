@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block nav_big_title %}
+<div class="title"><a href="#">{{ page.title }}</a></div>
+<hr/>
+{% endblock %}
+{% block content_top %}
+<div class="content-top" style="padding-right: 0">
+    <div class="unit-line-height">
+        <!-- Post Title -->
+        <h1 class="title">
+            <div>
+                <span itemprop="name">{{ page.title }}</span>
+            </div>
+        </h1>
+
+        <!-- Post Image -->
+        {% if page.titleimage %}
+            <img src="{{ page.titleimage }}" class="cover img-responsive" style="max-height: 400px" itemprop="image">
+        {% endif %}
+    </div>
+</div>
+
+    <br/><hr/><br/>
+{% endblock %}
+{% block content %}
+<div class="content"  id="content_of_post" style="padding-right: 0">
+    <div class="post" itemprop="blogPost">
+        <div class="justify word-break" itemprop="articleBody">
+            {{ page.content }}
+        </div>
+    </div>
+</div>
+
+<br/><hr/><br/>
+{% endblock %}

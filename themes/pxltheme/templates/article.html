@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block nav_big_title %}
+<div class="title"><a href="#">{{ article.title }}</a></div>
+<hr/>
+{% endblock %}
+{% block content_top %}
+<div class="content-top" style="padding-right: 0">
+    <div class="unit-line-height">
+        <!-- Post Title -->
+        <h1 class="title">
+            <div>
+                <span itemprop="name">{{ article.title }}</span>
+            </div>
+        </h1>
+
+        <!-- Post Meta Info -->
+        <div class="marginnote invisible-sm post-detail">
+            <div>
+                <p><div class="date heading-font">{{ article.locale_date }}</div>
+                    <a href="#">
+                        <span class="author" itemprop="name">{{ article.author }}</span>
+                    </a>
+                </p>
+
+                <p><div class="heading-font">Category</div>
+                    <a class="category" href="{{ SITEURL }}/{{ category.url }}">
+                         {{ category }}
+                    </a>
+                </p>
+
+                <p><div class="heading-font">Tags</div>
+                    {% for tag in article.tags %}
+                        <a class="tag" href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>
+                    {% endfor %}
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Post Image -->
+    <br/>
+    <img src="{{ article.titleimage }}" class="cover img-responsive" style="max-height: 400px" itemprop="image">
+    <div class="note visible-sm post-detail"></div>
+
+    <br/><hr/><br/>
+</div>
+{% endblock %}
+{% block content %}
+<div class="content"  id="content_of_post" style="padding-right: 0">
+    <div class="post" itemprop="blogPost">
+        <div class="justify word-break" itemprop="articleBody">
+            {{ article.content }}
+        </div>
+    </div>
+</div>
+
+<!-- Comments -->
+<hr/>
+<div class="content-bottom">
+    {% include "comments.html" %}
+</div>
+{% endblock %}
+{% block user_js %}
+{{ super() }}
+<script src="{{ SITEURL }}/theme/js/article_toc.js" type="text/javascript"></script>
+{% endblock %}
