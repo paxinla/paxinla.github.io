@@ -7,6 +7,7 @@ Tags: hadoop, hdfs
 ## 事件起因
 
 之前在给 Hadoop 集群的部分节点更换磁盘[ps: 为什么是换磁盘而不是加磁盘，这里就不展开了。]的时候，导致 HDFS 的部分文件出现了 corrupt blocks ，这个通过以用户 hdfs 执行命令:
+
 ```bash
 # 这个是列出发生了 corrupt 的文件
 hdfs fsck / -list-corruptfileblocks
@@ -14,6 +15,7 @@ hdfs fsck / -list-corruptfileblocks
 # 这个是删除掉已经 corrupt 的文件，执行前务必确认清楚。
 hdfs fsck / -delete
 ```
+
 解决了。之后再 `fsck /` 看起来是完全正常了。但是在 Cloudera Manager 中，HDFS 服务每次在重启后，还是显示错误，有文件块副本数不足；HA 的两个 namenode 就会进入安全模式，并一直保持在安全模式不退出。
 
 <!-- PELICAN_END_SUMMARY -->
