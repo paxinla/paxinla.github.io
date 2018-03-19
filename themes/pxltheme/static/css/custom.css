@@ -56,6 +56,10 @@ h1#index_big_title {
   color: #e47911;
 }
 
+a.smart-title {
+  color: #e47911;
+}
+
 /*左侧导航栏*/
 .sidebar {
   background: #293A5D;
