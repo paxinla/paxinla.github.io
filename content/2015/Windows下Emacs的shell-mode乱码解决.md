@@ -2,6 +2,7 @@ Title: Windows下Emacs的shell-mode乱码解决
 Date: 2015-07-12 13:26:04
 Category: 故障
 Tags: Emacs, shell-mode, Windows
+CommentId: 5
 
 
 # shell-mode 中文乱码

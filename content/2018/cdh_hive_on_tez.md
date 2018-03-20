@@ -2,6 +2,7 @@ Title: 让 beeline 使用 hive on tez
 Date: 2018-03-20 11:17:45
 Category: 工具
 Tags: hadoop, cdh, hive, tez, beeline
+CommentId: 9
 
 
 ## 配置 hive on tez

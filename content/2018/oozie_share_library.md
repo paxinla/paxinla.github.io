@@ -2,6 +2,7 @@ Title: 未安装 Oozie Server 共享库
 Date: 2018-03-19 14:52:59
 Category: 工具
 Tags: hadoop, oozie, extjs
+CommentId: 8
 
 
 Cloudera Manager 里报 “存在隐患 : 未安装 Oozie Server 共享库。”

@@ -2,6 +2,7 @@ Title: Hexo的一个问题
 Date: 2015-06-07 10:03:00
 Category: 杂谈
 Tags: 工具, Hexo
+CommentId: 3
 
 
 # Windows下Hexo升级后deploy问题

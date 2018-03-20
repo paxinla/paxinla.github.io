@@ -2,6 +2,7 @@ Title: Hello,World 第一篇文章
 Date: 2014-04-06 14:31:16
 Category: 杂谈
 Tags: 工具, Hexo
+CommentId: 1
 TitleImage: /images/helloworld.jpg
 
 

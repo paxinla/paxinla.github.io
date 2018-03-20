@@ -1,7 +1,8 @@
 Title: 迁移博客到 Pelican
-Date: 2018-03-16
+Date: 2018-03-16 08:00:01
 Category: 工具
 Tags: Pelican, Hexo
+CommentId: 6
 
 
 又开始写博客了。
