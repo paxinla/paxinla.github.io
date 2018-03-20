@@ -153,32 +153,32 @@ div.code-toolbar {
   margin-bottom: 1rem;
 }
 
-
 /* 回复区 */
-div#githubissue-heading {
+#githubissue-heading {
+    
   color: #e47911;
 }
 
-div#githubissue_comments {
+#githubissue_comments {
   margin-top: 2rem;
   margin-left: 2rem;
   margin-bottom: 2rem;
 }
 
-div#githubissue_comments div.media{
+#githubissue_comments .media{
   border: 1px solid transparent;
   border-color: #007bff;
   padding: 0.5rem 1rem 1rem 0.5rem;
 }
 
-div.media div.media-left {
+.media .media-left {
   margin-right: 1rem;
 }
 
-a.commentuser {
+.commentuser {
   color: #337ab7;
 }
 
-a.commentdate {
+.commentdate {
   font-size: 70%;
 }
