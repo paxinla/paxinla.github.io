@@ -13,8 +13,9 @@ body, a {
 }
 
 .page blockquote {
-  font-size: 24px;
-  margin: 1rem 1rem 1rem 1rem;
+  font-size: 20px;
+  color: grey;
+  margin: 1rem 1rem 1rem 2rem;
 }
 
 .page h1, .page h2, .page h3, .page h4, .page h5, .page h6 {
@@ -150,4 +151,34 @@ code[class*="language-"], pre[class*="language-"] {
 
 div.code-toolbar {
   margin-bottom: 1rem;
+}
+
+
+/* 回复区 */
+div.githubissue-heading {
+  color: #e47911;
+}
+
+div.githubissue_comments {
+  margin-top: 2rem;
+  margin-left: 2rem;
+  margin-bottom: 2rem;
+}
+
+div.githubissue_comments div.media{
+  border: 1px solid transparent;
+  border-color: #007bff;
+  padding: 0.5rem 1rem 1rem 0.5rem;
+}
+
+div.media div.media-left {
+  margin-right: 1rem;
+}
+
+a.commentuser {
+  color: #337ab7;
+}
+
+a.commentdate {
+  font-size: 70%;
 }

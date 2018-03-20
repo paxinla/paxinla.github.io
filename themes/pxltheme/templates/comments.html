@@ -4,13 +4,13 @@
         <div class="panel-heading" role="tab" id="githubissue-heading">
           <h4 class="panel-title">
             <a data-toggle="collapse" data-parent="#accordion" href="#githubissue-comments" aria-expanded="true" aria-controls="githubissue-comments">
-              <i class="fa fa-comments-o"></i> Github Issue comments
+              <i class="fa fa-comments-o"></i> Github Issue Comments
             </a>
           </h4>
         </div>
-        <div id="githubissue-comments" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="githubissue-heading">
+        <div id="githubissue-comments" class="panel-collapse" role="tabpanel" aria-labelledby="githubissue-heading">
           <div class="panel-body">
-            <div class="tab-pane fade active in" id="githubissue-comments">
+            <div class="tab-pane active" id="githubissue-comments">
                 Leave a comment from <a class="btn btn-primary withripple" href="https://github.com/{{ GITHUB_USER }}/{{ GITHUB_REPO }}/issues/{{ article.commentid }}#new_comment_field" target="_blank"> this post's issue page </a> using your Github account.
 {% endif %}
 <div id="githubissue_comments"></div>
