@@ -7,7 +7,7 @@ INPUTDIR=$(BASEDIR)/content
 CONFFILE=$(BASEDIR)/pelicanconf.py
 PUBLISHCONF=$(BASEDIR)/publishconf.py
 
-GITHUB_PWD=
+GITHUB_TOKEN=
 
 help:
 	@echo '+--------------------------------------------------------------------------+'
@@ -26,7 +26,7 @@ clean:
 	find $(OUTPUTDIR) -mindepth 1 -delete
 
 gen_issue:
-	python update_post_commentid.py token $(GITHUB_PWD)
+	python update_post_commentid.py token $(GITHUB_TOKEN)
 
 html: clean $(OUTPUTDIR)/index.html
 	@echo 'Done'
