@@ -1,7 +1,11 @@
+-f https://pypi.mirrors.ustc.edu.cn/simple
 beautifulsoup4==4.6.0
 blinker==1.4
+certifi==2018.1.18
+chardet==3.0.4
 docutils==0.14
 feedgenerator==1.9
+idna==2.6
 Jinja2==2.10
 Markdown==2.6.11
 MarkupSafe==1.0
@@ -10,7 +14,10 @@ Pillow==5.0.0
 Pygments==2.2.0
 python-dateutil==2.7.0
 pytz==2018.3
+requests==2.18.4
+simplejson==3.13.2
 six==1.11.0
 smartypants==2.0.1
 typogrify==2.0.7
 Unidecode==1.0.22
+urllib3==1.22
