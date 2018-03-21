@@ -117,9 +117,11 @@ def update_comment_id(target_posts):
             wf.write(new_content)
 
 
-if __name__ == "__main__":
-    auth_mode = sys.argv[1]
-    passwd = sys.argv[2]
+def main(auth_mode, passwd):
     all_new_posts = find_all_new_posts()
     posts_with_issue_id = gen_issue_for_posts(auth_mode, password, all_new_posts)
     update_comment_id(posts_with_issue_id)
+
+
+if __name__ == "__main__":
+    main(sys.argv[1], sys.argv[2])
