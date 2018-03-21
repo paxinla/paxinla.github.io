@@ -119,7 +119,7 @@ def update_comment_id(target_posts):
 
 def main(auth_mode, passwd):
     all_new_posts = find_all_new_posts()
-    posts_with_issue_id = gen_issue_for_posts(auth_mode, password, all_new_posts)
+    posts_with_issue_id = gen_issue_for_posts(auth_mode, passwd, all_new_posts)
     update_comment_id(posts_with_issue_id)
 
 

@@ -2,7 +2,7 @@
 
 
 ![version](https://img.shields.io/badge/Version-%202.0.0-orange.svg)
-[![Build Status](https://travis-ci.org/paxinla/paxinla.github.io.svg?branch=master)](https://travis-ci.org/paxinla/paxinla.github.io)
+[![Build Status](https://travis-ci.org/paxinla/paxinla.github.io.svg?branch=source)](https://travis-ci.org/paxinla/paxinla.github.io)
 ![python](https://img.shields.io/badge/python-%203.6/ubuntu-darkgrey.svg)
 ![author](https://img.shields.io/badge/Powered%20by-%20%20Pelican-yello.svg)
 
