@@ -154,8 +154,7 @@ div.code-toolbar {
 }
 
 /* 回复区 */
-#githubissue-heading {
-    
+.fa.fa-comments-o {
   color: #e47911;
 }
 

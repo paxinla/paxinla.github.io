@@ -10,7 +10,7 @@ SITENAME = "Charles's Blog"
 
 
 SITEURL = "http://paxinla.github.io"
-GUTHUB_URL = "https://github.com/paxinla"
+GITHUB_URL = "https://github.com/paxinla"
 GITHUB_USER = "paxinla"
 GITHUB_SHOW_USER_LINK = True
 GITHUB_REPO = "paxinla.github.io"
