@@ -11,7 +11,7 @@ install:
 
 script:  
     - mkdir output
-    - make gen_issue token GITHUB_TOKEN=$GITHUB_TOKEN
+    - make gen_issue GITHUB_TOKEN=$GITHUB_TOKEN
     - env SITEURL="$GITHUB_REPO_NAME" make html
 
 after_success:

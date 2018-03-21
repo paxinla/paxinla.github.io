@@ -19,6 +19,7 @@ help:
 	@echo '|    make regenerate                  regenerate files upon modification   |'
 	@echo '|    make publish                     generate using production settings   |'
 	@echo '|    make serve                       serve site at http://localhost:8000  |'
+	@echo '|    make gen_issue                   generate github issue for posts      |'
 	@echo '+--------------------------------------------------------------------------+'
 
 
