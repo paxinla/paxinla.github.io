@@ -1,6 +1,6 @@
 Title: HDFS 数据块缺失
 Date: 2018-03-16 15:19:23
-Category: 工具
+Category: 数据平台
 Tags: hadoop, hdfs
 CommentId: 7
 
