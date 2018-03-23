@@ -9,7 +9,8 @@ AUTHOR = "Charles"
 SITENAME = "Charles's Blog"
 
 
-SITEURL = "http://paxinla.github.io"
+#SITEURL = "http://paxinla.github.io"
+SITEURL = "http://localhost:8000"
 GITHUB_URL = "https://github.com/paxinla"
 GITHUB_USER = "paxinla"
 GITHUB_SHOW_USER_LINK = True

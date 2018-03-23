@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block nav_big_title %}
-<div class="title"><a id="nav-latest-post" href="#">最近的文章</a></div>
+<div class="title"><a href="#"><i class="fas fa-copy"></i> 最近的文章</a></div>
 <hr/>
 {% endblock %}
 {% block content_top %}
@@ -29,14 +29,14 @@
 
                 <div class="marginnote invisible-sm post-detail">
                     <div>
-                        <p><div class="date heading-font">{{ article.locale_date }}</div>
+                        <p><div class="date heading-font"><i class="fa fa-calendar"></i> {{ article.locale_date }}</div>
                           <a href="#">
                               <span class="author" itemprop="name">{{ article.author }}</span>
                           </a>
                         </p>
         
                         {% if article.category %}
-                        <p><div class="heading-font">Category</div>
+                        <p><div class="heading-font"><i class="fas fa-folder"></i> Category</div>
                         <a class="category" href="{{ SITEURL }}/{{ article.category.url }}">
                               {{ article.category }}
                           </a>
@@ -44,7 +44,7 @@
                         {% endif %}
 
                         {% if article.tags %}
-                            <p><div class="heading-font">Tags</div>
+                            <p><div class="heading-font"><i class="fas fa-tag"></i> Tags</div>
                             {% for tag in article.tags %}
                             <a class="tag" href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>
                             {% endfor %}

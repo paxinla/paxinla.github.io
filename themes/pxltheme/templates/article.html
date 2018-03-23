@@ -16,19 +16,19 @@
         <!-- Post Meta Info -->
         <div class="marginnote invisible-sm post-detail">
             <div>
-                <p><div class="date heading-font">{{ article.locale_date }}</div>
+                <p><div class="date heading-font"><i class="fa fa-calendar"></i> {{ article.locale_date }}</div>
                     <a href="#">
                         <span class="author" itemprop="name">{{ article.author }}</span>
                     </a>
                 </p>
 
-                <p><div class="heading-font">Category</div>
+                <p><div class="heading-font"><i class="fas fa-folder"></i> Category</div>
                     <a class="category" href="{{ SITEURL }}/{{ category.url }}">
                          {{ category }}
                     </a>
                 </p>
 
-                <p><div class="heading-font">Tags</div>
+                <p><div class="heading-font"><i class="fas fa-tag"></i> Tags</div>
                     {% for tag in article.tags %}
                         <a class="tag" href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>
                     {% endfor %}

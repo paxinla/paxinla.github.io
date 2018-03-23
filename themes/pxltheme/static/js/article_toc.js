@@ -1,5 +1,5 @@
 window.onload = function () {
-    var toc = '<ul class="nav nav-pills flex-column">';
+    var toc = '<ul class="nav nav-pills flex-column fa-ul">';
     var level = 2;
     var sec_id = 1;
     var nav_scroll_level = 2;
@@ -24,10 +24,14 @@ window.onload = function () {
                     var anchor = "section" + sec_id;
                     sec_id++;
                     toc += '<li class="nav-item"><a class="nav-link" href="#' + anchor + "\">"
+                        + '<i class="fa-li fa fa-arrow-circle-right"></i> '
                         + titleText
                         + "</a></li>";
                 } else {
-                    toc += '<li>' + titleText + "</li>";
+                    toc += '<li>'
+                        + '<i class="fa-li fa fa-arrow-circle-right"></i> '
+                        + titleText
+                        + "</li>";
                 }
 
                 return "<h" + openLevel + ">" + titleText + "</h" + closeLevel + ">";

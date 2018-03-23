@@ -11,16 +11,17 @@
         <link href="{{ SITEURL }}/theme/css/bootstrap.min.css" rel="stylesheet">
         <link href="{{ SITEURL }}/theme/css/cachestocaches.min.css" rel="stylesheet">
         <link href="{{ SITEURL }}/theme/css/prism.css" rel="stylesheet">
-        <link href="{{ SITEURL }}/theme/css/font-awesome.min.css" rel="stylesheet">
         <link href="{{ SITEURL }}/theme/css/custom.css" rel="stylesheet">
+
+        <!-- Fonts -->
+        <link href='http://fonts.googleapis.com/css?family=Unica+One' rel='stylesheet' type='text/css'>
+        <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js" integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l" crossorigin="anonymous"></script>
+        <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c" crossorigin="anonymous"></script>
     </head>
 
 
     <body data-spy="scroll" data-target="#left-navbar" data-offset="50" itemscope="" itemtype="http://schema.org/WebPage">
-        <!-- Fonts -->
-        <link href='http://fonts.googleapis.com/css?family=Unica+One' rel='stylesheet' type='text/css'>
-        <script src="https://use.typekit.net/qeu2zlf.js"></script>
-        <script type="text/javascript">try{Typekit.load({ async: false });}catch(e){}</script>
+        <!-- Analyz -->
         <script type="text/javascript">
          var _hmt = _hmt || [];
          (function() {
@@ -40,15 +41,15 @@
                 <div><a href="/"><img src="{{ SITEURL }}/{{ AVATAR }}" class="img-responsive center-block" style="height:120px;width:120px;border-radius:120px;"/></a></div>
                 <br/>
                 <div class="center-text narrow-font">
-                    <span><a id="nav-home" href="{{ SITEURL }}/">首页</a></span>
+                    <span><i class="fas fa-home"></i><a href="{{ SITEURL }}/"> 首页 </a></span>
                     <span class="center-dot"></span>
-                    <span><a id="nav-archive" href="{{ SITEURL }}/archives.html">过往文章</a></span>
+                    <span><i class="fas fa-file-archive"></i><a href="{{ SITEURL }}/archives.html"> 过往文章 </a></span>
+                    <br/>
+                    <span><i class="fas fa-tags"></i><a href="{{ SITEURL }}/tags.html"> Tag </a></span>
                     <span class="center-dot"></span>
-                    <span><a id="nav-tags" href="{{ SITEURL }}/tags.html">Tag</a></span>
-                    <span class="center-dot"></span>
-                    <span><a id="nav-categories" href="{{ SITEURL }}/categories.html">Category</a></span>
-                    <span class="center-dot"></span>
-                    <span><a id="nav-aboutme" href="{{ SITEURL }}/about.html">关于我</a></span>
+                    <span><i class="fa fa-archive"></i><a href="{{ SITEURL }}/categories.html"> Category </a></span>
+                    <br/>
+                    <span><i class="fas fa-user"></i><a href="{{ SITEURL }}/about.html"> 关于我 </a></span>
                 </div>
                 <hr/> <br/>
 
