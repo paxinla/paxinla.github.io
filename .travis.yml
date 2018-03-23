@@ -19,7 +19,7 @@ script:
 after_success:
     - cd output
     - git add -A .
-    - git commit -m "Update from Travis: $TRAVIS_BUILD_NUMBER :blush: ."
+    - git commit -m "Update from Travis: build-$TRAVIS_BUILD_NUMBER ."
     - git push -f -q https://GITHUB_USER:$GITHUB_TOKEN@github.com/$GITHUB_USER/$GITHUB_REPO_NAME master
 
 deploy:
