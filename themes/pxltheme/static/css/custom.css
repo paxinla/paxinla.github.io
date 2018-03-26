@@ -155,7 +155,7 @@ div.code-toolbar {
 }
 
 /* 回复区 */
-.fa.fa-comments-o {
+#githubissue-comment_list {
   color: #e47911;
 }
 
