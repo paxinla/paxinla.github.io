@@ -17,7 +17,7 @@ from pelicanconf import GITHUB_REPO
 POST_DIR = os.path.join(os.path.dirname(os.path.realpath(__file__)), "content")
 PTN_POST_DATE = re.compile(r"^[Dd]ate:\s+([\d: -]+)\s*$")
 PTN_POST_CMTID = re.compile(r"^[Cc]omment[Ii]d:\s+([\?])\s*$")
-PTN_POST_TITLE = re.compile(r"^[Tt]itle:\s+([\w ]+)\s*$")
+PTN_POST_TITLE = re.compile(r"^[Tt]itle:\s+([\S ]+)\s*$")
 URL_CREATE_ISSUE = "https://api.github.com/repos/{}/{}/issues".format(GITHUB_USER, GITHUB_REPO)
 
 
@@ -35,16 +35,19 @@ def filter_md(filepath):
                 m1 = PTN_POST_CMTID.match(each_line)
                 if m1:
                     comment_id = m1.group(1)
+                    print("Y - 1")
                     t1 = True
 
                 m2 = PTN_POST_DATE.match(each_line)
                 if m2:
                     p_date = datetime.strptime(m2.group(1), "%Y-%m-%d %H:%M:%S")
+                    print("Y - 2")
                     t2 = True
 
                 m3 = PTN_POST_TITLE.match(each_line)
                 if m3:
                     p_title = m3.group(1)
+                    print("Y - 3")
                     t3 = True
 
             if t1 and t2 and t3:
@@ -112,6 +115,7 @@ def update_comment_id(target_posts):
         with open(post_path, "r") as rf:
             old_content = rf.read()
             new_content = PTN_POST_CMTID.sub("CommentId: {!s}".format(post_comment_id), old_content)
+            print("  handle {} to add id {!s}".format(post_path, post_comment_id))
 
         with open(post_path, "w") as wf:
             wf.write(new_content)
