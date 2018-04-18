@@ -48,6 +48,14 @@ h1#index_big_title {
   margin-bottom: 1rem;
 }
 
+.post h2 {
+  color: #e47911;
+}
+
+.post h3 {
+  color: #c92027;
+}
+
 .title span {
   font-size: 38px;
 }
