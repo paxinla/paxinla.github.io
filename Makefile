@@ -15,6 +15,7 @@ help:
 	@echo '|                                                                          |'
 	@echo '| Usage:                                                                   |'
 	@echo '|    make init                        install pelican                      |'
+	@echo '|    make build                       (re)generate the web site on local   |'
 	@echo '|    make html                        (re)generate the web site            |'
 	@echo '|    make clean                       remove the generated files           |'
 	@echo '|    make regenerate                  regenerate files upon modification   |'
@@ -33,8 +34,12 @@ clean:
 gen_issue:
 	python update_post_commentid.py token $(GITHUB_TOKEN)
 
-html: clean
+build: clean
 	$(BASEDIR)/ENV/bin/pelican content
+	@echo 'Build html files.'
+
+html: clean
+	pelican content
 	@echo 'Build html files.'
 
 $(OUTPUTDIR)/%.html:
