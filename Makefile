@@ -31,7 +31,7 @@ clean:
 	find $(OUTPUTDIR) -mindepth 1 -delete
 
 gen_issue:
-	$(BASEDIR)/ENV/bin/python update_post_commentid.py token $(GITHUB_TOKEN)
+	python update_post_commentid.py token $(GITHUB_TOKEN)
 
 html: clean
 	$(BASEDIR)/ENV/bin/pelican content
