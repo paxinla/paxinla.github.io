@@ -23,4 +23,4 @@ hdfs fsck / -delete
 
 因为已经确认过 HDFS 上的文件现在是没问题的，所以可以前行让 namenode 退出安全模式，此时 HDFS 可正常使用。但是文件块副本数不足的错误警告会一直存在，且重启 HDFS 的话， namenode 又会进入安全模式，治标不治本。
 
-一番查找后，发现是以前在 HDFS 的某些目录里开启了 Snapshot 功能[ps: hdfs snapshot 功能参考: http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsSnapshots.html ]。磁盘故障，也造成了相关目录下的 `.snapshot` 目录下快照文件块的丢失。命令 fsck 是不会检查这里面的文件块的，但 HDFS 的 BlockManager 会检查，并在 Cloudera Manager 里报警。删除了旧的快照，重启 HDFS 服务之后，上述异常现象解除。
+一番查找后，发现是以前在 HDFS 的某些目录里开启了 Snapshot 功能[ps: hdfs snapshot 功能参考: <i>http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsSnapshots.html</i> ]。磁盘故障，也造成了相关目录下的 `.snapshot` 目录下快照文件块的丢失。命令 fsck 是不会检查这里面的文件块的，但 HDFS 的 BlockManager 会检查，并在 Cloudera Manager 里报警。删除了旧的快照，重启 HDFS 服务之后，上述异常现象解除。

@@ -14,6 +14,7 @@ help:
 	@echo '| Makefile for a pelican Web site                                          |'
 	@echo '|                                                                          |'
 	@echo '| Usage:                                                                   |'
+	@echo '|    make init                        install pelican                      |'
 	@echo '|    make html                        (re)generate the web site            |'
 	@echo '|    make clean                       remove the generated files           |'
 	@echo '|    make regenerate                  regenerate files upon modification   |'
@@ -22,15 +23,19 @@ help:
 	@echo '|    make gen_issue                   generate github issue for posts      |'
 	@echo '+--------------------------------------------------------------------------+'
 
+init:
+	test -d ENV || { virtualenv --no-site-packages ENV ;}
+	$(BASEDIR)/ENV/bin/pip install -r requirements.txt
 
 clean:
 	find $(OUTPUTDIR) -mindepth 1 -delete
 
 gen_issue:
-	python update_post_commentid.py token $(GITHUB_TOKEN)
+	$(BASEDIR)/ENV/bin/python update_post_commentid.py token $(GITHUB_TOKEN)
 
-html: clean $(OUTPUTDIR)/index.html
-	@echo 'Done'
+html: clean
+	$(BASEDIR)/ENV/bin/pelican content
+	@echo 'Build html files.'
 
 $(OUTPUTDIR)/%.html:
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(CONFFILE) $(PELICANOPTS)
@@ -38,8 +43,9 @@ $(OUTPUTDIR)/%.html:
 regenerate: clean
 	$(PELICAN) -r $(INPUTDIR) -o $(OUTPUTDIR) -s $(CONFFILE) $(PELICANOPTS)
 
-serve:
-	cd $(OUTPUTDIR) && python -m pelican.server
+serve: html
+	cd $(OUTPUTDIR) && $(BASEDIR)/ENV/bin/python -m pelican.server
+	@echo 'Open URL: http://localhost:8000'
 
 publish: html
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(PUBLISHCONF) $(PELICANOPTS)
