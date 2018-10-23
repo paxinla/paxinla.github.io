@@ -1,7 +1,7 @@
 Title: 用 riemann 监控 PostgreSQL
 Date: 2018-08-20 14:43:38
 Category: 工具
-Tags: riemann postgresql
+Tags: riemann, postgresql
 CommentId: 12
 
 

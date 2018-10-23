@@ -36,6 +36,7 @@ gen_issue:
 
 build: clean
 	$(BASEDIR)/ENV/bin/pelican content
+	$(BASEDIR)/local_gen.sh
 	@echo 'Build html files.'
 
 html: clean
@@ -48,7 +49,7 @@ $(OUTPUTDIR)/%.html:
 regenerate: clean
 	$(PELICAN) -r $(INPUTDIR) -o $(OUTPUTDIR) -s $(CONFFILE) $(PELICANOPTS)
 
-serve: html
+serve: build
 	cd $(OUTPUTDIR) && $(BASEDIR)/ENV/bin/python -m pelican.server
 	@echo 'Open URL: http://localhost:8000'
 
