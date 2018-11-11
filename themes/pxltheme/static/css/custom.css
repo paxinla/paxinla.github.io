@@ -23,6 +23,7 @@ body, a {
 }
 
 .page .content, .page .content-bottom, .page .content-top {
+  max-width: 750px;
   padding-right: 0;
 }
 

@@ -32,7 +32,7 @@ def gen_new_read(func):
         new_path = os.path.join(tmpdir, "fff")
         old_src_path = args[1]
         try:
-            with open(old_src_path, "r") as rf, open(new_path, 'w') as wf:
+            with open(old_src_path, "r", encoding="utf8") as rf, open(new_path, 'w', encoding="utf8") as wf:
                 wf.write(repl_side_ps(repl_code_block(rf.read())))
             return func(args[0], new_path)
         except:
