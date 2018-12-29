@@ -9,6 +9,7 @@
           </h4>
         </div>
         <!-- Gittalk Start -->
+        <script src="{{ SITEURL }}/theme/js/md5.min.js"></script>
         <script src="{{ SITEURL }}/theme/js/gitalk.min.js"></script>
         <div id="gitalk-container"></div>
         <script type="text/javascript">
@@ -18,7 +19,7 @@
             repo: 'paxinla.github.io',
             owner: 'paxinla',
             admin: ['paxinla'],
-            id: decodeURI(location.pathname),
+            id: md5(location.pathname),
             labels: ['blog_comment'],
             title: document.title,
             distractionFreeMode: false
