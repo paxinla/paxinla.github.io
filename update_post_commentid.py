@@ -17,7 +17,9 @@ from create_github_comment_page import gen_issue_for_one_post
 
 logger = logging.getLogger("issue_as_comment")
 logger.setLevel(logging.DEBUG)
-logger.setFormatter(logging.Formatter("%(asctime)s [%(levelname)s] (%(pathname)s:%(lineno)d@%(funcName)s) -> %(message)s"))
+handler = logging.StreamHandler()
+handler.setFormatter(logging.Formatter("%(asctime)s [%(levelname)s] (%(pathname)s:%(lineno)d@%(funcName)s) -> %(message)s"))
+logger.addHandler(handler)
 
 POST_DIR = os.path.join(os.path.dirname(os.path.realpath(__file__)), "content")
 PTN_POST_DATE = re.compile(r"^[Dd]ate:\s+([\d: -]+)\s*$")
