@@ -12,6 +12,7 @@ CommentId: 12
 除了外部工具对 PostgreSQL 的针对性不强外，PostgreSQL 本身的监控数据也不太好用。像完全访问 pg_stat_activity、pg_stat_replication 需要 superuser 角色，[ps: 从 10 版本起，有了像 pg_monitor、pg_read_all_stats 等角色可以用来赋给非 superuser 的监控用户]缺乏足够多的易用的监控视图等[ps: 像 Oracle 的 V<span>$</span> 视图之于 X<span>$</span> 表]。
 
 我对 PostgreSQL 的监控工具有以下的期望:
+
 1. 它要么本身高度专业，对数据库收集足够丰富的指标；要么足够灵活，允许我容易地将自行收集的监控数据发送给它存储、处理。
 2. 它应当易于部署。尽量少的依赖组件，尽量简单的配置。
 3. 它应当有一个易用的 Dashboard 来展示存储/处理的指标，以便向数据库管理员之外的人展示。

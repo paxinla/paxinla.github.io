@@ -8,8 +8,8 @@ TitleImage: /images/about_1st.jpg
 
 ```lisp
 (def Charles
-  (doto (Developer.)
-    (.location "Shenzhen")
+  (doto (DataEngineer.)
+    (.location "Shenzhen Guangdong")
     (.email "base64 -d <<< cGFueGlubGVpMTAyNEBmb3htYWlsLmNvbQo=")
     (.gpg-key-id "")
     (.gpg-key-fingerprint "")

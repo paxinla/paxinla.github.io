@@ -2,6 +2,7 @@ PELICAN=pelican
 PELICANOPTS=
 
 BASEDIR=$(PWD)
+BINDIR=$(BASEDIR)/ENV/bin
 OUTPUTDIR=$(BASEDIR)/output
 INPUTDIR=$(BASEDIR)/content
 CONFFILE=$(BASEDIR)/pelicanconf.py
@@ -26,7 +27,7 @@ help:
 
 init:
 	test -d ENV || { virtualenv --no-site-packages ENV ;}
-	$(BASEDIR)/ENV/bin/pip install -r requirements.txt
+	$(BINDIR)/pip install -r requirements_cn.txt
 
 clean:
 	find $(OUTPUTDIR) -mindepth 1 -delete
@@ -35,7 +36,7 @@ gen_issue:
 	python update_post_commentid.py token $(GITHUB_TOKEN)
 
 build: clean
-	$(BASEDIR)/ENV/bin/pelican content
+	$(BINDIR)/pelican content
 	$(BASEDIR)/local_gen.sh
 	@echo 'Build html files.'
 
@@ -50,7 +51,7 @@ regenerate: clean
 	$(PELICAN) -r $(INPUTDIR) -o $(OUTPUTDIR) -s $(CONFFILE) $(PELICANOPTS)
 
 serve: build
-	cd $(OUTPUTDIR) && $(BASEDIR)/ENV/bin/python -m pelican.server
+	cd $(OUTPUTDIR) && $(BINDIR)/python -m pelican.server
 	@echo 'Open URL: http://localhost:8000'
 
 publish: html

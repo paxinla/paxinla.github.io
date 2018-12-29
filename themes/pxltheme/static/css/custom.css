@@ -70,6 +70,10 @@ a.smart-title {
   color: #e47911;
 }
 
+.page .content li::before, .page .content-bottom li::before, .page .content-top li::before {
+  content: none;
+}
+
 /*左侧导航栏*/
 .sidebar {
   background: #293A5D;
@@ -163,6 +167,10 @@ div.code-toolbar {
   margin-bottom: 1rem;
 }
 
+pre, pre code {
+  background: none;
+}
+
 /* 回复区 */
 #githubissue-comment_list {
   color: #e47911;
@@ -190,4 +198,15 @@ div.code-toolbar {
 
 .commentdate {
   font-size: 70%;
+}
+
+/* 过往文章标题 */
+.arc-title-lnk {
+  transition: all 0.3s linear;
+  margin-left: 2rem;
+}
+
+.arc-title-lnk:hover {
+  margin-top: 40px;
+  box-shadow: 0 3px 15px 3px rgba(51, 51, 51, 0.5);
 }
