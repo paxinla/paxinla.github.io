@@ -7,14 +7,14 @@ CommentId: 5
 
 # shell-mode 中文乱码
 
-办公室电脑系统 Windows 7 ，装的是 Emacs24 。在 Emacs 中切到 shell-mode ，使用的是 windows 的 cmd 。使用 dir 命令可以看到中文目录名正常显示。但是输入的中文（外部输入法：微软拼音输入法）不能正常显示。如输入 "echo 是" 回车后看到的是乱码。这种现象只在 shell-mode 中存在。
+　　办公室电脑系统 Windows 7 ，装的是 Emacs24 。在 Emacs 中切到 shell-mode ，使用的是 windows 的 cmd 。使用 dir 命令可以看到中文目录名正常显示。但是输入的中文（外部输入法：微软拼音输入法）不能正常显示。如输入 "echo 是" 回车后看到的是乱码。这种现象只在 shell-mode 中存在。
 
 <!-- PELICAN_END_SUMMARY -->
 
-根据网上搜到的方法，在 .emacs 中加入 (ansi-color-for-comint-mode-on) ，不能解决问题。
+　　根据网上搜到的方法，在 .emacs 中加入 (ansi-color-for-comint-mode-on) ，不能解决问题。
 
 
-起初的 .emacs 中，我是根据网上搜到的参数来配置如下：
+　　起初的 .emacs 中，我是根据网上搜到的参数来配置如下：
 
 ```lisp
 ;; 设置为中文简体语言环境
@@ -38,7 +38,7 @@ CommentId: 5
 (set-file-name-coding-system 'utf-8)
 ```
 
-经过多次尝试，发现修改以下参数时，对 shell-mode 下的中文显示和输入问题有效:
+　　经过多次尝试，发现修改以下参数时，对 shell-mode 下的中文显示和输入问题有效:
 
 ```lisp
 (modify-coding-system-alist 'process "*" 'gbk)
@@ -47,7 +47,7 @@ CommentId: 5
 (set-file-name-coding-system 'gbk) 
 ```
 
-但是会影响到其他 mode 下的中文显示，比如我的 org-mode 就会受影响。最后的 .emacs 设置为：
+　　但是会影响到其他 mode 下的中文显示，比如我的 org-mode 就会受影响。最后的 .emacs 设置为：
 
 ```lisp
 ;;;; 设置编辑环境
@@ -87,4 +87,4 @@ CommentId: 5
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on) 
 ```
 
-问题解决。
+　　问题解决。

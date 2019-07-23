@@ -7,9 +7,9 @@ CommentId: 9
 
 ## 配置 hive on tez
 
-公司的 Hadoop 集群是 **CDH 5.12.0** ，它的 Hive 的版本是 *1.1.0* 。我用的 tez 版本是 0.9.0 。
+　　公司的 Hadoop 集群是 **CDH 5.12.0** ，它的 Hive 的版本是 *1.1.0* 。我用的 tez 版本是 0.9.0 。
 
-让 hive 使用 Apache Tez 不难，参考[tez官方文档](https://github.com/apache/tez/blob/master/docs/src/site/markdown/install.md)编译即可。
+　　让 hive 使用 Apache Tez 不难，参考[tez官方文档](https://github.com/apache/tez/blob/master/docs/src/site/markdown/install.md)编译即可。
 
 <!-- PELICAN_END_SUMMARY -->
 
@@ -67,16 +67,16 @@ public boolean userClassesTakesPrecedence() {
 
 ## 让 beeline 也支持 hive on tez
 
-这里主要参考了[这个文档](https://gist.github.com/epiphani/dd37e87acfb2f8c4cbb0)，因为我这里的集群 HDFS 的 namenode 开了 HA ，所以在 `tez-site.xml` 里设置 **tez.lib.uris** 时，变量是用的 *${fs.defaultFS}* ，如果没有 HA ，应该用 *${fs.default.name}* 。
+　　这里主要参考了[这个文档](https://gist.github.com/epiphani/dd37e87acfb2f8c4cbb0)，因为我这里的集群 HDFS 的 namenode 开了 HA ，所以在 `tez-site.xml` 里设置 **tez.lib.uris** 时，变量是用的 *${fs.defaultFS}* ，如果没有 HA ，应该用 *${fs.default.name}* 。
 
-注意在设置 HiveServer2 的环境变量时， `HADOOP_CLASSPATH` 是要包含 tez-site.xml 所在目录的。
+　　注意在设置 HiveServer2 的环境变量时， `HADOOP_CLASSPATH` 是要包含 tez-site.xml 所在目录的。
 
-设置好重启 HiveServer2 服务后，就可以在 beeline 里，通过
+　　设置好重启 HiveServer2 服务后，就可以在 beeline 里，通过
 
 ```sql
 SET hive.execution.engine=tez;
 ```
 
-来使用 hive on tez 了。
+　　来使用 hive on tez 了。
 
-如果在执行查询语句时，出现了 `Caused by: java.lang.ClassNotFoundException: com.esotericsoftware.kryo.Serializer` 这样的错误时，可将 `/opt/cloudera/parcels/CDH/jars/kryo-2.22.jar` [ps: 我这里是 parcel 方式安装的 CDH 集群，习惯放到 /opt 目录下。]放到 HiveServer2 节点本地及 HDFS 上的 tez 的 lib 目录下。
+　　如果在执行查询语句时，出现了 `Caused by: java.lang.ClassNotFoundException: com.esotericsoftware.kryo.Serializer` 这样的错误时，可将 `/opt/cloudera/parcels/CDH/jars/kryo-2.22.jar` [ps: 我这里是 parcel 方式安装的 CDH 集群，习惯放到 /opt 目录下。]放到 HiveServer2 节点本地及 HDFS 上的 tez 的 lib 目录下。

@@ -7,15 +7,15 @@ Tags: Oracle, PL/SQL, SQL
 
 # 将oracle对象DDL语句spool成sql文本
 
-在我的工作实践中，常常需要将数据库中的表结构、函数、存储过程等导出成sql文本。一般都是用PL/SQL Developer来导出的。但是有时也会碰到没有PL/SQL Developer的环境，就自己写了几个脚本，用sqlplus将这些数据库对象spool出来。
+　　在我的工作实践中，常常需要将数据库中的表结构、函数、存储过程等导出成sql文本。一般都是用PL/SQL Developer来导出的。但是有时也会碰到没有PL/SQL Developer的环境，就自己写了几个脚本，用sqlplus将这些数据库对象spool出来。
 
 
 <!-- PELICAN_END_SUMMARY -->
 
 
-这套sql脚本共7个。分别可导出表结构、视图定义、自定义类型、序列、函数、存储过程和包。主要是使用ORACLE的包DBMS_METADATA的SET_TRANSFORM_PARAM来去除不必要的信息，用GET_DDL函数来获取对象的DDL。
+　　这套sql脚本共7个。分别可导出表结构、视图定义、自定义类型、序列、函数、存储过程和包。主要是使用ORACLE的包DBMS_METADATA的SET_TRANSFORM_PARAM来去除不必要的信息，用GET_DDL函数来获取对象的DDL。
 
-splplus的设置主要有:
+　　splplus的设置主要有:
 
 ```sql
 SET ECHO OFF
@@ -71,7 +71,7 @@ END;
 /
 ```
 
-为防止导出的语句内出现折行，必须设定 COLUMN 的宽度。这个值默认是200字节，最大可达60000字节。
+　　为防止导出的语句内出现折行，必须设定 COLUMN 的宽度。这个值默认是200字节，最大可达60000字节。
 
 ```sql
 COL DDL_STR FORMAT A30000
