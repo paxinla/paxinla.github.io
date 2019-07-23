@@ -13,7 +13,7 @@ TitleImage: /images/about_1st.jpg
     (.email "base64 -d <<< cGFueGlubGVpMTAyNEBmb3htYWlsLmNvbQo=")
     (.gpg-key-id "")
     (.gpg-key-fingerprint "")
-    (.mastodon "base64 -d <<< QGFrc3VyYUBjbXguaW0K")
+    (.mastodon "base64 -d <<< QGFrc3VyYUBwbGVyb21hLmFrc3VyYS50awo=")
     (.technology-stack {:language [:Python :Scala :Clojure :Rust]
                         :domain [:Database :BigData]})
     (.wanna-work-with-me? "http://paxinla.github.io/my-online-resume/")
