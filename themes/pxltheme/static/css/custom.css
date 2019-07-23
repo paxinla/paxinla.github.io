@@ -76,7 +76,7 @@ a.smart-title {
 
 /*左侧导航栏*/
 .sidebar {
-  background: #293A5D;
+  background: #182230;
   color: #e47911;
   border-left: 0px;
 }
@@ -114,6 +114,13 @@ a.smart-title {
 .nav-pills .nav-link.active {
   color: #155580 !important;
   background-color: #e6ff44 !important;
+}
+
+
+/*右侧标注栏*/
+span.sitenote {
+  color: var(--link,#d8a070);
+  background-color: var(--lightBg,#151e2a);
 }
 
 
