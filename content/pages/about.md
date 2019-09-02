@@ -1,7 +1,7 @@
 Title: 关于我
 Status: hidden
 Save_as: about.html
-TitleImage: /images/about_1st.jpg
+TitleImage: /images/noendsea.gif
 
 
 ## Charles Pan
