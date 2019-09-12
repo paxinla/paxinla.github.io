@@ -14,11 +14,11 @@ TitleImage: /images/noendsea.gif
   (doto (DataEngineer.)
     (.location "Shenzhen Guangdong")
     (.email "base64 -d <<< cGFueGlubGVpMTAyNEBmb3htYWlsLmNvbQo=")
-    (.gpg-key-id "")
-    (.gpg-key-fingerprint "")
+    (.gpg-key-id nil)
+    (.gpg-key-fingerprint nil)
     (.mastodon "base64 -d <<< QGFrc3VyYUBwbGVyb21hLmFrc3VyYS50awo=")
     (.technology-stack {:favorite-language [:Python :Scala :Clojure]
-                        :domain            [:database :data-warehouse :etl :data-pipe-line]})
+                        :domain [:database :data-warehouse :etl :data-pipe-line]})
     (.wanna-work-with-me? "http://paxinla.github.io/my-online-resume/")
    ))
 ```
