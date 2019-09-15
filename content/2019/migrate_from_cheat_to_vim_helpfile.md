@@ -38,7 +38,7 @@ cheatsheet 文件都放到 cheat 目录下的 doc 目录下。在 PC-A 的 vimrc
 
 cheatsheet 的文档为文本文件，格式如下:
 
-```
+```vim
 *标签*     大标题     最后更新时间:XXXX年Y月
 *另一个标签*
 
