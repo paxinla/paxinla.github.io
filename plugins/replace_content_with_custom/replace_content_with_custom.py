@@ -15,7 +15,7 @@ PTN_PS = re.compile(r"\[ps:(.+?)\]")
 RPL_PS = r'<span class="sidenote note no-word-break invisible-sm">\1</span>'
 
 PTN_CODE_BLOCK = re.compile(r"```\s*([\w\d\-_]+)\s*^((.|\r|\n)*?)```$", re.M)
-RPL_CODE_BLOCK = r'<pre><code class="lang-\1">\n\2</code></pre>'
+RPL_CODE_BLOCK = r'<pre><code class="lang-\1 hljs">\n\2</code></pre>'
 
 
 def repl_code_block(instr):
