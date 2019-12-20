@@ -24,6 +24,6 @@ TitleImage: /images/noendsea.gif
                         :familiar-language [:Python
                                             :Scala
                                             :Clojure ]})
-    (.wanna-work-with-me? "http://paxinla.github.io/my-online-resume/")
+    (.wanna-work-with-me? "http://paxinla.github.io/my-online-resume/cn/")
    ))
 ```
