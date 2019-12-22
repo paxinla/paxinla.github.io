@@ -39,6 +39,7 @@ Think big, start small, act fast.
 #### 个人阅读的分级
 
 从高到低:
+
 1. (高质量) 期刊/论文。
 2. (公认的) 经典教材。
 3. (英文) Wikipedia 。
@@ -48,4 +49,5 @@ Think big, start small, act fast.
 7. 有本专业的 Ph.D 背景或在读的优秀学生或学者写的。
 8. 非本专业的业余深度爱好者写的。
 9. 既不专业也不业余爱好的、KPI 驱动的作者写的。
+
 
