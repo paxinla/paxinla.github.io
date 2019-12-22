@@ -22,6 +22,10 @@ body, a {
   margin-bottom: 1rem;
 }
 
+.page h1.title {
+  margin-bottom: 2rem;
+}
+
 .page .content, .page .content-bottom, .page .content-top {
   max-width: 750px;
   padding-right: 0;
@@ -81,6 +85,10 @@ a.current-page-link {
   font-size: 16px;
   padding: 1px 2px 1px 2px;
   margin-top: 20px;
+}
+
+.page-link {
+  background-color: rgb(229,211,170);
 }
 
 /*左侧导航栏*/
@@ -181,6 +189,10 @@ code[class*="language-"], pre[class*="language-"] {
 
 div.code-toolbar {
   margin-bottom: 1rem;
+}
+
+div.code-toolbar > .toolbar .toolbar-item {
+  display: none;
 }
 
 pre, pre code {
