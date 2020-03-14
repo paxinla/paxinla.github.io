@@ -27,7 +27,7 @@ body, a {
 }
 
 .page .content, .page .content-bottom, .page .content-top {
-  max-width: 750px;
+  max-width: 820px;
   padding-right: 0;
 }
 
@@ -37,6 +37,12 @@ body, a {
 
 .page img {
   max-width: 540px;
+}
+
+.page p img {
+  clear: both;
+  display: block;
+  margin: auto;
 }
 
 .big_title {
@@ -76,6 +82,20 @@ a.smart-title {
 
 .page .content li::before, .page .content-bottom li::before, .page .content-top li::before {
   content: none;
+}
+
+.page .content li, .page .content-bottom li, .page .content-top li {
+  line-height: 24px;
+  padding-bottom: 4px;
+  padding-top: 4px;
+}
+
+.page .content ul li, .page .content-bottom ul li, .page .content-top ul li {
+  list-style: disclosure-closed;
+}
+
+.page .content ol li, .page .content-bottom ol li, .page .content-top ol li {
+  list-style: decimal;
 }
 
 a.current-page-link {
@@ -126,6 +146,28 @@ a.current-page-link {
   border-left: 0px;
 }
 
+.sidebar .title {
+  text-align: center;
+}
+
+.sidebar .title::before, .sidebar .title::after{
+  background: url(/theme/images/ornate-border.svg) center top no-repeat transparent;
+  background-size: contain;
+  content: ' ';
+  display: block;
+  height: 1.5rem;
+  width: 100%;
+}
+
+.sidebar .title::before {
+ -webkit-transform: rotate(180deg);
+ transform: rotate(180deg);
+ margin-bottom: 1rem;
+}
+
+.sidebar .title::after {
+ margin-top: 1rem;
+}
 
 /*左侧导航栏--目录*/
 .nav-pills .nav-link.active {
