@@ -6,6 +6,10 @@ body, a {
   background-color: transparent;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  text-transform: none;
+}
+
 
 /* 正文区域标题部分 */
 .content-top {
@@ -175,7 +179,12 @@ a.current-page-link {
   background-color: #e6ff44 !important;
 }
 
+#nav-sidebar {
+  margin-bottom: 0.5rem;
+}
+
 #nav-visited-info {
+  margin-top: 0.5rem;
   padding-top: 1rem;
 }
 

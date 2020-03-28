@@ -1,17 +1,14 @@
 Title: 关于这个博客
 Status: hidden
 Save_as: about.html
-TitleImage: /images/noendsea.gif
 
-    Think big, start small, act fast.
-
-### 博客说明
+> Think big, start small, act fast.
 
 这个博客是 Charles 的一块自留地，它主要的目的是为 Charles 记录一些知识与信息，方便回头翻阅，也欢迎大家和 Charles 一起交流。
 
-Charles 是一个略爱折腾的工程师，他会发表数据库、数据工程等领域的文章，梳理沉淀个人的知识点；也会发表一些自己折腾各种东东的记录。转载/翻译的文章不限于专业领域，五花八门，以防它们从互联网上消失(众所周知，互联网没有记忆)。
+Charles 是一个略爱折腾的工程师，他关注数据库、数据工程等领域的信息，梳理沉淀个人的知识点；还有一些自己折腾各种东东的记录。转载/翻译的文章不限于专业领域，五花八门，以防它们从互联网上消失(众所周知，互联网没有记忆)。
 
-转载的信息也有质量分级的，从高到低:
+转载的信息来源是有质量分级的，从高到低:
 
 1. (高质量) 期刊/论文。
 2. (公认的) 经典教材。
@@ -38,12 +35,12 @@ Charles 是一个略爱折腾的工程师，他会发表数据库、数据工程
     (.gpg {:gpg-key-id "47E15BF5"
            :gpg-key-fingerprint "9C1E 56D2 CA50 F9EB DC67 6111 6D10 0717 47E1 5BF5"
            :key-server "http://keyserver.ubuntu.com/"})
-    (.social-media {:email          "base64 -d <<< YWtzdXJhQHBhcmFub2lkLmVtYWlsCg=="
-                    :mastodon       "base64 -d <<< QGFrc3VyYUBwbGVyb21hLmFrc3VyYS50awo="
+    (.social-media {:email "base64 -d <<< YWtzdXJhQHBhcmFub2lkLmVtYWlsCg=="
+                    :mastodon "base64 -d <<< QGFrc3VyYUBwbGVyb21hLmFrc3VyYS50awo="
                     :ns-friend-code "SW-4210-1337-8241"})
-    (.technology-stack {:domain            [:Data-Engineering
-                                            :Database
-                                            :Data-Warehouse ]
+    (.technology-stack {:domain [:Data-Engineering
+                                 :Database
+                                 :Data-Warehouse ]
                         :familiar-language [:Python
                                             :Scala
                                             :Clojure ]})
