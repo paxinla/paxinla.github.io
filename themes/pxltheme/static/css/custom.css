@@ -175,6 +175,10 @@ a.current-page-link {
   background-color: #e6ff44 !important;
 }
 
+#nav-visited-info {
+  padding-top: 1rem;
+}
+
 
 /*右侧标注栏*/
 span.sitenote {

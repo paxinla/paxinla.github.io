@@ -54,13 +54,13 @@ Ubuntu 的网卡名称与众不同，不喜欢的话，可以在 /etc/default/gr
 
 触摸板在 gnome 下工作得很好，在 i3 下却没有默认开启 tap 功能。不建议使用如:
 
-```
+```vim
 xinput set-prop <device> <property> 1
 ```
 
 这样的方式来修改。新增文件 `/usr/share/X11/xorg.conf.d/90-touchpad.conf` ，内容为:
 
-```
+```vim
 Section "InputClass"
         Identifier "libinput touchpad catchall"
         MatchIsTouchpad "on"
