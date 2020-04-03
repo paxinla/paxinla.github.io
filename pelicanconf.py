@@ -23,6 +23,7 @@ DEFAULT_LANG = "zh"
 TIMEZONE = "Asia/Shanghai"
 DEFAULT_DATE_FORMAT = "%Y-%m-%d %a"
 COPYRIGHT_YEAR = str(datetime.now().year)
+COPYRIGHT_START_YEAR = "2014"
 
 
 DEFAULT_CATEGORY ="杂谈"

@@ -63,11 +63,13 @@
 
                 <div id="nav-sidebar">
                 </div>
-                <hr/> <br/>
+
+                {% block nav_big_title_endline %}
+                {% endblock %}
 
                 <div id="nav-visited-info" class="center-text floating-description">
-                    <span id="busuanzi_container_site_pv">本站总访问量: <span id="busuanzi_value_site_pv"></span>次</span><br/><br/>
-                    <div class="copyright"> &copy; {{ COPYRIGHT_YEAR }} <a href="/">{{ AUTHOR }}</a></div><br/>
+                    <span id="busuanzi_container_site_pv">♥本站总访问量:  <span id="busuanzi_value_site_pv"></span> 次♥</span><br/><br/>
+                    <div class="copyright">(cons "<a href="/">{{ AUTHOR }}</a> &copy;" (iterate inc {{ COPYRIGHT_START_YEAR }}))</div><br/>
                     <a href="https://github.com/getpelican/pelican">Powered by<br/>Pelican</a>
                 </div>
             </div>
@@ -83,7 +85,7 @@
             {% endblock %}
 
             <div class="cc-license">
-                <p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/"><img alt="知识共享许可协议" style="border-width:0" src="https://licensebuttons.net/l/by-nc-sa/3.0/cn/88x31.png" /></a>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/3.0/deed.zh" style="color:#00b1d6">知识共享署名-非商业性使用-相同方式共享 3.0 中国大陆许可协议</a>进行许可，欢迎转载，演绎，<br/>但是必须保留本文的署名 <a href="{{ SITEURL }}">{{ AUTHOR }}</a>（包含链接），且不得用于商业目的。</p>
+                <p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/"><img alt="知识共享许可协议" style="border-width:0;display:inline-block" src="https://licensebuttons.net/l/by-nc-sa/3.0/cn/88x31.png" /></a>&nbsp;本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/3.0/deed.zh" style="color:#00b1d6">知识共享署名-非商业性使用-相同方式共享 3.0 中国大陆许可协议</a>进行许可，欢迎转载，演绎，<br/>但是必须保留本文的署名 <a href="{{ SITEURL }}">{{ AUTHOR }}</a>（包含链接），且不得用于商业目的。</p>
             </div>
             <div class="clearfix"></div>
         </div>
