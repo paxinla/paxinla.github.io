@@ -173,6 +173,14 @@ a.current-page-link {
  margin-top: 1rem;
 }
 
+#copyright-expression {
+  font-size: 12px;
+}
+
+#powered-by {
+  font-size: 11px;
+}
+
 /*左侧导航栏--目录*/
 .nav-pills .nav-link.active {
   color: #155580 !important;
@@ -292,4 +300,13 @@ pre, pre code {
 .arc-title-lnk:hover {
   margin-top: 40px;
   box-shadow: 0 3px 15px 3px rgba(51, 51, 51, 0.5);
+}
+
+/* 正文 */
+#content_of_post a[href^="http"] {
+  color: #921b51;
+}
+
+#content_of_post a[href^="http"]::after {
+  content: '⤴';
 }
