@@ -303,10 +303,10 @@ pre, pre code {
 }
 
 /* 正文 */
-#content_of_post a[href^="http"] {
+#content_of_article a[href^="http"] {
   color: #921b51;
 }
 
-#content_of_post a[href^="http"]::after {
+#content_of_article a[href^="http"]::after {
   content: '⤴';
 }
