@@ -9,4 +9,4 @@
 
 ----------
 
-My personal blog powered by Pelican. I custom the Theme base on which [cachestocaches](http://cachestocaches.com/) used with Boostrap 4. Code hightligh function use [Prism](http://prismjs.com/) .
+My personal blog powered by [Pelican](https://blog.getpelican.com/) . I custom my theme based on which [cachestocaches](http://cachestocaches.com/) used with Boostrap 4. Use [Prism](http://prismjs.com/) to achieve code hightlighing feature.

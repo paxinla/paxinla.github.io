@@ -7,6 +7,7 @@
         <meta name="author" content="{{ AUTHOR }}" />
         <meta name="copyright" content="{{ AUTHOR }}" />
         <meta name="description" content="Personal blog of {{ AUTHOR }}">
+        <meta name="generator" content="pelican 3.7.1">
 
         <link href="{{ SITEURL }}/theme/images/favicon.ico" rel="icon" type="image/png" />
 
@@ -151,6 +152,18 @@
                               opacityOnHover: 0.2,
                             }
                           })
+        </script>
+
+        <!-- Funny title -->
+        <script type="text/javascript">
+            var OriginTitle = document.title;
+            document.addEventListener('visibilitychange', function () {
+                if (document.hidden) {
+                    document.title = '_(:з」∠)_';
+                } else {
+                    document.title = OriginTitle;
+                }
+            });
         </script>
     </body>
 </html>

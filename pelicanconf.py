@@ -49,7 +49,7 @@ AUTHOR_SAVE_AS = 'author/{slug}.html'
 
 
 PLUGIN_PATHS = ["pelican_plugins", "plugins"]
-PLUGINS = ["sitemap", "summary", "gravatar",
+PLUGINS = ["sitemap", "summary", "gravatar", "simple_footnotes",
            "replace_content_with_custom", "replace_html_with_custom"]
 SITEMAP = {
     "format": "xml",

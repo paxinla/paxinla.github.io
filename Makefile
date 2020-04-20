@@ -36,12 +36,12 @@ gen_issue:
 	python update_post_commentid.py token $(GITHUB_TOKEN)
 
 build: clean
-	$(BINDIR)/pelican content
+	$(BINDIR)/$(PELICAN) content
 	$(BASEDIR)/local_gen.sh
 	@echo 'Build html files.'
 
 html: clean
-	pelican content
+	$(PELICAN) content
 	@echo 'Build html files.'
 
 $(OUTPUTDIR)/%.html:

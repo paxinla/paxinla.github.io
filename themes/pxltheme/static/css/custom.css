@@ -310,3 +310,7 @@ pre, pre code {
 #content_of_article a[href^="http"]::after {
   content: '⤴';
 }
+
+#ref-docs-title::before {
+  content: '🞸';
+}
