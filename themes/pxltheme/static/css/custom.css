@@ -246,6 +246,17 @@ ul.tagcloud .list-group-item <span>.badge {
 
 
 /* 代码块 */
+pre, pre code {
+  background: none;
+}
+
+code {
+  color: #a6071b;
+  font-size: 16px;
+  background-color: #ffecb3;
+  font-weight: bold;
+}
+
 code[class*="language-"], pre[class*="language-"] {
   font-family: 'Dejavu Sans Mono', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 }
@@ -256,10 +267,6 @@ div.code-toolbar {
 
 div.code-toolbar > .toolbar .toolbar-item {
   display: none;
-}
-
-pre, pre code {
-  background: none;
 }
 
 /* 回复区 */

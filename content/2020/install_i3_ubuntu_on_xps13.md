@@ -5,7 +5,7 @@ Tags: xps ubuntu i3
 CommentId: X
 
 
-## 在 XPS 13 7390 上安装 Ubuntu
+## XPS 13 7390
 
 为自己工作挑选专用笔记本，千挑万选最终选择了戴尔的 XPS 13 7390 (not 2 in 1)。
 

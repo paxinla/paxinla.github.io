@@ -1,11 +1,11 @@
-Title: 看病指南
+Title: [转] 看病指南
 Date: 2019-04-13 15:56:02
 Category: 生活
 Tags: 转载 看病 医院
 CommentId: X
 
 
-## [转] 如何看病
+## 如何看病
 
 原文作者: Golden Grape
 

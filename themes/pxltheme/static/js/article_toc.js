@@ -3,6 +3,7 @@ window.onload = function () {
     var level = 2;
     var sec_id = 1;
     var nav_scroll_level = 2;
+    var toc_has_item = false;
 
     document.getElementById("content_of_post").innerHTML =
         document.getElementById("content_of_post").innerHTML.replace(
@@ -22,6 +23,9 @@ window.onload = function () {
 
                 if (openLevel <= nav_scroll_level){
                     var anchor = "section" + sec_id;
+                    if (!toc_has_item){
+                        toc_has_item = true;
+                    }
                     sec_id++;
                     toc += '<li class="nav-item"><a class="nav-link" href="#' + anchor + "\">"
                         + '<i class="fa-li fa fa-arrow-circle-right"></i> '
@@ -43,4 +47,8 @@ window.onload = function () {
     }
 
     document.getElementById("nav-sidebar").innerHTML += toc;
+
+    if (toc_has_item) {
+        document.getElementById("nav-sidebar").appendChild(document.createElement("hr"));
+    }
 };
