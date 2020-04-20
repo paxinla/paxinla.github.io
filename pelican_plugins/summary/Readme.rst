@@ -1,3 +1,10 @@
+Requirements
+------------
+
+This plugin requires beautifulsoup4 to ensure correctness of the extracted markup::
+
+    pip install beautifulsoup4
+
 Summary
 -------
 
@@ -54,3 +61,4 @@ comment directive, because raw HTML is automatically escaped. The reST equivalen
     .. PELICAN_END_SUMMARY
 
     and this content occurs after the summary.
+
