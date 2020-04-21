@@ -1,8 +1,8 @@
 Title: 导出Oracle数据库对象的脚本
 Date: 2014-04-26 21:45:00
 Category: 数据库
+Tags: oracle, PL/SQL, SQL
 CommentId: 2
-Tags: Oracle, PL/SQL, SQL
 
 
 # 将oracle对象DDL语句spool成sql文本

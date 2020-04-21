@@ -1,8 +1,9 @@
-Title: 缓慢变化维
+Title: 浅谈缓慢变化维
 Date: 2020-04-20 15:38:25
 Category: 数据仓库
-Tags: datawarehouse star-schema
+Tags: datawarehouse, star-schema
 CommentId: X
+
 
 最近我被问到，如何向一个完全不了解数据仓库/星型模式的人简要地解释什么是“缓慢变化维”。
 

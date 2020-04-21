@@ -1,7 +1,7 @@
 Title: Hexo的一个问题
 Date: 2015-06-07 10:03:00
-Category: 杂谈
-Tags: 工具, Hexo
+Category: 故障
+Tags: hexo
 CommentId: 3
 
 

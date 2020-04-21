@@ -32,9 +32,6 @@ init:
 clean:
 	find $(OUTPUTDIR) -mindepth 1 -delete
 
-gen_issue:
-	python update_post_commentid.py token $(GITHUB_TOKEN)
-
 build: clean
 	$(BINDIR)/$(PELICAN) content
 	$(BASEDIR)/local_gen.sh

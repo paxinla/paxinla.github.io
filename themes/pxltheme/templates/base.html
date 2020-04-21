@@ -19,10 +19,13 @@
         <link href="{{ SITEURL }}/theme/css/custom.css" rel="stylesheet">
 
         <!-- Fonts -->
-        <link href='http://fonts.googleapis.com/css?family=Unica+One' rel='stylesheet' type='text/css'>
-        <link href="http://fonts.googleapis.com/css?family=Vollkorn" rel="stylesheet" type="text/css">
+        <link href='https://fonts.googleapis.com/css?family=Unica+One' rel='stylesheet' type='text/css'>
+        <link href="https://fonts.googleapis.com/css?family=Vollkorn" rel="stylesheet" type="text/css">
         <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js" integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l" crossorigin="anonymous"></script>
         <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c" crossorigin="anonymous"></script>
+
+        <!-- View Counter -->
+        <script async type="application/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     </head>
 
 
@@ -37,9 +40,6 @@
              s.parentNode.insertBefore(hm, s);
          })();
         </script>
-        <!-- View Counter -->
-        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
 
         <!-- Left Sidebar -->
         <nav id="left-navbar" class="sidebar">
@@ -69,9 +69,9 @@
                 {% endblock %}
 
                 <div id="nav-visited-info" class="center-text floating-description">
-                    <span id="busuanzi_container_site_pv">♥本站总访问量:  <span id="busuanzi_value_site_pv"></span> 次♥</span><br/><br/>
+                    <span id="busuanzi_container_site_pv">本站总访问量:  <span id="busuanzi_value_site_pv"></span> 次</span><br/><br/>
                     <div id="copyright-expression" class="copyright">(cons "<a href="/">{{ AUTHOR }}</a> &copy;" (iterate inc {{ COPYRIGHT_START_YEAR }}))</div><br/>
-                    <a id="powered-by" href="https://github.com/getpelican/pelican">Powered by<br/>Pelican</a>
+                    <a id="powered-by" href="https://github.com/getpelican/pelican">Powered ♥ by<br/>Pelican</a>
                 </div>
             </div>
         </nav>

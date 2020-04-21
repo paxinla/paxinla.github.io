@@ -1,7 +1,7 @@
 Title: 在 XPS 13 7390 上安装 Ubuntu
 Date: 2020-03-17 15:31:08
 Category: 工具
-Tags: xps ubuntu i3
+Tags: xps, ubuntu, i3
 CommentId: X
 
 

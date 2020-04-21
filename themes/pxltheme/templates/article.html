@@ -63,8 +63,8 @@
 <div style="margin-top:40px; padding-top:40px;"><hr/></div>
 <div class="content-bottom">
     {% include "comments.html" %}
+    {% endblock %}
 </div>
-{% endblock %}
 {% block user_js %}
 {{ super() }}
 <script src="{{ SITEURL }}/theme/js/article_toc.js" type="text/javascript"></script>
