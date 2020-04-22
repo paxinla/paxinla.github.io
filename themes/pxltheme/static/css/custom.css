@@ -85,6 +85,14 @@ h1#index_big_title {
   margin-right: 5px;
 }
 
+.not-bullet::before {
+  content: none !important;
+}
+
+.not-bullet::after {
+  content: none !important;
+}
+
 .title span {
   font-size: 38px;
 }
@@ -326,4 +334,28 @@ div.code-toolbar > .toolbar {
 
 #ref-docs-title {
   color: #2c3e50;
+}
+
+.simple-footnotes a::after {
+  content: none !important;
+}
+
+.simple-footnote-back {
+  border: none;
+  padding: 0;
+  margin: 0;
+  color: #921b51;
+}
+
+sup a {
+  color: #a00;
+  border: none;
+}
+
+sup a::before {
+  content: "[";
+}
+
+sup a::after {
+  content: "]";
 }
