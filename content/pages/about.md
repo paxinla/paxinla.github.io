@@ -1,7 +1,6 @@
 Title: 关于这个博客
 Status: hidden
 Save_as: about.html
-TitleImage: /images/blog_url.png
 
 <h2 class="no-bullet" style="color: #ffb800;text-align: center;font-family: 'Unica One',sans-serif;font-weight: 500;">Think big, start small, act fast.</h2>
 
