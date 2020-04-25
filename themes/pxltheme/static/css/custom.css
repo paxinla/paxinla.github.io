@@ -4,6 +4,7 @@ html {
 
 body, a {
   background-color: transparent;
+  text-rendering: optimizelegibility;
 }
 
 a {
@@ -138,6 +139,24 @@ a.current-page-link {
 }
 
 /*左侧导航栏*/
+.narrow-font {
+  color: #2b90d9;
+  font-size: 15px;
+}
+
+.narrow-font .nav-item:hover {
+  background-color: #e47911;
+  color: white;
+}
+
+.narrow-font a {
+  color: #2b90d9;
+}
+
+.narrow-font a:hover {
+  text-decoration: none;
+}
+
 .sidebar {
   background: #182230;
   color: #e47911;
@@ -321,6 +340,7 @@ div.code-toolbar > .toolbar {
 /* 正文 */
 #content_of_article a[href^="http"] {
   color: #921b51;
+  border-bottom: none;
 }
 
 #content_of_article a[href^="http"]::after {
@@ -348,7 +368,7 @@ div.code-toolbar > .toolbar {
 }
 
 sup a {
-  color: #a00;
+  color: #0e141b;
   border: none;
 }
 
@@ -358,4 +378,13 @@ sup a::before {
 
 sup a::after {
   content: "]";
+}
+
+.cc-license {
+  font-size: 14px;
+}
+
+.cc-license img {
+  height: 25px;
+  width: auto;
 }

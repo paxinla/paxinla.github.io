@@ -87,7 +87,7 @@ def parse_for_footnotes(article_or_page_generator):
                 dom.getElementsByTagName(u"body")[0].appendChild(dom.createElement(u"br"))
                 ref_docs_title = dom.createElement(u"h6")
                 ref_docs_title.setAttribute(u"id", u"ref-docs-title")
-                ref_docs_title.appendChild(dom.createTextNode(u"参考文献"))
+                ref_docs_title.appendChild(dom.createTextNode(u"参考"))
                 dom.getElementsByTagName(u"body")[0].appendChild(ref_docs_title)
                 dom.getElementsByTagName(u"body")[0].appendChild(ol)
 
