@@ -4,7 +4,18 @@
         <meta charset="utf-8">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>Blog of {{ AUTHOR }}</title>
+        <meta property="og:title" content="Blog of {{ AUTHOR }}" />
         <meta name="author" content="{{ AUTHOR }}" />
+        <meta property="article:author" content="{{ AUTHOR }}" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="{{ SITEURL }}" />
+        <meta property="og:image" content="{{ SITEURL }}/static/blog_url_qrcode.png" />
+        <meta property="og:image:secure_url" content="{{ SITEURL }}/static/blog_url_qrcode.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="120" />
+        <meta property="og:image:height" content="120" />
+        <meta property="og:image:alt" content="A QR code of the blog's URL." />
+        <meta property="og:description" content="This is the blog of Charles." />
         <meta name="copyright" content="{{ AUTHOR }}" />
         <meta name="description" content="Personal blog of {{ AUTHOR }}">
         <meta name="generator" content="pelican 3.7.1">
@@ -72,7 +83,8 @@
                 <div id="nav-visited-info" class="center-text floating-description">
                     <span id="busuanzi_container_site_pv">本站总访问量:  <span id="busuanzi_value_site_pv"></span> 次</span><br/><br/>
                     <div id="copyright-expression" class="copyright">(cons "<a href="/">{{ AUTHOR }}</a> &copy;" (iterate inc {{ COPYRIGHT_START_YEAR }}))</div><br/>
-                    <a id="powered-by" href="https://github.com/getpelican/pelican">Powered ♥ by<br/>Pelican</a>
+                    <a id="powered-by" href="https://github.com/getpelican/pelican">Powered ♥ by<br/>Pelican</a><br/>
+                    <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" style="border: none;" ><img src="https://img.shields.io/badge/License-CC__BY--NC--SA-blue.svg" style="height: 17px;" /></a>
                 </div>
             </div>
         </nav>

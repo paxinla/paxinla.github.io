@@ -139,24 +139,6 @@ a.current-page-link {
 }
 
 /*左侧导航栏*/
-.narrow-font {
-  color: #2b90d9;
-  font-size: 15px;
-}
-
-.narrow-font .nav-item:hover {
-  background-color: #e47911;
-  color: white;
-}
-
-.narrow-font a {
-  color: #2b90d9;
-}
-
-.narrow-font a:hover {
-  text-decoration: none;
-}
-
 .sidebar {
   background: #182230;
   color: #e47911;
@@ -212,6 +194,24 @@ a.current-page-link {
 
 .sidebar .title::after {
  margin-top: 1rem;
+}
+
+.narrow-font {
+  color: #2b90d9;
+  font-size: 15px;
+}
+
+.narrow-font .nav-item:hover {
+  background-color: #e47911;
+  color: white;
+}
+
+.narrow-font a {
+  color: #2b90d9;
+}
+
+.narrow-font a:hover {
+  text-decoration: none;
 }
 
 #copyright-expression {

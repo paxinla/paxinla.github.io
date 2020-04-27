@@ -24,7 +24,7 @@ Charles 是一个略爱折腾的数据工程师，他关注数据库、数据工
 <h3 class="no-bullet">Charles 是什么人？</h3>
 
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="188" height="20"><linearGradient id="b" x2="0" y2="100%"><stop offset="0" stop-color="#bbb" stop-opacity=".1"/><stop offset="1" stop-opacity=".1"/></linearGradient><clipPath id="a"><rect width="188" height="20" rx="3" fill="#fff"/></clipPath><g clip-path="url(#a)"><path fill="#555" d="M0 0h89v20H0z"/><path fill="#97ca00" d="M89 0h99v20H89z"/><path fill="url(#b)" d="M0 0h188v20H0z"/></g><g fill="#fff" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="110"> <text x="455" y="150" fill="#010101" fill-opacity=".3" transform="scale(.1)" textLength="790">Looingking for</text><text x="455" y="140" transform="scale(.1)" textLength="790">Looingking for</text><text x="1375" y="150" fill="#010101" fill-opacity=".3" transform="scale(.1)" textLength="890">Greener Pasture</text><text x="1375" y="140" transform="scale(.1)" textLength="890">Greener Pasture</text></g></svg>
-<a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="96" height="20"><g shape-rendering="crispEdges"><path fill="#555" d="M0 0h51v20H0z"></path><path fill="#007ec6" d="M51 0h45v20H51z"></path></g><g fill="#fff" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="110"> <text x="265" y="140" transform="scale(.1)" textLength="410">License</text><text x="725" y="140" transform="scale(.1)" textLength="350">CC-BY</text></g></svg></a>
+
 
 ![GitHub Chart](https://ghchart.rshah.org/paxinla)
 

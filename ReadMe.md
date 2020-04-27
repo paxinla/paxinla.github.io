@@ -3,8 +3,10 @@
 
 ![version](https://img.shields.io/badge/Version-%202.0.0-orange.svg)
 [![Build Status](https://travis-ci.org/paxinla/paxinla.github.io.svg?branch=source)](https://travis-ci.org/paxinla/paxinla.github.io)
+![dependency](https://img.shields.io/badge/Dependencies-up%20to%20date-green.svg)
 ![python](https://img.shields.io/badge/python-%203.7/ubuntu-blue.svg)
-![author](https://img.shields.io/badge/Powered%20by-%20%20Pelican-yellow.svg)
+![engine](https://img.shields.io/badge/Powered%20by-%20%20Pelican-yellow.svg)
+![theme](https://img.shields.io/badge/Powered%20by-Prism.js-magenta.svg)
 
 
 ----------
