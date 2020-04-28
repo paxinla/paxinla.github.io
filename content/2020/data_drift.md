@@ -12,11 +12,13 @@ CommentId: X
 ## 什么是数据漂移
 
 数据漂移(Data Drift)，指的是将进入数据仓库的数据，偏离标准、正常或预期的情况。它三种表现形式:
+
 1. Structural Drift ，指的是数据源的数据结构发生了改变，比如字段增减、字段数据类型变更等。
 2. Semantic Drift ，源于(历史)数据的改变，比如过了一段时间后，才发现已入仓库的历史数据有错误等。
 3. Infrastructure Drift ，源于系统依赖的软件或平台发生变化后，与变化前不兼容。
 
 数据漂移的后果主要有3个[ref]<a href="https://www.cmswire.com/big-data/big-datas-hidden-scourge-data-drift/">Girish Pancha. Big Data's Hidden Scourge: Data Drift, Apr 8, 2016</a>[/ref]:
+
 1. Garbage in, garbage out.
 2. Trust takes a lifetime to build and only a moment to lose.
 3. The biggest expense is opportunity cost.
@@ -45,5 +47,7 @@ CommentId: X
 
 ## 小结
 
-我的看法是，总的来说，数据发生了“漂移”，就可以认为是发生了异常。只能根据每个企业具体场景去事后修补数据，并没有什么自动化的通用方法来处理“漂移”。最好还是尽量在设计 ETL 过程时，能够确定好各个数据源的数据就绪条件和判断手段，从根源上尽量避免数据漂移。
+如何处理迟到的数据，是 Kimball 的 ETL 子系统里的“迟到数据处理器”关注的情况。
+
+我的看法是，总的来说，数据发生了“漂移”，就可以认为是发生了异常。只能根据每个企业具体场景去事后修补数据，并没有什么自动化的通用方法来处理“漂移”[ps: 但是可重跑的任务和完整的历史数据，还是对这个修补的过程有助益。]。最好还是尽量在设计 ETL 过程时，能够确定好各个数据源的数据就绪条件和判断手段，从根源上尽量避免数据漂移。
 
