@@ -20,6 +20,8 @@ Charles 是一个略爱折腾的数据工程师，他关注数据库、数据工
 8. 非本专业的业余深度爱好者写的。
 9. 既不专业也不业余爱好的、KPI 驱动的作者写的。
 
+如果您想联系我，欢迎给发我邮件。
+
 
 <h3 class="no-bullet">Charles 是什么人？</h3>
 
@@ -33,7 +35,7 @@ Charles 是一个略爱折腾的数据工程师，他关注数据库、数据工
   (doto (DataEngineer.)
     (.location "Shenzhen Guangdong")
     (.social-media {:email "base64 -d <<< YWtzdXJhQHBhcmFub2lkLmVtYWlsCg=="
-                    :mastodon "base64 -d <<< QGFrc3VyYUBwbGVyb21hLmFrc3VyYS50awo="
+                    :mastodon "base64 -d <<< aHR0cHM6Ly9wbGVyb21hLmFrc3VyYS50ay9ha3N1cmE="
                     :ns-friend-code "SW-4210-1337-8241"})
     (.technology-stack {:domain [:Data-Engineering
                                  :Database

@@ -10,5 +10,5 @@ You can search my public key from
  or import  from this blog:
 
 ```sh
-$ curl https://paxinla.github.io/static/gpg_keys.asc | gpg --import
+$ curl -fsSL https://paxinla.github.io/static/gpg_keys.asc | gpg --import -
 ```
