@@ -20,18 +20,19 @@
         <div class="marginnote invisible-sm post-detail">
             <div>
                 <p><div class="date heading-font"><i class="fa fa-calendar"></i> {{ article.locale_date }}</div>
-                    <a href="#">
+                    <a href="#" style="margin-left:0.875em;border:none;">
                         <span class="author" itemprop="name">{{ article.author }}</span>
                     </a>
                 </p>
 
                 <p><div class="heading-font"><i class="fas fa-folder"></i> Category</div>
-                    <a class="category" href="{{ SITEURL }}/{{ category.url }}">
+                    <a class="category" href="{{ SITEURL }}/{{ category.url }}" style="margin-left:0.875em;border:none;">
                          {{ category }}
                     </a>
                 </p>
 
                 <p><div class="heading-font"><i class="fas fa-tag"></i> Tags</div>
+                    <span style="padding-left:1.4em;"></span>
                     {% for tag in article.tags %}
                         <a class="tag" href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>
                     {% endfor %}
