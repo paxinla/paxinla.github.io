@@ -344,7 +344,8 @@ div.code-toolbar > .toolbar {
 }
 
 #content_of_article a[href^="http"]::after {
-  content: '⤴';
+  content: ' ⤴';
+  font-size: 12px;
 }
 
 #ref-docs-title::before {
