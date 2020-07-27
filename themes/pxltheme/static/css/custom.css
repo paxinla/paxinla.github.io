@@ -16,6 +16,11 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Coda", "Helvetica Neue", "Helvetica", Arial, sans-serif;
 }
 
+hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
 
 /* 正文区域标题部分 */
 .content-top {
@@ -33,7 +38,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .page h1.title {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+  font-size: 42px;
+  line-height: 1.1;
 }
 
 .page .content, .page .content-bottom, .page .content-top {
@@ -71,6 +78,7 @@ h1#index_big_title {
 
 .post h2 {
   color: #e47911;
+  font-size: 30px;
 }
 
 .post h3 {
@@ -95,7 +103,7 @@ h1#index_big_title {
 }
 
 .title span {
-  font-size: 38px;
+  font-size: 30px;
 }
 
 #article_summary_part h1 {
