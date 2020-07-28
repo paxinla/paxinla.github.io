@@ -5,8 +5,6 @@ TitleImage: https://ghchart.rshah.org/paxinla
 
 <h2 class="no-bullet" style="color: #ffb800;text-align: center;font-family: 'Unica One',sans-serif;font-weight: 500;">Think big, start small, act fast.</h2>
 
-<div style="font-family: jinkaiFont;">
-
 这个博客是 Charles 的一块自留地，它主要的目的是为 Charles 记录一些知识与信息，方便回头翻阅，也欢迎大家同 Charles 交流。这个博客里的一切非转载内容均为 Charles 的个人观点。
 
 Charles 是一个略爱折腾的数据工程师，他关注数据库、数据工程等领域的信息，梳理沉淀个人的知识点；还有一些自己折腾各种东东的记录。转载/翻译的文章不限于专业领域，五花八门，以防它们从互联网上消失(众所周知，互联网没有记忆)。
@@ -24,8 +22,6 @@ Charles 是一个略爱折腾的数据工程师，他关注数据库、数据工
 9. 既不专业也不业余爱好的、KPI 驱动的作者写的。
 
 如果您想联系我，欢迎给发我邮件。
-
-</div>
 
 
 <h3 class="no-bullet">Charles 是什么人？</h3>

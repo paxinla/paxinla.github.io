@@ -99,6 +99,10 @@ h1#index_big_title {
   margin-right: 5px;
 }
 
+.post p {
+  font-family: jinkaiFont;
+}
+
 .no-bullet::before {
   content: none !important;
 }
