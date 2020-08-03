@@ -294,6 +294,10 @@ code[class*="language-"], pre[class*="language-"] {
   font-family: 'Dejavu Sans Mono', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 }
 
+.linenos {
+  display: none;
+}
+
 div.code-toolbar {
   margin-bottom: 1rem;
 }
