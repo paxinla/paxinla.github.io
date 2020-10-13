@@ -256,9 +256,8 @@ a.current-page-link {
 
 
 /*右侧标注栏*/
-span.sitenote {
-  color: var(--link,#d8a070);
-  background-color: var(--lightBg,#151e2a);
+span.sidenote {
+  font-size: 0.8em;
 }
 
 
