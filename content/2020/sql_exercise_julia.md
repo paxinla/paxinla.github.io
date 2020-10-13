@@ -19,14 +19,20 @@ Write a query to print total number of unique hackers who made at least submissi
 The following tables hold contest data:
 
 ```vim
-    - Hackers: The `hacker_id` is the id of the hacker, and name is the name of the hacker.
+    - Hackers: The `hacker_id` is the id of the hacker, and
+               name is the name of the hacker.
 
     | Column    | Type    |
     |-----------+---------|
     | hacker_id | Integer |
     | name      | String  |
 
-    - Submissions: The `submission_date` is the date of the submission, `submission_id` is the id of the submission, `hacker_id` is the id of the hacker who made the submission, and score is the score of the submission.
+    - Submissions: The `submission_date` is the date of
+                   the submission, `submission_id` is
+                   the id of the submission, `hacker_id` is
+                   the id of the hacker who made
+                   the submission, and score is
+                   the score of the submission.
 
     | Column          | Type    |
     |-----------------+---------|
@@ -83,12 +89,12 @@ For the following sample input, assume that the end date of the contest was Marc
 
 ### Sample Output
 
-2016-03-01 4 20703 Angela
-2016-03-02 2 79722 Michael
-2016-03-03 2 20703 Angela 
-2016-03-04 2 20703 Angela 
-2016-03-05 1 36396 Frank 
-2016-03-06 1 20703 Angela
+- 2016-03-01 4 20703 Angela
+- 2016-03-02 2 79722 Michael
+- 2016-03-03 2 20703 Angela 
+- 2016-03-04 2 20703 Angela 
+- 2016-03-05 1 36396 Frank 
+- 2016-03-06 1 20703 Angela
 
 ### Explanation
 

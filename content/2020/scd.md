@@ -1,7 +1,7 @@
 Title: 浅谈缓慢变化维
 Date: 2020-04-20 15:38:25
 Category: 数据仓库
-Tags: datawarehouse, star-schema
+Tags: data-warehouse, star-schema
 CommentId: X
 
 

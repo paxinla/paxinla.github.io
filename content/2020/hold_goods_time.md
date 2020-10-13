@@ -1,7 +1,7 @@
 Title: 一道取数题目：购物车 hold 货时长
 Date: 2020-06-10 10:28:56
 Category: 数据仓库
-Tags: datawarehouse, sql
+Tags: data-warehouse, sql
 CommentId: X
 
 
@@ -25,7 +25,8 @@ CommentId: X
  |     111 | 20249    |      2 | 2014-10-22 21:39:19 |                     |                     |
  +---------+----------+--------+---------------------+---------------------+---------------------+
 
-备注: 客户主动删除商品或购买商品，时间分别记录在 delete_time 和 buy_time 两个字段，否则记录为空。
+备注: 客户主动删除商品或购买商品，时间分别记录在 delete_time 和 buy_time 两个
+      字段，否则记录为空。
 
 特卖模式下，客户把商品放入购物车后，需在20分钟内完成购买，每加入一件新的商品，购物
 时长（即20分钟）将重新计算，若在20分钟内无放入购物车行为，购物车内商品会由系统自动
@@ -66,9 +67,15 @@ WITH src AS (
            END               AS end_time
       FROM table_cart tc
      WHERE tc.start_time <= timestamp '2014-03-01 00:00:00'
-       AND (   ( tc.delete_time IS NOT NULL AND tc.delete_time >= timestamp '2014-03-01 00:00:00' )
-            OR ( tc.buy_time IS NOT NULL AND tc.delete_time >= timestamp '2014-03-01 00:00:00' )
-            OR ( tc.delete_time IS NULL AND tc.buy_time IS NULL)
+       AND (   (     tc.delete_time IS NOT NULL
+                 AND tc.delete_time >= timestamp '2014-03-01 00:00:00'
+               )
+            OR (     tc.buy_time IS NOT NULL
+                 AND tc.delete_time >= timestamp '2014-03-01 00:00:00'
+               )
+            OR (     tc.delete_time IS NULL
+                 AND tc.buy_time IS NULL
+               )
            )
 ), stat_time_mar AS (
     SELECT dd                    AS stat_date
