@@ -42,6 +42,7 @@ interp.repositories() ++= Seq(
 以在 Ammonite 中执行为例:
 
 运行一个 MySQL 服务器:
+
 ```scala
 {
   import $ivy.{
@@ -71,6 +72,7 @@ interp.repositories() ++= Seq(
 ```
 
 运行一个 PostgreSQL 服务器:
+
 ```scala
 {
   import $ivy.{
