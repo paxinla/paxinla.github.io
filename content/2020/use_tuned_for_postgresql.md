@@ -20,7 +20,7 @@ ReadHat 提供了一个自动对系统参数(不用手工编辑 sysctl.conf )调
 
 ## Profile
 
-![tuned-profile](/images/tuned_inheritance.jpg)
+![tuned-profile](/images/2020/tuned_inheritance.jpg)
 
 tuned 的配置文件一般在 `/etc/tuned` 下。tuned 预置了一些常见系统的参数调优规则文件，一般在 `/usr/lib/tuned` 下。这些预置的系统规则可以用 `tuned-adm list` 列出。
 

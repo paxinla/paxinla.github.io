@@ -19,7 +19,7 @@ CommentId: 6
 
 　　最大的问题还是主题。过去用 Hexo 的时候，主题是用 [Modernist](https://github.com/heroicyang/hexo-theme-modernist) 的主题修改的。
 
-![Hexo时代用的主题](/images/hexo_blog_snapshot.png)
+![Hexo时代用的主题](/images/2018/hexo_blog_snapshot.png)
 
 　　换成 Pelican 后，不想再折腾这个主题了。某天我看到了 [CachesToCaches](http://cachestocaches.com) 的主题和它介绍自己的设计理念，特别是它的右侧“标注”功能，十分吸引我。于是基于它的主题修改，得到了现在本博客使用的主题。
 
