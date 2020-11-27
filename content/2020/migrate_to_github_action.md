@@ -12,14 +12,14 @@ CommentId: X
 
 ## 使用准备
 
-- 在项目根目录下创建文件夹 `.github/workflow` 。
+- 在项目根目录下创建文件夹 `.github/workflows` 。
 - 在 Github 上项目的 `Settings -> Secrets` 中设置将要在工作流定义中使用的环境变量。
 - 在 Github 上项目的 `Settings -> Actions` 中允许执行 Actions 工作流。
 
 
 ## 创建 Actions 工作流
 
-编辑文件 `.github/workflow/gen_blog.yaml` :
+编辑文件 `.github/workflows/gen_blog.yaml` :
 
 ```yaml
 name: my blog github pages
