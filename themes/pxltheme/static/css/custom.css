@@ -409,3 +409,8 @@ sup a::after {
   height: 25px;
   width: auto;
 }
+
+/* 首页 */
+#article_summary_part {
+  line-height: 1.5em;
+}

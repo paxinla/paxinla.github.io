@@ -5,6 +5,9 @@ on:
     branches:
     - source
 
+env:
+  LANG: "zh_CN.UTF-8"
+
 jobs:
   build-deploy:
     runs-on: ubuntu-18.04
@@ -12,6 +15,11 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+
+    - name: Set Locale
+      run: |
+        sudo locale-gen zh_CN.UTF-8
+        sudo update-locale LANG=zh_CN.UTF-8
 
     - name: Set up Python 3.7
       uses: actions/setup-python@v2
