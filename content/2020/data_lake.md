@@ -35,6 +35,13 @@ CommentId: X
 
 目前，最有名的开源数据湖产品有 Netflix 的 Apache Iceberg、Databricks 的 Delta Lake 和 Uber 的 Apache Hudi 。
 
+常见的组件还有:
+
+- Apache Kafka 或 Pulsar
+- [Debezium](https://debezium.io/)
+- [Pravega](http://www.pravega.io/)
+- [Nessie](https://projectnessie.org/features/)
+
 ### DaaS
 
 Data Lake as a Service ，就是云服务商提供的数据湖服务。如 Snowflake、亚马逊的 AWS Lake Formation 的[ps: AWS Lake Formation 基本上就是抓取数据源并将数据移动到 Amazon S3 中并构建一个数据目录，该目录描述可用的不同数据集以及哪些用户组可以访问每个数据集。在这个过程中，可以选择将数据转换为 Apache Parquet 或 ORC 等(说好的存储任意格式，保留原来的样子呢？)格式，可以做些去重的操作。]服务、微软 Azura 的 Data Lake Storage + Data Lake Analytics / HDInsight [ps: Azura Analytics 更像是个 BI 工具，而 Azura HDInsight 是 Hadoop 生态圈工具集合。] 、国内阿里云华为云也有相应的产品。
