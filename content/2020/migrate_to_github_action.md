@@ -31,36 +31,36 @@ on:
 
 jobs:
   build-deploy:
-  runs-on: ubuntu-18.04
+    runs-on: ubuntu-18.04
 
-  steps:
-  - name: Checkout
-  - uses: actions/checkout@v2
+    steps:
+    - name: Checkout
+    - uses: actions/checkout@v2
 
-  - name: Set up Python 3.7
-    uses: actions/setup-python@v2
-    with:
-      python-version: '3.7'
-      architecture: 'x64'
+    - name: Set up Python 3.7
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.7'
+        architecture: 'x64'
 
-  - name: Install dependencies
-    run: |
-      python -m pip install --upgrade pip
-      if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-  - name: Build pages
-    run: |
-      mkdir output
-      make html
-    env:
-      SITEURL: ${{ secrets.REPO_NAME }}
+    - name: Build pages
+      run: |
+        mkdir output
+        make html
+      env:
+        SITEURL: ${{ secrets.REPO_NAME }}
 
-  - name: Deploy pages
-    uses: peaceiris/actions-gh-pages@v3
-    with:
-      github_token: ${{ secrets.GITHUB_TOKEN }}
-      publish_dir: ./output
-      publish_branch: master
+    - name: Deploy pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./output
+        publish_branch: master
 
 ```
 
