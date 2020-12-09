@@ -40,13 +40,25 @@ Charles 是一个略爱折腾的数据工程师，他关注数据库、数据工
        :mastodon "base64 -d <<< aHR0cHM6Ly9wbGVyb21hLmFrc3VyYS50ay9ha3N1cmE="
        :ns-friend-code "SW-4210-1337-8241"})
     (.technology-stack
-      {:domain [:Data-Engineering
-                :Database
-                :Data-Warehouse]
-       :favourite-program-language [:Python
-                                    :Scala
-                                    :Rust
-                                    :Clojure]})
-   ))
+      {:domain ["Data Engineering"
+                "Database"
+                "Data Warehouse"]
+       :familiar {:language [:Python
+                             :Scala
+                             :Rust
+                             :Clojure]}
+                  :framework [:Akka
+                              :Flask
+                              :Spark]})))
+
 ```
+
+<h3 class="no-bullet">站点更新日志</h3>
+
++ 20201127 - 迁移 CI 到 Github Actions 。
++ 20200422 - 启用博客网址二维码。
++ 20190723 - 启用 Live2D 黑猫。
++ 20181229 - 博客评论系统启用 Gitalk 。
++ 20180316 - 迁移 Hexo 到 Pelican ，魔改 CachesToCaches 主题，启用 Travis-CI 。
++ 20140406 - 开启博客之旅，Hexo + Modernist 主题 + Github Pages 。
 

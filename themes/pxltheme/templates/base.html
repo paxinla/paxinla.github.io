@@ -134,13 +134,13 @@
 
         <!-- Equation Rendering : mathjax -->
         <script type="text/x-mathjax-config">
-         MathJax.Hub.Config({
-             jax: ["input/TeX","output/CommonHTML"],
-             tex2jax: { inlineMath: [["$","$"]] },
-             CommonHTML: {
-                 linebreaks: { automatic: true, width: "container" }
-             }
-         });
+            MathJax.Hub.Config({
+               jax: ["input/TeX","output/CommonHTML"],
+               tex2jax: { inlineMath: [["$","$"], ["\\(", "\\)"]] },
+               CommonHTML: {
+                   linebreaks: { automatic: true, width: "container" }
+               }
+            });
         </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML" type="text/javascript"></script>
 

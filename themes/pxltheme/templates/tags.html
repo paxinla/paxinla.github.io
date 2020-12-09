@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <h3>Tags</h3>
-<ul>
+<ul class="tags-list">
   {%- for tag, articles in tags|sort %}
       <li><a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a> ({{ articles|count }})</li>
   {% endfor %}

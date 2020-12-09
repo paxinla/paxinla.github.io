@@ -410,6 +410,10 @@ sup a::after {
   width: auto;
 }
 
+.tags-list ul li, .categories-list ul li {
+  list-style: disclosure-closed;
+}
+
 /* 首页 */
 #article_summary_part {
   line-height: 1.5em;
