@@ -26,7 +26,7 @@ tuned 的配置文件一般在 `/etc/tuned` 下。tuned 预置了一些常见系
 
 在 `/etc/tuned` 下新建目录 `postgresql` ，在这个目录下新建配置文件 **tuned.conf** ，添加如下内容:
 
-```
+```ini
 [main]
 include=throughput-performance
 summary=Optimize for PostgreSQL RDBMS

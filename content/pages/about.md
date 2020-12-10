@@ -30,7 +30,7 @@ Charles 是一个略爱折腾的数据工程师，他关注数据库、数据工
 <a href="https://paxinla.github.io/gpg_pub_key.html" style="display:inline-block;border:none;"><img src="https://img.shields.io/badge/GPG%20KEY-47E15BF5-da282a" /></a>
 
 
-```lisp
+```clojure
 (def Charles
   (doto (DataEngineer.)
     (.location

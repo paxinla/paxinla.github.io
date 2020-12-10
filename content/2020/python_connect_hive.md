@@ -15,15 +15,15 @@ Python 连接 Hive 的方式都有哪些呢？
 
 客户端环境可能需要先配置好 SASL、Thrift 相关包的部署。
 
-### pyhs2
-
-[pyhs2](https://github.com/BradRuderman/pyhs2) 是一个 HiveServer2 的客户端驱动，但它从 2016 年起就已经无人维护履历，不推荐继续使用。
-
 ### PyHive
 
 [PyHive](https://github.com/dropbox/PyHive) 可以连接 Hive 和 Presto 。
 
 [HiveServer2](https://cwiki.apache.org/confluence/display/Hive/Setting+up+HiveServer2) 是一个基于 Thrift 的服务，是 [HiveServer](https://cwiki.apache.org/confluence/display/Hive/HiveServer) 的替代。
+
+### pyhs2
+
+[pyhs2](https://github.com/BradRuderman/pyhs2) 是一个 HiveServer2 的客户端驱动，但它从 2016 年起就已经无人维护，不推荐继续使用。
 
 ### impyla
 

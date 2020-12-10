@@ -299,7 +299,7 @@ code {
 }
 
 code[class*="language-"], pre[class*="language-"] {
-  font-family: 'Fantasque Sans Mono', 'Dejavu Sans Mono', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-family: 'Dejavu Sans Mono', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 }
 
 .linenos {
