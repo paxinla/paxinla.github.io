@@ -1,6 +1,11 @@
 @font-face {
-    font-family: jinkaiFont;
-    src: url("../fonts/jinkai.ttf") format("TrueType");
+  font-family: jinkaiFont;
+  src: url("../fonts/jinkai.ttf") format("TrueType");
+}
+
+@font-face {
+  font-family: 'Fantasque Sans Mono';
+  src: url("../fonts/FantasqueSansMono-Regular.woff2") format("woff2");
 }
 
 html {
@@ -18,7 +23,7 @@ a {
 
 h1, h2, h3, h4, h5, h6 {
   text-transform: none;
-  font-family: "Coda", "Helvetica Neue", "Helvetica", Arial, sans-serif;
+  font-family: "Fantasque Sans Mono", "Coda", "Helvetica Neue", "Helvetica", Arial, sans-serif;
 }
 
 hr {
