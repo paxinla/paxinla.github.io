@@ -32,7 +32,7 @@ CommentId: X
 
 以 PostgreSQL 写法作答:
 
-```sql
+```pgsql
 WITH user_first_login AS (
     SELECT DISTINCT
            ulog.user_id

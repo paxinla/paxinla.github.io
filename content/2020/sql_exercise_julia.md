@@ -115,7 +115,7 @@ On March 06, 2016 only 20703 made submission, so there is only 1 unique hacker w
 
 以 PostgreSQL 写法作答:
 
-```sql
+```pgsql
 WITH date_seq AS ( 
     SELECT generate_series(to_date('20160301', 'yyyymmdd')
                           ,to_date('20160306', 'yyyymmdd')

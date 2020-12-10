@@ -93,19 +93,23 @@ h1#index_big_title {
 
 .post h3 {
   color: #c92027;
+  font-size: 25px;
 }
 
 .post h4 {
   color: #189e7a;
+  font-size: 20px;
 }
 
 .post h3::before, .post h4::before, .post h5::before {
-  content: '🞸';
+  content: '\1F3F6';
   margin-right: 5px;
+  font-size: 18px;
 }
 
 .post p {
-  font-family: jinkaiFont;
+  font-family: 'Fantasque Sans Mono', jinkaiFont;
+  text-indent: 1.5em;
 }
 
 .no-bullet::before {
@@ -295,7 +299,7 @@ code {
 }
 
 code[class*="language-"], pre[class*="language-"] {
-  font-family: 'Dejavu Sans Mono', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-family: 'Fantasque Sans Mono', 'Dejavu Sans Mono', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 }
 
 .linenos {
