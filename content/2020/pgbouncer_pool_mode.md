@@ -1,7 +1,7 @@
 Title: pgBouncer 的 pool mode
 Date: 2020-07-27 09:36:18
 Category: 数据库
-Tags: postgresql pgbouncer
+Tags: postgresql, pgbouncer
 CommentId: X
 
 

@@ -1,7 +1,7 @@
 Title: 导出Oracle数据库对象的脚本
 Date: 2014-04-26 21:45:00
 Category: 数据库
-Tags: oracle, PL/SQL, SQL
+Tags: oracle, PL/SQL, sql
 CommentId: 2
 
 

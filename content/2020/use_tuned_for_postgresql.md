@@ -1,7 +1,7 @@
 Title: 使用 tuned 动态调节 Linux 系统参数
 Date: 2020-07-30 15:48:39
 Category: 工具
-Tags: postgresql tuned
+Tags: postgresql, tuned
 CommentId: X
 
 ReadHat 提供了一个自动对系统参数(不用手工编辑 sysctl.conf )调优的工具 — `tuned` 。本文记录了我在 PostgreSQL 服务器上使用 tuned 的情况。

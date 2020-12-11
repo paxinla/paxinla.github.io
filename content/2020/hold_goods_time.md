@@ -1,7 +1,7 @@
 Title: 一道取数题目：购物车 hold 货时长
 Date: 2020-06-10 10:28:56
-Category: 数据仓库
-Tags: data-warehouse, sql
+Category: SQL习题
+Tags: exercise, sql
 CommentId: X
 
 

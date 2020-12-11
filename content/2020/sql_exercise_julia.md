@@ -1,7 +1,7 @@
 Title: SQL练手题：Number of unique hackers who made at least one submission each day
 Date: 2020-09-09 09:27:56
-Category: 练习题
-Tags: exercise sql
+Category: SQL习题
+Tags: exercise, sql
 CommentId: X
 
 一道 hackerrank 的 SQL 题。
