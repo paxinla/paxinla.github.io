@@ -1,0 +1,16 @@
+/* TEAM */
+Owner: Charles Pan
+Contact: aksura [at] 2048.email
+From: Guangdong, China
+
+/* THANKS */
+Site: http://cachestocaches.com
+
+Site: https://gitalk.github.io
+
+
+/* SITE */
+Last update: 2020/12/10
+Language: Chinese
+Doctype: HTML5
+Software: Vim, Pelican

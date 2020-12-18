@@ -423,6 +423,17 @@ sup a::after {
   list-style: disclosure-closed;
 }
 
+.category-tag-date {
+  margin-bottom: 0;
+  margin-right: -250px;
+}
+
+.emp-text {
+  text-emphasis-style: triangle;
+  text-emphasis-position: under right;
+  text-emphasis-color: red;
+}
+
 /* 首页 */
 #article_summary_part {
   line-height: 1.5em;
