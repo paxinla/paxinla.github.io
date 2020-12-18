@@ -47,7 +47,7 @@ Kafka 架构体系如下图：
 
 ![Kafka 架构体系](/images/2020/kafka_1.png)
 
-<p class="list-title">Kafka 的应用场景非常多, 下面我们就来举几个我们最常见的场景：<p>
+<p class="list-title">Kafka 的应用场景非常多, 下面我们就来举几个我们最常见的场景：</p>
 
 + 用户的活动跟踪：用户在网站的不同活动消息发布到不同的主题中心，然后可以对这些消息进行实时监测、实时处理。当然，也可以加载到 Hadoop 或离线处理数据仓库，对用户进行画像。像淘宝、天猫、京东这些大型电商平台，用户的所有活动都要进行追踪的。
 + 日志收集如下图：[ps: 日志收集这里都用别的图换了原文的图]
@@ -139,6 +139,7 @@ Kafka 用作流处理：仅读取，写入和存储数据流是不够的，目�
 <p>Kafka 有4个核心 API ：Producer API、Consumer API、Streams API 和 Connector API 。</p>
 <p>Connector API 允许构建和运行将 Kafka Topic 连接到现有的应用程序或数据系统的可用生产者和消费者。</p>
 </div>
+
 
 ### Kafka 中的关键术语解释
 
