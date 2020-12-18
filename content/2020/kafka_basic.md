@@ -12,11 +12,13 @@ CommentId: X
 
 <!-- PELICAN_END_SUMMARY -->
 
+## 从未如此简单，一文带你逆袭Kafka！
+
 [Apache Kafka](http://kafka.apache.org/) 是一个快速、可扩展的、高吞吐的、可容错的分布式“发布-订阅”消息系统， 使用 Scala 与 Java 语言编写，能够将消息从一个端点传递到另一个端点。
 
 较之传统的消息中间件（例如 ActiveMQ、RabbitMQ），Kafka 具有高吞吐量、内置分区、支持消息副本和高容错的特性，非常适合大规模消息处理应用程序。
 
-Kafka 主要设计目标如下：
+<p class="list-title">Kafka 主要设计目标如下：</p>
 
 + 以时间复杂度为 O(1) 的方式提供消息持久化能力，即使对 TB 级以上数据也能保证常数时间的访问性能。
 + 高吞吐率。即使在非常廉价的商用机器上也能做到单机支持每秒 100K 条消息的传输。
@@ -24,17 +26,18 @@ Kafka 主要设计目标如下：
 + 同时支持离线数据处理和实时数据处理。
 + 支持在线水平扩展。
 
-> 写入数据时直接 append 到数据文件末尾，所以是 O(1) 的时间复杂度。
+<div class="mynotation">
+<p>写入数据时直接 append 到数据文件末尾，所以是 O(1) 的时间复杂度。</p>
+</div>
 
-Kafka 通常用于两大类应用程序：
+<p class="list-title">Kafka 通常用于两大类应用程序：</p>
 
 + 建立实时流数据管道，以可靠地在系统或应用程序之间获取数据。
 + 构建实时流应用程序，以转换或响应数据流。
 
-
 要了解 Kafka 如何执行这些操作，让我们从头开始深入研究 Kafka 的功能。
 
-首先几个概念：
+<p class="list-title">首先几个概念：</p>
 
 + Kafka 在一个或多个可以跨越多个数据中心的服务器上作为集群运行。
 + Kafka 集群将记录流存储在称为主题的类别中。
@@ -44,31 +47,39 @@ Kafka 架构体系如下图：
 
 ![Kafka 架构体系](/images/2020/kafka_1.png)
 
-Kafka 的应用场景非常多, 下面我们就来举几个我们最常见的场景：
+<p class="list-title">Kafka 的应用场景非常多, 下面我们就来举几个我们最常见的场景：<p>
 
 + 用户的活动跟踪：用户在网站的不同活动消息发布到不同的主题中心，然后可以对这些消息进行实时监测、实时处理。当然，也可以加载到 Hadoop 或离线处理数据仓库，对用户进行画像。像淘宝、天猫、京东这些大型电商平台，用户的所有活动都要进行追踪的。
 + 日志收集如下图：[ps: 日志收集这里都用别的图换了原文的图]
+
    ![Kafka 日志收集](/images/2020/kafka_2.png)
+
 + 限流削峰如下图：
+
    ![Kafka 限流削峰](/images/2020/kafka_3.png)
+
    高吞吐率实现：Kafka 与其他 MQ 相比，最大的特点就是高吞吐率。为了增加存储能力，Kafka 将所有的消息都写入到了低速大容量的硬盘。按理说，这将导致性能损失，但实际上，Kafka 仍然可以保持超高的吞吐率，并且其性能并未受到影响。
 
-> 作为基本的传递消息的消息队列、监控度量数据的收集传递等也是常见使用场景。
+<div class="mynotation">
+<p>作为基本的传递消息的消息队列、监控度量数据的收集传递等也是常见使用场景。</p>
+</div>
 
-其主要采用如下方式实现了高吞吐率：
+<p class="list-title">其主要采用如下方式实现了高吞吐率：</p>
 
 + 顺序读写：Kafka 将消息写入到了分区 Partition 中，而分区中的消息又是顺序读写的。顺序读写要快于随机读写。
 + 零拷贝：生产者、消费者对于 Kafka 中的消息是采用零拷贝实现的。
 + 批量发送：Kafka 允许批量发送模式。
 + 消息压缩：Kafka 允许对消息集合进行压缩。
 
-> 这里还应加上 Partition 。其他消息队列产品里，一般一个主题只有一个主队列，镜像队列只做灾备用，读写都在主队列上。而 Kafka 由于一个 topic 可以有多个 partition 而且分布在不同的 server(broker) 上，虽然 folloer partition 也只是 leader partition 的灾备，但是多个 partition 能同时被读写，提高了并发也提高了吞吐率。
-> 这里还应加上页缓存 Page Cache ，Kafka 不依赖于 JVM 的内存。
-> 零拷贝是通过内核提供的 sendfile 调用实现的，所以实际上是否能使用零拷贝与操作系统内核相关。
-> 即使是顺序读写，过于频繁的大量小IO操作一样会造成磁盘的瓶颈。Kafka把消息集合在一起批量发送，尽可能减少对磁盘的访问。所以 Kafka 的 Topic 和 Partition 数量不宜过多。
+<div class="mynotation">
+<p>这里还应加上 Partition 。其他消息队列产品里，一般一个主题只有一个主队列，镜像队列只做灾备用，读写都在主队列上。而 Kafka 由于一个 topic 可以有多个 partition 而且分布在不同的 server(broker) 上，虽然 folloer partition 也只是 leader partition 的灾备，但是多个 partition 能同时被读写，提高了并发也提高了吞吐率。</p>
+<p>这里还应加上页缓存 Page Cache ，Kafka 不依赖于 JVM 的内存。</p>
+<p>零拷贝是通过内核提供的 sendfile 调用实现的，所以实际上是否能使用零拷贝与操作系统内核相关。</p>
+<p>即使是顺序读写，过于频繁的大量小IO操作一样会造成磁盘的瓶颈。Kafka把消息集合在一起批量发送，尽可能减少对磁盘的访问。所以 Kafka 的 Topic 和 Partition 数量不宜过多。</p>
+</div>
 [ps: 参考了这篇文章: https://zhuanlan.zhihu.com/p/105509080]
 
-Kafka 的优点如下：
+<p class="list-title">Kafka 的优点如下：</p>
 
 + 解耦：在项目启动之初来预测将来项目会碰到什么需求，是极其困难的。消息系统在处理过程中间插入了一个隐含的、基于数据的接口层，两边的处理过程都要实现这一接口。这允许你独立的扩展或修改两边的处理过程，只要确保它们遵守同样的接口约束。
 + 冗余（副本）：有些情况下，处理数据的过程会失败。除非数据被持久化，否则将造成丢失。消息队列把数据进行持久化直到它们已经被完全处理，通过这一方式规避了数据丢失风险。许多消息队列所采用的"插入-获取-删除"范式中，在把一个消息从队列中删除之前，需要你的处理系统明确的指出该消息已经被处理完毕，从而确保你的数据被安全的保存直到你使用完毕。
@@ -79,7 +90,7 @@ Kafka 的优点如下：
 + 缓冲：在任何重要的系统中，都会有需要不同的处理时间的元素。例如，加载一张图片比应用过滤器花费更少的时间。消息队列通过一个缓冲层来帮助任务最高效率的执行，写入队列的处理会尽可能的快速。该缓冲有助于控制和优化数据流经过系统的速度。
 + 异步通信：很多时候，用户不想也不需要立即处理消息。消息队列提供了异步处理机制，允许用户把一个消息放入队列，但并不立即处理它。想向队列中放入多少消息就放多少，然后在需要的时候再去处理它们。
 
-Kafka 与其他 MQ 对比如下：
+<p class="list-title">Kafka 与其他 MQ 对比如下：</p>
 
 + RabbitMQ：RabbitMQ 是使用 Erlang 编写的一个开源的消息队列，本身支持很多的协议：AMQP，XMPP，SMTP，STOMP，也正因如此，它非常重量级，更适合于企业级的开发。同时实现了 Broker 构架，这意味着消息在发送给客户端时先在中心队列排队。对路由，负载均衡或者数据持久化都有很好的支持。
 + Redis：Redis 是一个基于 Key-Value 对的 NoSQL 数据库，开发维护很活跃。虽然它是一个 Key-Value 数据库存储系统，但它本身支持 MQ 功能，所以完全可以当做一个轻量级的队列服务来使用。对于 RabbitMQ 和 Redis 的入队和出队操作，各执行 100 万次，每 10 万次记录一次执行时间。测试数据分为 128Bytes、512Bytes、1K 和 10K 四个不同大小的数据。实验表明：入队时，当数据比较小时 Redis 的性能要高于 RabbitMQ，而如果数据大小超过了 10K，Redis 则慢的无法忍受；出队时，无论数据大小，Redis 都表现出非常好的性能，而 RabbitMQ 的出队性能则远低于 Redis。
@@ -87,7 +98,7 @@ Kafka 与其他 MQ 对比如下：
 + ActiveMQ：ActiveMQ 是 Apache 下的一个子项目。类似于 ZeroMQ，它能够以代理人和点对点的技术实现队列。同时类似于 RabbitMQ，它少量代码就可以高效地实现高级应用场景。
 + Kafka/Jafka：Kafka 是 Apache 下的一个子项目，是一个高性能跨语言分布式发布/订阅消息队列系统，而 Jafka 是在 Kafka 之上孵化而来的，即 Kafka 的一个升级版。
 
-具有以下特性：
+<p class="list-title">具有以下特性：</p>
 
 + 快速持久化，可以在 O(1) 的系统开销下进行消息持久化。
 + 高吞吐，在一台普通的服务器上既可以达到 10W/s 的吞吐速率。
@@ -98,7 +109,9 @@ Kafka 通过 Hadoop 的并行加载机制统一了在线和离线的消息处理
 
 Kafka 作为存储系统：任何允许发布与使用无关的消息发布的消息队列都有效地充当了运行中消息的存储系统。Kafka 的不同之处在于它是一个非常好的存储系统。写入 Kafka 的数据将写入磁盘并进行复制以实现容错功能。Kafka 允许生产者等待确认，以便直到完全复制并确保即使写入服务器失败的情况下写入也不会完成。
 
-> 每个分区可以人为的配置几个副本（比如创建主题的时候指定 replication-factor，也可以在 Broker 级别进行配置 default.replication.factor），一般会设置为3。
+<div class="mynotation">
+<p>每个分区可以人为的配置几个副本（比如创建主题的时候指定 replication-factor，也可以在 Broker 级别进行配置 default.replication.factor），一般会设置为3。</p>
+</div>
 
 Kafka 的磁盘结构可以很好地扩展使用-无论服务器上有 50KB 还是 50TB 的持久数据，Kafka 都将执行相同的操作。由于认真对待存储并允许客户端控制其读取位置，因此您可以将 Kafka 视为一种专用于高性能，低延迟提交日志存储，复制和传播的专用分布式文件系统。
 
@@ -112,7 +125,9 @@ Kafka 模型的优点在于，每个主题都具有这些属性-可以扩展处�
 
 这是通过将主题中的分区分配给消费者组中的消费者来实现的，以便每个分区都由组中的一个消费者完全消费。通过这样做，我们确保使用者是该分区的唯一读取器，并按顺序使用数据。由于存在许多分区，因此仍然可以平衡许多使用者实例上的负载。但是请注意，使用者组中的使用者实例不能超过分区。
 
-> 我们可以增加主题的分区数量，但不能减少分区数量。
+<div class="mynotation">
+<p>我们可以增加主题的分区数量，但不能减少分区数量。</p>
+</div>
 
 Kafka 用作流处理：仅读取，写入和存储数据流是不够的，目的是实现对流的实时处理。在 Kafka 中，流处理器是指从输入主题中获取连续数据流，对该输入进行一些处理并生成连续数据流以输出主题的任何东西。例如，零售应用程序可以接受销售和装运的输入流，并输出根据此数据计算出的重新订购和价格调整流。
 
@@ -120,8 +135,10 @@ Kafka 用作流处理：仅读取，写入和存储数据流是不够的，目�
 
 流 API 建立在 Kafka 提供的核心原语之上：它使用生产者和使用者 API 进行输入，使用 Kafka 进行状态存储，并使用相同的组机制来实现流处理器实例之间的容错。
 
-> Kafka 有4个核心 API ：Producer API、Consumer API、Streams API 和 Connector API 。
-> Connector API 允许构建和运行将 Kafka Topic 连接到现有的应用程序或数据系统的可用生产者和消费者。
+<div class="mynotation">
+<p>Kafka 有4个核心 API ：Producer API、Consumer API、Streams API 和 Connector API 。</p>
+<p>Connector API 允许构建和运行将 Kafka Topic 连接到现有的应用程序或数据系统的可用生产者和消费者。</p>
+</div>
 
 ### Kafka 中的关键术语解释
 
@@ -134,8 +151,10 @@ Kafka 用作流处理：仅读取，写入和存储数据流是不够的，目�
 + Consumer：消费者。可以从 Broker 中读取消息。一个消费者可以消费多个 Topic 的消息；一个消费者可以消费同一个 Topic 中的多个 Partition 中的消息；一个 Partiton 允许多个 Consumer 同时消费。
 + Consumer Group：消费者组。Consumer Group 是 Kafka 提供的可扩展且具有容错性的消费者机制。组内可以有多个消费者，它们共享一个公共的 ID，即 Group ID。组内的所有消费者协调在一起来消费订阅主题 的所有分区。Kafka 保证同一个 Consumer Group 中只有一个 Consumer 会消费某条消息。
 
-> 作者在 broker 这段关于 partition 的说法有问题。如果 partition 的副本数大于分区数(但是小于 broker 数量)呢？
-> 消费者订阅主题后，是采用轮询的方式定期到 broker 中检索数据，如有数据则消费，否则就再继续轮询等待。
+<div class="mynotation">
+<p>作者在 broker 这段关于 partition 的说法有问题。如果 partition 的副本数大于分区数(但是小于 broker 数量)呢？</p>
+<p>消费者订阅主题后，是采用轮询的方式定期到 broker 中检索数据，如有数据则消费，否则就再继续轮询等待。</p>
+</div>
 
 实际上，Kafka 保证的是稳定状态下每一个 Consumer 实例只会消费某一个或多个特定的 Partition，而某个 Partition 的数据只会被某一个特定的 Consumer 实例所消费。
 
@@ -173,7 +192,7 @@ Broker Controller：Kafka集群的多个 Broker 中，有一个会被选举 Cont
 
 只有 Broker Controller 会向 Zookeeper 中注册 Watcher，其他 Broker 及分区无需注册。即 Zookeeper 仅需监听 Broker Controller 的状态变化即可。
 
-HW 与 LEO：
+<p class="list-title">HW 与 LEO：</p>
 
 + HW，HighWatermark，高水位，表示 Consumer 可以消费到的最高 Partition 偏移量。HW 保证了 Kafka 集群中消息的一致性。确切地说，是保证了 Partition 的 Follower 与 Leader 间数 据的一致性。
 + LEO，Log End Offset，日志最后消息的偏移量。消息是被写入到 Kafka 的日志文件中的， 这是当前最后一个写入的消息在 Partition 中的偏移量。
@@ -189,7 +208,9 @@ ZooKeeper：ZooKeeper 负责维护和协调 Broker，负责 Broker Controller �
 
 Coordinator：一般指的是运行在每个 Broker 上的 Group Coordinator 进程，用于管理 Consumer Group 中的各个成员，主要用于 Offset 位移管理和 Rebalance。一个 Coordinator 可以同时管理多个消费者组。
 
-> 消费者通过向 Group Coordinator 发送心跳来维护自己是的消费者组的一员，并确认其拥有的分区。当消费者检索记录或提交它所消费的记录时就会发送心跳。如果心跳停止发送一段时间，会话过期，则 Group Coordinator 会认为这个消费者已经死亡，会触发一次 Rebalance 。
+<div class="mynotation">
+<p>消费者通过向 Group Coordinator 发送心跳来维护自己是的消费者组的一员，并确认其拥有的分区。当消费者检索记录或提交它所消费的记录时就会发送心跳。如果心跳停止发送一段时间，会话过期，则 Group Coordinator 会认为这个消费者已经死亡，会触发一次 Rebalance 。</p>
+</div>
 
 Rebalance：当消费者组中的数量发生变化，或者 Topic 中的 Partition 数量发生了变化时，Partition 的所有权会在消费者间转移，即 Partition 会重新分配，这个过程称为再均衡 Rebalance。
 
@@ -201,7 +222,7 @@ Offset Commit：Consumer 从 Broker 中取一批消息写入 Buffer 进行消费
 
 #### 消息写入算法
 
-消息发送者将消息发送给 Broker, 并形成最终的可供消费者消费的 log，是一个比较复杂的过程：
+<p class="list-title">消息发送者将消息发送给 Broker, 并形成最终的可供消费者消费的 log，是一个比较复杂的过程：</p>
 
 1. Producer 先从 ZooKeeper 中找到该 Partition 的 Leader。
 2. Producer 将消息发送给该 Leader。
@@ -209,7 +230,9 @@ Offset Commit：Consumer 从 Broker 中取一批消息写入 Buffer 进行消费
 4. ISR 中的 Followers 从 Leader 中 Pull 消息, 写入本地 log 后向 Leader 发送 Ack。
 5. Leader 收到所有 ISR 中的 Followers 的 Ack 后，增加 HW 并向 Producer 发送 Ack，表示消息写入成功。
 
-> broker 在写入成功后，返回的信息中包含了主题和分区信息、记录在分区里的偏移量、时间戳。如果写入失败，会返回一个错误。生产者在收到错误之后会尝试重新发送消息，几次之后还是失败的话，就返回错误消息。
+<div class="mynotation">
+<p>broker 在写入成功后，返回的信息中包含了主题和分区信息、记录在分区里的偏移量、时间戳。如果写入失败，会返回一个错误。生产者在收到错误之后会尝试重新发送消息，几次之后还是失败的话，就返回错误消息。</p>
+</div>
 
 #### 消息路由策略
 
@@ -217,14 +240,16 @@ Offset Commit：Consumer 从 Broker 中取一批消息写入 Buffer 进行消费
 
 Record 中包含 Key 与 Value，Value 才是我们真正的消息本身，而 Key 用于路由消息所要存放的 Partition。
 
-消息要写入到哪个 Partition 并不是随机的，而是有路由策略的：
+<p class="list-title">消息要写入到哪个 Partition 并不是随机的，而是有路由策略的：</p>
 
 + 若指定了 Partition，则直接写入到指定的 Partition。
 + 若未指定 Partition 但指定了 Key，则通过对 Key 的 Hash 值与 Partition 数量取模，该取模结果就是要选出的 Partition 索引。
 + 若 Partition 和 Key 都未指定，则使用轮询算法选出一个 Partition。
 
-> record 中记录的是要发送到的主题名称、可选的分区号、可选的键值对，还有关联的时间戳(用户不提供的话则使用生产者当前的时间)。
-> Kafka 最终使用的时间戳取决于主题配置的时间戳类型：CreateTime 为使用生产者记录中的时间戳；LogAppendTime 为 broker 在消息添加到日志中时重写时间戳。
+<div class="mynotation">
+<p>record 中记录的是要发送到的主题名称、可选的分区号、可选的键值对，还有关联的时间戳(用户不提供的话则使用生产者当前的时间)。</p>
+<p>Kafka 最终使用的时间戳取决于主题配置的时间戳类型：CreateTime 为使用生产者记录中的时间戳；LogAppendTime 为 broker 在消息添加到日志中时重写时间戳。</p>
+</div>
 
 #### HW 截断机制
 
@@ -240,7 +265,7 @@ Record 中包含 Key 与 Value，Value 才是我们真正的消息本身，而 K
 
 0 值：异步发送。生产者向 Kafka 发送消息而不需要 Kafka 反馈成功 Ack。该方式效率最高，但可靠性最低。
 
-其可能会存在消息丢失的情况：
+<p class="list-title">其可能会存在消息丢失的情况：</p>
 
 + 在传输过程中会出现消息丢失。
 + 在 Broker 内部会出现消息丢失。
@@ -256,16 +281,17 @@ Record 中包含 Key 与 Value，Value 才是我们真正的消息本身，而 K
 
 -1 值：同步发送。生产者发送消息给 Kafka，Kafka 收到消息后要等到 ISR 列表中的所有副本都同步消息完成后，才向生产者发送成功 Ack。
 
-> 这里这个参数在 0.8.2.X 版本之前是通过 request.required.acks 参数设置的，现在可定义 Producer 时通过 acks 参数指定，acks的可选值为 [0,1,all,-1] ，其中 -1 和 all 等同。
-> 当这个参数的值为 all 时，还须指定参数 min.insync.replicas 的值，则只要这个数量的副本已经完成写入，就认为这次写入是成功的。
-
+<div class="mynotation">
+<p>这里这个参数在 0.8.2.X 版本之前是通过 request.required.acks 参数设置的，现在可定义 Producer 时通过 acks 参数指定，acks的可选值为 [0,1,all,-1] ，其中 -1 和 all 等同。</p>
+<p>当这个参数的值为 all 时，还须指定参数 min.insync.replicas 的值，则只要这个数量的副本已经完成写入，就认为这次写入是成功的。</p>
+</div>
 
 如果一直未收到 Kafka 的 Ack，则认为消息发送失败，会自动重发消息。该方式会出现消息重复接收的情况。
 
 
 #### 消费者消费过程解析
 
-生产者将消息发送到 Topitc 中，消费者即可对其进行消费，其消费过程如下：
+<p class="list-title">生产者将消息发送到 Topitc 中，消费者即可对其进行消费，其消费过程如下：</p>
 
 1. Consumer 向 Broker 提交连接请求，其所连接上的 Broker 都会向其发送Broker Controller 的通信 URL，即配置文件中的 Listeners 地址。
 2. 当 Consumer 指定了要消费的 Topic 后，会向 Broker Controller 发送消费请求。
@@ -276,8 +302,10 @@ Record 中包含 Key 与 Value，Value 才是我们真正的消息本身，而 K
 7. 以上过程会一直重复，知道消费者停止请求消费。
 8. Consumer 可以重置 Offset，从而可以灵活消费存储在 Broker 上的消息。
 
-> 当 enable.auto.commit 为 true 时，每过 auto.commit.interval.ms (默认5秒) 消费者自动提交偏移量[ps: 由 poll() 返回的最新偏移量。]。如果设为手动提交偏移量，则消费者可以在确定消息已经被处理后，才提交偏移量。
-> 异步提交 commitAsync() 与同步提交 commitSync() 最大的区别在于前者提交不会重试，后者会一致进行重试。两者都支持提交特定的偏移量。
+<div class="mynotation">
+<p>当 enable.auto.commit 为 true 时，每过 auto.commit.interval.ms (默认5秒) 消费者自动提交偏移量[ps: 由 poll() 返回的最新偏移量。]。如果设为手动提交偏移量，则消费者可以在确定消息已经被处理后，才提交偏移量。</p>
+<p>异步提交 commitAsync() 与同步提交 commitSync() 最大的区别在于前者提交不会重试，后者会一致进行重试。两者都支持提交特定的偏移量。</p>
+</div>
 
 #### Partition Leader 选举范围
 
@@ -360,5 +388,5 @@ True：在 ISR 列表中没有副本的情况下，可以选择任意一个没�
 
 更加通用的方法是，给你的数据增加一个版本号属性，每次更数据前，比较当前数据的版本号是否和消息中的版本号一致，如果不一致就拒绝更新数据，更新数据的同时将版本号 +1，一样可以实现幂等。
 
-   ![Kafka 重复消费架构方案二](/images/2020/kafka_8.png)
+   ![Kafka 重复消费架构方案三](/images/2020/kafka_8.png)
 

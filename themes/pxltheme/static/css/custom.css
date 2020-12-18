@@ -8,6 +8,10 @@
   src: url("../fonts/FantasqueSansMono-Regular.woff2") format("woff2");
 }
 
+:root {
+  --list-item-color: blue;
+}
+
 html {
   background: #ececec url(/theme/images/fabric_plaid.png);
 }
@@ -96,13 +100,31 @@ h1#index_big_title {
   font-size: 25px;
 }
 
+.post h3::before {
+  content: '\1F3F6';
+  margin-right: 5px;
+  font-size: 18px;
+}
+
 .post h4 {
   color: #189e7a;
   font-size: 20px;
 }
 
-.post h3::before, .post h4::before, .post h5::before {
-  content: '\1F3F6';
+.post h4::before {
+  content: '\1F323';
+  margin-right: 5px;
+  font-size: 18px;
+}
+
+.post h5::before {
+  content: '\1F3F2';
+  margin-right: 5px;
+  font-size: 18px;
+}
+
+.post h6::before {
+  content: '\1F322';
   margin-right: 5px;
   font-size: 18px;
 }
@@ -133,6 +155,20 @@ a.smart-title {
   color: #e47911;
 }
 
+p.list-title {
+  text-indent: unset;
+}
+
+.list-title::before {
+  content: "\2630";
+  color: var(--list-item-color);
+  display: inline-block;
+  vertical-align: bottom;
+  margin-left: -1em;
+  margin-right: 0.5em;
+  direction: ltr;
+}
+
 .page .content li::before, .page .content-bottom li::before, .page .content-top li::before {
   content: none;
 }
@@ -141,14 +177,35 @@ a.smart-title {
   line-height: 24px;
   padding-bottom: 4px;
   padding-top: 4px;
+  font-family: 'Fantasque Sans Mono', jinkaiFont;
 }
 
 .page .content ul li, .page .content-bottom ul li, .page .content-top ul li {
-  list-style: disclosure-closed;
+  list-style: none;
+}
+
+.page .content ul li::before, .page .content-bottom ul li::before, .page .content-top ul li::before {
+  content: "\25B8";
+  color: var(--list-item-color);
+  display: inline-block;
+  vertical-align: bottom;
+  margin-left: -1em;
+  margin-right: 0.5em;
 }
 
 .page .content ol li, .page .content-bottom ol li, .page .content-top ol li {
-  list-style: decimal;
+  list-style: none;
+  counter-increment: li;
+}
+
+.page .content ol li::before, .page .content-bottom ol li::before, .page .content-top ol li::before {
+  content: counter(li) ". ";
+  color: var(--list-item-color);
+  display: inline-block;
+  vertical-align: bottom;
+  margin-left: -1em;
+  margin-right: 0.5em;
+  direction: ltr;
 }
 
 a.current-page-link {
@@ -433,6 +490,28 @@ sup a::after {
   text-emphasis-position: under right;
   text-emphasis-color: red;
 }
+
+div.mynotation {
+  border: 1px dashed rgba(0,0,0,.1) !important;
+  max-width: 80%;
+  text-align: left;
+  background-color: #f0f8ff;
+  color: #133467;
+  font-size: 16px;
+  margin-bottom: 0.5em;
+  margin-top: 0.3em;
+}
+
+div.mynotation p {
+  margin: 0px;
+  padding: 0px;
+}
+
+div.mynotation p::before {
+  content: "\270E";
+  margin-right: 0.4em;
+}
+
 
 /* 首页 */
 #article_summary_part {
