@@ -156,7 +156,7 @@ a.smart-title {
 }
 
 p.list-title {
-  text-indent: unset;
+  text-indent: 0.5em;
 }
 
 .list-title::before {
@@ -316,8 +316,9 @@ a.current-page-link {
 }
 
 #nav-visited-info {
-  margin-top: 0.5rem;
+  margin-top: 1.5rem;
   padding-top: 1rem;
+  position: relative;
 }
 
 
@@ -509,7 +510,10 @@ div.mynotation p {
 
 div.mynotation p::before {
   content: "\270E";
-  margin-right: 0.4em;
+  vertical-align: bottom;
+  margin-left: -1em;
+  margin-right: 0.5em;
+  direction: ltr;
 }
 
 
