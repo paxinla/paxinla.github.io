@@ -316,7 +316,7 @@ a.current-page-link {
 }
 
 #nav-visited-info {
-  margin-top: 1.5rem;
+  margin-top: 2.5rem;
   padding-top: 1rem;
   position: relative;
 }
@@ -382,6 +382,10 @@ div.code-toolbar > .toolbar {
 
 :not(pre) > code[class*="language-"], pre[class*="language-"] {
   background-color: transparent;
+}
+
+.hljs-subst {
+  color: unset;
 }
 
 /* 回复区 */
@@ -492,9 +496,18 @@ sup a::after {
   text-emphasis-color: red;
 }
 
+.music::before {
+  content: "\226A";
+  color: #b90001;
+  font-size: 20px;
+  vertical-align: baseline;
+  margin-left: -1em;
+  margin-right: 0.5em;
+  direction: ltr;
+}
+
 div.mynotation {
   border: 1px dashed rgba(0,0,0,.1) !important;
-  max-width: 80%;
   text-align: left;
   background-color: #f0f8ff;
   color: #133467;

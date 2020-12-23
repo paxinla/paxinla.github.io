@@ -57,7 +57,8 @@ WITH user_first_login AS (
           , ufd.user_count_day0
        FROM user_first_login ufd
       WHERE ufd.login_date_gap IN (0,1,3,5,7,13,15)
-   GROUP BY ufd.login_date, ufd.first_login_date, ufd.login_date_gap, ufd.user_count_day0
+   GROUP BY ufd.login_date, ufd.first_login_date
+          , ufd.login_date_gap, ufd.user_count_day0
 )      SELECT urc.login_date
             , urc.login_date_gap
             , urc.user_count       AS retention_count

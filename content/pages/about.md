@@ -48,7 +48,6 @@ Charles 是一个略爱折腾的数据工程师，他关注数据库、数据工
                              :Rust
                              :Clojure]}
                   :framework [:Akka
-                              :Flask
                               :Spark]})))
 
 ```
