@@ -193,6 +193,10 @@ p.list-title {
   margin-right: 0.5em;
 }
 
+.page .content .pagination ul li::before {
+  content: none;
+}
+
 .page .content ol li, .page .content-bottom ol li, .page .content-top ol li {
   list-style: none;
   counter-increment: li;

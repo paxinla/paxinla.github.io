@@ -1,7 +1,7 @@
 Title: C19 协议简介
 Date: 2020-12-22 16:41:56
 Category: 分布式
-Tags: protocal, gossip
+Tags: protocol, gossip, c19
 CommentId: X
 
 [C19 Protocol](https://c19p.github.io) 是一个在分布式系统中同步状态的协议。
