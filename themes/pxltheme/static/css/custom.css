@@ -512,11 +512,16 @@ sup a::after {
 
 .music {
   color: #b90001;
+  margin-right: 0.4em;
+}
+
+.container-audio {
+  margin: 1em 0 1em 1.5em;
 }
 
 audio {
   height: 20px;
-  vertical-align: middle;
+  vertical-align: sub;
 }
 
 div.mynotation {

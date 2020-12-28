@@ -1,7 +1,7 @@
 Title: 《异度之刃2》通关后感
 Date: 2018-04-02 11:57:33
 Category: 游戏
-Tags: switch
+Tags: switch, 异度之刃
 CommentId: 11
 
 
@@ -14,7 +14,20 @@ CommentId: 11
 ## 蛋疼略多于好玩
 ### 最大的亮点是音乐
 
-　　游戏的BGM还是很棒的，算是最大的亮点。
+游戏的BGM还是很棒的，算是最大的亮点。
+
+我最喜欢的几首：
+
+[music: 在りし日のふたり link:http://music.163.com/song/media/outer/url?id=565975062]
+[music: Elysium, in the Blue Sky link:http://music.163.com/song/media/outer/url?id=565970056]
+[music: スペルビア帝国/夜 link:http://music.163.com/song/media/outer/url?id=565975068]
+[music: 古代船 link:http://music.163.com/song/media/outer/url?id=565841106]
+[music: グーラ領/森林 link:http://music.163.com/song/media/outer/url?id=565966060]
+[music: インヴィディア烈王国/夜 link:http://music.163.com/song/media/outer/url?id=565970070]
+[music: エルピス霊洞 link:http://music.163.com/song/media/outer/url?id=565841124]
+[music: 二人の望み link:http://music.163.com/song/media/outer/url?id=565966080]
+[music: スペルビア帝国/赤土を駆け抜けて link:http://music.163.com/song/media/outer/url?id=565966068]
+
 
 ### 勉强可忍受的战斗系统
 
