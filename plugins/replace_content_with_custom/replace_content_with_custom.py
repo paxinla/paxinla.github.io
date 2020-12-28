@@ -39,7 +39,7 @@ def gen_new_read(func):
         new_path = os.path.join(tmpdir, "fff")
         old_src_path = args[1]
 
-        replacers = [repl_side_ps, repl_music_player, repl_code_block]
+        replacers = [repl_code_block, repl_side_ps, repl_music_player]
         try:
             with open(old_src_path, "r", encoding="utf8") as rf, open(new_path, 'w', encoding="utf8") as wf:
                 content = rf.read()

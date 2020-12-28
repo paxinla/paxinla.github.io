@@ -70,11 +70,13 @@ spec:
 ```
 
 在一个节点设置状态:
+
 ```sh
 curl -X PUT localhost:3097/ -d '{"cat": {"value": "miaomiao"}}'
 ```
 
 在其他节点获取到同样的状态:
+
 ```sh
 curl -X GET another_host:3097/cat
 
@@ -82,6 +84,7 @@ curl -X GET another_host:3097/cat
 ```
 
 访问 connection 的端口可以获得所有的状态:
+
 ```sh
 curl -s localhost:4097
 ```
