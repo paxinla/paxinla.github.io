@@ -501,13 +501,22 @@ sup a::after {
 }
 
 .music::before {
-  content: "\226A";
+  content: "\266A";
   color: #b90001;
   font-size: 20px;
   vertical-align: baseline;
   margin-left: -1em;
   margin-right: 0.5em;
   direction: ltr;
+}
+
+.music {
+  color: #b90001;
+}
+
+audio {
+  height: 20px;
+  vertical-align: middle;
 }
 
 div.mynotation {

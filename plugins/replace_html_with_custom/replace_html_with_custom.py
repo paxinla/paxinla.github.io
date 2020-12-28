@@ -8,13 +8,13 @@ from pelican import signals
 
 
 def run_plugin(article_gen):
-    print("Wrap div blocks around sections and give each section an ID.")
     new_articles = []
 
     for article in article_gen.articles:
         soup = BeautifulSoup(article._content, 'html.parser')
         tag_no = 1
 
+        print("Wrap div blocks around sections and give each section an ID.")
         h2s = soup.find_all("h2")
         for idx, el in enumerate(h2s):
             els = [i for i in itertools.takewhile(lambda x: x.name not in [el.name, 'div'], el.next_siblings)]
@@ -22,7 +22,12 @@ def run_plugin(article_gen):
             el.wrap(new_div)
             for tag in els:
                 new_div.append(tag)
-        article._content = soup.decode()
+        content_with_section_id = soup.decode()
+
+        print("Fix controls attribute in audio tag.")
+        new_content = content_with_section_id.replace('controls=""', 'controls')
+
+        article._content = new_content
         new_articles.append(article)
 
     article_gen.articles = new_articles

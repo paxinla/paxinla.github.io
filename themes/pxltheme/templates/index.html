@@ -30,34 +30,6 @@
                 </h2>
                 <br/>
 
-                <!--
-                <div class="marginnote invisible-sm post-detail">
-                    <div>
-                        <p><div class="date heading-font"><i class="fa fa-calendar"></i> {{ article.locale_date }}</div>
-                          <a href="#">
-                              <span class="author" itemprop="name">{{ article.author }}</span>
-                          </a>
-                        </p>
-        
-                        {% if article.category %}
-                        <p><div class="heading-font"><i class="fas fa-folder"></i> Category</div>
-                        <a class="category" href="{{ SITEURL }}/{{ article.category.url }}">
-                              {{ article.category }}
-                          </a>
-                        </p>
-                        {% endif %}
-
-                        {% if article.tags %}
-                            <p><div class="heading-font"><i class="fas fa-tag"></i> Tags</div>
-                            {% for tag in article.tags %}
-                            <a class="tag" href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>
-                            {% endfor %}
-                            </p>
-                        {% endif %}
-                    </div>
-                </div>
-                -->
-
                 {% if article.titleimage %}
                 <a href="{{ article.titleimage }}" itemprop="url">
                     <img src="{{ article.titleimage }}"
