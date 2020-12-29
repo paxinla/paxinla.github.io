@@ -547,8 +547,56 @@ div.mynotation p::before {
   direction: ltr;
 }
 
+/* 友情链接页 */
+.flink-item {
+  width: 300px;
+  height: 100px;
+  position: relative;
+  margin: 10px;
+  background-color: #FFB6C1;
+  border-radius: 3px;
+  float: left;
+}
+
+.flink-title {
+  left: 25px;
+  top: 25px;
+  position: absolute;
+}
+
+.flink-title a {
+  font-size: 17px;
+  color: #000000;
+  line-height: 17px;
+  word-break: break-all;
+  text-decoration: none;
+  outline: 0;
+}
+
+.flink-link {
+  right: 0;
+  bottom: 0;
+  padding: 0 15px 15px;
+  position: absolute;
+  text-align: center;
+}
+
+.flink-link-ico {
+  display: inline-block;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+}
+
+.flink-link-text {
+  font-size: 12px;
+  color: #000000;
+}
 
 /* 首页 */
 #article_summary_part {
   line-height: 1.5em;
 }
+
+
+

@@ -21,7 +21,7 @@ INDEX_DESCRIPTION = "这里只有我的呓语 ... ..."
 
 DEFAULT_LANG = "zh"
 TIMEZONE = "Asia/Shanghai"
-DEFAULT_DATE_FORMAT = "%Y-%m-%d %a"
+DEFAULT_DATE_FORMAT = "%Y-%m-%d %A"
 COPYRIGHT_YEAR = str(datetime.now().year)
 COPYRIGHT_START_YEAR = "2014"
 
