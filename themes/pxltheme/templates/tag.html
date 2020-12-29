@@ -10,7 +10,7 @@
         <div class="post-list">
             <ul class="small-post-list">
                 {% for article in articles %}
-                <li><span class="invisible-sm marginnote category-tag-date">{{ article.locale_date }}</span><a class="small-title" href="/{{ article.url }}">{{ article.title }}</a></li>
+                <li><span class="invisible-sm marginnote category-tag-date">{{ article.locale_date }}</span><a class="small-title" style="display:inline;" href="/{{ article.url }}">{{ article.title }}</a></li>
                 {% endfor %}
             </ul>
         </div>
