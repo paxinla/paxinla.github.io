@@ -565,8 +565,9 @@ div.mynotation p::before {
 }
 
 .flink-title a {
-  font-size: 17px;
-  color: #000000;
+  font-size: 20px;
+  font-weight: 700;
+  color: #3d566e;
   line-height: 17px;
   word-break: break-all;
   text-decoration: none;

@@ -17,11 +17,14 @@ Save_as: links.html
 2. <span style="color: #25a45a;">查看是否有您的链接？</span>除了您的网站出现故障或下架了本站链接等意外事件，本站数据内将永远保存您的友情链接。
 3. <span style="color: #25a45a;">随便看看？</span>欢迎鸭，坐下来喝杯茶再走吧~
 
-<div class="container-audio"><span class="music">スペルビア帝国/夜</span><audio controls preload="none"><source src="http://music.163.com/song/media/outer/url?id=565975068"/>Your browser dose not Support the audio Tag</audio></div>
+<div class="container-audio" style="margin-left:3rem;"><span class="music">スペルビア帝国/夜</span><audio controls preload="none"><source src="http://music.163.com/song/media/outer/url?id=565975068"/>Your browser dose not Support the audio Tag</audio></div>
+
+<div style="background: url(/theme/images/ornate-border.svg) center top no-repeat transparent; background-size: auto; background-size: contain; height: 1.5rem; width: 100%; -webkit-transform: rotate(180deg); transform: rotate(180deg); margin-top: 1rem; margin-bottom: 1rem;"></div>
 
 <div style="display: inline-block;">
 
-[flink:https://blog.douchi.space name:椒盐豆豉 desc:喜欢就买，不行就分，多喝热水，重启电脑 logo:https://blog.douchi.space/wp-content/uploads/2020/10/33.VR-profile-300x300.png]
+[flink:https://blog.douchi.space name:椒盐豆豉 desc:喜欢就买，不行就分，多喝热水，重启电脑 logo:https://i.loli.net/2021/01/05/ladoO5s2TZnvNL3.png]
 
 </div>
 
+<div style="background: url(/theme/images/ornate-border.svg) center top no-repeat transparent; background-size: auto; background-size: contain; height: 1.5rem; width: 100%; margin-top: 1rem;"></div>
