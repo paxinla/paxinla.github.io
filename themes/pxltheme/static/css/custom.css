@@ -562,6 +562,7 @@ div.mynotation p::before {
   left: 25px;
   top: 25px;
   position: absolute;
+  z-index: 1;
 }
 
 .flink-title a {
