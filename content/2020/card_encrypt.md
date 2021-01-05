@@ -29,7 +29,7 @@ CommentId: X
 3. 找到大王，向下移动两张。♣A，大王，♣2...♣K，<span style="color: red !important;">♦</span>A...<span style="color: red !important;">♦</span>K，<span style="color: red !important;">♥</span>A...<span style="color: red !important;">♥</span>K，♠A...♠K，小王。
 4. 做一次三切牌。将两个王和其之间的牌作为B组，从第一张到上面的王前一张是A组，从下面的王后一张到最后一张牌是C组。交换A组和C组的牌，从 A-B-C ，变换成 C-B-A 。大王，♣2...♣K，<span style="color: red !important;">♦</span>A...<span style="color: red !important;">♦</span>K，<span style="color: red !important;">♥</span>A...<span style="color: red !important;">♥</span>K，♠A...♠K，小王，♣A 。
 5. 找到最后一张牌，看其数字N（大小王都按照53来计数），从第一张开始数N张牌，作为A组，第N+1张牌到倒数第2张牌为B组，交换A组和B组，♣2...♣K，<span style="color: red !important;">♦</span>A...<span style="color: red !important;">♦</span>K，<span style="color: red !important;">♥</span>A...<span style="color: red !important;">♥</span>K，♠A...♠K，小王，大王，♣A 。
-6. 看第一张牌的数字N，数N张牌，找到第N+1张牌，就是一个输出的密钥了。这个例子中是 ♣4 。♣2，♣3，【♣4】...♣K，<span style="color: red !important;">♦</span>A...<span style="color: red !important;">♦</span>K，<span style="color: red !important;">♥</span>A...<span style="color: red !important;">♥</span>K，♠A...♠K，小王，大王，♣A 。
+6. 看第一张牌的数字N，数N张牌，找到第N+1张牌，就是一个输出的密钥了。这个例子中是 ♣4 。♣2，♣3，<span style="color: green !important;">【</span>♣4<span style="color: green !important;">】</span>...♣K，<span style="color: red !important;">♦</span>A...<span style="color: red !important;">♦</span>K，<span style="color: red !important;">♥</span>A...<span style="color: red !important;">♥</span>K，♠A...♠K，小王，大王，♣A 。
 7. 重复上面步骤1-5，连续产生新的密钥。
 
 对于每一个密钥，用法就是简单的移位密码，比如♣4的数值就是4，如果比26大，那么就除以26求余数，比如 `30 mod 26=4` 。那么如果要加密字母A，就是从A+4，数B，C，D，E，得到字母E。
