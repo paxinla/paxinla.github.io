@@ -23,6 +23,8 @@ Save_as: links.html
 
 <div style="display: inline-block;">
 
+[flink:https://shyyp.net name:羊羊粤语 desc:Help Save Cantonese and Keep This Language Alive! logo:https://shyyp.net/imgs/favicon.svg]
+
 [flink:https://blog.douchi.space name:椒盐豆豉 desc:喜欢就买，不行就分，多喝热水，重启电脑 logo:https://i.loli.net/2021/01/05/ladoO5s2TZnvNL3.png]
 
 </div>
