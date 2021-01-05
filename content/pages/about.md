@@ -61,3 +61,4 @@ Charles 是一个略爱折腾的数据工程师，他关注数据库、数据工
 + 20180316 - 迁移 Hexo 到 Pelican ，魔改 CachesToCaches 主题，启用 Travis-CI 。
 + 20140406 - 开启博客之旅，Hexo + Modernist 主题 + Github Pages 。
 
+<br/><span id="busuanzi_container_site_pv">本站总访问量:  <span id="busuanzi_value_site_pv"></span> 次</span><br/>
