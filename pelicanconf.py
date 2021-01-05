@@ -6,7 +6,7 @@ from datetime import datetime
 
 
 AUTHOR = "Charles"
-SITENAME = "Charles's Blog"
+SITENAME = "隐者の书庭"
 
 
 SITEURL = "https://paxinla.github.io"
