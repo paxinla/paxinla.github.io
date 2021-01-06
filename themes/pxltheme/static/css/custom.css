@@ -342,6 +342,7 @@ a.current-page-link {
   width: 4px;
   height: 4px;
   margin-right: 3px;
+  padding: unset;
 }
 
 .narrow-font {
