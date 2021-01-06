@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
 <section id="content">
-<h1>过往文章</h1>
+<h1>✎ 过往文章</h1>
 <br/>
 <hr/>
 <br/>
-<dl>
+<dl class="arcs">
 {% for article in dates %}
-    <dt>{{ article.locale_date }}</dt>
+    <dt class="arc-title-date">{{ article.locale_date }}</dt>
     <dd><a class="arc-title-lnk" href='{{ article.url }}'>{{ article.title }}</a></dd>
 {% endfor %}
 </dl>

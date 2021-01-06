@@ -84,8 +84,8 @@
                 {% endblock %}
 
                 <div id="nav-visited-info" class="center-text floating-description">
-                    <div id="copyright-expression" class="copyright">(cons "<a href="/">{{ AUTHOR }}</a> &copy;" (iterate inc {{ COPYRIGHT_START_YEAR }}))</div><br/>
-                    <a id="powered-by" href="https://github.com/getpelican/pelican">Powered by ♥ Pelican</a><br/>
+                    <div id="copyright-expression" class="copyright">(cons "<a href="{{ GITHUB_URL }}" style="color:#999;">{{ AUTHOR }}</a> &copy;" (iterate inc <span style="color:#db4437;">{{ COPYRIGHT_START_YEAR }}</span>))</div><br/>
+                    <a id="powered-by" href="https://github.com/getpelican/pelican">Powered by <i id="icon-gear" class="rotating"></i> Pelican</a><br/>
                     <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" style="border: none;" ><img src="https://img.shields.io/badge/License-CC__BY--NC--SA-blue.svg" style="height: 17px;" /></a>
                 </div>
             </div>
@@ -149,8 +149,11 @@
         <!-- Cat -->
         <script src="{{ SITEURL }}/theme/js/L2Dwidget.min.js"></script>
         <script type="text/javascript">
+            var L2DModelArray = ['hijiki', 'tororo'];
+            var L2DModelIndex = Math.floor((Math.random()*L2DModelArray.length));
+            var L2DModelSelected = L2DModelArray[L2DModelIndex];
             L2Dwidget.init({model: {
-                              jsonPath: "{{ SITEURL }}/theme/live2d-widget-model-hijiki/assets/hijiki.model.json",
+                              jsonPath: "{{ SITEURL }}/theme/live2d-widget-model-"+L2DModelSelected+"/assets/"+L2DModelSelected+".model.json",
                             },
                             display: {
                               superSample: 2,

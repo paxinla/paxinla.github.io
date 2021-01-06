@@ -8,6 +8,44 @@
   src: url("../fonts/FantasqueSansMono-Regular.woff2") format("woff2");
 }
 
+@-webkit-keyframes rotating {
+  from {
+      -webkit-transform: rotate(0);
+      -o-transform: rotate(0);
+      transform: rotate(0)
+  }
+  to {
+      -webkit-transform: rotate(360deg);
+      -o-transform: rotate(360deg);
+      transform: rotate(360deg)
+  }
+}
+
+@keyframes rotating {
+  from {
+      -ms-transform: rotate(0);
+      -moz-transform: rotate(0);
+      -webkit-transform: rotate(0);
+      -o-transform: rotate(0);
+      transform: rotate(0)
+  }
+  to {
+      -ms-transform: rotate(360deg);
+      -moz-transform: rotate(360deg);
+      -webkit-transform: rotate(360deg);
+      -o-transform: rotate(360deg);
+      transform: rotate(360deg)
+  }
+}
+
+.rotating {
+  -webkit-animation: rotating 3s linear infinite;
+  -moz-animation: rotating 3s linear infinite;
+  -ms-animation: rotating 3s linear infinite;
+  -o-animation: rotating 3s linear infinite;
+  animation: rotating 3s linear infinite
+}
+
 :root {
   --list-item-color: blue;
 }
@@ -35,6 +73,13 @@ hr {
   margin-bottom: 1rem;
 }
 
+hr.dotty-split-line {
+  background-image: repeating-linear-gradient(-45deg, #977, #977 4px, transparent 4px, transparent 8px);
+  border: 0;
+  height: 3px;
+  margin: 40px 0;
+}
+
 
 /* 正文区域标题部分 */
 .content-top {
@@ -57,9 +102,14 @@ hr {
   line-height: 1.1;
 }
 
-.page .content, .page .content-bottom, .page .content-top {
+.page .content, .page .content-bottom, .page .content-top, .page .content-split-comment {
   max-width: 820px;
   padding-right: 0;
+}
+
+.page .content-split-comment {
+  margin-top:40px;
+  padding-top:40px;
 }
 
 .page .content pre, .page .content-bottom pre, .page .content-top pre {
@@ -274,13 +324,24 @@ a.current-page-link {
 }
 
 .sidebar .title::before {
- -webkit-transform: rotate(180deg);
- transform: rotate(180deg);
- margin-bottom: 1rem;
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+  margin-bottom: 1rem;
 }
 
 .sidebar .title::after {
- margin-top: 1rem;
+  margin-top: 1rem;
+}
+
+.sidebar .center-dot::before {
+  background: #8fff34;
+  content: " ";
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 50%;
+  width: 4px;
+  height: 4px;
+  margin-right: 3px;
 }
 
 .narrow-font {
@@ -308,6 +369,16 @@ a.current-page-link {
 #powered-by {
   font-size: 11px;
 }
+
+#icon-gear {
+  display: inline-block;
+  color: #ffc0cb;
+}
+
+#icon-gear::before {
+  content: '\2699';
+}
+
 
 /*左侧导航栏--目录*/
 .nav-pills .nav-link.active {
@@ -422,14 +493,34 @@ div.code-toolbar > .toolbar {
 }
 
 /* 过往文章标题 */
+.arc-title-date {
+  color: #a02512;
+  font-weight: 300;
+}
+
 .arc-title-lnk {
   transition: all 0.3s linear;
   margin-left: 2rem;
+  color: #0f3780;
+  font-weight: 600;
 }
 
 .arc-title-lnk:hover {
   margin-top: 40px;
   box-shadow: 0 3px 15px 3px rgba(51, 51, 51, 0.5);
+}
+
+dl.arcs {
+  display: grid;
+  grid-template-columns: max-content auto;
+}
+
+dt.arc-title-date {
+  grid-column-start: 1;
+}
+
+dd.arc-title-lnk {
+  grid-column-start: 2;
 }
 
 /* 正文 */
@@ -485,8 +576,12 @@ sup a::after {
   width: auto;
 }
 
-.tags-list ul li, .categories-list ul li {
+.tags-list li, .categories-list li {
   list-style: disclosure-closed;
+}
+
+.tags-list li::marker, .categories-list li::marker {
+  color: #774553;
 }
 
 .category-tag-date {

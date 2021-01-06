@@ -33,7 +33,9 @@ RPL_FLINK = r'''
   </div>
 </div>'''
 
-BG_COLORS = ['#f68e5f', '#A0DAD0', '#b29499', '#d33335', '#f1f8ff', '#7f7f7f', '#6fa3ef', '#f9bb3c']
+BG_COLORS = ['#f68e5f', '#A0DAD0', '#b29499', '#b22234',
+             '#f1f8ff', '#4899c0', '#4899c0', '#f9bb3c',
+             '#c8cfbc', '#fff0d6', '#fd8b4a', '#9a76d7']
 
 def repl_code_block(instr):
     return PTN_CODE_BLOCK.sub(RPL_CODE_BLOCK, instr)

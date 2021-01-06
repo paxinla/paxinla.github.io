@@ -46,7 +46,7 @@
     <img src="{{ article.titleimage }}" class="cover img-responsive" style="max-height: 400px" itemprop="image">
     <div class="note visible-sm post-detail"></div>
 
-    <hr/>
+    <hr class="dotty-split-line" />
 </div>
 {% endblock %}
 {% block content %}
@@ -61,7 +61,7 @@
 <a href="{{ SITEURL }}/{{ article.url }}" class="current-page-link">本文链接: {{ SITEURL }}/{{ article.url }}</a>
 
 <!-- Comments -->
-<div style="margin-top:40px; padding-top:40px;"><hr/></div>
+<div class="content-split-comment"><hr class="dotty-split-line" /></div>
 <div class="content-bottom">
     {% include "comments.html" %}
     {% endblock %}

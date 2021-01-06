@@ -3,7 +3,7 @@ Status: hidden
 Save_as: about.html
 TitleImage: https://ghchart.rshah.org/paxinla
 
-<h2 class="no-bullet" style="color: #ffb800;text-align: center;font-family: 'Unica One',sans-serif;font-weight: 500;">Think big, start small, act fast.</h2>
+<h2 class="no-bullet" style="color: #ffb800;text-align: center;font-family: 'Unica One',sans-serif;font-weight: 500;text-shadow: 5px 5px 5px #999;">Think big, start small, act fast.</h2>
 
 这个博客是 Charles 的一块自留地，它主要的目的是为 Charles 记录一些知识与信息，方便回头翻阅，欢迎大家同 Charles 交流。这个博客里的一切非转载内容均为 Charles 的个人观点。
 
@@ -38,6 +38,7 @@ Charles 是一个略爱折腾的数据工程师，他关注数据库、数据工
     (.social-media 
       {:email "base64 -d <<< YWtzdXJhQHBhcmFub2lkLmVtYWlsCg=="
        :mastodon "base64 -d <<< aHR0cHM6Ly9wbGVyb21hLmFrc3VyYS50ay9ha3N1cmE="
+       :ff14 "base64 -d <<< 56We5oSP5LmL5ZywIOecn+mYv+WFi+iLj+aLiQ=="
        :ns-friend-code "SW-4210-1337-8241"})
     (.technology-stack
       {:domain ["Data Engineering"
