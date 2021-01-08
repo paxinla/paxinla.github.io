@@ -1,9 +1,9 @@
-Title: 友情链接
+Title: 友邻
 Status: hidden
 Save_as: links.html
 
 
-你好，朋友！欢迎来到我的友链页面。
+你好，朋友！欢迎来到我的友情链接页面。
 
 我猜你想:
 
@@ -25,7 +25,9 @@ Save_as: links.html
 
 [flink:https://shyyp.net name:羊羊粤语 desc:Keep Cantonese Alive! logo:https://shyyp.net/imgs/favicon.svg]
 
-[flink:https://blog.douchi.space name:椒盐豆豉 desc:喜欢就买，不行就分，多喝热水，重启电脑 logo:https://i.loli.net/2021/01/05/ladoO5s2TZnvNL3.png]
+[flink:https://blog.douchi.space name:椒盐豆豉 desc:喜欢就买，不行就分，多喝热水，重启电脑。 logo:https://i.loli.net/2021/01/05/ladoO5s2TZnvNL3.png]
+
+[flink:https://blog.yoitsu.moe name:约伊兹的萌狼乡手札 desc:咱就是咱。咱是赫萝。 logo:https://blog.yoitsu.moe/theme/images/wiki.png]
 
 </div>
 
