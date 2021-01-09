@@ -36,7 +36,7 @@ Charles 是一个略爱折腾的数据工程师，他关注数据库、数据工
     (.location
       "Shenzhen Guangdong")
     (.social-media 
-      {:email "base64 -d <<< YWtzdXJhQHBhcmFub2lkLmVtYWlsCg=="
+      {:email "base64 -d <<< YWtzdXJhQDIwNDguZW1haWwK"
        :mastodon "base64 -d <<< aHR0cHM6Ly9tLmNteC5pbS9AYWtzdXJh"
        :ff14 "base64 -d <<< 56We5oSP5LmL5ZywIOecn+mYv+WFi+iLj+aLiQ=="
        :ns-friend-code "SW-4210-1337-8241"})

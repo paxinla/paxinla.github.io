@@ -34,7 +34,7 @@ STATIC_PATHS = ["static",
                 "images",
                 "images/favicon.ico"]
 AVATAR = "static/user_avatar.jpeg"
-URL_QRCODE = "static/blog_url_qrcode.png"
+URL_QRCODE = "static/im_url_qrcode.png"
 THEME = "themes/pxltheme"
 ARTICLE_URL = 'posts/{date:%Y}/{date:%m}/{slug}.html'
 ARTICLE_SAVE_AS = 'posts/{date:%Y}/{date:%m}/{slug}.html'

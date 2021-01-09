@@ -1,3 +1,4 @@
+/* 各种字体 */
 @font-face {
   font-family: jinkaiFont;
   src: url("../fonts/jinkai.ttf") format("TrueType");
@@ -8,6 +9,70 @@
   src: url("../fonts/FantasqueSansMono-Regular.woff2") format("woff2");
 }
 
+/* BEGIN Conda 字体 */
+/* coda-regular - latin */
+@font-face {
+  font-family: 'Coda';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/coda-v16-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('../fonts/coda-v16-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/coda-v16-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/coda-v16-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/coda-v16-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/coda-v16-latin-regular.svg#Coda') format('svg'); /* Legacy iOS */
+}
+
+/* coda-800 - latin */
+@font-face {
+  font-family: 'Coda';
+  font-style: normal;
+  font-weight: 800;
+  src: url('../fonts/coda-v16-latin-800.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('../fonts/coda-v16-latin-800.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/coda-v16-latin-800.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/coda-v16-latin-800.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/coda-v16-latin-800.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/coda-v16-latin-800.svg#Coda') format('svg'); /* Legacy iOS */
+}
+/* END Conda 字体 */
+
+/* BEGIN Unica One 字体 */
+/* unica-one-regular - latin */
+@font-face {
+  font-family: 'Unica One';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/unica-one-v8-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('../fonts/unica-one-v8-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/unica-one-v8-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/unica-one-v8-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/unica-one-v8-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/unica-one-v8-latin-regular.svg#UnicaOne') format('svg'); /* Legacy iOS */
+}
+/* END Unica One 字体 */
+
+/* BEGIN Vollkorn 字体 */
+/* vollkorn-regular - latin */
+@font-face {
+  font-family: 'Vollkorn';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/vollkorn-v12-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('../fonts/vollkorn-v12-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/vollkorn-v12-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/vollkorn-v12-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/vollkorn-v12-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/vollkorn-v12-latin-regular.svg#Vollkorn') format('svg'); /* Legacy iOS */
+}
+/* END Vollkorn 字体 */
+
+
+/* 各种动画帧 */
 @-webkit-keyframes rotating {
   from {
       -webkit-transform: rotate(0);
@@ -46,6 +111,7 @@
   animation: rotating 3s linear infinite
 }
 
+/* 各种变量 */
 :root {
   --list-item-color: blue;
 }
@@ -684,6 +750,7 @@ div.mynotation p::before {
   width: 42px;
   height: 42px;
   border-radius: 50%;
+  margin-left: 3em;
 }
 
 .flink-link-text {
