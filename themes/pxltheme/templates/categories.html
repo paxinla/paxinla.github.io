@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block canonical %}
+        <link href="{{ SITEURL }}/categories.html" rel="canonical" />
+{% endblock %}
+{% block content %}
+<h3>Categories</h3>
+<ul class="categories-list">
+  {%- for category, articles in categories|sort %}
+      <li><a href="{{ SITEURL }}/{{ category.url }}">{{ category }}</a> ({{ articles|count }})</li>
+  {% endfor %}
+</ul>
+{% endblock %}

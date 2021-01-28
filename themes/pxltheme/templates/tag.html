@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block canonical %}
+        <link href="{{ SITEURL }}/{{ page_name }}.html" rel="canonical" />
+{% endblock %}
+{% block content %}
+<h1 class="title"><small>Tag ➡ {{ tag }} ➡</small></h1>
+<br/>
+<hr/>
+<br/>
+{% if articles %}
+<div class="content">
+    <div class="archive">
+        <div class="post-list">
+            <ul class="small-post-list">
+                {% for article in articles %}
+                <li><span class="invisible-sm marginnote category-tag-date">{{ article.locale_date }}</span><a class="small-title" style="display:inline;" href="/{{ article.url }}">{{ article.title }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+<br/>
+{% endif %}
+{% endblock %}

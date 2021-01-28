@@ -1,0 +1,34 @@
+<section class="comments" id="comments">
+{% if GITHUB_REPO and article %}
+      <div class="panel panel-primary">
+        <div class="panel-heading" role="tab" id="githubissue-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#githubissue-comments" aria-expanded="true" aria-controls="githubissue-comments">
+                <i class="fa fa-comments"></i><i id="githubissue-comment_list"> Comments</i>
+            </a>
+          </h4>
+        </div>
+        <!-- Gittalk Start -->
+        {% assets filters="jsmin", output="js/comments.js", "js/md5.min.js", "js/gitalk.min.js" %}
+        <script src="{{ SITEURL }}/{{ ASSET_URL }}"></script>
+        {% endassets %}
+        <div id="gitalk-container"></div>
+        <script type="text/javascript">
+          var gitalk = new Gitalk({
+            clientID: '52714ace34b650195df4',
+            clientSecret: 'bb418bdcebf3255e6f24d97103c04bca620ac0cd',
+            repo: 'paxinla.github.io',
+            owner: 'paxinla',
+            admin: ['paxinla'],
+            id: md5(location.pathname),
+            labels: ['blog_comment'],
+            title: document.title,
+            distractionFreeMode: false
+          })
+          
+          gitalk.render('gitalk-container')
+        </script>
+        <!-- Gittalk End -->
+      </div>
+{% endif %}
+</section>
