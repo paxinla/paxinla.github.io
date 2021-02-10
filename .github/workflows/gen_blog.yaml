@@ -45,4 +45,5 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./output
         publish_branch: master
+        force_orphan: true
 
