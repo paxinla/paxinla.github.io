@@ -11,7 +11,7 @@ CommentId: X
 HDFS （Hadoop Distributed File System）是一个适合运行在廉价商业机器上的关注吞吐量的分布式文件系统，是对 Google 的 GFS 的开源模仿。面向大规模数据集，能够横向扩展。
 
 
-HDFS 的特性:
+<p class="list-title">HDFS 的特性:</p>
 
 - 适合大文件，不适合海量小文件。
 - 流式访问数据：适合一次写入，多次读出的场景。(流式的意思是来一点就处理一点，不积攒)
@@ -26,7 +26,7 @@ NameNode 有一个 Active NameNode ，一个 Standby NameNode ，两台 NameNode
 
 epoch 是一个单调递增的整数，用来标识每一次 Active NameNode 的生命周期，每次主备 NameNode 切换，epoch 就会加 1 。
 
-NameNode 存储元数据:
+<p class="list-title">NameNode 存储元数据:</p>
 
 - 管里 HDFS 的 namespace 。
 - 配置副本策略。
@@ -42,7 +42,7 @@ NameNode 存储元数据:
 
 DataNode 会同时向主备两个 NameNode 上报数据块的位置信息。
 
-DataNode 心跳机制的作用:
+<p class="list-title">DataNode 心跳机制的作用:</p>
 
 1. 当 datanode 启动时，将自身的信息上报给 namenode ，namenode 经过 check 后使其成为集群的成员，维护 datanode 的信息。
 2. 当 datanode 启动时，将 block 信息汇报给 namenode ，使 namenode 可以维护数据块和数据节点之间的映射关系。
@@ -91,7 +91,7 @@ HDFS 块大小是通过设置 `hdfs-site.xml` 的参数 `dfs.blocksize` (一般�
 
 HDFS 块大小的默认值从2.7.3版本起是 128 MB，之前版本默认是 64 MB。HDFS 的块比磁盘的默认的块大小(512B)大，目的是为了最小化磁盘寻址开销，这也是 HDFS 块大小设置的原则。
 
-影响 HDFS 块大小的因素主要有以下几个:
+<p class="list-title">影响 HDFS 块大小的因素主要有以下几个:</p>
 
 1. 减少磁盘寻址时间。同样的数据，数据块越大，数据块的数量越少；数据块越小，数据块的数量越多。数据块在磁盘上不是连续存储的，随机寻址的较慢。所以读越多的(小)数据块，磁盘的总寻址时间就越长(小块的传输时间短)；读越少的(大)数据块，总寻址时间就越短(大块的传输时间长)。合适的块大小有助于减少磁盘寻址时间，提高系统吞吐量。
 2. 减少 namenode 的内存消耗。如果数据块设置得太小，则 fsimage 需要维护的数据块的信息就太多，占用 namenode 的内存。
@@ -120,7 +120,7 @@ HDFS 块大小的默认值从2.7.3版本起是 128 MB，之前版本默认是 64
 
 在写入时候，块大小是以客户端的配置为准的，客户端没有配置才以服务端为准。
 
-如果写入过程中出现故障:
+<p class="list-title">如果写入过程中出现故障:</p>
 
 1. 输出流中缓存的没有确认的数据包会重新加入发送队列，这种机制确保了数据节点出现故障时不会丢失任何数据，所有的数据都是经过确认的。
 2. 故障数据节点会从输入流管道中删除，然后输出流会通知 namenode 分配新的 datanode 到 pipeline 中，并使用新的时间戳重新建立数据流管道。由于新添加的 datanode 上并没有存储这个新的 block ，这时客户端会通知 pipeline 中的一个 datanode 复制这个 block 到新的 datanode 上。
