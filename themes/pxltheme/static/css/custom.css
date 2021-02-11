@@ -120,6 +120,10 @@ html {
   background: #ececec url(/theme/images/fabric_plaid.png);
 }
 
+body {
+  display: flex;
+}
+
 body, a {
   background-color: transparent;
   text-rendering: optimizelegibility;
@@ -152,6 +156,11 @@ hr.dotty-split-line {
   padding-right: 0;
 }
 
+.page {
+  float: right;
+  margin: 0 40px 0 30px;
+}
+
 .page blockquote {
   font-size: 20px;
   color: grey;
@@ -169,7 +178,7 @@ hr.dotty-split-line {
 }
 
 .page .content, .page .content-bottom, .page .content-top, .page .content-split-comment {
-  max-width: 820px;
+  max-width: 790px;
   padding-right: 0;
 }
 
@@ -346,6 +355,8 @@ a.current-page-link {
   background: #182230;
   color: #e47911;
   border-left: 0px;
+  float: left;
+  height: inherit;
 }
 
 .sidebar .description a, .sidebar li a {

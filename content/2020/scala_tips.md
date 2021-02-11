@@ -199,8 +199,10 @@ val timeStampA = Instant.now()
 timeStampA.getEpochSecond  // 精确到秒
 timeStampA.toEpochMilli    // 精确到毫秒
 
-val timeStampB = LocalDateTime.now().toInstant(ZoneOffset.of("+8"))     // 日期时间转时间戳
-val timeStampC = ZonedDateTime.now(ZoneId.of("US/Pacific")).toInstant   // 带时区的日期时间转时间戳不带参数
+// 日期时间转时间戳
+val timeStampB = LocalDateTime.now().toInstant(ZoneOffset.of("+8"))
+// 带时区的日期时间转时间戳不带参数
+val timeStampC = ZonedDateTime.now(ZoneId.of("US/Pacific")).toInstant   
 
 
 // LocalTime 只有时间、LocalDate 只有日期、LocalDateTime 既有日期又有时间
@@ -246,7 +248,9 @@ val fmt2 = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
 datetime1.format(fmt1)
 
 import java.time.format.DateTimeParseException
-val dateTime5 : LocalDateTime = LocalDateTime.parse("2020-01-02 13:01:06", fmt1)   // 解析日期/时间字符串
+
+// 解析日期/时间字符串
+val dateTime5 : LocalDateTime = LocalDateTime.parse("2020-01-02 13:01:06", fmt1)
 
 ```
 
