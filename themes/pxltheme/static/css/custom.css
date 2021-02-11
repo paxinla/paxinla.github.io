@@ -120,10 +120,6 @@ html {
   background: #ececec url(/theme/images/fabric_plaid.png);
 }
 
-body {
-  display: flex;
-}
-
 body, a {
   background-color: transparent;
   text-rendering: optimizelegibility;
@@ -154,11 +150,6 @@ hr.dotty-split-line {
 /* 正文区域标题部分 */
 .content-top {
   padding-right: 0;
-}
-
-.page {
-  float: right;
-  margin: 0 40px 0 30px;
 }
 
 .page blockquote {
@@ -355,8 +346,6 @@ a.current-page-link {
   background: #182230;
   color: #e47911;
   border-left: 0px;
-  float: left;
-  height: inherit;
 }
 
 .sidebar .description a, .sidebar li a {
