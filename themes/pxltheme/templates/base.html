@@ -47,6 +47,7 @@
 
 
     <body data-spy="scroll" data-target="#left-navbar" data-offset="50" itemscope="" itemtype="http://schema.org/WebPage">
+        <div id="whole-page">
         <!-- Left Sidebar -->
         <nav id="left-navbar" class="sidebar">
             <div class="content">
@@ -98,6 +99,8 @@
             </div>
             <div class="clearfix"></div>
         </div>
+
+        </div><!-- End Whole Page -->
 
         <!-- Scripts -->
         {% assets filters="jsmin", output="js/packed.js", "js/jquery.min.js", "js/jquery.tableofcontents.g.min.js", "js/popper.min.js", "js/bootstrap.min.js", "js/sticky-nav.js", "js/highlight.pack.js", "js/anchor-scroll.js", "js/prism.js" %}

@@ -116,6 +116,32 @@
   --list-item-color: blue;
 }
 
+
+/* 整体布局 */
+#whole-page {
+  display: flex;
+}
+
+#left-navbar {
+  float: left;
+}
+
+.sidebar {
+  position: unset;
+  height: inherit;
+}
+
+.sidebar .floating-description {
+  position: unset;
+}
+
+.page {
+  float: right;
+  margin: 0 40px 0 30px;
+}
+
+
+/* 常规样式 */
 html {
   background: #ececec url(/theme/images/fabric_plaid.png);
 }
@@ -148,6 +174,10 @@ hr.dotty-split-line {
 
 
 /* 正文区域标题部分 */
+.heading-font {
+  margin-bottom: 0.2em;
+}
+
 .content-top {
   padding-right: 0;
 }
@@ -169,7 +199,7 @@ hr.dotty-split-line {
 }
 
 .page .content, .page .content-bottom, .page .content-top, .page .content-split-comment {
-  max-width: 790px;
+  max-width: 780px;
   padding-right: 0;
 }
 
@@ -455,12 +485,6 @@ a.current-page-link {
 
 #nav-sidebar {
   margin-bottom: 0.5rem;
-}
-
-#nav-visited-info {
-  margin-top: 2.5rem;
-  padding-top: 1rem;
-  position: relative;
 }
 
 
@@ -764,6 +788,4 @@ div.mynotation p::before {
 #article_summary_part {
   line-height: 1.5em;
 }
-
-
 
