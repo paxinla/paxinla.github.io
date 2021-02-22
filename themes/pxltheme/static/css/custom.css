@@ -502,12 +502,15 @@ a.tag {
   color: wheat;
 }
 
-a.tag::before {
-  content: "‹\00a0";
-}
-
 a.tag::after {
-  content: "\00a0›";
+  position: relative;
+  margin-left: 0.1em;
+  font-size: 90%;
+  top: -0.1em;
+  color: wheat;
+  font-feature-settings: "caps";
+  font-variant-numeric: normal;
+  content: "°";
 }
 
 

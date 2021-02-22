@@ -33,6 +33,8 @@ epoch 是一个单调递增的整数，用来标识每一次 Active NameNode 的
 - 文件到数据块的映射。
 - 处理客户端的读写请求。
 
+namenode 的 `hdfs-site.xml` 里的 `dfs.hosts` 指定允许连接到 namenode 的主机列表文件。如果该值为空，则允许所有主机，可以不配置；`dfs.hosts.exclude` 指定不允许连接到 namenode 的主机列表文件，如果该值为空，则不排除任何主机。
+
 ### DataNode
 
 若干个 DataNode 为存储数据块的机器:
@@ -48,7 +50,14 @@ DataNode 会同时向主备两个 NameNode 上报数据块的位置信息。
 2. 当 datanode 启动时，将 block 信息汇报给 namenode ，使 namenode 可以维护数据块和数据节点之间的映射关系。
 3. 定期发送心跳，告诉 namenode 自己是存活的；执行 namenode 通过心跳响应传过来的指令(如删除数据块)。
 
+在 datanode 向 namenode 注册时，namenode 会根据用户定义的 Java 类或自定义脚本来确定该 datanode 所属机架，如果不指定脚本则默认所有 datanode 属于一个机架 `/default-rack` 。[ps: 机架感知默认没有启用，需要指定 hdfs-site.xml 的参数 `topology.node.switch.mapping.impl` 或 `topology.script.file.name` 。]
+
 当 datanode 成功添加或删除一个 block 后，需要向 namenode 汇报以更新 namenode 内存中数据块和数据节点之间的映射关系。
+
+datanode 的 hdfs-site.xml 的 `dfs.datanode.data.dir` 指定了本节点上用来存储 HDSF 数据的本地磁盘目录。参数 `dfs.datanode.failed.volumes.tolerated` 表示本 datanode 可以接受前者的磁盘列表里有多少个磁盘发生故障，默认值为0。
+
+datanode 周期性检查块副本的数据是否与校验和一致。如果发现副本损坏，则通知 namenode 。namenode 会优先复制未损坏的副本，当副本数达到复制因子 `dfs.replication` 再删除损坏的副本。
+
 
 ### Zookeeper(ZKFC)
 
@@ -136,3 +145,68 @@ HDFS 块大小的默认值从2.7.3版本起是 128 MB，之前版本默认是 64
 3. datanode 传输数据给客户端(并行，多个 block 可以一起读)，以 packet 为单位校验。客户端以 packet 为单位接收到本地缓存，再写入文件。[ps: block 的应答包中不仅包含了数据，还包含了校验值。客户端接收到数据应答包时，会对数据进行校验，如果出现校验错误，客户端就会向 namenode 汇报这个损坏的 block 副本，同时尝试从其他的 datanode 读取这个数据块。]
 4. 重复第 3 步直至数据传出完成。
 
+
+## HDFS 容量伸缩
+
+HDFS 支持动态的扩容、缩容，原有的 namenode 和 datanode 都不需要停止服务。增减节点时，需要对 yarn 的节点也做增减相关的操作。
+
+### HDFS 扩容
+#### 横向扩容
+
+首先配置好新增的 datanode 机器。集群所有机器添加新增节点到操作系统的 hosts 文件及 namenode 的 slaves 文件里。[ps: hdfs-site.xml 里 dfs.hosts 若有指定的文件，则须添加上新增节点。]，配置 namenode 到该 datanode 的 ssh 免密码登录。
+
+在新节点上启动新增的 datanode ，集群节点数量增加。 
+
+新加入的节点，没有 block 的存储，集群整体负载不均衡。因此需要对 HDFS 负载均衡。[ps: 注意！Rebalance 是一个相当耗时的操作，并且在这个过程中，数据可能无法正常写入。]
+
+默认 balancer 的阈值为10%(各节点与集群总存储使用率相差不超过10%)，可将其设置为5%:
+
+```sh
+sbin/start-balancer.sh -threshold 5
+```
+
+默认的数据传输带宽较低，可设置为64MB，修改 hdfs-site.xml 的 `dfs.datanode.balance.bandwidthPerSec` 的值或者执行命令:
+
+```sh
+hdfs dfsadmin -setBalancerBandwidth 67108864
+```
+
+#### 纵向扩容
+
+将现有的 datanode 硬盘容量扩大。首先将目标 datanode 下线，在机器上新增硬盘，分区、格式化、挂载好后，配置 hdfs-site.xml 的 `dfs.datanode.data.dir` 添加新的本地目录，再重启该 datanode 即可。
+
+### HDFS 缩容
+#### 横向缩容
+
+namenode 的 hdfs-site.xml 的 `dfs.hosts.exclude` 指向的文件里，添加要退役的机器IP或 hostname 。
+
+在 namenode 执行命令刷新 namenode :
+
+```sh
+hdfs dfsadmin -refreshNodes
+```
+
+要退役的节点变为只读，存储的块会移动到其他 datanode 上。
+
+在 HDFS WebUI 页面(或者命令行 hdfs dfsadmin -report)观察、等待要退役的节点状态为 decommissioned ，再关闭该节点[ps: 如果服役的节点少于副本数，则无法退役成功。]，更新集群配置并同步(namenode 的 exclude 文件、slaves 文件，所有节点的 hosts 文件移除退役的节点)，如果有需要还可对 HDFS 再次进行负载均衡。
+
+#### 纵向缩容
+
+移除 datanode 上的硬盘不能直接移除。只能一块一块盘的操作，每移除一块磁盘，都会有若干副本丢失。
+
+首先停止目标 datanode ，修改它的 hdfs-site.xml 的 `dfs.datanode.data.dir` 移除目标本地目录，再重启 datanode 。此时检查集群数据副本状况，会提示 block 损坏的情况和副本的丢失情况。
+
+重新生成副本以达到复制因子，如执行命令:
+
+```sh
+# 设副本数为 3
+hdfs dfs -setrep 3 -R -w /
+```
+
+检查报告看有哪些目录的数据丢失，如果是无关数据则删除掉，如:
+
+```sh
+hdfs fsck 目录 -delete
+```
+
+每移除一块硬盘都要重复这个过程。

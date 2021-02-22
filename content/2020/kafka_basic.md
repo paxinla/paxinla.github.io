@@ -273,7 +273,7 @@ Record 中包含 Key 与 Value，Value 才是我们真正的消息本身，而 K
 + 在 Broker 内部会出现消息丢失。
 + 会出现写入到 Kafka 中的消息的顺序与生产顺序不一致的情况。
 
-1 值：同步发送。生产者发送消息给 Kafka，Broker 的 Partition Leader 在收到消息后马上发送成功 Ack（无需等等 ISR 中的 Follower 同步）。
+1 值：同步发送。生产者发送消息给 Kafka，Broker 的 Partition Leader 在收到消息后马上发送成功 Ack（无需等等 ISR 中的 Follower 同步）。[ps: 消息写入 PageCache 后就返回 Ack ，若此时 Leader 断电，消息会丢失。]
 
 生产者收到后知道消息发送成功，然后会再发送消息。如果一直未收到 Kafka 的 Ack，则生产者会认为消息发送失败，会重发消息。
 
@@ -281,7 +281,7 @@ Record 中包含 Key 与 Value，Value 才是我们真正的消息本身，而 K
 
 但是，即使收到了 ACK，也不能保证消息一定就发送成功了。故，这种情况，也可能会发生消息丢失的情况。
 
--1 值：同步发送。生产者发送消息给 Kafka，Kafka 收到消息后要等到 ISR 列表中的所有副本都同步消息完成后，才向生产者发送成功 Ack。
+-1 值：同步发送。生产者发送消息给 Kafka，Kafka 收到消息后要等到 ISR 列表中的所有副本都同步消息完成后，才向生产者发送成功 Ack。[ps: 消息从 PageCache 被刷到磁盘，只有磁盘中的数据才能被同步到副本的 PageCache 。]
 
 <div class="mynotation">
 <p>这里这个参数在 0.8.2.X 版本之前是通过 request.required.acks 参数设置的，现在可定义 Producer 时通过 acks 参数指定，acks的可选值为 [0,1,all,-1] ，其中 -1 和 all 等同。</p>
