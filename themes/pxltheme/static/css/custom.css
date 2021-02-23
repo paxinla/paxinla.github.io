@@ -263,16 +263,21 @@ h1#index_big_title {
   font-size: 18px;
 }
 
+.post h5 {
+  color: #d3869b;
+  font-size: 18px;
+}
+
 .post h5::before {
   content: '\1F3F2';
   margin-right: 5px;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .post h6::before {
   content: '\1F322';
   margin-right: 5px;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .post p {
