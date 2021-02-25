@@ -8,27 +8,19 @@
             </a>
           </h4>
         </div>
-        <!-- Gittalk Start -->
-        {% assets filters="jsmin", output="js/comments.js", "js/md5.min.js", "js/gitalk.min.js" %}
-        <script src="{{ SITEURL }}/{{ ASSET_URL }}"></script>
-        {% endassets %}
-        <div id="gitalk-container"></div>
-        <script type="text/javascript">
-          var gitalk = new Gitalk({
-            clientID: '52714ace34b650195df4',
-            clientSecret: 'bb418bdcebf3255e6f24d97103c04bca620ac0cd',
-            repo: 'paxinla.github.io',
-            owner: 'paxinla',
-            admin: ['paxinla'],
-            id: md5(location.pathname),
-            labels: ['blog_comment'],
-            title: document.title,
-            distractionFreeMode: false
-          })
-          
-          gitalk.render('gitalk-container')
+
+        <!-- utterances start -->
+        <div id="utter-container"></div>
+        <script src="https://utteranc.es/client.js"
+          repo="{{ GITHUB_USER }}/{{ GITHUB_REPO }}"
+          issue-term="url"
+          label="blog_comment"
+          theme="boxy-light"
+          crossorigin="anonymous"
+          async>
         </script>
-        <!-- Gittalk End -->
+        <!-- utterances end -->
+
       </div>
 {% endif %}
 </section>

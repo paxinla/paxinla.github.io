@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block canonical %}
+        <title>{{ page.title }}</title>
         <link href="{{ SITEURL }}/{{ page.save_as }}" rel="canonical" />
 {% endblock %}
 {% block nav_big_title %}

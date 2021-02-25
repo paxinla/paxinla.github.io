@@ -16,3 +16,5 @@ CommentId: X
 按 Ralph Kimball 自己在其著作[ref]<i>The Data Warehouse Toolkit: The Definitive Guide to Dimensional Modeling, Third Edition</i>. ISBN: 978-7-302-38553-0[/ref]里说的，“维度表属性相对稳定，但它们还是会发生变化的，尽管相当缓慢，属性值仍会随时间发生变化”。这里“缓慢变化”维的“缓慢”，应该是指与积累数据行较为快速的事实表比较，维度积累变化相对缓慢。所以叫“缓慢”变化维(Slowly Changing Dimension, SCD)，也有人译作“渐变维”的。
 
 通常说的“拉链表”，指的是处理缓慢变化维的典型技术中的“变化类型2”。
+
+有些场景下，某些维度数量巨大，被称为“大型维度”；或者维度变化速率加快，称为“快速变化维度”。应对这些维度有时会使用“变化类型4”即增加微型维度的技术，该技术还是属于 SCD 技术。

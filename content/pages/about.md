@@ -55,11 +55,12 @@ Charles 是一个略爱折腾的数据工程师，他关注数据库、数据工
 
 <h3 class="no-bullet">站点更新日志</h3>
 
-+ 20201127 - 迁移 CI 到 Github Actions 。
++ 20210225 - 迁移评论系统到 [utterances](https://utteranc.es) 。
++ 20201127 - 迁移 CI 到 [Github Actions](https://github.com/features/actions) 。
 + 20200422 - 启用博客网址二维码。
 + 20190723 - 启用 Live2D 黑猫。
-+ 20181229 - 博客评论系统启用 Gitalk 。
-+ 20180316 - 迁移 Hexo 到 Pelican ，魔改 CachesToCaches 主题，启用 Travis-CI 。
++ 20181229 - 博客评论系统启用 [Gitalk](https://gitalk.github.io/) 。
++ 20180316 - 迁移 [Hexo](https://hexo.io/zh-cn/) 到 [Pelican](https://blog.getpelican.com/) ，魔改 CachesToCaches 主题，启用 Travis-CI 。
 + 20140406 - 开启博客之旅，Hexo + Modernist 主题 + Github Pages 。
 
 <br/><span id="busuanzi_container_site_pv">本站总访问量:  <span id="busuanzi_value_site_pv"></span> 次</span><br/>

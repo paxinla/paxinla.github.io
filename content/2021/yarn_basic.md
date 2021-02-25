@@ -17,7 +17,7 @@ CommentId: X
 2. 扩展性。YARN 支持系统的线性扩展。
 3. 容错性。YARN 在保持原有计算框架的容错特性基础上，自身也有良好的容错性。
 4. 支持多租户，高资源利用率。
-5. 细粒度的资源分配。资源分配的对象是 Task ，不是 Job, Framework 或 Application 。这有利于高资源利用率、快速的响应时间和好的 locality 。
+5. 细粒度的资源分配。资源分配的对象是 Task ，不是 Job, Framework 或 Application 。这有利于高资源利用率、快速的响应时间和好的数据本地性。
 
 
 ## YARN 的架构

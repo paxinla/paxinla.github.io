@@ -12,7 +12,7 @@ Spark 处理流数据的模型就是用(微)批模拟流。
 
 Spark Streaming 是 Spark 上的流处理库，抽象出基于 RDD 的 Dstream 。
 
-Spark Structured Streaming 从 Spark 2.0 开始引入，它是基于 SparkSQL 的流处理引擎，抽象出基于 Dataset/DataFrame 的 Stream DataFrame 。[ps: Spark 2.0 时，Dataset/DataFrame 不局限于 SparkSQL ，成为 Spark 全局的主要 API 。]它与 Spark Streaming 最大的区别就是它用几乎同一套 Dataset/DataFrame 的 API 来处理流数据和批数据。
+[ref]<a href="http://spark.apache.org/docs/latest/structured-streaming-programming-guide.html">Spark Structured Streaming</a>[/ref] 从 Spark 2.0 开始引入，它是基于 SparkSQL 的流处理引擎，抽象出基于 Dataset/DataFrame 的 Stream DataFrame 。[ps: Spark 2.0 时，Dataset/DataFrame 不局限于 SparkSQL ，成为 Spark 全局的主要 API 。]它与 Spark Streaming 最大的区别就是它用几乎同一套 Dataset/DataFrame 的 API 来处理流数据和批数据。
 
 <p class="list-title">部分算子不能用在流数据上：</p>
 
@@ -25,16 +25,47 @@ Spark Structured Streaming 从 Spark 2.0 开始引入，它是基于 SparkSQL �
 - 不能直接对流 show ，只能用 Console sink 。
 - 流不能和流或静态数据作 full outer join 。流和流之间依照水位线有条件地 join 、流和静态数据之间的 join ，静态数据不能作为“驱动方”。
 
-Structured Streaming 的代码是先定义 Dataset/DataFrame 的产生、变换和输出，再 start 一个新的执行线程来触发执行之前的定义。在新的执行线程里需要<span class="emp-text">持续地</span>去发现新数据，进而<span class="emp-text">持续地</span>查询最新计算结果至输出，这个过程就是<span class="emp-text"> continous query (持续查询)</span>。
+Structured Streaming 的代码是先定义 Dataset/DataFrame 的产生、变换和输出，再 start 一个新的执行线程来触发执行之前的定义。在新的执行线程里需要<span class="emp-text">持续地</span>去发现新数据，进而<span class="emp-text">持续地</span>查询最新计算结果至输出，这个过程就是 continous query (<span class="emp-text">持续查询</span>)。
 
 
 ### SparkSession
 
-程序入口简化为只有一个 SparkSession 。
+在 Spark 2.x 种，程序入口简化为只有一个 SparkSession 。不用再显示创建 SparkConf, SparkContext 或 SQLContext ，它们都被封装在 SparkSession 中。
 
 ```scala
-val spark: SparkSession = SparkSession.builder.master("...").appName("example").getOrCreate()
+import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.functions._
+
+val spark: SparkSession = SparkSession
+                            .builder
+                            .master("...")
+                            .appName("example")
+                            .enableHiveSupport()
+                            .getOrCreate()
+
+// 可以读取嵌套结构
+import spark.implicits._
 ```
+
+```scala
+// 设定 Spark 的运行时配置属性
+spark.conf.set("spark.sql.shuffle.partitions", 10)
+spark.conf.set("spark.executor.memory", "6g")
+
+// 获取所有设定
+val configMap: Map[String, String] = spark.conf.getAll()
+```
+
+SparkSession 将 catalog 作为一个公开的公共实例，该实例的操作元数据的方法返回 Dataset 形式的结果。
+
+```scala
+// 访问所有的表和数据库
+spark.catalog.listDatabases.show(false)
+spark.catalog.listTables.show(false)
+```
+
+
+### Source 和 Sink
 
 Structured Streaming 通过 source 读取外部数据(不用像 Spark Streaming 里 StreamingContext 要设置 batch 的 duration )，通过 sink 写出到外部目标。Structured Streaming 对数据的容错一致性语义和 source/sink 息息相关。当 source 支持对已消费数据的定位和重放，且 sink 的输出操作是幂等时，Structured Streaming 可以做到 end-to-end exactly-once 语义。
 
@@ -66,7 +97,3 @@ someDF.writeStream
   .start()
 ```
 
-
-参考资料:
-
-+ [Structured Streaming Programming Guide](http://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)

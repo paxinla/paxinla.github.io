@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block canonical %}
+        <title>{{ article.title }}</title>
         <link href="{{ SITEURL }}/{{ article.url }}" rel="canonical" />
 {% endblock %}
 {% block nav_big_title %}
