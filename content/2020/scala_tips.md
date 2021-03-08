@@ -89,6 +89,7 @@ interp.repositories() ++= Seq(
 ## 代码片段
 
 ### 线程池
+#### Future
 
 ```scala
 // 使用 Java 的 ExecutorService
@@ -174,6 +175,57 @@ val failedInt: Future[Int] = Future.failed(
   new IllegalArgumentException("Boom!")
 )
 failedInt.fallbackTo(Future.successful(42))
+
+```
+
+#### Task
+
+```scala
+// 使用 Monix 的 ExecutorService
+import $ivy.{`io.monix::monix:3.2.2`}
+import monix.execution.Scheduler
+import monix.execution.Scheduler.Implicits.global
+import monix.eval.Task
+import monix.execution.CancelableFuture
+
+// 这里只是定义了运算，并未开始执行。
+val sumTask: Task[Int] = Task {
+  var sum = 0
+  for(i <- Range(1,100000)) sum = sum + i
+  sum
+}
+
+import scala.util.{Try, Success, Failure}
+
+// 开始执行运算
+val cancelable1 = sumTask.runOnComplete {
+  case Success(value) => println(value)
+  case Failure(ex) => println(s"ERR: ${ex.getMessage}")
+}
+
+cancelable1.cancel()
+
+val cancelable2 = sumTask.runAsync {
+  case Right(value) => println(value)
+  case Left(ex) => println(s"ERR: ${ex.getMessage}")
+}
+
+
+// Task 转换为 Future
+val future1 = sumTask.runToFuture
+
+// Future 转换为 Task
+val task1 = Task.deferFuture {
+  Future { println("Do something.") }
+}
+
+
+// 立即执行
+val sumTask: Task[Int] = Task.now {
+  var sum = 0
+  for(i <- Range(1,100000)) sum = sum + i
+  sum
+}
 
 ```
 

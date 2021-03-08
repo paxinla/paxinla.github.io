@@ -4,7 +4,9 @@ Category: 数据平台
 Tags: spark
 CommentId: X
 
+
 <!-- PELICAN_END_SUMMARY -->
+
 
 ## Spark 的流数据处理
 
@@ -12,7 +14,7 @@ Spark 处理流数据的模型就是用(微)批模拟流。
 
 Spark Streaming 是 Spark 上的流处理库，抽象出基于 RDD 的 Dstream 。
 
-[ref]<a href="http://spark.apache.org/docs/latest/structured-streaming-programming-guide.html">Spark Structured Streaming</a>[/ref] 从 Spark 2.0 开始引入，它是基于 SparkSQL 的流处理引擎，抽象出基于 Dataset/DataFrame 的 Stream DataFrame 。[ps: Spark 2.0 时，Dataset/DataFrame 不局限于 SparkSQL ，成为 Spark 全局的主要 API 。]它与 Spark Streaming 最大的区别就是它用几乎同一套 Dataset/DataFrame 的 API 来处理流数据和批数据。
+Spark Structured Streaming[ref]<a href="http://spark.apache.org/docs/latest/structured-streaming-programming-guide.html">Spark Structured Streaming</a>[/ref] 从 Spark 2.0 开始引入，它是基于 SparkSQL 的流处理引擎，抽象出基于 Dataset/DataFrame 的 Stream DataFrame 。[ps: Spark 2.0 时，Dataset/DataFrame 不局限于 SparkSQL ，成为 Spark 全局的主要 API 。]它与 Spark Streaming 最大的区别就是它用几乎同一套 Dataset/DataFrame 的 API 来处理流数据和批数据。
 
 <p class="list-title">部分算子不能用在流数据上：</p>
 
