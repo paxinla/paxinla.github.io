@@ -306,4 +306,20 @@ val dateTime5 : LocalDateTime = LocalDateTime.parse("2020-01-02 13:01:06", fmt1)
 
 ```
 
+### 集合
+
+```scala
+// 类似于 Clojure 的 (partition-by identity some-sequence)
+@tailrec
+def splitOnDifferent[A](s: List[A], acc: Seq[Seq[A]] = Seq()): Seq[Seq[A]] = {
+  s match {
+    case Nil => acc
+    case fst :: rest =>
+      val (part1, part2) = s.span( _ == fst )
+      splitOnDifferent(part2, acc :+ part1)
+  }
+}
+
+
+```
 
