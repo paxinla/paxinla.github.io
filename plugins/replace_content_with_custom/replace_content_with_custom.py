@@ -15,6 +15,9 @@ from pelican.readers import MarkdownReader
 PTN_PS = re.compile(r"\[ps:(.+?)\]")
 RPL_PS = r'<span class="sidenote note no-word-break invisible-sm">\1</span>'
 
+PTN_LIST = re.compile(r"\[list:(.+?)\]")
+RPL_LIST = r'<p class="list-title">\1</p>'
+
 PTN_MUSIC = re.compile(r"\[music:\s*(.+?)\s+link:\s*(.+?)\]")
 RPL_MUSIC = r'<div class="container-audio"><span class="music">\1</span><audio controls preload="none"><source src="\2">Your browser dose not Support the audio Tag</audio></div>'
 
@@ -50,6 +53,10 @@ def repl_side_ps(instr):
     return PTN_PS.sub(RPL_PS, instr)
 
 
+def repl_list_title(instr):
+    return PTN_LIST.sub(RPL_LIST, instr)
+
+
 def repl_music_player(instr):
     return PTN_MUSIC.sub(RPL_MUSIC, instr)
 
@@ -78,7 +85,7 @@ def gen_new_read(func):
         new_path = os.path.join(tmpdir, "fff")
         old_src_path = args[1]
 
-        replacers = [repl_code_block, repl_side_ps, repl_music_player, repl_friend_link]
+        replacers = [repl_code_block, repl_side_ps, repl_list_title, repl_music_player, repl_friend_link]
         try:
             with open(old_src_path, "r", encoding="utf8") as rf, open(new_path, 'w', encoding="utf8") as wf:
                 content = rf.read()
