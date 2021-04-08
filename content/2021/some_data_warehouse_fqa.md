@@ -93,13 +93,13 @@ CommentId: X
 ### 常见质量衡量指标
 
 + accuracy（准确度）: 反映了预测器对整个样本的判定能力(能将正的判定为正，负的判定为负)。衡量预测的正确性。
-  $$ Accuracy = \frac{True Positive + True Negative}{True Positive + True Negative + False Positive + False Negative} $$
+  $$ Accuracy = \frac{\text{True Positive} + \text{True Negative}}{\text{True Positive} + \text{True Negative} + \text{False Positive} + \text{False Negative}} $$
 
 + precision（精确度/查准率）: 反映了被预测的正例中真正的正例样本的比重。衡量预测是正确的概率。
-  $$ Precision = \frac{True Positive}{True Positive + False Positive} $$
+  $$ Precision = \frac{\text{True Positive}}{\text{True Positive} + \text{False Positive}} $$
 
 + recall（召回率/查全率）: 反映了被正确判定的正例占总的正例的比重。是 precision 的反面。
-  $$ Recall = \frac{True Positive}{True Positive + False Negative} $$
+  $$ Recall = \frac{\text{True Positive}}{\text{True Positive} + \text{False Negative}} $$
 
 + F1 score : precision 和 recall 的加权平均值，最佳值为1、最差值为0。对分布不均匀的数据集，常用来代替 accuracy 。
   $$ F1 = \frac{2 * precision * recall}{precision + recall} $$
