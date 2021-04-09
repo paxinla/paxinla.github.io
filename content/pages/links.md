@@ -7,7 +7,7 @@ Save_as: links.html
 
 我猜你想:
 
-1. ⚠️<span style="color: #de1e4c;">申请友链。</span>申请添加友链请给我<a href="mailto:aksura@2048.email?subject=Request for Blog Friend Link" style="color:#921b51;text-decoration:none;border:none;">发邮件</a>，申请前请先上架本站链接。
+1. ⚠️<span style="color: #de1e4c;">申请友链。</span>申请添加友链请给我<a href="mailto:aksura@2048.email?subject=Request for Blog Friend Link" style="color:#921b51;text-decoration:none;border:none;">发邮件</a>，格式如下示例。申请前请先上架本站链接。
 ```python
 网站名字: 隐者の书庭
 网站链接: https://paxinla.github.io
