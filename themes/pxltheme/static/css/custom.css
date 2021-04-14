@@ -172,6 +172,37 @@ hr.dotty-split-line {
   margin: 40px 0;
 }
 
+hr.circle-split-line {
+  background: url(/theme/images/hrule.svg) center center no-repeat transparent;
+  border: 0;
+  display: inline-block;
+  height: 1.5rem;
+  width: 100%;
+  margin: 0.5em 0 0.5em 0;
+}
+
+article {
+  display: block;
+  background-color: white;
+}
+
+article > header {
+  box-shadow: 1px 1px 5px 1px #1f1f1f;
+  display: block;
+  margin: 0em;
+  padding: 1em;
+  border: 1px solid transparent;
+  border-radius: 3px;
+}
+
+header.blue-star {
+  background-color: #3973ac;
+  background-image: url("/theme/images/transparent-star.png"), url("/theme/images/transparent-star.png");
+  background-position: 0 0, 16px 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 
 /* 正文区域标题部分 */
 .heading-font {
@@ -373,7 +404,12 @@ a.current-page-link {
 }
 
 .page-link {
-  background-color: rgb(229,211,170);
+  background-color: #ebf0f6;
+}
+
+.page-link:hover {
+  background-color: #283149;
+  color: #ebf0f6;
 }
 
 /*左侧导航栏*/
@@ -533,6 +569,13 @@ code {
 
 code[class*="language-"], pre[class*="language-"] {
   font-family: 'Dejavu Sans Mono', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+}
+
+pre.in-article {
+ color: white;
+ font-weight: 600;
+ text-shadow: 0px 2px 5px rgba(0,0,0,0.8);
+ text-rendering: optimizeLegibility; 
 }
 
 .linenos {
@@ -803,3 +846,8 @@ div.mynotation p::before {
   line-height: 1.5em;
 }
 
+.continue-to-read {
+  color: #008c95;
+  font-weight: 501;
+  font-size: 16px;
+}
