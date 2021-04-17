@@ -173,7 +173,7 @@ hr.dotty-split-line {
 }
 
 hr.circle-split-line {
-  background: url(/theme/images/hrule.svg) center center no-repeat transparent;
+  background: url(/theme/images/hrule.svg) 43% center no-repeat transparent;
   border: 0;
   display: inline-block;
   height: 1.5rem;
@@ -410,6 +410,17 @@ a.current-page-link {
 .page-link:hover {
   background-color: #283149;
   color: #ebf0f6;
+}
+
+.blink-cursor {
+  display: inline-block;
+  width: 10px;
+  height: 1rem;
+  background: #fe5186;
+  margin-left: 5px;
+  border-radius: 1px;
+  -webkit-animation: cursor 1s infinite;
+  animation: cursor 1s infinite;
 }
 
 /*左侧导航栏*/
