@@ -143,7 +143,11 @@ object HelloServer extends gRPCServer {
   }
 
   def main(args: Array[String]): Unit = {
-    val service = HelloWorldGrpc.bindService(new HelloService, ExecutionContext.global)
+    val service = HelloWorldGrpc.bindService(
+      new HelloService,
+      ExecutionContext.global
+    )
+
     runServer(service)
   }
 }
@@ -179,9 +183,13 @@ object HelloClient {
     import scala.concurrent.ExecutionContext.Implicits.global
     futureResponse.foreach( greeting => println(greeting.message) )
 
-    val greeter2 = ToBeGreeted(person = Some(Person("Midori")), msg = Some("How are you?"))
+    val greeter2 = ToBeGreeted(
+      person = Some(Person("Midori")),
+      msg = Some("How are you?")
+    )
 
-    val syncStub: HelloWorldGrpc.HelloWorldBlockingClient = HelloWorldGrpc.blockingStub(channel)
+    val syncStub: HelloWorldGrpc.HelloWorldBlockingClient = 
+      HelloWorldGrpc.blockingStub(channel)
     val response: Greeting = syncStub.sayHello(greeter2)
 
     println(s"${response.message}")
@@ -229,7 +237,9 @@ object ClientSample extends ScalapbSample {}
 在 GRPCExample 下执行 `mill -i ServerSample.run` 就会编译并执行服务端代码[ps: 在 Windows 上这个 `-i` 是不可缺少的。]，如果看到类似如下警告信息:
 
 ```
-F:\testscala\GRPCExample\out\mill\scalalib\ZincWorkerModule\worker\dest\2.13.3\unpacked\xsbt\DelegatingReporter.scala:166: warning: match may not be exhaustive.
+F:\testscala\GRPCExample\out\mill\scalalib\ZincWorkerModule\worker\dest\
+2.13.3\unpacked\xsbt\DelegatingReporter.scala:166: warning: 
+match may not be exhaustive.
 It would fail on the following inputs: ERROR, INFO, WARNING
     sev match {
     ^

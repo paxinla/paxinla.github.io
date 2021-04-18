@@ -111,6 +111,32 @@
   animation: rotating 3s linear infinite
 }
 
+
+@-webkit-keyframes cursor {
+ 0% {
+  opacity:0
+ }
+ 50% {
+  opacity:1
+ }
+ to {
+  opacity:0
+ }
+}
+
+@keyframes cursor {
+ 0% {
+  opacity:0
+ }
+ 50% {
+  opacity:1
+ }
+ to {
+  opacity:0
+ }
+}
+
+
 /* 各种变量 */
 :root {
   --list-item-color: blue;
@@ -364,6 +390,7 @@ p.list-title {
 
 .page .content ul li, .page .content-bottom ul li, .page .content-top ul li {
   list-style: none;
+  padding-left: 1rem;
 }
 
 .page .content ul li::before, .page .content-bottom ul li::before, .page .content-top ul li::before {
@@ -416,7 +443,7 @@ a.current-page-link {
   display: inline-block;
   width: 10px;
   height: 1rem;
-  background: #fe5186;
+  color: #fe5186;
   margin-left: 5px;
   border-radius: 1px;
   -webkit-animation: cursor 1s infinite;
