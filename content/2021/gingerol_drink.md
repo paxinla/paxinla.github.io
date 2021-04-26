@@ -4,9 +4,10 @@ Category: 生活
 Tags: 姜饮
 CommentId: X
 
-## 梨叔的姜饮
 
 <!-- PELICAN_END_SUMMARY -->
+
+## 养生姜饮
 
 不要空腹喝，不建议晚餐后服用或大剂量服用。
 

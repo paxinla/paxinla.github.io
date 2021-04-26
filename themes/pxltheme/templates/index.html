@@ -62,7 +62,7 @@
    <!-- Paginator -->
     {% if articles_page and articles_paginator.num_pages > 1 %}
     <div class="pagination">
-        <ul class="pagination">
+        <ul class="pagination" style="padding-left:0;">
             {% if articles_page.has_previous() %}
                 {% set num = articles_page.previous_page_number() %}
                 <li class="page-item"><a class="page-link" href="{{ SITEURL }}/{{ page_name }}{{ num if num > 1 else '' }}.html">&larr; 上一页</a></li>

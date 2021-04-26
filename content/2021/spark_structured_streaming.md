@@ -87,6 +87,17 @@ Structured Streaming 的窗口使用的是数据时间 event time 。
 两个流在 join 时，“驱动方”需要设置 watermark ，关联条件中需要“被驱动方”设置好 event time + accepted delay time 。
 
 
+### Trigger
+
+Trigger 的机制是用来指示 StreamingQuery 多久生成一次结果的策略。[ps: Structured Streaming 目前没有背压机制，为防止单批次 query 查询的数据源数据量过大，可通过参数 maxOffsetsPerTrigger 来设置单个批次允许抓取的最大消息条数。]
+
+Trigger 有3个实现类:
+
++ OneTimeTrigger : 一次性 query 。在一个 StreamingQuery 中只处理一个 batch 的数据，然后终止这个 query 。
++ ProcessingTime(默认) : 根据 processing time 定时触发一个 query 。如果 interval 的值是 0 ，则尽快跑完zhege query 。
++ ContinuousTrigger : 持续处理流数据，根据 interval 异步地执行 checkpoint 。
+
+
 ### Checkpoint
 
 检查点使 Structured Streaming 处理过程失败后重新开始时，获知上个检查点时处理状态。检查点功能需要在 HDFS 上使用一个目录。
@@ -98,4 +109,26 @@ someDF.writeStream
   .format("memory")
   .start()
 ```
+
+Structured Streaming 默认所有的作业总是要有 Checkpoint 的。每一个 Structured Streaming 作业都应当设置 checkpointLocation ，否则作业就会尝试 HDFS 的默认路径当作 checkpointLocation ，这往往会导致作业启动失败，报无权限写某个路径的错误。
+
+Structured Streaming 是不支持对同一个流做多次聚合的[ps: 在 append 模式下，多个 flapMapGroupsWithState 是可以进行连续的多次聚合操作的(注意设置 withWatermark)。]，比如要做多维度的分析时，就不能对流多次分组。因此多聚合往往需要多个 query 。每个 query 都应该单独设置 checkpointLocation ，query 的 id 是记录在 checkpointLocation 里的。
+
+可以为 ProcessingTime 指定一个时间或使用指定时间的 ContinuousTrigger ，固定生成 checkpoint 的周期以避免 checkpoint 生成过于频繁，减轻 NameNode 的压力。
+
+参数 `spark.sql.streaming.minBatchesToRetain` 为必须保留并使其可恢复的最小批次数，默认为 100 。可调小保留的 batch 的次数，比如调小到 20 ，这样 checkpoint 小文件数量整体可以减少到原来的 20% 。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
