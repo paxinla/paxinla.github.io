@@ -422,7 +422,8 @@ p.list-title {
   direction: ltr;
 }
 
-li.page-item {
+
+.page .content ul li.page-item, .page .content-bottom ul li.page-item, .page .content-top ul li.page-item {
   padding-left: 0;
 }
 

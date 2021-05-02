@@ -13,7 +13,15 @@ CommentId: X
 
 ## 什么是 Avro
 
-[Apache Avro](http://avro.apache.org/)
+[Apache Avro](http://avro.apache.org/) 是一个数据序列化的系统。 Avro 可以将数据结构或对象转化成便于存储或传输的格式。 Avro 设计之初就用来支持数据密集型应用，适合于远程或本地大规模数据的存储和交换。
+
+Avro 提供了:
+
++ 丰富的数据结构类型。
++ 快速可压缩的二进制数据形式，对数据二进制序列化后可以节约数据存储空间和网络传输带宽。
++ 存储持久数据的文件容器。
++ 可以实现远程过程调用RPC。
++ 简单的动态语言结合功能。
 
 
 ## 使用 Avro
@@ -258,12 +266,14 @@ trait ScalaAvroSample extends ScalaModule {
   }
 }
 
-// java -jar lib\avro-tools-1.10.2.jar compile protocol ServerSample\resources\hello.avpr ServerSample\src
+// java -jar lib\avro-tools-1.10.2.jar compile protocol \
+//    ServerSample\resources\hello.avpr ServerSample\src
 object ServerSample extends ScalaAvroSample {
   override def projectRoot = os.pwd / 'ServerSample
 }
 
-// java -jar lib\avro-tools-1.10.2.jar compile protocol ServerSample\resources\hello.avpr ClientSample\src
+// java -jar lib\avro-tools-1.10.2.jar compile protocol \
+//    ServerSample\resources\hello.avpr ClientSample\src
 object ClientSample extends ScalaAvroSample {
   override def projectRoot = os.pwd / 'ClientSample
 }
