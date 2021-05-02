@@ -323,3 +323,18 @@ def splitOnDifferent[A](s: List[A], acc: Seq[Seq[A]] = Seq()): Seq[Seq[A]] = {
 
 ```
 
+### 系统环境变量
+
+```scala
+// 用 Scala 的 sys 对象
+sys.env.get("PWD")
+
+// 用 Scala 的 Properties 对象
+scala.util.Properties.envOrElse("PWD", "undefined")
+
+scala.util.Properties.envOrNone("PWD")
+
+// 用 Java 的 System 对象
+System.getenv("PWD")
+
+```
