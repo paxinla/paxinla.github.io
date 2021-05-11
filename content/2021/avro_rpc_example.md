@@ -36,14 +36,14 @@ Apache Avro 虽然支持多种语言，但是并不原生支持 Scala 。我在�
 <article><header><pre>
 AvroExample
   |
-  +-- ServerSample
+  +-- ServerExample
   |     |-- resources
   |     |     +-- hello.avpr
   |     +-- src
   |           |-- RPCServer.scala
   |           +-- HelloServer.scala
   |     
-  +-- ClientSample
+  +-- ClientExample
   |     |-- resources
   |     |     +-- hello.avpr
   |     +-- src
@@ -240,18 +240,18 @@ build.sc 内容:
 import mill._
 import mill.scalalib._
 
-trait ScalaAvroSample extends ScalaModule {
+trait ScalaAvroExample extends ScalaModule {
   def scalaVersion = "2.13.3"
-  def AvroVersion = "1.10.2"
+  def avroVersion = "1.10.2"
 
   override def ivyDeps = T {
     super.ivyDeps() ++ Agg(
-      ivy"org.apache.avro:avro:$AvroVersion",
-      ivy"org.apache.avro:avro-ipc-netty:$AvroVersion"
+      ivy"org.apache.avro:avro:$avroVersion",
+      ivy"org.apache.avro:avro-ipc-netty:$avroVersion"
     )
   }
 
-  def avroToolsJar = os.pwd / 'lib / s"avro-tools-${AvroVersion}.jar"
+  def avroToolsJar = os.pwd / 'lib / s"avro-tools-${avroVersion}.jar"
   def sharedAvroProtocol = "hello.avpr"
   def projectRoot = os.pwd
   def avprPath = projectRoot / 'resources / sharedAvroProtocol
@@ -267,24 +267,24 @@ trait ScalaAvroSample extends ScalaModule {
 }
 
 // java -jar lib\avro-tools-1.10.2.jar compile protocol \
-//    ServerSample\resources\hello.avpr ServerSample\src
-object ServerSample extends ScalaAvroSample {
-  override def projectRoot = os.pwd / 'ServerSample
+//    ServerExample\resources\hello.avpr ServerExample\src
+object ServerExample extends ScalaAvroExample {
+  override def projectRoot = os.pwd / 'ServerExample
 }
 
 // java -jar lib\avro-tools-1.10.2.jar compile protocol \
-//    ServerSample\resources\hello.avpr ClientSample\src
-object ClientSample extends ScalaAvroSample {
-  override def projectRoot = os.pwd / 'ClientSample
+//    ServerExample\resources\hello.avpr ClientExample\src
+object ClientExample extends ScalaAvroExample {
+  override def projectRoot = os.pwd / 'ClientExample
 }
 ```
 
 
 ### 测试
 
-首先，在 AvroExample 下执行 `mill -i ServerSample.genAvro`，在 `ServerSample/src` 下就会生成对应 avro 定义的 Java 代码。[ps: 在 Windows 上这个 `-i` 是不可缺少的。]再执行 `mill -i ServerSample.run` 就会编译并执行服务端代码。
+首先，在 AvroExample 下执行 `mill -i ServerExample.genAvro`，在 `ServerExample/src` 下就会生成对应 avro 定义的 Java 代码。[ps: 在 Windows 上这个 `-i` 是不可缺少的。]再执行 `mill -i ServerExample.run` 就会编译并执行服务端代码。
 
-在 AvroExample 下执行 `mill -i ClientSample.genAvro`，在 `ClientSample/src` 下就会生成对应 avro 定义的 Java 代码。再执行 `mill -i ClientSample.run` 就会编译并执行客户端代码。可以客户端调用 sayHello 的结果：
+在 AvroExample 下执行 `mill -i ClientExample.genAvro`，在 `ClientExample/src` 下就会生成对应 avro 定义的 Java 代码。再执行 `mill -i ClientExample.run` 就会编译并执行客户端代码。可以客户端调用 sayHello 的结果：
 
 ```
 Hello Doris, remote greetings!

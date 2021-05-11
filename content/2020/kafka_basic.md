@@ -188,7 +188,7 @@ ISR：
 
 AR=ISR+OSR
 
-Offset：偏移量。每条消息都有一个当前 Partition 下唯一的 64 字节的 Offset，它是相当于当前分区第一条消息的偏移量。
+Offset：偏移量。每条消息都有一个当前 Partition 下唯一的 64 字节的 Offset，它是相对于当前分区第一条消息的偏移量。
 
 Broker Controller：Kafka集群的多个 Broker 中，有一个会被选举 Controller，负责管理整个集群中 Partition 和 Replicas 的状态。
 

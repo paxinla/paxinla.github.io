@@ -38,14 +38,14 @@ gRPC 虽然支持多种语言，但是并不原生支持 Scala 。[ScalaPB](http
 <article><header><pre>
 GRPCExample
   |
-  +-- ServerSample
+  +-- ServerExample
   |     |-- protobuf
   |     |     +-- hello.proto
   |     +-- src
   |           |-- gRPCServer.scala
   |           +-- HelloServer.scala
   |     
-  +-- ClientSample
+  +-- ClientExample
   |     |-- protobuf
   |     |     +-- hello.proto
   |     +-- src
@@ -213,7 +213,7 @@ import $ivy.`com.lihaoyi::mill-contrib-scalapblib:$MILL_VERSION`
 import mill.contrib.scalapblib._
 
 
-trait ScalapbSample extends ScalaPBModule {
+trait ScalapbExample extends ScalaPBModule {
   def scalaVersion = "2.13.3"
   def scalaPBVersion = "0.9.1"
   def scalaPBFlatPackage = true
@@ -226,15 +226,15 @@ trait ScalapbSample extends ScalaPBModule {
   }
 }
 
-object ServerSample extends ScalapbSample {}
+object ServerExample extends ScalapbExample {}
 
-object ClientSample extends ScalapbSample {}
+object ClientExample extends ScalapbExample {}
 ```
 
 
 ### 测试
 
-在 GRPCExample 下执行 `mill -i ServerSample.run` 就会编译并执行服务端代码[ps: 在 Windows 上这个 `-i` 是不可缺少的。]，如果看到类似如下警告信息:
+在 GRPCExample 下执行 `mill -i ServerExample.run` 就会编译并执行服务端代码[ps: 在 Windows 上这个 `-i` 是不可缺少的。]，如果看到类似如下警告信息:
 
 ```
 F:\testscala\GRPCExample\out\mill\scalalib\ZincWorkerModule\worker\dest\
@@ -248,7 +248,7 @@ warning: 4 deprecations
 
 这是 mill 的问题，不影响执行结果。如果不想看到这个信息，可以修改 DelegatingReporter.scala 文件，在上面报警告这个地方，为 sev 的模式匹配里添加一条默认的匹配[ps: 比如：`case _  => WARNING` 。]即可。
 
-在 GRPCExample 下执行 `mill -i ClientSample.run` 就会编译并执行客户端代码。可以客户端调用 sayHello 的结果：
+在 GRPCExample 下执行 `mill -i ClientExample.run` 就会编译并执行客户端代码。可以客户端调用 sayHello 的结果：
 
 ```
 Hello Midori, How are you?
