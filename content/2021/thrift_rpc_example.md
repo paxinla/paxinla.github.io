@@ -13,7 +13,14 @@ CommentId: X
 
 ## 什么是 Thrift
 
-[Apache Thrift](https://thrift.apache.org/)
+[Apache Thrift](https://thrift.apache.org/) 是一种接口描述语言和二进制通讯协议，它被用来定义和创建跨语言的服务。它最初是由 Facebook 为“大规模跨语言服务开发”而开发的，现在是 Apache 的开源项目。
+
+Thrift 的特点:
+
++ 使用二进制格式，跨语言序列化的代价较低。
++ 数据结构与传输表现分离，支持多种消息格式。
++ 支持丰富的数据类型，性能优异。
++ 很多开源项目都支持 thrift 。
 
 
 ## 使用 Thrift
@@ -84,6 +91,7 @@ package learn.thrift.server
 import java.net.InetSocketAddress
 
 import org.apache.thrift.TProcessor
+import org.apache.thrift.protocol.TBinaryProtocol
 import org.apache.thrift.server.TServer
 import org.apache.thrift.server.TServer.Args
 import org.apache.thrift.server.TSimpleServer
@@ -97,9 +105,11 @@ trait RPCServer {
     address: InetSocketAddress
   ): Unit = {
     val serverTransport: TServerTransport = new TServerSocket(address)
-    val server: TServer = new TSimpleServer(
-      new Args(serverTransport).processor(processor)
-    )
+    val serverArgs: Args = new Args(serverTransport)
+    serverArgs.processor(processor)
+    serverArgs.protocolFactory(new TBinaryProtocol.Factory())
+    // TSimpleServer 简单地阻塞IO，一次只能接收和处理一个 Socket 连接。
+    val server: TServer = new TSimpleServer(serverArgs)
     println("Start Server.") 
 
     Runtime.getRuntime.addShutdownHook(new Thread() {
