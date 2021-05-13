@@ -783,7 +783,9 @@ sup a::after {
 
 .category-tag-date {
   margin-bottom: 0;
-  margin-right: -250px;
+  margin-right: -120px;
+  color: #a02512;
+  font-weight: 300;
 }
 
 .emp-text {

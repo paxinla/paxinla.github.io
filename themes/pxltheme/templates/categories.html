@@ -4,7 +4,12 @@
         <link href="{{ SITEURL }}/categories.html" rel="canonical" />
 {% endblock %}
 {% block content %}
-<h3>Categories</h3>
+<h1 class="title-blue">
+    <div>
+        <span itemprop="name">Categories</span>
+    </div>
+</h1>
+<br/>
 <ul class="categories-list">
   {%- for category, articles in categories|sort %}
       <li><a href="{{ SITEURL }}/{{ category.url }}">{{ category }}</a> ({{ articles|count }})</li>

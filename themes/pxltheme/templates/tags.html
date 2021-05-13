@@ -4,7 +4,12 @@
         <link href="{{ SITEURL }}/tags.html" rel="canonical" />
 {% endblock %}
 {% block content %}
-<h3>Tags</h3>
+<h1 class="title-blue">
+    <div>
+        <span itemprop="name">Tags</span>
+    </div>
+</h1>
+<br/>
 <ul class="tags-list">
   {%- for tag, articles in tags|sort %}
       <li><a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a> ({{ articles|count }})</li>
