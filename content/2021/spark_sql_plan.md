@@ -4,10 +4,14 @@ Category: 数据平台
 Tags: spark
 CommentId: X
 
+
+统计信息在 join 时很重要[ref]David Vrba Ph.D. Spark SQL Beyond Official Documentation. DATA+AI SUMMIT EUROPE 2020[/ref]。
+
+
 <!-- PELICAN_END_SUMMARY -->
 
 
-统计信息在 join 时特别重要[ref]David Vrba Ph.D. Spark SQL Beyond Official Documentation. DATA+AI SUMMIT EUROPE 2020[/ref]。相关参数:
+相关参数:
 
 + spark.sql.autoBroadcastJoinThreshold : 是否使用 BHJ ，默认10MB。
 + spark.sql.cbo.joinRecorder.enabled: 优化多表 join ，默认 false 。

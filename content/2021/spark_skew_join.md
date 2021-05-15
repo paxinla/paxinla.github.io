@@ -4,12 +4,12 @@ Category: 数据平台
 Tags: spark
 CommentId: X
 
-<!-- PELICAN_END_SUMMARY -->
-
-
 ## 什么是数据倾斜
 
 简单地说，数据倾斜就是分区的数据不均衡地分布。很多数据天然就是易“倾斜”的，比如国家的人口、互联网上网站的访问量等等。
+
+
+<!-- PELICAN_END_SUMMARY -->
 
 
 ## Spark 中的 skew join
