@@ -1,6 +1,6 @@
 Title: 浅谈数据漂移
 Date: 2020-04-21 11:04:14
-Category: 数据仓库
+Category: 数据管理
 Tags: data-warehouse, etl
 CommentId: X
 

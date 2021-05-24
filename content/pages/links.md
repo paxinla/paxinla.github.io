@@ -17,7 +17,7 @@ Save_as: links.html
 2. <span style="color: #25a45a;">查看是否有你的链接？</span>除了你的网站出现故障或下架了本博客链接等意外事件，本页将永远保存你的链接。
 3. <span style="color: #25a45a;">随便看看？</span>欢迎鸭，坐下来喝杯 🍵 再走吧~
 
-<div class="container-audio" style="text-align:center;margin-top:1.5rem;margin-bottom:2rem;"><span class="music">スペルビア帝国/夜</span><audio controls preload="none"><source src="http://music.163.com/song/media/outer/url?id=565975068"/>Your browser dose not Support the audio Tag</audio></div>
+<div class="container-audio" style="text-align:center;margin-top:1.5rem;margin-bottom:2rem;"><span class="music">スペルビア帝国/夜</span><audio controls preload="none"><source src="http://music.163.com/song/media/outer/url?id=565975068"/>~这里是一首好听的曲子，但你的浏览器不支持 audio 标签，很遗憾你听不到它~</audio></div>
 
 <div style="background: url(/theme/images/ornate-border.svg) center top no-repeat transparent; background-size: auto; background-size: contain; height: 1.5rem; width: 100%; -webkit-transform: rotate(180deg); transform: rotate(180deg); margin-top: 1rem; margin-bottom: 1rem;"></div>
 

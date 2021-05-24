@@ -11,6 +11,9 @@ CommentId: X
 <!-- PELICAN_END_SUMMARY -->
 
 
+<div class="container-audio" style="text-align:center;margin-top:1.5rem;margin-bottom:2rem;"><span class="music">Eau de Vie</span><audio controls preload="none"><source src="http://music.163.com/song/media/outer/url?id=530340"/>~这里是一首好听的曲子，但你的浏览器不支持 audio 标签，很遗憾你听不到它~</audio></div>
+
+
 发烧，体温 38 ℃ 以上，选“对乙酰氨基酚”或“布洛芬”。
 
 咳嗽有痰，可选些化痰药，但一般不吃止咳药。
@@ -23,3 +26,5 @@ CommentId: X
 
 
 以上都是针对的“普通感冒”。如果是“流行性感冒”，除了一般症状，还伴有腹泻呕吐、高烧不退、浑身酸痛、厌食恶心等严重情况，那可能需要马上去医院就医。
+
+
