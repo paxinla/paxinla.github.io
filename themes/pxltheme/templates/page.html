@@ -36,5 +36,13 @@
     </div>
 </div>
 
+
+{% if page.save_as == "links.html" %}
+<div class="content-split-comment"><hr class="dotty-split-line" /></div>
+<div class="content-bottom">
+    {% include "comments.html" %}
+</div>
+{% endif %}
+
 <div class="content-split-comment"><hr/></div>
 {% endblock %}

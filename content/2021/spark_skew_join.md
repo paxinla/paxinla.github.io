@@ -16,7 +16,7 @@ CommentId: X
 
 在 Spark 中，像 SortMergeJoin/ShuffleHashJoin 这样要求输入数据分区的，容易受数据倾斜的影响；像 BroadcastHashJoin 就比较不容易受数据倾斜的影响，因为它不要求输入数据分区，但它要求 join 的其中一方数据集要足够小。skew join 可以认为是混合使用这两类 join 的的策略。
 
-skew join 是“缓解”了数据倾斜的影响，并不是彻底“解决”了数据倾斜的特征。目前 Spark 实现 skew join 的主要策略有：skew hint, runtime skew mitigation 及 customized AQE skew mitigation [ref]Suganthi Dewakar & Guanzhou(Tony)Xu. Skew Mitigation For Facebook's Patabyte-Scale Joins. DATA+AI SUMMIT EUROPE 2020[/ref]。
+skew join 是“缓解”了数据倾斜的影响，并不是彻底“解决”了数据倾斜的特征。目前 Spark 实现 skew join 的主要策略有：skew hint, runtime skew mitigation 及 customized AQE skew mitigation [ref]Suganthi Dewakar & Guanzhou(Tony)Xu. Skew Mitigation For Facebook's Patabyte-Scale Joins. DATA+AI SUMMIT EUROPE,2020.[/ref]。
 
 
 ### Skew hint
