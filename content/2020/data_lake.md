@@ -33,7 +33,7 @@ CommentId: X
 ## 现有的数据湖产品
 ### 开源产品
 
-目前，最有名的开源数据湖产品有 Netflix 的 Apache Iceberg、Databricks 的 Delta Lake 和 Uber 的 Apache Hudi 。
+目前，最有名的开源数据湖产品有 Netflix 的 [Apache Iceberg](https://iceberg.apache.org/) 、Databricks 的 [Delta Lake](https://docs.delta.io/latest/index.html) 和 Uber 的 [Apache Hudi](https://hudi.apache.org/) 。
 
 常见的组件还有:
 
@@ -52,6 +52,117 @@ Data Lake as a Service ，就是云服务商提供的数据湖服务。如 Snowf
 
 有的企业不希望将自己的数据直接存储到云服务商那里，会选择自己建立数据湖服务。这种情况下，通常自建的数据湖要么指的就是 Hadoop Data Lake (什么都往HDFS上扔)，要么就是某种 RDBMS+Hadoop/Spark/Flink+MPP 的混合架构。相对于使用 DaaS ，自建服务在数据治理、安全管理上需要企业自己的技术团队所花费[ps: 但是自建服务花的钱可能会更少 ^0^]的时间精力通常会更多。
 
+## 业界的看法
+
+<p class="list-title">Forest Rim Technology 数据团队[ref]<a href="https://www.iteblog.com/archives/9963.html">Data Lakehouse 的演变</a>[/ref]认为当前数据湖/数据仓库有三个常见问题:</p>
+
++ 缺乏开放性 : 数据仓库将数据转换为专有格式，这增加了将数据或工作负载迁移到其他系统的成本。由于数据仓库主要提供仅 SQL 的访问模式，因此很难运行其他分析引擎，如机器学习系统。此外，使用 SQL 直接访问数据仓库中的数据非常昂贵和缓慢，这使得与其他技术的集成变得非常困难。
++ 对机器学习的支持有限 : 尽管有很多关于 ML 和数据管理融合的研究，但没有一个领先的机器学习系统，如 TensorFlow、PyTorch 和 XGBoost，能够很好地在仓库之上工作。与提取少量数据的 BI 系统不同，ML 系统使用复杂的非 SQL 代码处理大型数据集。对于这些用例，仓库供应商建议将数据导出到文件中，这进一步增加了系统的复杂性。
++ 数据湖和数据仓库之间的强制权衡 : 超过90%的企业数据存储在数据湖中，这是因为数据湖使用廉价存储，从开放直接访问文件到低成本的灵活性。为了克服数据湖缺乏性能和质量的问题，企业将数据湖中的一小部分数据 ETL 到下游数据仓库，用于最重要的决策支持和 BI 应用。这种双系统架构需要对数据湖和数据仓库之间的 ETL 数据进行持续的工程处理。每个 ETL 步骤都有可能导致失败或引入 bug，从而降低数据质量，同时保持数据湖和数据仓库的一致性是非常困难和昂贵的。除了需要为持续的 ETL 支付费用外，用户还要为复制到仓库的数据支付两倍的存储成本。
+
+
+<div class="mynotation">
+<p>现代数仓主要使用 SQL 访问，但并非仅支持 SQL 访问。使用 SQL 访问数仓中经过清洗整合的数据(有数仓本身引擎对海量数据处理的支持)是否比直接访问其他地方的裸数据更“昂贵和缓慢”，我对此持保留意见。目前包括机器学习系统在内的很多系统不能很好地在数仓上工作，这到底有多少是数仓的问题，多少是这些系统的问题，不能一概而论。</p>
+</div>
+
+Data Lakehouse 通过[ref]<a href="https://databricks.com/blog/2021/05/19/evolution-to-the-data-lakehouse.html">Evolution to the Data Lakehouse</a>[/ref]一种新的开放和标准化的系统设计来实现与数据仓库中类似的数据结构和数据管理功能，并将数据存放在数据湖使用的低成本存储系统中:
+
+
+![Data Lakehouse](/images/2020/spark_data_lakehouse.png)
+
+
+<p class="list-title">Data Lakehouse 架构解决了上面数据架构的主要挑战：</p>
+
+1. 开放性
+    + 使用开放文件格式：基于开放和标准化的文件格式，如 Apache Parquet 和 ORC；
+    + 开放的 API：提供可以直接有效访问数据的开放 API，而不需要专有引擎和被厂商锁定；
+    + 语言支持：不仅支持 SQL 访问，还支持各种其他工具和引擎，包括机器学习和 Python/R 库。
+2. 原生就支持数据科学和机器学习工作负载；
+    + 支持多种数据类型：为许多新的应用程序存储、精炼、分析和访问数据，包括图像、视频、音频、半结构化数据和文本；
+    + 高效的非 SQL 直接读取：使用 R 和 Python 库直接高效的访问大量数据，以运行机器学习实验；
+    + 对 DataFrame API 的支持：内置的声明式 DataFrame API 具有查询优化功能，可用于 ML 工作负载中的数据访问，因为诸如 TensorFlow，PyTorch 和 XGBoost 的 ML 系统已采用 DataFrames 作为操作数据的主要抽象。
+    + 数据版本控制：提供数据快照，使数据科学和机器学习团队可以访问和还原到较早版本的数据，以进行审核和回滚或重现 ML 实验。
+3. 在低成本存储上提供一流的性能和可靠性。
+    + 性能优化：通过利用文件统计信息，来启用各种优化技术，例如缓存，多维 clustering 和跳过无用数据；
+    + 模式增强和管理：支持星型/雪花模型等数据仓库模式架构，并提供健壮的数据治理和审计机制；
+    + 事务支持：当多方并发地读写数据（通常使用SQL）时，利用 ACID 事务来确保数据一致性；
+    + 低成本存储：Data Lakehouse 架构大多使用了低成本的对象存储，如 Amazon S3、Azure Blob 存储或 Google Cloud Storage 等。
+
+<div class="mynotation">
+<p>就目前业界的机器学习系统来说，容易以文件的形式提供数据，这确实是一个优势。但是是否就“支持”这些系统的工作负载，也要看这些系统本身是否支持“访问”Data Lakehouse 。</p>
+<p>能保存历史的系统自然就有“数据版本控制”。</p>
+</div>
+
+
+### 数据仓库、数据湖以及 Data Lakehouse 比较
+
+<table border="1" bordercolor="cornflowerblue">
+  <caption>数据仓库、数据湖以及 Data Lakehouse 比较</caption>
+  <br/>
+  <tr align="center">
+    <th></th>
+    <th bgcolor="pink">Data Warehouse</th>
+    <th bgcolor="pink">Data Lake</th>
+    <th bgcolor="pink">Data Lakehouse</th>
+  </tr>
+
+  <tr>
+    <td bgcolor="pink">数据格式</td>
+    <td>封闭的专有格式</td>
+    <td>开放格式</td>
+    <td>开放格式</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="pink">存储的数据类型</td>
+    <td>结构化数据，对半结构化数据的支持有限</td>
+    <td>所有类型：结构化数据，半结构化数据，文本数据，非结构化（原始）数据</td>
+    <td>所有类型：结构化数据，半结构化数据，文本数据，非结构化（原始）数据</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="pink">数据访问</td>
+    <td>仅支持 SQL 访问，无法直接访问文件</td>
+    <td>通过开放 API 可以直接访问到文件，并且支持 SQL、R、Python 以及其他语言</td>
+    <td>通过开放 API 可以直接访问到文件，并且支持 SQL、R、Python 以及其他语言</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="pink">可靠性</td>
+    <td>通过 ACID 事务提供高质量、可靠的数据</td>
+    <td>低质量、数据沼泽</td>
+    <td>通过 ACID 事务提供高质量、可靠的数据</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="pink">数据治理和安全</td>
+    <td>为表提供行/列级的细粒度安全性和治理</td>
+    <td>安全性不佳，因为需要将安全性应用于文件</td>
+    <td>为表提供行/列级的细粒度安全性和治理</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="pink">性能</td>
+    <td>高</td>
+    <td>低</td>
+    <td>高</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="pink">扩展性</td>
+    <td>按比例扩展成本会成倍增加</td>
+    <td>扩展可以以低成本保存任何数量的数据，而不考虑类型</td>
+    <td>扩展可以以低成本保存任何数量的数据，而不考虑类型</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="pink">用户场景支持</td>
+    <td>仅限于 BI、SQL 应用程序和决策支持</td>
+    <td>仅限于机器学习</td>
+    <td>一个架构就支持 BI、SQL 以及机器学习</td>
+  </tr>
+</table>
+
 
 ## 我的看法
 
@@ -69,4 +180,4 @@ Data Lake as a Service ，就是云服务商提供的数据湖服务。如 Snowf
 
 如果你观察许多厂商画出来的数据湖架构图，你就会发现这些广义的数据湖实际上实现的是独立型数据集市架构[ps: 通常把数据仓库体系分为3种类型：Inmon的企业信息化工厂、Kimball的维度数据仓库和独立型数据集市。]。独立型数据集市被很多机构应用，因为它能迅速、廉价地获得结果。但是当企业的需求开始有多个主题区域时，这种架构短期的成功会带来长期的问题。
 
-也许将来在这数据湖的热潮过后，最终能落地的是 `Data lakehouse` ，狭义的数据湖作为 repository ，在这之上是混合多种技术实现的数据仓库。
+也许将来在这数据湖的热潮过后，最终能落地的是 `Data Lakehouse` ，狭义的数据湖作为 repository ，在这之上是混合多种技术实现的数据仓库。

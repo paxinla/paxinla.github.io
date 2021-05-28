@@ -164,6 +164,7 @@
 .page {
   float: right;
   margin: 0 40px 0 30px;
+  text-shadow: 1px 1px 2px #d5d5d5;
 }
 
 
@@ -243,6 +244,8 @@ header.blue-star {
   font-size: 20px;
   color: grey;
   margin: 1rem 1rem 1rem 2rem;
+  border-left: 5px solid #808080;
+  padding: 10px 20px;
 }
 
 .page h1, .page h2, .page h3, .page h4, .page h5, .page h6 {
@@ -379,7 +382,7 @@ p.list-title {
 }
 
 .list-title::before {
-  content: "\2630";
+  content: "⭕";
   color: var(--list-item-color);
   display: inline-block;
   vertical-align: bottom;
@@ -568,7 +571,7 @@ a.current-page-link {
 }
 
 #icon-gear::before {
-  content: '\1F5F2';
+  content: '✪';
 }
 
 

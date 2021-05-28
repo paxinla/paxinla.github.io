@@ -3,7 +3,9 @@ Status: hidden
 Save_as: links.html
 
 
-你好，朋友！欢迎来到这个页面。🎉
+你好，朋友！欢迎来到这个页面。🎉 
+
+这个页面是让感兴趣的人能通过我这里的链接发现别人的博客，也可以通过别处的链接发现这个博客的存在。🍻 友情链接就是这样被用来传递友情的。
 
 我猜你想:
 
@@ -14,7 +16,7 @@ Save_as: links.html
 网站描述: 这里只有我的呓语。。。
 网站logo: https://paxinla.github.io/static/user_avatar.jpeg
 </pre></header></article>
-2. <span style="color: #25a45a;">查看是否有你的链接？</span>除了你的网站出现故障或下架了本博客链接等意外事件，本页将永远保存你的链接。
+2. <span style="color: #25a45a;">查看是否有你的链接？</span>除了你的网站出现故障或下架了本博客链接等意外事件，🍭 本页将永远保存你的链接。
 3. <span style="color: #25a45a;">随便看看？</span>欢迎鸭，坐下来喝杯 🍵 再走吧~
 
 <div class="container-audio" style="text-align:center;margin-top:1.5rem;margin-bottom:2rem;"><span class="music">スペルビア帝国/夜</span><audio controls preload="none"><source src="http://music.163.com/song/media/outer/url?id=565975068"/>~这里是一首好听的曲子，但你的浏览器不支持 audio 标签，很遗憾你听不到它~</audio></div>
