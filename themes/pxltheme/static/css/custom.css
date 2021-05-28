@@ -420,13 +420,17 @@ p.list-title {
   content: none;
 }
 
+dl, ol, ul {
+  counter-reset: xxx;
+}
+
 .page .content ol li, .page .content-bottom ol li, .page .content-top ol li {
   list-style: none;
-  counter-increment: li;
+  counter-increment: xxx;
 }
 
 .page .content ol li::before, .page .content-bottom ol li::before, .page .content-top ol li::before {
-  content: counter(li) ". ";
+  content: counter(xxx) ". ";
   color: var(--list-item-color);
   display: inline-block;
   vertical-align: bottom;
@@ -653,6 +657,7 @@ div.code-toolbar > .toolbar {
 
 .page .content pre, .page .content-bottom pre, .page .content-top pre {
   box-shadow: none;
+  text-shadow: none;
 }
 
 :not(pre) > code[class*="language-"], pre[class*="language-"] {
