@@ -45,7 +45,7 @@ html: clean
 	find $(CSSDIR) -type f -name '*.css' -a ! -name 'blogstyle.css' -delete
 	find $(CSSDIR) -type f -name '*.map' -delete
 	@echo 'Clear source CSS files.'
-	find $(JSDIR) -type f -name '*.js' -a ! -name 'packed.js' -a ! -name '*_toc.js' -a ! -name 'comments.js' -a ! -name 'L2Dwidget.*' -delete
+	find $(JSDIR) -type f -name '*.js' -a ! -name 'packed.js' -a ! -name '*_toc.js' -a ! -name 'comments.js' -a ! -name 'L2Dwidget.*' -a ! -name 'animejs.js' -a ! -name 'fireworks.min.js' -delete
 	find $(JSDIR) -type f -name '*.map' -a ! -name 'L2Dwidget.*' -delete
 	@echo 'Clear source JavaScript files.'
 

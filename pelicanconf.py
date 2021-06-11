@@ -88,4 +88,4 @@ LINKS = (("Pelican", "http://getpelican.com/"),
 SOCIAL = (("github", "https://github.com/paxinla"),)
 
 
-DEFAULT_PAGINATION = 10
+DEFAULT_PAGINATION = 6
