@@ -173,6 +173,10 @@ html {
   background: #ececec url(/theme/images/fabric_plaid.png);
 }
 
+body {
+  cursor: url("/theme/images/pointer.cur"),auto;
+}
+
 body, a {
   background-color: transparent;
   text-rendering: optimizelegibility;
@@ -180,6 +184,7 @@ body, a {
 
 a {
   padding: 0 5px;
+  cursor: url("/theme/images/link.cur"),auto;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -602,6 +607,7 @@ a.tag {
   border: none;
   background-color: #2c3e50;
   color: wheat;
+  text-shadow: none;
 }
 
 a.tag::after {
@@ -609,10 +615,11 @@ a.tag::after {
   margin-left: 0.1em;
   font-size: 90%;
   top: -0.1em;
-  color: wheat;
+  color: red;
   font-feature-settings: "caps";
   font-variant-numeric: normal;
   content: "°";
+  text-shadow: none;
 }
 
 
@@ -915,3 +922,13 @@ div.mynotation p::before {
   font-weight: 501;
   font-size: 16px;
 }
+
+/* 鼠标点击特效 */
+.fireworks {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 11;
+  pointer-events: none;
+}
+

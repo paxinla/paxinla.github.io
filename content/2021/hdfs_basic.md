@@ -72,6 +72,21 @@ OJM (Quorum Journal Manager) 在 2N+1 个 JournalNode 上存储 NameNode 的 edi
 处于 Standby 状态的 NameNode 转换为 Active 状态的时候，有可能上一个 Active NameNode 发生了异常退出，那么 JournalNode 集群中各个 JournalNode 上的 editlog 就可能会处于不一致的状态，所以首先要做的事情就是让 JournalNode 集群中各个节点上的 editlog 恢复为一致。在 JournalNode 集群中各个节点上的 editlog 达成一致之后，新的 Active NameNode 要从 JournalNode 集群上补齐落后的 editlog。只有在这两步完成之后，当前新的 Active NameNode 才能安全地对外提供服务。
 
 
+## Secondary NameNode / Checkpoint Node / Backup Node
+
+Secondary NameNode 不是 NameNode 的备份，也不提供 NameNode 的服务，通常不和 NameNode 运行在同一台机器上。它的作用是:
+
+1. 周期性地从 NameNode 获取 editlog ，通知 NameNode 暂停写入 editlog 。NameNode 就将新的写操作写到新的日志文件 edits.new 。
+2. Secondary NameNode 在本机合并到原来的 fsimage 上以生成新的 fsimage [ps: NameNode 只在启动时做件事]，再将新的 fsimage 传回 NameNode 。
+3. NameNode 收到 Secondary NameNode 发回的新的 fsimage 后，就用新的 fsimage 覆盖原来的 fsimage ，并删除原来 editlog ，重命名新日志文件 edits.new 为新的 editlog 。
+
+这样就控制住了 NameNode 的 editlog 的增长，加速了 NameNode 的启动过程。
+
+Checkpoint Node 和 Secondary NameNode 的作用是一样的，用它就可以不用 Secondary NameNode 。
+
+Backup Node 是单纯的备份节点，NameNode 会发送 editlog 给 Backup Node ，Backup Node 更新本机的 fsimage 和 editlog ，并在内存中维护和 NameNode 一样的 metadata 数据。实际上很少用这个，因为已经有 Standby NameNode 可以 failover 了。
+
+
 ### 客户端
 
 客户端负责:
@@ -107,7 +122,7 @@ HDFS 块大小的默认值从2.7.3版本起是 128 MB，之前版本默认是 64
 3. 提高 MapReduce 的 map 任务处理速度。一个 map 任务一次只能处理一个块，如果块太大，则任务数变少，作业的处理速度就变慢了。
 4. 减少 MapReduce 的 map 任务恢复时间。map 任务崩溃后重启的过程中需要加载数据，数据块越大，数据加载时间越长。
 
-从经验值说，磁盘寻址的时间是磁盘传输时间的 1% ，寻址时间约为 10ms 。那么如果磁盘传输时间为 100MB/s ，则块大小设置约为 100MB(128MB)。对固态硬盘，可以忽略寻址时间，块大小设置可以尽量接近传输时间。
+从经验值说，磁盘寻址的时间是磁盘传输时间的 1% ，寻址时间约为 10ms 。那么如果磁盘传输速度为 100MB/s ，则块大小设置约为 100MB(128MB)。对固态硬盘，可以忽略寻址时间，块大小设置可以尽量接近传输速度。
 
 
 ## HDFS 读写过程

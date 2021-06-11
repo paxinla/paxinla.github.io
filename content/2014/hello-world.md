@@ -12,7 +12,7 @@ TitleImage: /images/2014/helloworld.jpg
 
 <!-- PELICAN_END_SUMMARY -->
 
-　　这是写给自己的blog，记录杂项。搭建过程参考了 
+　　🎂 这是写给自己的blog，记录杂项。搭建过程参考了 
 - [hexo系列教程](http://zipperary.com/categories/hexo)
 - [美化你的Hexo站点](http://vkki.me/2014/02/04/beautify-your-hexo)
 

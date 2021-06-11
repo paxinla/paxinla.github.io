@@ -9,7 +9,7 @@ CommentId: X
 
 ## YARN 的设计背景
 
-[Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) 是 Hadoop 的统一资源管理和调度平台，让各种不同的计算框架(如：MapReduce、 Spark 等)能通过它共享一个分布式集群的资源。YARN 是 Hadoop 2 开始引入的，最初是从 MapReduce 中剥离出来以达到应用程序管理与资源管理两部分分离的目的，所以也叫 MRv2 。与它的竞争对手 [Apache Mesos](http://mesos.apache.org/) 相比，YARN 不需要接入的计算框架事先部署在 YARN 中，它们是作为客户端的库来使用，运行、升级和使用上更方便。
+[Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) 是 Hadoop 的统一资源管理和调度平台，让各种不同的计算框架(如：MapReduce、 Spark 等)能通过它共享一个分布式集群的资源。YARN(Yet Another Resource Manager) 是 Hadoop 2 开始引入的，最初是从 MapReduce 中剥离出来以达到应用程序管理与资源管理两部分分离的目的，所以也叫 MRv2 。与它的竞争对手 [Apache Mesos](http://mesos.apache.org/) 相比，YARN 不需要接入的计算框架事先部署在 YARN 中，它们是作为客户端的库来使用，运行、升级和使用上更方便。
 
 <p class="list-title">YARN 的特性:</p>
 
