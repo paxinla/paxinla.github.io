@@ -72,7 +72,7 @@ OJM (Quorum Journal Manager) 在 2N+1 个 JournalNode 上存储 NameNode 的 edi
 处于 Standby 状态的 NameNode 转换为 Active 状态的时候，有可能上一个 Active NameNode 发生了异常退出，那么 JournalNode 集群中各个 JournalNode 上的 editlog 就可能会处于不一致的状态，所以首先要做的事情就是让 JournalNode 集群中各个节点上的 editlog 恢复为一致。在 JournalNode 集群中各个节点上的 editlog 达成一致之后，新的 Active NameNode 要从 JournalNode 集群上补齐落后的 editlog。只有在这两步完成之后，当前新的 Active NameNode 才能安全地对外提供服务。
 
 
-## Secondary NameNode / Checkpoint Node / Backup Node
+### Secondary NameNode / Checkpoint Node / Backup Node
 
 Secondary NameNode 不是 NameNode 的备份，也不提供 NameNode 的服务，通常不和 NameNode 运行在同一台机器上。它的作用是:
 
@@ -135,7 +135,7 @@ HDFS 块大小的默认值从2.7.3版本起是 128 MB，之前版本默认是 64
 
 1. 客户端向 namenode 请求上传文件，namenode 检查目标文件、父目录是否存在、权限等，若通过检查则分配元数据，创建空文件，将创建操作写入 editlog ，然后向客户端返回输出流对象(真正执行写数据的就是它)。
 2. 客户端向 namenode 请求一个新的空数据块。
-3. namenode 返回存储这个数据块的 3 个 datanode 节点列表。[ps: 因为块默认存3份。]
+3. namenode 返回存储这个数据块的 3 个 datanode 节点列表。[ps: 因为1个块默认存3份。]
 4. 客户端与第一个 datanode 交互，请求上传数据 (给第一个 datanode 的除了数据还有 datanode 列表)，第一个 datanode 收到请求后继续调用第二个 datanode ，第二个 datanode 调用第三个 datanode ，通信管道 pipeline 建立完成。
 5. 客户端先往第一个 datanode 以 packet 为单位上传第一个 block ，第一个 datanode 收到一个 packet 就会转发给第二个 datanode ，第二个 datanode 再转发给第三个 datanode 。所有 datanode 确认传输完成后，由第一个 datanode 通知客户端写入成功，每个 datanode 接收 block 成功后都会向 namenode 汇报，namenode 更新内存中数据块与节点的映射信息。
 6. 每个 block 传输完成后，再重复第 5 步，直至所有数据块传输完毕。客户端通知 namenode 文件写入成功，namenode 确认副本数是否满足后，将相关结果提交到 editlog 中。

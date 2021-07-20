@@ -288,10 +288,14 @@ import java.time.Duration
 
 val duration1 = Duration.of(4, ChronoUnit.HOURS) // 4个小时的间隔
 LocalDateTime.now().minus(duration1)
-val duration2 = Duration.between(LocalDateTime.now(), LocalDateTime.now().minusHours(5))
+val duration2 = Duration.between(
+  LocalDateTime.now(),
+  LocalDateTime.now().minusHours(5)
+)
 
 
-// 相较于 java.text.SimpleDateFormat ，java.time.format.DateTimeFormatter 是线程安全的。
+// 相较于 java.text.SimpleDateFormat ，
+// java.time.format.DateTimeFormatter 是线程安全的。
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 

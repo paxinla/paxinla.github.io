@@ -72,7 +72,7 @@ Spark 1.5.0 曾有过 Tungsten-Sort Based Shuffle (钨丝计划) 机制。它直
 
 ## 一些优化的点
 
-shuffle 过程将会产生对内存、磁盘及网络资源的大量消耗，是较为“昂贵”的过程，应尽量减少 shuffle 的次数。必要时主动 shuffle ，比如重分区改变分区数/并行度，提高后续分布式运行速度。多个同时运行的 task 共享 Executor 的内存，使得单个 task 可用内存减少。
+shuffle 过程将会产生对内存、磁盘及网络资源的大量消耗，是较为“昂贵”的过程，应尽量减少 shuffle 的次数。必要时主动 shuffle ，比如重分区改变分区数/并行度，提高后续分布式运行速度。注意多个同时运行的 task 共享 Executor 的内存，这使得单个 task 可用内存减少。
 
 
 参数 `spark.shuffle.file.buffer` (默认32KB) 设置 Shuffle Write 时溢写到磁盘前的缓存大小。如果作业可用内存资源较为充足，可以适当增加它的大小，减少溢写到磁盘的次数。
