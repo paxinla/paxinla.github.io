@@ -190,3 +190,14 @@ YARN 中的 application 在运行失败时有几次重试机会，重试失败�
 5. Executor 启动后反向注册到 driver ， driver 发送 task 到 Executor ，执行情况和结果返回给 driver 。
 6. 程序运行完成，Application Master 向 Resource Manager 注销自己并释放资源。
 
+
+当Spark作业中包含SparkSQL的内容时，可能会碰到YARN-client模式下可以运行，但是YARN-cluster模式下无法提交运行（报出OOM错误）的情况。
+
+YARN-client模式下，Driver是运行在本地机器上的，Spark使用的JVM的PermGen的配置，是本地机器上的spark-class文件，JVM永久代的大小是128MB，这个是没有问题的，但是在YARN-cluster模式下，Driver运行在YARN集群的某个节点上，使用的是没有经过配置的默认设置，PermGen永久代大小为82MB。
+
+解决方法是在 spark-submit 提交作业时增加PermGen(永久代)的容量(默认为128MB，最大256MB)：
+
+```
+--conf spark.driver.extraJavaOptions="-XX:PermSize=128M -XX:MaxPermSize=256M"
+```
+

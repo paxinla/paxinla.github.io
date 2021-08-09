@@ -5,9 +5,10 @@ Tags: data-warehouse, data-lake
 CommentId: X
 
 
-## 什么是数据湖？
-
 <!-- PELICAN_END_SUMMARY -->
+
+
+## 什么是数据湖？
 
 数据湖（Data Lake）这个由 Pentaho 的 James Dixon 提出的术语，并没有一个精确的定义。随着大数据[ps: 主要是Hadoop。]热潮的兴起出现，在云服务商提供自己版本的“云上大数据平台”过程中炒热。所以关于数据湖的定义就有很多版本，基本上都声称有以下几个特性：
 
@@ -65,7 +66,7 @@ Data Lake as a Service ，就是云服务商提供的数据湖服务。如 Snowf
 <p>现代数仓主要使用 SQL 访问，但并非仅支持 SQL 访问。使用 SQL 访问数仓中经过清洗整合的数据(有数仓本身引擎对海量数据处理的支持)是否比直接访问其他地方的裸数据更“昂贵和缓慢”，我对此持保留意见。目前包括机器学习系统在内的很多系统不能很好地在数仓上工作，这到底有多少是数仓的问题，多少是这些系统的问题，不能一概而论。</p>
 </div>
 
-Data Lakehouse 通过[ref]<a href="https://databricks.com/blog/2021/05/19/evolution-to-the-data-lakehouse.html">Evolution to the Data Lakehouse</a>[/ref]一种新的开放和标准化的系统设计来实现与数据仓库中类似的数据结构和数据管理功能，并将数据存放在数据湖使用的低成本存储系统中:
+Data Lakehouse 通过[ref]<a href="https://databricks.com/blog/2021/05/19/evolution-to-the-data-lakehouse.html">Evolution to the Data Lakehouse</a>[/ref]一种新的开放和标准化的系统设计来实现与数据仓库中类似的数据结构和数据管理功能[ref]<a href="http://cidrdb.org/cidr2021/papers/cidr2021_paper17.pdf">Lakehouse: A New Generation of Open Platforms that Unify Data Warehousing and Advanced Analytics</a>[/ref]，并将数据存放在数据湖使用的低成本存储系统中:
 
 
 ![Data Lakehouse](/images/2020/spark_data_lakehouse.png)

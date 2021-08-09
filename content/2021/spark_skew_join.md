@@ -4,12 +4,13 @@ Category: 数据平台
 Tags: spark
 CommentId: X
 
+
+<!-- PELICAN_END_SUMMARY -->
+
+
 ## 什么是数据倾斜
 
 简单地说，数据倾斜就是分区的数据不均衡地分布。很多数据天然就是易“倾斜”的，比如国家的人口、互联网上网站的访问量等等。
-
-
-<!-- PELICAN_END_SUMMARY -->
 
 
 ## Spark 中的 skew join
@@ -58,15 +59,35 @@ Spark 根据 hint 的信息，将参与 join 的数据集根据倾斜的 key 分
 
 + spark.sql.adaptive.enabled
 + spark.sql.adaptive.skewedJoin.enabled  : 自动处理数据倾斜
-+ spark.sql.adaptive.skewedPartitionMaxSplits : 处理一个倾斜分区的 task 个数上限，默认5。
++ spark.sql.adaptive.skewedPartitionMaxSplits : 处理一个倾斜分区的 task 个数上限，默认 5 。
 + spark.sql.adaptive.skewedPartitionRowCountThreshold : 行数低于该值的分区不会当作倾斜，默认值是1千万。
-+ spark.sql.adaptive.skewedPartitionSizeThreshold : 大小小于该值的分区不会当作倾斜，默认值是64MB。
-+ spark.sql.adaptive.skewedPartitionFactor : 倾斜因子，用来与各分区大小或行数的中位数相乘，默认是10。
++ spark.sql.adaptive.skewedPartitionSizeThreshold : 大小小于该值的分区不会当作倾斜，默认值是 64MB 。
++ spark.sql.adaptive.skewedPartitionFactor : 倾斜因子，用来与各分区大小或行数的中位数相乘，默认是 10 。
 
 
 ### Customized AQE skew mitigation
 
-这是基于 Spark 3 AQE 框架的策略。Spark 3 的 Adaptive Query Execution 能在运行时调整 DAG ，主要是动态合并 shuffle 分区，动态调整 join 策略，动态优化数据倾斜的 join 。
+这是基于 Spark 3 AQE 框架的策略。Spark 3 的 Adaptive Query Execution 能在运行时调整 DAG ，主要是动态合并 shuffle 分区，动态调整 join 策略，动态优化数据倾斜的 join [ref]<a href="https://databricks.com/blog/2020/05/29/adaptive-query-execution-speeding-up-spark-sql-at-runtime.html">Adaptive Query Execution: Speeding Up Spark SQL at Runtime</a>[/ref]。
+
+
+Spark AQE 动态合并 shuffle 分区:
+
+![Spark AQE 动态合并 shuffle 分区前](/images/2021/spark_aqe_partition_coalescing_1.png)
+
+![Spark AQE 动态合并 shuffle 分区后](/images/2021/spark_aqe_partition_coalescing_2.png)
+
+
+Spark AQE 动态调整 join 策略:
+
+![Spark AQE 动态调整 join 策略](/images/2021/spark_aqe_switching_join.png)
+
+
+Spark AQE 动态优化数据倾斜:
+
+![Spark AQE 动态优化数据倾斜前](/images/2021/spark_aqe_dynamic_skew_join_1.png)
+
+![Spark AQE 动态优化数据倾斜后](/images/2021/spark_aqe_dynamic_skew_join_2.png)
+
 
 这种策略减少了运行时的延迟时间，不要求事先知道具体是哪些 key 上有数据倾斜，也不需要多次遍历数据集。没有数据倾斜时不会有额外的 shuffle 。
 
@@ -76,9 +97,19 @@ Spark 根据 hint 的信息，将参与 join 的数据集根据倾斜的 key 分
 + spark.sql.adaptive.enabled
 + spark.sql.adaptive.skewedJoin.enabled  : 自动处理数据倾斜
 + spark.sql.adaptive.skewedPartitionThresholdInBytes : 默认 256MB 。
-+ spark.sql.adaptive.skewedPartitionFactor : 默认为5。
-+ spark.sql.adaptive.advisoryPartitionSizeInBytes : 默认 64MB。
++ spark.sql.adaptive.skewedPartitionFactor : 默认为 5 。
 
 当一个分区的大小同时满足大于 skewedPartitionThresholdInBytes 及 skewedPartitionFactor * 所有分区大小中位数时，就被认为是“倾斜”的。
 
 
++ spark.sql.adaptive.coalescePartitions.enabled : 默认 true ，动态合并 shuffle 分区。发生在 Shuffle Read 阶段，reduce side task 将数据分片全部拉回，AQE按照分区编号的顺序，依次把小于目标尺寸的分区合并到一起。
++ spark.sql.adaptive.advisoryPartitionSizeInBytes : 默认 64MB 。
++ spark.sql.adaptive.coalescePartitions.minPartitionNum : 最小分区数，默认为集群的默认并行度。最终的targetSize为：首先计算出总的shuffle的数据大小totalPostShuffleInputSize；maxTargetSize为max（totalPostShuffleInputSize/minPartitionNum，16）；targetSize=min（maxTargetSize，advisoryPartitionSizeInBytes）。
+
+
++ spark.sql.adaptive.localShuffleReader.enabled : 默认 true ，动态调整 join 策略。
++ spark.sql.autoBroadcastJoinThreshold : 广播阈值，默认 10MB 。
++ spark.sql.adaptive.nonEmptyPartitionRatioForBroadcastJoin : 默认 0.2 。
+
+当两张表完成 Shuffle Write 阶段后，AQE 会继续判断某一张表是否满足一下两个条件: 中间文件尺寸总和小于广播阈值
+；空文件占比小于配置项 nonEmptyPartitionRatioForBroadcastJoin 。只要有一个表满足就会把 Shuffle Joins 降级为 Broadcast Join（仅适用于 Shuffle Sort Merge Join）。两张大表 join，超过了广播阈值的话 Spark SQL 最初会选择 SortMerge Join ，AQE 只有结合两个表 join 中的 Exchange 才能进行降级判断，所以两张表必须都完成 map side task 且中间文件落盘。AQE 才会决定是否降级以及用哪张表做广播变量。

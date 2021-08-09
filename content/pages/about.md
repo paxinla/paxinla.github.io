@@ -3,7 +3,7 @@ Status: hidden
 Save_as: about.html
 TitleImage: /images/evolution.png
 
-<h2 class="no-bullet" style="color: gray;text-align: center;font-family: 'Unica One',sans-serif;font-weight: 500;text-shadow: 5px 5px 5px #999;"><span style="color:#e47911;">Think</span><span style="color:#c92027;"> big</span>,<span style="color:#e47911;"> start</span><span style="color:#c92027;"> small</span>,<span style="color:#e47911;"> act</span><span style="color:#c92027;"> fast</span>.</h2>
+<h2 class="no-bullet" style="color: gray;text-align: center;font-family: 'Unica One',sans-serif;font-weight: 600;text-shadow: 5px 5px 5px #999;"><span style="color:#e47911;">Think</span><span style="color:#c92027;"> big</span>,<span style="color:#e47911;"> start</span><span style="color:#c92027;"> small</span>,<span style="color:#e47911;"> act</span><span style="color:#c92027;"> fast</span>.</h2>
 
 这个博客是 Charles 的一块自留地，它主要的目的是为 Charles 记录一些知识与信息，方便回头翻阅。这个博客里的一切非转载内容均为 Charles 的个人观点。转载/翻译的文章不限于专业领域，五花八门，以防它们从互联网上消失(众所周知，互联网没有记忆)。
 

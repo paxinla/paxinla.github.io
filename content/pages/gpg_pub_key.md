@@ -19,7 +19,7 @@ $ curl -fsSL https://paxinla.github.io/static/gpg_keys.asc | gpg --import -
 🅾 The [keyart](https://manpages.ubuntu.com/manpages/disco/man1/keyart.1.html) image of my public key :
 
 <article style="margin-left:2em;max-width:14em;">
-<header style="background-color:#6d706e;"><pre style="color:#dcd6cb;">
+<header style="background-color:#232235;"><pre style="color:#ff66c4;">
   +-----[rsa2048]-----+  
   |          .    :lii|  
   |         ^     .:^:|  

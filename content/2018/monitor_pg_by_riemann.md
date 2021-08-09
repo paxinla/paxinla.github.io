@@ -5,6 +5,9 @@ Tags: riemann, postgresql
 CommentId: 12
 
 
+<!-- PELICAN_END_SUMMARY -->
+
+
 ## PostgreSQL 的监控工具真的不够用
 
 　　传统的运维工具如: Zabbix、Ganglia 等，所提供的监控 PostgreSQL 的插件，默认监控的指标都太过简单。如果你想要监控更多的指标，则必须根据它们特有的配置语法来定制数据库查询，这些配置语法当然没有代码灵活。像 Promethus 之类的方案，倒是可以满足我容易制作 Dashboard 的需求。但这些方案依赖的组件太多，配置还是稍显麻烦。[ps: 特别是它的 postgres_exporter 我硬是没编译成功过。]对收费的监控工具，我总觉得没达到 Oracle Enterprise Manager 的水准，就不太想用。像 pg_activity 、pgcenter 这类工具又是命令行的 UI ，不方便向非 DBA 人群展示信息。
@@ -18,7 +21,6 @@ CommentId: 12
 3. 它应当有一个易用的 Dashboard 来展示存储/处理的指标，以便向数据库管理员之外的人展示。
 4. 它应当易于集成外部的程序，以便实现发送报警邮件、向其他系统如 Kafka 、Elasticsearch 、InfluxDB 发送自己收到的指标数据。
 
-<!-- PELICAN_END_SUMMARY -->
 
 ## 为什么是 Riemann
 

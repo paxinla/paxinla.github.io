@@ -5,6 +5,9 @@ Tags: scala
 CommentId: X
 
 
+<!-- PELICAN_END_SUMMARY -->
+
+
 ## 一些良好的实践
 
  - [Scala Best Practices](https://nrinaudo.github.io/scala-best-practices/)
@@ -273,7 +276,10 @@ val time1 = LocalTime.now()
 
 val dateTime1 = LocalDateTime.now()
 val dateTime2 = LocalDateTime.of(2020, 3, 2, 17, 5, 1)
-val dateTime3 = LocalDateTime.ofInstant(Instant.now(), ZoneId.of("Asia/Shanghai"))  // 时间戳转日期
+val dateTime3 = LocalDateTime.ofInstant(  // 时间戳转日期
+  Instant.now(),
+  ZoneId.of("Asia/Shanghai")
+)
 val dateTime4 = ZonedDateTime.now(ZoneId.of("US/Pacific"))
 
 

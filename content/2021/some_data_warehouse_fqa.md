@@ -44,11 +44,11 @@ CommentId: X
 
 ### 常见分层设计:
 
-+ 贴源的 ODS(Operation Data Store) 层。数据结构基本和原始数据保持一致。一般按照源头业务系统的分类方式而分类。
++ 贴源的 ODS(Operation Data Store) 层。数据结构基本和原始数据保持一致。一般按照源头业务系统的分类方式而分类。是面向应用的。
 + 公共数据层 CDM(Common Data Model) 。
     + 一致性维度 DIM 贯穿整个 CDM 。
-    + 明细层 DWD(Data Warehouse Detail)。以业务过程作为建模驱动，构建最细粒度的事实表。一般保持和 ODS 一样的数据粒度，并提供一定的数据质量保证。
-    + 汇总层 DWS(Data Warehouse Summary)。以分析的主题对象作为建模驱动，对通用的核心维度做聚合，生成一系列中间表，提高公共指标的复用性，减少重复加工。
+    + 明细层 DWD(Data Warehouse Detail)。以业务过程作为建模驱动，构建最细粒度的事实表。一般保持和 ODS 一样的数据粒度，并提供一定的数据质量保证。是面向业务过程的。
+    + 汇总层 DWS(Data Warehouse Summary)。以分析的主题对象作为建模驱动，对通用的核心维度做聚合，生成一系列中间表，提高公共指标的复用性，减少重复加工。是面向主题域的。
 + 贴应用的 ADS(Application Data Service) 层。存放个性化的统计指标数据。
 
 

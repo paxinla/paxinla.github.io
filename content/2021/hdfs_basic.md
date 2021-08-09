@@ -61,7 +61,12 @@ datanode 周期性检查块副本的数据是否与校验和一致。如果发�
 
 ### Zookeeper(ZKFC)
 
-两个 NameNode 上都有一个 ZKFailoverController 独立进程，来对 NameNode 的主备切换进行总体控制。ZKFC 能及时检测到 NameNode 的健康情况，在 Active NameNode 不可用时可借助 Zookeeper 实现自动的主备选举和切换。[ps: 也支持不依赖于 Zookeeper 的手工主备切换。]
+两个 NameNode 上都有一个 ZKFailoverController 独立进程，来对 NameNode 的主备切换进行总体控制。ZKFC 能及时检测到 NameNode 的健康情况，在 Active NameNode 不可用[ps: 也支持不依赖于 Zookeeper 的手工主备切换。]时可借助 Zookeeper 实现自动的主备选举和切换。
+
+自动切换主备需要设置 hdfs-site.xml 的参数 `dfs.ha.automatic-failover.enabled` 为 true ，设置 core-site.xml 的参数 `ha.zookeeper.quorum` 的值为 Zookeeper 服务器地址，ZKFC 将使用该地址。
+
+初次安装时，需要在任一 NameNode 上使用 formatZK 在 Zookeeper 中创建 znode 。
+
 
 ### 共享存储系统(QJM)
 
@@ -70,6 +75,8 @@ datanode 周期性检查块副本的数据是否与校验和一致。如果发�
 OJM (Quorum Journal Manager) 在 2N+1 个 JournalNode 上存储 NameNode 的 editlog ，每次写入操作都通过 Paxos 保证写入的一致性，它最后允许有 N 个 JournalNode 同时故障。
 
 处于 Standby 状态的 NameNode 转换为 Active 状态的时候，有可能上一个 Active NameNode 发生了异常退出，那么 JournalNode 集群中各个 JournalNode 上的 editlog 就可能会处于不一致的状态，所以首先要做的事情就是让 JournalNode 集群中各个节点上的 editlog 恢复为一致。在 JournalNode 集群中各个节点上的 editlog 达成一致之后，新的 Active NameNode 要从 JournalNode 集群上补齐落后的 editlog。只有在这两步完成之后，当前新的 Active NameNode 才能安全地对外提供服务。
+
+JournalNode 守护进程是轻量级的，可以和其他进程部署在一起。
 
 
 ### Secondary NameNode / Checkpoint Node / Backup Node
@@ -85,6 +92,8 @@ Secondary NameNode 不是 NameNode 的备份，也不提供 NameNode 的服务�
 Checkpoint Node 和 Secondary NameNode 的作用是一样的，用它就可以不用 Secondary NameNode 。
 
 Backup Node 是单纯的备份节点，NameNode 会发送 editlog 给 Backup Node ，Backup Node 更新本机的 fsimage 和 editlog ，并在内存中维护和 NameNode 一样的 metadata 数据。实际上很少用这个，因为已经有 Standby NameNode 可以 failover 了。
+
+在 HA 集群中，Standby NameNode 会对 namespace 进行 checkpoint 操作，因此不需要再运行 Secondary NameNode 、Checkpoint Node 或 Backup Node 。
 
 
 ### 客户端

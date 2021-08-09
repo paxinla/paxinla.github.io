@@ -21,7 +21,7 @@ stage 的划分发生在物理计划生成器将 OperatorTree 转化为 TaskTree
 
 一个 stage 可以是一个 MapReduce 任务(或者一个 Map Reduce Local Work)，也可以是一个抽样阶段，或者一个合并阶段，还可以是一个 limit 阶段，以及 Hive 需要的其他某个任务的一个阶段。默认情况下，Hive 会一次只执行一个 stage ，当然如果使用了并行执行，也可以同时执行几个没有依赖关系的 stage 。
 
-并不是所有列在 explain 计划里的 stage 都会真正执行的。观察执行日志，经常可以发现如 "Stage-3 is filtered out by condition resolver" 之类的记录。
+并不是所有列在 explain 计划里的 stage 都会真正执行的，有些 stage 经过优化器优化后实际上是空的 stage 。观察执行日志，经常可以发现如 "Stage-3 is filtered out by condition resolver" 之类的记录。
 
 参考执行计划输出设置:
 

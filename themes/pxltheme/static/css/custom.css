@@ -169,6 +169,11 @@
 
 
 /* 常规样式 */
+::selection {
+  background: #00649e;
+  color: #fff;
+}
+
 html {
   background: #ececec url(/theme/images/fabric_plaid.png);
 }
