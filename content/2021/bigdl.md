@@ -4,11 +4,13 @@ Category: 人工智能
 Tags: spark, bigdl
 CommentId: X
 
+支持 Spark 的深度学习库。
+
+<!-- PELICAN_END_SUMMARY -->
+
 ## BigDL 与 Analytics Zoo 简介
 
 [BigDL](https://github.com/intel-analytics/bigdl) 是一个在 Apache Spark 上构建深度学习、数值计算及神经网络应用的库，它支持导入预先通过 Caffe、 Torch 或 Keras 训练的模型到 Spark 中。
-
-<!-- PELICAN_END_SUMMARY -->
 
 很多时候，待分析的数据已经存储在了 HDFS 或其他大数据存储设施上，使用 BigDL 可以直接在同一个大数据集群上进行分析、训练模型，充分利用已有的大数据集群。
 

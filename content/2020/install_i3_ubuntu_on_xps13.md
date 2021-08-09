@@ -4,6 +4,9 @@ Category: 工具
 Tags: xps, ubuntu, i3
 CommentId: X
 
+XPS 13 ，为工程师设计的笔记本。
+
+<!-- PELICAN_END_SUMMARY -->
 
 ## XPS 13 7390
 
@@ -15,7 +18,6 @@ CommentId: X
 
 国内买不到 Developer Edition ，预装的 Windows 10 中文家庭版。自己装的 Ubuntu 18.04 + i3wm 的方案。
 
-<!-- PELICAN_END_SUMMARY -->
 
 ## Ubuntu 18.04
 

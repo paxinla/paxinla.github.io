@@ -4,6 +4,8 @@ Category: 数据仓库
 Tags: data-warehouse, data-lake
 CommentId: X 
 
+Data Lake ? Lakehouse !
+
 <!-- PELICAN_END_SUMMARY -->
 
 ## 什么是数据湖？

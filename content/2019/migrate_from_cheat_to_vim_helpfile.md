@@ -4,12 +4,13 @@ Category: 生活
 Tags: cheatsheet, vim
 CommentId: X
 
+稳定的 cheatsheet 工具很有必要。
+
+<!-- PELICAN_END_SUMMARY -->
 
 ## 从 cheat 到 vim helpfile
 
 　　最近把原先使用 <a href="https://github.com/cheat/cheat">cheat</a> 管理的 cheatsheet 文档都改为使用 Vim 的 help 文档。解决了跨平台的离线 cheatsheet 的显示、搜索问题。
-
-<!-- PELICAN_END_SUMMARY -->
 
 　　我办公室的 PC 是装的 Debian ，家里的 PC 是 Windows 。cheat 在 Linux 上工作得不错，但是在 Windows 下的表现糟糕透了，既难装又难看。
 

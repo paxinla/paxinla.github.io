@@ -4,6 +4,9 @@ Category: 数据平台
 Tags: hadoop, hdfs
 CommentId: 7
 
+HDFS 上的部分文件出现了 corrupt blocks 怎么办？
+
+<!-- PELICAN_END_SUMMARY -->
 
 ## 事件起因
 
@@ -19,7 +22,6 @@ hdfs fsck / -delete
 
 　　解决了。之后再 `fsck /` 看起来是完全正常了。但是在 Cloudera Manager 中，HDFS 服务每次在重启后，还是显示错误，有文件块副本数不足；HA 的两个 namenode 就会进入安全模式，并一直保持在安全模式不退出。
 
-<!-- PELICAN_END_SUMMARY -->
 
 　　因为已经确认过 HDFS 上的文件现在是没问题的，所以可以前行让 namenode 退出安全模式，此时 HDFS 可正常使用。但是文件块副本数不足的错误警告会一直存在，且重启 HDFS 的话， namenode 又会进入安全模式，治标不治本。
 

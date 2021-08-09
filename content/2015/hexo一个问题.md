@@ -4,12 +4,13 @@ Category: 故障
 Tags: hexo
 CommentId: 3
 
+hexo 部署博客不认识 Github 了。
+
+<!-- PELICAN_END_SUMMARY -->
 
 # Windows下Hexo升级后deploy问题
 
 　　今天升级 hexo ，在 cmd (系统是 Win8 )中执行了 `hexo d`，显示不认识 github 。
-
-<!-- PELICAN_END_SUMMARY -->
 
 　　根据[官网Wiki的部署章节](http://hexo.io/zh-cn/docs/deployment.html)执行 `npm install hexo-deployer-git --save` 安装 deployer ，并把 `_cofing.yaml` 中的 deploy 这个 section 下的 type 值从 github 改为 git 后，再执行 `hexo d` ，显示如下：
 

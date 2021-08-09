@@ -4,9 +4,11 @@ Category: 生活
 Tags: 香料, 茶
 CommentId: X
 
-## 家用陈皮制法
+制陈皮的土方法。
 
 <!-- PELICAN_END_SUMMARY -->
+
+## 家用陈皮制法
 
 选用成熟的橘子，不要带青色，将果蒂剪平。
 

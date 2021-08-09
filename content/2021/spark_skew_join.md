@@ -5,6 +5,9 @@ Tags: spark
 CommentId: X
 
 
+“倾斜”对某些数据来说是自然的特征。
+
+
 <!-- PELICAN_END_SUMMARY -->
 
 

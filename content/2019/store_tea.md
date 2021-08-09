@@ -5,8 +5,6 @@ Tags: 转载, 茶
 CommentId: 25
 
 
-## 家庭存茶方法大全
-
 原文作者: 茶百科
 
 原文链接: [https://mp.weixin.qq.com/s/CvACMWHELwgqt94mT2V4IA](https://mp.weixin.qq.com/s/CvACMWHELwgqt94mT2V4IA)
@@ -14,6 +12,8 @@ CommentId: 25
 为防遗失，转载一份。
 
 <!-- PELICAN_END_SUMMARY -->
+
+## 家庭存茶方法大全
 
 ### 冰箱不是保险箱，关于冰箱存茶的要诀
 

@@ -4,14 +4,13 @@ Category: 数据库
 Tags: oracle, PL/SQL, sql
 CommentId: 2
 
+spool 是常用的手段。
+
+<!-- PELICAN_END_SUMMARY -->
 
 # 将oracle对象DDL语句spool成sql文本
 
 　　在我的工作实践中，常常需要将数据库中的表结构、函数、存储过程等导出成sql文本。一般都是用PL/SQL Developer来导出的。但是有时也会碰到没有PL/SQL Developer的环境，就自己写了几个脚本，用sqlplus将这些数据库对象spool出来。
-
-
-<!-- PELICAN_END_SUMMARY -->
-
 
 　　这套sql脚本共7个。分别可导出表结构、视图定义、自定义类型、序列、函数、存储过程和包。主要是使用ORACLE的包DBMS_METADATA的SET_TRANSFORM_PARAM来去除不必要的信息，用GET_DDL函数来获取对象的DDL。
 

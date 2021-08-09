@@ -4,12 +4,14 @@ Category: 故障
 Tags: emacs, shell-mode, windows
 CommentId: 5
 
+Windows 下 Emacs 的毛病很多。
+
+<!-- PELICAN_END_SUMMARY -->
 
 # shell-mode 中文乱码
 
 　　办公室电脑系统 Windows 7 ，装的是 Emacs24 。在 Emacs 中切到 shell-mode ，使用的是 windows 的 cmd 。使用 dir 命令可以看到中文目录名正常显示。但是输入的中文（外部输入法：微软拼音输入法）不能正常显示。如输入 "echo 是" 回车后看到的是乱码。这种现象只在 shell-mode 中存在。
 
-<!-- PELICAN_END_SUMMARY -->
 
 　　根据网上搜到的方法，在 .emacs 中加入 (ansi-color-for-comint-mode-on) ，不能解决问题。
 

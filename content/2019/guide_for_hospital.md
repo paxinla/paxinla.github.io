@@ -5,8 +5,6 @@ Tags: 转载, 看病, 医院
 CommentId: X
 
 
-## 如何看病
-
 原文作者: Golden Grape
 
 原文链接: [https://goldengrape.github.io/posts/ophthalmology/How-to-see-a-doctor/](https://goldengrape.github.io/posts/ophthalmology/How-to-see-a-doctor/)
@@ -14,6 +12,7 @@ CommentId: X
 为防遗失，转载一份。
 
 <!-- PELICAN_END_SUMMARY -->
+
 
 ## 如何看病（－）：该看不该看
 
