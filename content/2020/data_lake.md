@@ -2,11 +2,9 @@ Title: 浅谈数据湖
 Date: 2020-10-13 15:02:53
 Category: 数据仓库
 Tags: data-warehouse, data-lake
-CommentId: X
-
+CommentId: X 
 
 <!-- PELICAN_END_SUMMARY -->
-
 
 ## 什么是数据湖？
 
