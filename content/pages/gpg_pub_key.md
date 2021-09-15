@@ -20,18 +20,18 @@ $ curl -fsSL https://paxinla.github.io/static/gpg_keys.asc | gpg --import -
 
 <article style="margin-left:2em;max-width:14em;">
 <header style="background-color:#232235;"><pre style="color:#ff66c4;">
-  +-----[rsa2048]-----+  
-  |          .    :lii|  
-  |         ^     .:^:|  
-  |        . ^     ^.E|  
-  |       . . :   .  ^|  
-  |        : l .   .. |  
-  |         S .   ^   |  
-  |        ^ : . . .  |  
-  |         . ^ . ^   |  
-  |              ^    |  
-  |                   |  
-  |                   |  
-  +-----[47E15BF5]----+  
+ +-----[rsa2048]-----+ 
+ |          .    :lii| 
+ |         ^     .:^:| 
+ |        . ^     ^.E| 
+ |       . . :   .  ^| 
+ |        : l .   .. | 
+ |         S .   ^   | 
+ |        ^ : . . .  | 
+ |         . ^ . ^   | 
+ |              ^    | 
+ |                   | 
+ |                   | 
+ +-----[47E15BF5]----+ 
 </pre></header>
 </article>
