@@ -18,8 +18,14 @@ CommentId: X
 [repositories]
 local
 aliyun: https://maven.aliyun.com/repository/public
-typesafe: https://repo.typesafe.com/typesafe/ivy-releases/, [organization]/[module]/(scala_[scalaVersion]/)(sbt_[sbtVersion]/)[revision]/[type]s/[artifact](-[classifier]).[ext], bootOnly
-ivy-sbt-plugin:https://dl.bintray.com/sbt/sbt-plugin-releases/, [organization]/[module]/(scala_[scalaVersion]/)(sbt_[sbtVersion]/)[revision]/[type]s/[artifact](-[classifier]).[ext]
+typesafe: https://repo.typesafe.com/typesafe/ivy-releases, 
+          [organization]/[module]/(scala_[scalaVersion]/)
+          (sbt_[sbtVersion]/)[revision]/[type]s/
+          [artifact](-[classifier]).[ext], bootOnly
+ivy-sbt-plugin: https://dl.bintray.com/sbt/sbt-plugin-releases/,
+          [organization]/[module]/(scala_[scalaVersion]/)
+          (sbt_[sbtVersion]/)[revision]/[type]s/
+          [artifact](-[classifier]).[ext]
 sonatype-oss-releases
 maven-central
 sonatype-oss-snapshots
