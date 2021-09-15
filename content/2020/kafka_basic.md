@@ -111,7 +111,8 @@ Kafka 通过 Hadoop 的并行加载机制统一了在线和离线的消息处理
 Kafka 作为存储系统：任何允许发布与使用无关的消息发布的消息队列都有效地充当了运行中消息的存储系统。Kafka 的不同之处在于它是一个非常好的存储系统。写入 Kafka 的数据将写入磁盘并进行复制以实现容错功能。Kafka 允许生产者等待确认，以便直到完全复制并确保即使写入服务器失败的情况下写入也不会完成。
 
 <div class="mynotation">
-<p>每个分区可以人为的配置几个副本（比如创建主题的时候指定 replication-factor，也可以在 Broker 级别进行配置 default.replication.factor），一般会设置为3。</p>
+<p>每个分区可以人为的配置几个副本（比如创建主题的时候指定 replication-factor，也可以在 Broker 级别进行配置 default.replication.factor），一般会设置为3。但是对已经存在的分区是不会自动调整副本数的(它们的副本数就是第一次创建主题时的副本数)，须用 Kafka 自带的 kafka-reassign-partitions.sh 来保证实际副本数。</p>
+<p>offset.storage.topic 、config.storage.topic 、status.storage.topic 等这些 topic 是 Kafka内置的队列，是自动创建的。需要关注它们的实际副本数。</p>
 </div>
 
 Kafka 的磁盘结构可以很好地扩展使用——无论服务器上有 50KB 还是 50TB 的持久数据，Kafka 都将执行相同的操作。由于认真对待存储并允许客户端控制其读取位置，因此您可以将 Kafka 视为一种专用于高性能，低延迟提交日志存储，复制和传播的专用分布式文件系统。

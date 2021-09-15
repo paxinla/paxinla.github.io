@@ -37,10 +37,25 @@ interp.repositories() ++= Seq(
 
 如果是在 Windows 下，环境变量 HOME 改为 HOMEPATH 。
 
+
+查看编译器对表达式/语法糖的翻译结果，可以用 universe.reify 方法：
+
+```scala
+// reify方法用于对一段表达式参数生成语法树。
+import reflect.runtime.universe._
+
+reify( for ( i <- 1 to 10 ) println(i) )
+
+```
+
+
 ### 临时的数据库服务器
 
 有的时候，会需要一个临时的数据库服务器来进行一些测试。此时，不必在本地完整
 安装全套数据库的服务器组件，可以在内存里模拟一个临时的数据库服务器实例。
+
+以下方案与 [Testcontainers](https://www.testcontainers.org) 不同，不需要本地
+机器上预写安装 Docker 环境。
 
 以在 Ammonite 中执行为例:
 
@@ -88,6 +103,7 @@ interp.repositories() ++= Seq(
 
 // 关闭服务器: server.close
 ```
+
 
 ## 代码片段
 
