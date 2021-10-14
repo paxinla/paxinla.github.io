@@ -92,17 +92,20 @@ CommentId: X
 
 ### 常见质量衡量指标
 
-+ accuracy（准确度）: 反映了预测器对整个样本的判定能力(能将正的判定为正，负的判定为负)。衡量预测的正确性。
++ accuracy（准确度）: 反映了预测器对整个样本的判定能力(能将正的判定为正，负的判定为负)。衡量预测的正确性。如果样本不平衡，准确度就会失效。
   $$ Accuracy = \frac{\text{True Positive} + \text{True Negative}}{\text{True Positive} + \text{True Negative} + \text{False Positive} + \text{False Negative}} $$
 
-+ precision（精确度/查准率）: 反映了被预测的正例中真正的正例样本的比重。衡量预测是正确的概率。
++ precision（精确度/查准率）: 反映了被预测的正例中真正的正例样本的比重。衡量预测为正的结果正确的概率。
   $$ Precision = \frac{\text{True Positive}}{\text{True Positive} + \text{False Positive}} $$
 
-+ recall（召回率/查全率）: 反映了被正确判定的正例占总的正例的比重。是 precision 的反面。
++ recall（召回率/查全率/灵敏度sensitivity/真正率）: 反映了被正确判定的正例占总的正例的比重。是 precision 的反面。召回率越高，越是代表宁可错杀一千，绝不放过一个。
   $$ Recall = \frac{\text{True Positive}}{\text{True Positive} + \text{False Negative}} $$
 
 + F1 score : precision 和 recall 的加权平均值，最佳值为1、最差值为0。对分布不均匀的数据集，常用来代替 accuracy 。
   $$ F1 = \frac{2 * precision * recall}{precision + recall} $$
+
++ FPR（假正率）: 有多少负样本被错误预测为正样本。取 (1 - 特异度)（specificity（特异度）为 TN/(TN+FP)）。
+  $$ FPR = \frac{\text{False Positive}}{\text{False Positive} + \text{True Negative}} $$
 
 
 ### 常见数据异常衡量指标

@@ -157,7 +157,7 @@ YARN 中的 application 在运行失败时有几次重试机会，重试失败�
 
 ## X on YARN
 
-程序/框架只要实现了 Application Master 和资源申请模块，就可以运行在 YARN 上。
+程序/框架只要实现了 Application Master 和资源申请模块，就可以运行在 YARN 上。 YARN 分两个阶段运行客户端提交的应用程序: 启动 Application Master ；由 Application Master 创建应用，为它申请资源，监控它运行直到结束。
 
 <p class="list-title">对提交到 YARN 的应用，YARN 的一般调度步骤：</p>
 

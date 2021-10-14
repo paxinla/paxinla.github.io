@@ -23,7 +23,7 @@ Save_as: links.html
 <div class="container-audio" style="text-align:center;margin-top:1.5rem;margin-bottom:2rem;"><span class="music">スペルビア帝国/夜</span><audio controls preload="none"><source src="http://music.163.com/song/media/outer/url?id=565975068"/>~这里是一首好听的曲子，但你的浏览器不支持 audio 标签，很遗憾你听不到它~</audio></div>
 
 
-我不要求友邻自有域名、博客类型、国内备案、更新频率(还是不要久到让人以为你挂了哈)或者要对他人多么地有价值，我又不是你的老板，没这些莫名其妙的要求。我对友邻的唯一要求就是，不是垃圾推广站或者挂马毒站即可。能多多互勉互动最好，默默的友情也不错。
+本博客<span class="emp-text">不要求</span>友邻的博客类型、自有域名、国内备案、更新频率(还是不要久到让人以为你挂了哈)或者要对他人多么地有价值、多么有趣(我又不是你的老板，没这些莫名其妙的要求)。只要友邻不是垃圾推广站或者挂马毒站即可。能多多互勉互动最好，默默的友情也不错。
 
 <br/>
 
@@ -31,7 +31,7 @@ Save_as: links.html
 
 <div style="display: inline-block;margin-left: 5.6rem;">
 
-[flink:https://blog.douchi.space name:椒盐豆豉 desc:喜欢就买，不行就分，多喝热水，重启电脑。 logo:https://i.loli.net/2021/01/05/ladoO5s2TZnvNL3.png]
+[flink:https://blog.douchi.space name:椒盐鸵鸟 desc:喜欢就买，不行就分，多喝热水，重启电脑。 logo:https://i.loli.net/2021/01/05/ladoO5s2TZnvNL3.png]
 
 [flink:https://blog.yoitsu.moe name:约伊兹的萌狼乡手札 desc:咱就是咱。咱是赫萝。 logo:https://blog.yoitsu.moe/theme/images/wiki.png]
 

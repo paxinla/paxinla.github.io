@@ -20,6 +20,9 @@ HDFS （Hadoop Distributed File System）是一个适合运行在廉价商业机
 - 不支持文件随机修改，仅支持追加写入。
 
 ## HDFS 的架构
+
+![hdfs-namenode-ha-architecture](/images/2021/hdfs_nn_ha_arch.png)
+
 ### NameNode
 
 NameNode 有一个 Active NameNode ，一个 Standby NameNode ，两台 NameNode 互为冷备，只有处于 Active 状态的 NameNode 对外提供读写服务。每次 Active NameNode 写 editlog 的时候，除了写入本地磁盘外，还会提交到 JournalNode 集群，Standby NameNode 再从 JournalNode 集群定时同步 editlog ，再把同步的 editlog 应用到内存中的 fsimage 上。[ps: 从 JournalNode 上同步的 editlog 都是处于 finalized 状态的 editlog segment 。]
@@ -34,6 +37,7 @@ epoch 是一个单调递增的整数，用来标识每一次 Active NameNode 的
 - 处理客户端的读写请求。
 
 namenode 的 `hdfs-site.xml` 里的 `dfs.hosts` 指定允许连接到 namenode 的主机列表文件。如果该值为空，则允许所有主机，可以不配置；`dfs.hosts.exclude` 指定不允许连接到 namenode 的主机列表文件，如果该值为空，则不排除任何主机。
+
 
 ### DataNode
 
@@ -72,11 +76,33 @@ datanode 周期性检查块副本的数据是否与校验和一致。如果发�
 
 共享存储系统保存了 namenode 在运行过程中所产生的 HDFS 的元数据。主 namenode 和备 namenode 通过共享存储系统实现元数据同步。在进行主备切换的时候，新的主 namenode 在确认元数据完全同步之后才能继续对外提供服务。JournalNode 集群还向 Active NameNode 提供 epoch 。
 
-OJM (Quorum Journal Manager) 在 2N+1 个 JournalNode 上存储 NameNode 的 editlog ，每次写入操作都通过 Paxos 保证写入的一致性，它最后允许有 N 个 JournalNode 同时故障。
+目前 HDFS 默认的共享存储实现是 Cloudera 实现的基于 QJM (Quorum Journal Manager)的方案。 QJM 由多个 JournalNode 组成，每次写入操作都通过 Paxos 保证写入的一致性
+
+OJM 只保存 editlog ，不保存 fsimage 。每次 namenode 写 editlog ，除了向本地磁盘写外，也会并行向 JournalNode 集群里每一个 JournalNode 发送写请求，只要大多数 JournalNode 返回成功则认为向 JournalNode 集群写入 editlog 成功。
+
+如果有 2N+1 个 JournalNode 上存储 NameNode 的 editlog ，它最后允许有 N 个 JournalNode 同时故障。
 
 处于 Standby 状态的 NameNode 转换为 Active 状态的时候，有可能上一个 Active NameNode 发生了异常退出，那么 JournalNode 集群中各个 JournalNode 上的 editlog 就可能会处于不一致的状态，所以首先要做的事情就是让 JournalNode 集群中各个节点上的 editlog 恢复为一致。在 JournalNode 集群中各个节点上的 editlog 达成一致之后，新的 Active NameNode 要从 JournalNode 集群上补齐落后的 editlog。只有在这两步完成之后，当前新的 Active NameNode 才能安全地对外提供服务。
 
 JournalNode 守护进程是轻量级的，可以和其他进程部署在一起。
+
+
+### Fencing
+
+隔离（Fencing）是为了防止脑裂，就是保证在任何时候HDFS只有一个 Active NameNode ，主要包括三个方面：
+
++ 共享存储 fencing : 确保只有一个 NameNode 可以写入 editlog 。QJM 的每一个 JournalNode 均有一个 epoch ，匹配 epoch 的 QJM 才有权限更新 JournalNode 。当 Namenode 由 standby 状态切换成 active 状态时，会重新生成一个 epoch ，并更新 JournalNode 中的 epoch 。
++ 客户端 fencing : 确保只有一个 namenode 可以响应客户端的请求。
++ DataNode fencing : 确保只有一个 namenode 可以向 datanode 下发命令，譬如删除块，复制块，等等。
+
+QJM 的 Fencing 方案只能让原来的 Active Namenode 失去对 JournalNode 的写权限，但是原来的 Active Namenode 还是可以响应客户端的请求，对 datanode 进行读。对客户端和 dataNode 的隔离是通过配置 `dfs.ha.fencing.methods` 来实现的。
+
+进行 fencing 时，首先尝试调用旧的 Active NameNode 的 HAServiceProtocol RPC 接口的 transitionToStandy 方法，尝试将其转换为 standby 状态。如果失败，再执行 Hadoop 配置文件中预定义的隔离措施。
+
+Hadoop 主要提供两种隔离措施:
+
++ sshfence(通常选择这个) : ssh 到原来的 Active NameNode 上，用命令 fuser 结束进程（通过tcp端口号定位进程 pid，该方法比 jps 命令更准确）。
++ shellfence : 执行一个用户事先定义的shell脚本将对应得进程隔离。
 
 
 ### Secondary NameNode / Checkpoint Node / Backup Node
@@ -136,20 +162,23 @@ HDFS 块大小的默认值从2.7.3版本起是 128 MB，之前版本默认是 64
 
 ## HDFS 读写过程
 
+客户端通过 RPC 与 namenode 、 datanode 建立通信。
+
 客户端向 datanode 、datanode 之间传输数据的单位是 packet ，默认 64KB 。
 
 客户端向 datanode 、datanode 之间数据校验的单位是 chunk ，默认 512 字节；每个 chunk 需带 4B 的校验位，所以实际每个 chunk 写入 packet 的大小是 516B 。
 
+
 ### HDFS 的写数据过程
 
-1. 客户端向 namenode 请求上传文件，namenode 检查目标文件、父目录是否存在、权限等，若通过检查则分配元数据，创建空文件，将创建操作写入 editlog ，然后向客户端返回输出流对象(真正执行写数据的就是它)。
+1. 客户端向 namenode 请求上传文件，namenode 检查目标文件、父目录是否存在、用户是否有相应权限等，没通过检查直接报错。若通过检查则分配元数据，创建空文件，将创建操作写入 editlog ，然后向客户端返回输出流对象(真正执行写数据的就是它)。
 2. 客户端向 namenode 请求一个新的空数据块。
-3. namenode 返回存储这个数据块的 3 个 datanode 节点列表。[ps: 因为1个块默认存3份。]
+3. namenode 根据网络拓扑、机架感知和副本机制返回可存储这个数据块的 3 个 datanode 节点列表。[ps: 因为1个块默认存3份。默认本地一份，同机架其它节点一份，其他机架上某个节点一份。]
 4. 客户端与第一个 datanode 交互，请求上传数据 (给第一个 datanode 的除了数据还有 datanode 列表)，第一个 datanode 收到请求后继续调用第二个 datanode ，第二个 datanode 调用第三个 datanode ，通信管道 pipeline 建立完成。
 5. 客户端先往第一个 datanode 以 packet 为单位上传第一个 block ，第一个 datanode 收到一个 packet 就会转发给第二个 datanode ，第二个 datanode 再转发给第三个 datanode 。所有 datanode 确认传输完成后，由第一个 datanode 通知客户端写入成功，每个 datanode 接收 block 成功后都会向 namenode 汇报，namenode 更新内存中数据块与节点的映射信息。
 6. 每个 block 传输完成后，再重复第 5 步，直至所有数据块传输完毕。客户端通知 namenode 文件写入成功，namenode 确认副本数是否满足后，将相关结果提交到 editlog 中。
 
-客户端切分文件为数据块。
+客户端负责切分文件为数据块，默认块大小 128 MB。
 
 在写入时候，块大小是以客户端的配置为准的，客户端没有配置才以服务端为准。
 
@@ -164,10 +193,12 @@ HDFS 块大小的默认值从2.7.3版本起是 128 MB，之前版本默认是 64
 
 ### HDFS 的读数据过程
 
-1. 客户端向 namenode 请求下载文件，namenode 通过查询元数据，找到文件数据块所在的 datanode 列表。
+1. 客户端向 namenode 请求下载文件，若 namenode 检查用户权限、文件存在性等通过，则 namenode 通过查询元数据，返回文件每个数据块所在的 datanode 列表。
 2. 客户端挑一台 datanode (就近原则，然后随机)请求传输数据。
 3. datanode 传输数据给客户端(并行，多个 block 可以一起读)，以 packet 为单位校验。客户端以 packet 为单位接收到本地缓存，再写入文件。[ps: block 的应答包中不仅包含了数据，还包含了校验值。客户端接收到数据应答包时，会对数据进行校验，如果出现校验错误，客户端就会向 namenode 汇报这个损坏的 block 副本，同时尝试从其他的 datanode 读取这个数据块。]
-4. 重复第 3 步直至数据传出完成。
+4. 重复第 3 步直至数据传出完成，所有读取来的 block 会合并为一个完整的文件。
+
+“就近”的含义是指网络拓扑结构中距离客户端的“远近”、心跳机制中汇报超时的情况。
 
 
 ## HDFS 容量伸缩

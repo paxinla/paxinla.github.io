@@ -76,7 +76,7 @@ CommentId: X
 
 这时就需要两个辅助数据，这里用 df 与 accdf 来标识。
 
-在 PARTITION BY 的小分组中，对每一个日期与它 LAG 取的上一个日期相减得出的时间间隔 readTimeUnitDiff，与题目时间间隔条件相比较，如果符合“连续”的定义，则计改行的 df 值为 readTimeUnitDiff - 1 ，否则为 0 。
+在 PARTITION BY 的小分组中，对每一个日期与它 LAG 取的前一个日期相减得出的时间间隔 readTimeUnitDiff，与题目时间间隔条件相比较，如果符合“连续”的定义，则计该行的 df 值为 (readTimeUnitDiff - 1) ，否则为 0 。
 
 在 PARTITION BY 的小分组中，开窗从整个小分组第一行到当前行的 df 累加值就是这一行的 accdf 值。
 

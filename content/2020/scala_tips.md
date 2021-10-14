@@ -345,6 +345,15 @@ def splitOnDifferent[A](s: List[A], acc: Seq[Seq[A]] = Seq()): Seq[Seq[A]] = {
 }
 
 
+// 模式匹配中处理类型擦除
+import scala.reflect.runtime.universe.TypeTag
+
+def checkType[T: TypeTag](v: T) = typeOf[T] match {
+  case t if t =:= typeOf[List[String]] => "List of Strings"
+  case t if t =:= typeOf[List[Int]] => "List of Ints"
+  case _ => "Any other type"
+}
+
 ```
 
 ### 系统环境变量

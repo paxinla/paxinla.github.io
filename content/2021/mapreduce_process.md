@@ -40,6 +40,12 @@ ResourceManager 先在一个 NodeManager 上分配第一个容器，用来启动
 
 每个作业和作业里每个任务都有状态(pending,running,success,failure)，作业运行时，客户端可与 ApplicationMaster 直接通信轮询作业的执行状态、进度等信息。
 
+Map 阶段任务的工作机制简述: 输入文件被切割为多个输入分片再通过 RecordReader 按行读取内容给 Map 方法由用户自定义处理逻辑处理；处理完后由 OutputCollect收集器对结果按 key 分区(默认用 HashPartitioner)写入环形缓冲区，缓冲区达到一定阈值，按 key 排序溢写到磁盘上的临时文件；整个 Map 任务结束后合并所有溢写产生的临时文件，得到一个合并后的数据文件及相应的索引文件，等待 Reduce 任务拉取。
+
+Reduce 阶段任务的工作机制简述: eventFetcher 获取已完成的 map 列表，由一些数据拷贝线程通过 HTTP 方式拉取属于自己的数据到内存缓冲区中，达到一定的阈值溢写到磁盘上的临时文件；拉取 map 端数据完成后，将众多溢写临时文件合并为一个大文件并排序；对排序后的键值对调用 Reduce 方法，最后写入结果到 HDFS 文件中。
+
+Shuffle 阶段任务的工作机制简述: 一般把从 Mapper 产生输出开始到 Reducer 取得数据作为输入前的过程称作 Shuffle 。
+
 
 ### Input 阶段
 
@@ -47,7 +53,7 @@ InputFormat 类[ps: HDFS 上的文件基本是用的 FileInputFormat的子类: T
 
 输入分片，是逻辑分片，不会真正切割源文件；是根据分片的大小，逻辑上对源文件按字节进行划分。所以 input split 存储的并非数据本身，而是一个分片长度和一个记录数据位置的数组。[ref]<a href="https://www.panziye.com/bigdata/625.html">潘子夜. MapReduce执行过程及运行原理详解. 20200806.</a>[/ref]一个 Map 任务处理一个 input split ，因此 Map 任务的数量与 input split 的数量相同。
 
-每个输入分片的大小是固定的，如果是读取 HDFS 的文件，则默认与 Block 的大小相同。
+每个输入分片的大小是固定的，如果是读取 HDFS 的文件，则默认与 Block 的大小相同。[ps: 输入分片的大小并不是要接近 Block 大小才高效，这也要看集群的配置。]
 
 分片计算公式:
 
@@ -83,12 +89,33 @@ mapreduce.map.cpu.vcores
 
 每个 Map 任务是一个 Java 进程，它读取自己对应的输入分片，按用户实现的逻辑对各每个键值对作计算，计算完毕后，写入0个或多个键值对到本地磁盘。
 
+Map 任务的个数一般是由输入分片决定的。在 Hive on MR 里，map 的个数还要看 Hive 是否启用了压缩且压缩算法是否支持文件切分，以及 `hive.input.format` 是什么实现类。[ref]<a href="https://blog.csdn.net/qq_26442553/article/details/99438121">涤生手记大数据. 《真正让你明白Hive参数调优系列1：控制map个数与性能调优参数》, Nov 7, 2019</a>[/ref]当 Hive 需要处理的文件是压缩且压缩算法不支持文件切分时，每个 map 处理的大小其实是文件的大小，这时只能通过调整 split.size 来减少(无法增加) map 个数。[ps: Hive 默认在 map 前进行小文件合并。] 当 Hive 处理的文件是不压缩的或者压缩算法支持文件切分，且 `hive.input.foramt` 为 `HiveInputFormat` 时，split.size 才可决定 map 个数。当 Hive 处理的文件是不压缩的或者压缩算法支持文件切分，但 `hive.input.foramt` 为 `CombineHiveInputFormat` 时，则控制 map 个数由以下四个参数起作用:
+
++ mapred.min.split.size 或者 mapreduce.input.fileinputformat.split.minsize。
++ mapred.max.split.size 或者 mapreduce.input.fileinputformat.split.maxsize。
++ mapred.min.split.size.per.rack 或者 mapreduce.input.fileinputformat.split.minsize.per.rack。
++ mapred.min.split.size.per.node 或者 mapreduce.input.fileinputformat.split.minsize.per.node。
+
+```sql
+set hive.input.format = org.apache.hadoop.hive.ql.io.CombineHiveInputFormat; --hive0.5开始就是默认执行map前进行小文件合并
+set mapred.max.split.size = 256000000   --公司集群默认值
+set mapred.min.split.size = 10000000     --公司集群默认值
+set mapred.min.split.size.per.node = 8000000 --每个节点处理的最小split
+set mapred.min.split.size.per.rack = 8000000 --每个机架处理的最小slit.
+```
+
+1.一般来说这四个参数的配置结果大小要满足如下关系: `max.split.size >= min.split.size >= min.size.per.node >= min.size.per.rack` 。
+2.这四个参数的作用优先级: `max.split.size <= min.split.size <= min.size.per.node <= min.size.per.rack` 。当四个参数设置矛盾时，Hive 会以优先级最高的参数为准进行计算。
+3.注意这四个参数可以选择性设置，可以选择性设置大小或者使用默认值，但仍遵循前两条规则。
+
 
 ### Shuffle 阶段
 
 每个 Map 任务的计算结果，都是先写入内存的环形缓冲区(默认100MB，参数 mapreduce.task.io.sort.mb)，写到缓冲区容量的 80% (参数 mapreduce.map.sort.spill.percent)，就由另外一个守护线程将那 80% 数据写到磁盘上，同时不阻塞缓冲区的写入新结果的操作(期间如果缓冲区满，则这个写操作还是会被阻塞的。)，这就是“溢写”——spill 。
 
 Reduce 任务的数量在溢写到磁盘之前就已经知道了，所以会根据 Reduce 任务的数量划“分区”——partition，默认根据 HashPartition 将数据写入到相应的分区。每个分区中，数据都会用快速排序根据 key 排序。如果此时设置了 Combiner ，就再对排序后的结果进行 Combine 操作，使 map 输出更紧凑，减少写到磁盘的数据和传输给 Reduce 任务的数据。每次溢写得到一个新文件，因此当一个 Map 任务计算完成后，本地会有多个临时文件。Map 任务合并[ps:多轮递归合并(归并排序)，每轮合并mapreduce.task.io.sort.factor 个文件。]所有临时文件为一个分区且排序的大文件(保存到 output/file.out)，同时生成相应的索引文件(out/file.out.index)，合并完毕后，Map 任务将删除所有的临时溢写文件。默认情况下不压缩，使用参数 mapreduce.map.output.compress 控制，压缩算法用参数 mapreduce.map.output.compress.codec 控制。
+
+Combiner 是不能影响计算结果的，适用于求和类如局部汇总，不适用如求平均值等。
 
 ![MRv2 Spill过程(From segmentfault.com/u/chord_gll)](/images/2021/mapreduce_spill.png)
 
