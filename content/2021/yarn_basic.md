@@ -36,6 +36,9 @@ Resource Manager 有一个 Active Resource Manager 和一个 Standby Resource Ma
 
 Resource Manager 通过 RMStateStore 来存储内部数据、主要应用数据和标记等。
 
+Resource Manager 内部的 SecretManager 提供一系列令牌与密钥管理机制，在 Resource Manager 、Node Manager 和 Application Master 通过 RPC 通信时进行安全认证与授权。
+
+
 #### Zookeeper Failover Controller
 
 和 HDFS 不同，ZKFC 是嵌入在 Resource Manager 的一个服务，而不是一个独立进程存在的。ZKFC 负责监控 Resource Manager 的健康状况并定期向 Zookeeper 发送心跳。
@@ -48,25 +51,43 @@ Node Manager 是每个节点上的资源和任务管理器，一方面，它会�
 Node Manager 启动时向 Resource Manager 注册，注册信息中就包含了该节点可分配的 CPU 和内存总量。参见 yarn-site.xml 的参数：
 
 - `yarn.nodemanager.resource.memory-mb` : 可分配的物理内存总量，默认是8GB，不会动态调整。
-- `yarn.nodemanager.resource.cpu-vcores` : 可分配的虚拟CPU个数，默认是8，不会动态调整。[ps: 为了更细粒度地划分CPU资源，YARN 允许管理员将每个物理CPU划分为若干个虚拟CPU，用户提交应用程序时也可指定每个任务需要的虚拟CPU数量。vcore 的数量直接影响单个 Node Manager 能分配的 Container 数量。]
+- `yarn.nodemanager.resource.cpu-vcores` : 可分配的虚拟CPU个数，默认是8，不会动态调整。一般可设置为服务器核数的70%~85%之间。[ps: 为了更细粒度地划分CPU资源，YARN 允许管理员将每个物理CPU划分为若干个虚拟CPU，用户提交应用程序时也可指定每个任务需要的虚拟CPU数量。vcore 的数量直接影响单个 Node Manager 能分配的 Container 数量。]
 - `yarn.nodemanager.vmem-pmem-ratio` : 任务使用单位物理内存量对应最多可用的虚拟内存，默认时2.1，表示使用1MB的物理内存，最多可用2.1MB的虚拟内存总量。
 - `yarn.nodemanager.pmem-check-enabled` : 是否启动一个线程检查每个任务正使用的物理内存量，如果任务超出分配值，则直接将其杀掉，默认是 true 。
 - `yarn.nodemanager.vmem-check-enabled` : 是否启动一个线程检查每个任务正使用的虚拟内存量，如果任务超出分配值，则直接将其杀掉，默认是 true 。
+
+以下HDP官网的推荐预留内存设置，如果节点不是 Node Manager 独占则需要预留更多空间。
+
+![HDP官网的NM推荐预留内存设置](/images/2021/hdp_yarn_nm_memory_setup.png)
+
+Node Manager 默认在10分钟内没有向 Resource Manager 发送心跳就会被标记为不可用，不会往这个节点上分配 Container 。直到这个节点重启重新向 Resource Manager 注册。
+
+Node Manager 上的数据存储目录(参数 `yarn.nodemanager.local-dirs`)和日志目录(参数 `yarn.nodemanager.log-dirs` ，这是 Container 的运行日志，不是 Node Manager 的日志)可以分开配置。
+
 
 ### Container
 
 Container是 YARN 中的资源抽象，它封装了某个节点上的多维度资源，如内存、CPU、磁盘、网络等，当 Application Master 向 Resource Manager 申请资源时，Resource Manager 为 Application Master 返回的资源便是用 Container 表示。YARN 会为每个任务分配一个 Container ，且该任务只能使用该 Container 中描述的资源。实际运行时，每一个 Container 就是一个独立的 JVM 实例。
 
-- `yarn.scheduler.minimum-allocation-mb` : 可申请的最少内存资源，默认1GB。
-- `yarn.scheduler.maximum-allocation-mb` : 可申请的最多内存资源，默认8GB。
-- `yarn.scheduler.minimum-allocation-vcores` : 可申请的最少虚拟CPU数量，默认1。
+- `yarn.scheduler.minimum-allocation-mb` : 可申请的最少内存资源，默认1GB。一般设为2~3GB。
+- `yarn.scheduler.maximum-allocation-mb` : 可申请的最多内存资源，默认8GB。一般设为与 `yarn.nodemanager.resource.memory-mb` 相同，即单个 Node Manager 可使用的最大内存值，如果数据量不大的话，配置为这个参数值的一半也行。
+- `yarn.scheduler.increment-allocation-mb` : 请求内存资源超出 Container 最小值后如何动态增加，只对 Fair Scheduler 有用，默认512。
+- `yarn.scheduler.minimum-allocation-vcores` : 可申请的最少虚拟CPU数量，默认1。一般参考 CPU:内存 = 1:3 配置。
 - `yarn.scheduler.maximum-allocation-vcores` : 可申请的最多虚拟CPU数量，默认32。
+- `yarn.scheduler.increment-allocation-vcores` : 请求虚拟CPU资源超出 Container 最小值后如何动态增加，只对 Fair Scheduler 有用，默认1。
+
+
+HDP官网的推荐设置:
+
+![HDP官网的推荐设置](/images/2021/hdp_yarn_ct_setup.png)
+
 
 ### Application Master
 
 Resource Manager 对每一个提交到 YARN 的 Application ，都会从集群中选择一个 Node Manager 启动一个 Container  来运行一个 Application Master 来负责这个 Application 的任务执行的资源分配、生命周期监控等工作。Application Master 与 Resource Manager 和 Node Manager 都有交互：向 Resource Manager 申请资源，请求 Node Manager 启动或停止 task 。
 
 每个 Application 都有自己的 Application Master ，每个 Application Master 只负责自己的资源调度，整个集群所有在运行的 Application 的 Application Master 不会集中在一个节点上。 
+
 
 ### JobHistory Server 和 Timeline Server
 
@@ -100,9 +121,13 @@ YARN 采用增量资源分配机制，当 Application 申请的资源暂时无�
 - 超细粒度资源，如CPU性能要求、绑定CPU等。
 - 动态调整 Container 资源，允许根据需要动态调整 Container 资源量。
 
+
 #### 资源调度器
 
 YARN 资源调度器提供了三种资源调度器：FIFO Scheduler、 Capacity Scheduler 和 Fair Scheduler 。通过 yarn-site.xml 的参数 `yarn.resourcemanager.scheduler.class` 指定。这三种方式都是按照层级队列方式组织资源。用户也可按照接口规范编写自己的资源调度器。
+
+YARN 每隔10s读取一次配置文件更新。
+
 
 ##### FIFO Scheduler
 
@@ -121,9 +146,16 @@ Capacity Scheduler 是 Apache Hadoop 2.x 默认的资源调度器，以队列为
 - 提高多租户并行度。支持多用户共享集群资源和多应用程序同时运行。
 - 资源隔离。可对每个用户可用资源设置上限。每个队列设置严格的 ACL ，用户只能向自己的队列里提交任务，而不能访问其他队列的任务。
 
+同一个父队列下的子队列资源分配值之和必须等于父队列。队列之间的资源可以共享及抢占。支持队列的ACL权限控制。
+
 为什么叫容量调度？队列资源采用容量占比的方式进行分配；队列间的资源分配算法也是采用最小资源使用率；每个用户的资源限制是资源量占比。
 
-Capacity Scheduler 不支持抢占式调度，必须等上一个任务主动释放资源。
+Capacity Scheduler 也支持任务的抢占式调度(旧的不支持)。不支持负载均衡机制。
+
+Capacity Scheduler 支持 Node Label 机制。[ref]<a href="https://hero78.blog.csdn.net/article/details/117284107">涤生手记大数据. 《大数据架构师一定要弄清楚Fair Scheduler和Capacity Scheduler调度器》, May 26, 2021</a>[/ref]
+
+CDH 和 HDP 合并后，新的 CDP 默认使用的是 Capacity Scheduler 。
+
 
 ##### Fair Scheduler
 
@@ -135,6 +167,13 @@ Fair Scheduler 是 CDH 默认的资源调度器，根据队列的权重属性自
 - 调度策略配置灵活。每个队列中，Fair Scheduler 可选择 FIFO, fair(默认策略，基于内存的) 或 DRF(dominant resource fairness ，CDH的默认策略，基于vcore和内存) 策略为应用程序分配资源。
 - 支持资源抢占。队列空闲资源被共享给其他队列后，如果再提交用户程序，需要计算资源，调度器需要为它回收资源。为了尽可能降低不必要的计算浪费，调度器采用了先等待再强制回收的策略。如果等待一段时间后尚有未归还的资源，则会进行资源抢占：从超额使用资源的队列中杀死一部分任务，进而释放资源。
 - 负载均衡。Fair Scheduler 尽可能把系统中的任务均匀分配到各个节点上。
+
+同一个父队列下的子队列资源分配值之和可以不等于父队列(有利于提高父队列的资源利用率)，但是实际使用量会受父队列限制。队列之间的资源可以共享及抢占。支持队列的ACL权限控制。
+
+使用 Fair Scheduler ，如果 Container 的内存不足且重试后还是不足，则任务会直接报错。而使用 Capacity Scheduler 则可以根据实际 Container 需要的大小动态调整。
+
+Fair Scheduler 不支持限制队列中每个用户可使用的最大资源使用量，Capacity Scheduler 是支持的。
+
 
 #### Node Label
 
