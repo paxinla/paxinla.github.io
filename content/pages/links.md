@@ -50,7 +50,7 @@ Save_as: links.html
 
 <div style="margin-top: 2rem;"><p>
 <a href="https://scalatimes.com" target="_blank" rel="nofollow noopener noreferrer">
-<img src="/static/scala_times_125.png" style="max-width: 125px;" />
+<img src="/static/scala_times_125.png" style="max-width: 125px; border-radius: 125px;" />
 </a>
 </p></div>
 
