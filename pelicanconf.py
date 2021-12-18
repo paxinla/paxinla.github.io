@@ -34,7 +34,7 @@ STATIC_PATHS = ["static",
                 "images",
                 "images/favicon.ico"]
 AVATAR = "static/user_avatar.jpeg"
-SIDEBAR_LOGO = "static/lambda.jpeg"
+SIDEBAR_LOGO = "static/icosahedron.jpg"
 THEME = "themes/pxltheme"
 ARTICLE_URL = 'posts/{date:%Y}/{date:%m}/{slug}.html'
 ARTICLE_SAVE_AS = 'posts/{date:%Y}/{date:%m}/{slug}.html'
