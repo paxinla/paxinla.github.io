@@ -371,3 +371,18 @@ scala.util.Properties.envOrNone("PWD")
 System.getenv("PWD")
 
 ```
+
+### 密码学相关
+
+```scala
+import $ivy.`org.scorexfoundation::scrypto:2.1.10`
+
+// Base58
+import scorex.util.encode.Base58
+val decoded = Base58.decode("b2rhe5P4gXftAwvA4eXQ5HJwsER2owDyS9sKaQRRVQPn93bA")
+decoded match {
+  case Success(v) => v.map("%02x" format _).mkString
+  case Failure(f) => println(f)
+}
+
+```
