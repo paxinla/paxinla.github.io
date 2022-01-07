@@ -35,6 +35,8 @@ Save_as: links.html
 
 [flink:https://blog.yoitsu.moe name:约伊兹的萌狼乡手札 desc:咱就是咱。咱是赫萝。 logo:https://blog.yoitsu.moe/theme/images/wiki.png]
 
+[flink:https://randomwaves.space name:波澜随心起 desc:有风有雨有晴天。 logo:https://randomwaves.space/img/sound-waves-s.png]
+
 
 <hr class="circle-split-line" />
 
