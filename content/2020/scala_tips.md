@@ -48,6 +48,14 @@ reify( for ( i <- 1 to 10 ) println(i) )
 
 ```
 
+### Mill
+
+在使用 [Mill](https://github.com/com-lihaoyi/mill) 的 assembly 打包的时候，有个深坑需要注意：mill 默认会在 jar 包里加些脚本内容，以使打包后的 jar 包可以直接执行。但是这种方式处理后的 jar 包格式可能会使某些系统无法识别（用 `jar tvf` 可能会报错）。解决的办法是在 build.sc 中添加如下内容:
+
+```scala
+override def prependShellScript: T[String] = ""
+```
+
 
 ### 临时的数据库服务器
 
