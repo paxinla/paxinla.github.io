@@ -33,8 +33,6 @@ Save_as: links.html
 
 [flink:https://blog.douchi.space name:椒盐鸵鸟 desc:喜欢就买，不行就分，多喝热水，重启电脑。 logo:https://i.loli.net/2021/01/05/ladoO5s2TZnvNL3.png]
 
-[flink:https://blog.yoitsu.moe name:约伊兹的萌狼乡手札 desc:咱就是咱。咱是赫萝。 logo:https://blog.yoitsu.moe/theme/images/wiki.png]
-
 [flink:https://randomwaves.space name:波澜随心起 desc:有风有雨有晴天。 logo:https://randomwaves.space/img/sound-waves-s.png]
 
 
@@ -45,6 +43,8 @@ Save_as: links.html
 [flink:https://ae7.st/g/ name:Passphrase desc:Password Generator. logo:https://ae7.st/g/favicon.ico]
 
 [flink:https://bin.outv.im name:Private.Bin desc:一个对内容毫不知情的在线粘贴板. logo:https://bin.outv.im/img/favicon.ico]
+
+[flink:https://onetimesecret.com name:OneTimeSecret desc:一个阅后即焚粘贴板. logo:https://onetimesecret.com/img/favicon.png]
 
 </div>
 
