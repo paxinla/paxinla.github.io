@@ -3,7 +3,7 @@ Status: hidden
 Save_as: gpg_pub_key.html
 
 
-My Key fingerprint: <em style="color:seagreen;font-weight:bold;">9C1E 56D2 CA50 F9EB DC67 6111 6D10 0717 47E1 5BF5</em>
+My Key fingerprint: <em style="color:seagreen;background-color:lightpink;font-weight:bold;">9C1E 56D2 CA50 F9EB DC67 6111 6D10 0717 47E1 5BF5</em>
 
 You can search my public key from:
 
@@ -18,20 +18,7 @@ $ curl -fsSL https://paxinla.github.io/static/gpg_keys.asc | gpg --import -
 
 🅾 The [keyart](https://manpages.ubuntu.com/manpages/disco/man1/keyart.1.html) image of my public key :
 
-<article style="margin-left:2em;max-width:14em;">
-<header style="background-color:#232235;"><pre style="color:#ff66c4;padding:0;">
- +-----[rsa2048]-----+ 
- |          .    :lii| 
- |         ^     .:^:| 
- |        . ^     ^.E| 
- |       . . :   .  ^| 
- |        : l .   .. | 
- |         S .   ^   | 
- |        ^ : . . .  | 
- |         . ^ . ^   | 
- |              ^    | 
- |                   | 
- |                   | 
- +-----[47E15BF5]----+ 
-</pre></header>
-</article>
+<div style="margin-top: 2rem;"><p>
+<img src="/static/keyart.png" style="max-width: 125px; border-radius: 125px;" />
+</p></div>
+
