@@ -1,6 +1,6 @@
 beautifulsoup4==4.9.3
 blinker==1.4
-certifi==2021.5.30
+certifi==2022.12.7
 chardet==4.0.0
 cssmin==0.2.0
 docutils==0.17.1
