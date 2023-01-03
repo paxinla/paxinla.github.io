@@ -19,6 +19,6 @@ $ curl -fsSL https://paxinla.github.io/static/gpg_keys.asc | gpg --import -
 🅾 The [keyart](https://manpages.ubuntu.com/manpages/disco/man1/keyart.1.html) image of my public key :
 
 <div style="margin-top: 2rem;"><p>
-<img src="/static/keyart.png" style="max-width: 125px; border-radius: 125px;" />
+<img src="/static/keyart.png" style="max-width: 150px;" />
 </p></div>
 
