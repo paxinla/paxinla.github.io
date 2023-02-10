@@ -48,10 +48,10 @@ html: clean
 	find $(JSDIR) -type f -name '*.js' -a ! -name 'packed.js' -a ! -name '*_toc.js' -a ! -name 'comments.js' -a ! -name 'L2Dwidget.*' -a ! -name 'animejs.js' -a ! -name 'fireworks.min.js' -delete
 	find $(JSDIR) -type f -name '*.map' -a ! -name 'L2Dwidget.*' -delete
 	@echo 'Clear source JavaScript files.'
+	cp -r $(BASEDIR)/.well-known $(OUTPUTDIR)/
 
 $(OUTPUTDIR)/%.html:
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(CONFFILE) $(PELICANOPTS)
-	cp .well-known $(OUTPUTDIR)/
 
 regenerate: clean
 	$(PELICAN) -r $(INPUTDIR) -o $(OUTPUTDIR) -s $(CONFFILE) $(PELICANOPTS)
