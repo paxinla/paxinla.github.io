@@ -1,4 +1,4 @@
-Title: 关于这个博客
+Title: ʕ •ᴥ•ʔ 关于这个博客
 Status: hidden
 Save_as: about.html
 TitleImage: /images/evolution.png
@@ -19,8 +19,7 @@ Charles 是一个略爱折腾的数据工程师，关注数据库、数据工程
 
 <a href="https://paxinla.github.io/my-online-resume/cn/" style="display:inline-block;border:none;"><img src="https://img.shields.io/badge/Looingking%20for-Greener%20Pasture-green" /></a>
 <a href="https://paxinla.github.io/gpg_pub_key.html" target="_blank" style="display:inline-block;border:none;"><img src="https://img.shields.io/badge/GPG%20KEY-47E15BF5-da282a" /></a>
-<a href="https://matrix.to/#/@iomonad:privacytools.io" target="_blank" style="display:inline-block;border:none;"><img src="https://img.shields.io/badge/Matrix-white?logo=matrix&logoColor=black" /></a>
-<a href="https://web.libera.chat/" target="_blank" style="display:inline-block;border:none;"><img src="https://img.shields.io/badge/%F0%9F%92%AC-aksura@libera.chat-14354C" /></a>
+<a href="https://snort.social/p/npub12zm89jjwq6x2aaxpv489w0hsx2fn5z0uzy7az4snncar3ygkr93q52kjeg" target="_blank" style="display:inline-block;border:none;"><img src="https://img.shields.io/badge/%F0%9F%92%AC%20nostr-aksura--bacae223@paxinla.github.io-14354C" /></a>
 
 
 ```clojure
@@ -31,6 +30,7 @@ Charles 是一个略爱折腾的数据工程师，关注数据库、数据工程
     (.social-media 
       {:📧 "base64 -d <<< YWtzdXJhQHBhcmFub2lkLmVtYWlsCg=="
        :🐘 "base64 -d <<< aHR0cHM6Ly9tLmNteC5pbS9AYWtzdXJh"
+       :nostr "base64 -d <<< NTBiNjcyY2E0ZTA2OGNhZWY0YzE2NTRlNTczZWYwMzI5MzNhMDlmYzExM2RkMTU2MTM5ZTNhMzg5MTE2MTk2Mg=="
        :ff14 "base64 -d <<< 56We5oSP5LmL5ZywIOecn+mYv+WFi+iLj+aLiQ=="
        :ns-friend-code "base64 -d <<< U1ctNDIxMC0xMzM3LTgyNDE="})
     (.technology-stack
@@ -39,10 +39,9 @@ Charles 是一个略爱折腾的数据工程师，关注数据库、数据工程
                 "Data Warehouse"]
        :familiar {:language [:Python
                              :Scala
-                             :Rust
-                             :Clojure]}
-                  :framework [:Akka
-                              :Spark]})))
+                             :Clojure
+                             :Rust]}
+                  :framework [:Spark]})))
 
 ```
 
