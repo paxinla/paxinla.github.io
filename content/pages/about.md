@@ -30,7 +30,7 @@ Charles 是一个略爱折腾的数据工程师，关注数据库、数据工程
     (.social-media 
       {:📧 "base64 -d <<< YWtzdXJhQHBhcmFub2lkLmVtYWlsCg=="
        :🐘 "base64 -d <<< aHR0cHM6Ly9tLmNteC5pbS9AYWtzdXJh"
-       :nostr "base64 -d <<< NTBiNjcyY2E0ZTA2OGNhZWY0YzE2NTRlNTczZWYwMzI5MzNhMDlmYzExM2RkMTU2MTM5ZTNhMzg5MTE2MTk2Mg=="
+       :nostr "base64 -d <<< YWtzdXJhLWJhY2FlMjIzQHBheGlubGEuZ2l0aHViLmlv"
        :ff14 "base64 -d <<< 56We5oSP5LmL5ZywIOecn+mYv+WFi+iLj+aLiQ=="
        :ns-friend-code "base64 -d <<< U1ctNDIxMC0xMzM3LTgyNDE="})
     (.technology-stack
