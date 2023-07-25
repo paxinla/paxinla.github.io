@@ -35,6 +35,8 @@ Save_as: links.html
 
 [flink:https://randomwaves.space name:波澜随心起 desc:有风有雨有晴天。 logo:https://randomwaves.space/img/sound-waves-s.png]
 
+[flink:https://www.dbanote.com/ name:牧人池塘 desc:时光匆匆，记录是对思维的沉淀。 logo:https://www.dbanote.com/usr/themes/wind/images/face.jpg]
+
 
 <hr class="circle-split-line" />
 
