@@ -55,7 +55,7 @@ Save_as: links.html
 <div style="background: url(/theme/images/ornate-border.svg) center top no-repeat transparent; background-size: auto; background-size: contain; height: 1.5rem; width: 100%; margin-top: 1rem;"></div>
 
 <div style="margin-top: 2rem;"><p>
-<a href="https://scalatimes.com" target="_blank" rel="nofollow noopener noreferrer">
+<a href="https://scalatimes.com" target="_blank" rel="external">
 <img src="/static/scala_times_125.png" style="max-width: 125px; border-radius: 125px;" />
 </a>
 </p></div>

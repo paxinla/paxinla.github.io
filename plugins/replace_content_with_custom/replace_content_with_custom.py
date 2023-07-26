@@ -28,7 +28,7 @@ PTN_FLINK = re.compile(r"\[flink:\s*(.+?)\s+name:\s*(.+?)\s+desc:\s*(.+?)\s+logo
 RPL_FLINK = r'''
 <div class="flink-item" style="background-color: THECOLOR !important;">
   <div class="flink-title">
-    <a href="\1" target="_blank" rel="nofollow noopener noreferrer">\2</a>
+    <a href="\1" target="_blank" rel="external">\2</a>
   </div>
   <div class="flink-link">
     <div class="flink-link-ico" style="background: url(\4); background-size: 42px auto;"></div>
