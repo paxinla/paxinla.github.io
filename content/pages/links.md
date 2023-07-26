@@ -37,6 +37,8 @@ Save_as: links.html
 
 [flink:https://www.dbanote.com/ name:牧人池塘 desc:时光匆匆，记录是对思维的沉淀。 logo:https://www.dbanote.com/usr/themes/wind/images/face.jpg]
 
+[flink:https://blog.pantheon.press/ name:Pantheon desc:一个杂七杂八的博客。 logo:https://paxinla.github.io/static/unknown.png]
+
 
 <hr class="circle-split-line" />
 
