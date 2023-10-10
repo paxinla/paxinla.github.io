@@ -37,16 +37,16 @@ Save_as: links.html
 
 [flink:https://www.dbanote.com/ name:牧人池塘 desc:时光匆匆，记录是对思维的沉淀。 logo:https://www.dbanote.com/usr/themes/wind/images/face.jpg]
 
-[flink:https://blog.pantheon.press/ name:Pantheon desc:一个杂七杂八的博客。 logo:https://paxinla.github.io/static/unknown.png]
+[flink:https://blog.pantheon.press/ name:Pantheon desc:一个杂七杂八的博客。 logo:https://pantheon-blog.oss-cn-beijing.aliyuncs.com/20230816141636.png]
 
 
 <hr class="circle-split-line" />
 
 [flink:https://shyyp.net name:羊羊粤语 desc:Keep Cantonese Alive! logo:https://shyyp.net/imgs/favicon.svg]
 
-[flink:https://ae7.st/g/ name:Passphrase desc:Password Generator. logo:https://ae7.st/g/favicon.ico]
+[flink:https://paxinla.github.io/webpassgen name:Passphrase desc:Password Generator. logo:https://paxinla.github.io/static/lock.png]
 
-[flink:https://bin.outv.im name:Private.Bin desc:一个对内容毫不知情的在线粘贴板. logo:https://bin.outv.im/img/favicon.ico]
+[flink:https://bin.outv.im name:Private.Bin desc:一个对内容毫不知情的在线粘贴板. logo:https://bin.outv.im/img/apple-touch-icon.png]
 
 [flink:https://onetimesecret.com name:OneTimeSecret desc:一个阅后即焚粘贴板. logo:https://onetimesecret.com/img/favicon.png]
 
