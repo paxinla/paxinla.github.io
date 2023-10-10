@@ -24,6 +24,11 @@ CommentId: X
 ## 技术
 
 - [Eloquent JavaScript](https://eloquentjavascript.net/)
+
+
+### 区块链
+
+- [区块链入门指南](https://guide.pseudoyu.com/)
 - [Solidity极简入门](https://github.com/AmazingAng/WTFSolidity)
 
 
