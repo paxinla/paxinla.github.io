@@ -10,7 +10,7 @@ ReadHat 提供了一个自动对系统参数(不用手工编辑 sysctl.conf )调
 
 ## 安装
 
-在基于 ReadHat 的发行版上，通常 tuned 都已经安装好了。如果系统尚未安装，则执行 `yum install tuned` (基于 Debian 的发行版上则是 `apt-get install tuned`)安装就好。
+在基于 RedHat 的发行版上，通常 tuned 都已经安装好了。如果系统尚未安装，则执行 `yum install tuned` (基于 Debian 的发行版上则是 `apt-get install tuned`)安装就好。
 
 安装完成后就可以通过 systemd 来管理 tuned 服务。tuned 自带管理工具 `tuned-adm` 来管理各种系统参数调优的规则。
 
