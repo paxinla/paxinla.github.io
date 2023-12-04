@@ -1,3 +1,4 @@
+Markdown
 pelican
 beautifulsoup4
 html5lib

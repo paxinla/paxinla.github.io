@@ -1,4 +1,5 @@
 -f https://pypi.mirrors.ustc.edu.cn/simple
+Markdown
 pelican
 beautifulsoup4
 html5lib
