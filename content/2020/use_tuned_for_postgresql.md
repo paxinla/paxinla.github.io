@@ -4,7 +4,7 @@ Category: 工具
 Tags: postgresql, tuned
 CommentId: X
 
-ReadHat 提供了一个自动对系统参数(不用手工编辑 sysctl.conf )调优的工具 — `tuned` 。本文记录了我在 PostgreSQL 服务器上使用 tuned 的情况。
+RedHat 提供了一个自动对系统参数(不用手工编辑 sysctl.conf )调优的工具 — `tuned` 。本文记录了我在 PostgreSQL 服务器上使用 tuned 的情况。
 
 <!-- PELICAN_END_SUMMARY -->
 
