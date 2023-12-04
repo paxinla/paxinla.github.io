@@ -10,7 +10,7 @@ Save_as: links.html
 
 我猜你想:
 
-1. ⚠️<span style="color: #de1e4c;">互换友链。</span>期望添加友链请在最下面留言，或者给我<a href="mailto:aksura@paranoid.email?subject=Request for Blog Friend Link" style="color:#921b51;text-decoration:none;border:none;">✉ 发邮件</a>，格式如下示例。申请前请先上架本博客链接。
+1. ⚠️<span style="color: #de1e4c;">互换友链。</span>期望添加友链请在最下面留言，或者给我<a href="mailto:aksura@paranoid.email?subject=Request for Blog Friend Link" style="color:#921b51;text-decoration:none;border:none;">✉️  发邮件</a>，格式如下示例。申请前请先上架本博客链接。
 <article style="margin-top:0.5em;margin-bottom:1em;"><header class="blue-star"><pre class="in-article">
 网站名字: 隐者の书庭
 网站链接: https://paxinla.github.io
@@ -55,7 +55,7 @@ Save_as: links.html
 <div style="background: url(/theme/images/ornate-border.svg) center top no-repeat transparent; background-size: auto; background-size: contain; height: 1.5rem; width: 100%; margin-top: 1rem;"></div>
 
 <div style="margin-top: 2rem;"><p>
-<a href="https://scalatimes.com" target="_blank" rel="external">
+<a href="https://scalatimes.com" target="_blank" rel="external noopener noreferrer">
 <img src="/static/scala_times_125.png" style="max-width: 125px; border-radius: 125px;" />
 </a>
 </p></div>

@@ -53,7 +53,7 @@ Spark 根据 hint 的信息，将参与 join 的数据集根据倾斜的 key 分
 
 来探测是否发生了数据倾斜。
 
-自动拆分发生了数据倾斜的分区为几个更小的分区，另一方数据集对应的分区复制为相同数量的分区，[ps:参考<a href="https://docs.google.com/document/d/1NkXN-ck8jUOS0COz3f8LUW5xzF8j9HFjoZXWGGX2HAg/edit#heading=h.60dh8l6nvck" target="_blank">Skewed Join Optimization Design Doc</a>]再 join 。
+自动拆分发生了数据倾斜的分区为几个更小的分区，另一方数据集对应的分区复制为相同数量的分区，[ps:参考<a href="https://docs.google.com/document/d/1NkXN-ck8jUOS0COz3f8LUW5xzF8j9HFjoZXWGGX2HAg/edit#heading=h.60dh8l6nvck" target="_blank" rel="noopener noreferrer">Skewed Join Optimization Design Doc</a>]再 join 。
 
 这种策略减少了运行时的延迟时间，不要求事先知道具体是哪些 key 上有数据倾斜，也不需要多次遍历数据集。但是会有额外的 shuffle 在 join 之间或者 join 与聚合操作之间，即使没有数据倾斜现象时也如此。
 
