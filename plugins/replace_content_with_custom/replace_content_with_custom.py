@@ -40,11 +40,11 @@ PTN_FDLINK = re.compile(r"\[fdlink:\s*(.+?)\s+name:\s*(.+?)\s+desc:\s*(.+?)\s+lo
 RPL_FDLINK = r'''
 <div class="flink-item" style="background-color: black !important;">
   <div class="flink-title" style="color: white !important;">
-    <a href="\1" target="_blank" rel="external noopener noreferrer">\2</a>
+    <a href="\1" target="_blank" rel="external noopener noreferrer" style="color: white !important; text-decoration: line-through;">\2</a>
   </div>
   <div class="flink-link">
     <div class="flink-link-ico" style="background: url(\4); background-size: 42px auto;"></div>
-    <div class="flink-link-text" style="color: white !important;">\3</div>
+    <div class="flink-link-text" style="color: white !important; text-decoration: line-through;">\3</div>
   </div>
 </div>'''
 
