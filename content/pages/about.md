@@ -54,20 +54,9 @@ Charles 是一个略爱折腾的数据工程师，关注数据库、数据工程
 + 20180316 - 迁移 [Hexo](https://hexo.io/zh-cn/) 到 [Pelican](https://blog.getpelican.com/) ，魔改 CachesToCaches 主题，启用 Travis-CI 。
 + 20140406 - 开启博客之旅，Hexo + Modernist 主题 + Github Pages 。
 
-<br/>本站总访问量: <!-- Default Statcounter code for blog https://paxinla.github.io -->
-<script type="text/javascript">
-var sc_project=12954173; 
-var sc_invisible=0; 
-var sc_security="5f6cdd0b"; 
-var scJsHost = "https://";
-document.write("<sc"+"ript type='text/javascript' src='" + scJsHost+
-"statcounter.com/counter/counter.js'></"+"script>");
-</script>
-<noscript><div class="statcounter"><a title="web counter"
-href="https://statcounter.com/" target="_blank"><img class="statcounter"
-src="https://c.statcounter.com/12954173/0/5f6cdd0b/0/" alt="web counter"
-referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
-<!-- End of Statcounter Code --> 次<br/>
+<br/> 
+<noscript><div class="statcounter"><a title="web counter" href="https://statcounter.com/" target="_blank">本站总访问量: <img class="statcounter" src="https://c.statcounter.com/12954173/0/5f6cdd0b/0/" alt="web counter" referrerPolicy="no-referrer-when-downgrade"> 次</a></div></noscript>
+<br/>
 
 <br/>
 
