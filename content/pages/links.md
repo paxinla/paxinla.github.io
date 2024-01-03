@@ -33,7 +33,7 @@ Save_as: links.html
 
 [flink:https://blog.douchi.space name:椒盐鸵鸟 desc:喜欢就买，不行就分，多喝热水，重启电脑。 logo:https://i.loli.net/2021/01/05/ladoO5s2TZnvNL3.png]
 
-[flink:https://randomwaves.space name:波澜随心起 desc:有风有雨有晴天。 logo:https://randomwaves.space/img/sound-waves-s.png]
+[fdlink:https://randomwaves.space name:波澜随心起 desc:有风有雨有晴天。logo:https://paxinla.github.io/static/friends/soul02.png]
 
 [flink:https://www.dbanote.com/ name:牧人池塘 desc:时光匆匆，记录是对思维的沉淀。 logo:https://www.dbanote.com/usr/themes/wind/images/face.jpg]
 

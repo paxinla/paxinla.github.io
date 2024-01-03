@@ -36,6 +36,18 @@ RPL_FLINK = r'''
   </div>
 </div>'''
 
+PTN_FDLINK = re.compile(r"\[fdlink:\s*(.+?)\s+name:\s*(.+?)\s+desc:\s*(.+?)\s+logo:\s*(.+?)\]")
+RPL_FDLINK = r'''
+<div class="flink-item" style="background-color: black !important;">
+  <div class="flink-title" style="color: white !important;">
+    <a href="\1" target="_blank" rel="external noopener noreferrer">\2</a>
+  </div>
+  <div class="flink-link">
+    <div class="flink-link-ico" style="background: url(\4); background-size: 42px auto;"></div>
+    <div class="flink-link-text" style="color: white !important;">\3</div>
+  </div>
+</div>'''
+
 BG_COLORS = [['#d3869b'],  #红组
              ['#A0DAD0', '#c8cfbc', '#c2d94c'],  #绿组
              ['#f1f8ff', '#4899c0', '#9a76d7'],  #蓝/紫组
@@ -78,6 +90,9 @@ def repl_friend_link(instr):
 
     return new_content
 
+def repl_friend_dead_link(instr):
+    return PTN_FDLINK.sub(RPL_FDLINK, instr)
+
 
 def gen_new_read(func):
     def new_read(*args, **kwargs):
@@ -85,7 +100,7 @@ def gen_new_read(func):
         new_path = os.path.join(tmpdir, "fff")
         old_src_path = args[1]
 
-        replacers = [repl_code_block, repl_side_ps, repl_list_title, repl_music_player, repl_friend_link]
+        replacers = [repl_code_block, repl_side_ps, repl_list_title, repl_music_player, repl_friend_link, repl_friend_dead_link]
         try:
             with open(old_src_path, "r", encoding="utf8") as rf, open(new_path, 'w', encoding="utf8") as wf:
                 content = rf.read()
