@@ -30,6 +30,20 @@
         <link href="{{ SITEURL }}/{{ ASSET_URL }}" rel="stylesheet" type="text/css" />
         {% endassets %}
 
+        <!-- View Counter -->
+        <!-- Default Statcounter code for blog https://paxinla.github.io -->
+        <script type="text/javascript">
+          var sc_project=12954173; 
+          var sc_invisible=0; 
+          var sc_security="5f6cdd0b"; 
+          var sc_text=2; 
+          var scJsHost = "https://";
+          document.write("<sc"+"ript type='text/javascript' src='" +
+          scJsHost+
+          "statcounter.com/counter/counter.js'></"+"script>");
+        </script>
+        <!-- End of Statcounter Code -->
+
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-70MNYH18HG"></script>
         <script>
@@ -69,9 +83,6 @@
                     <span class="nav-item"><i class="fas fa-user"></i><a href="{{ SITEURL }}/about.html"> 关于我 </a></span>
                 </div>
                 <hr/> <br/>
-
-                <!-- View Counter -->
-                <script defer src="https://vercount.one/js"></script>
 
                 {% block nav_big_title %}
                 {% endblock %}
