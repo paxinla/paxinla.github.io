@@ -45,7 +45,7 @@ Charles 是一个略爱折腾的数据工程师，关注数据库、数据工程
 
 <h3 class="no-bullet">站点更新日志</h3>
 
-+ 20240102 - 迁移访问计数到 [statcounter.com](https://statcounter.com) 。
++ 20240102 - 迁移访问计数到 [Vercount](https://vercount.one/) 。
 + 20210225 - 迁移评论系统到 [utterances](https://utteranc.es) 。
 + 20201127 - 迁移 CI 到 [Github Actions](https://github.com/features/actions) 。
 + 20200422 - 启用博客网址二维码。
@@ -54,9 +54,8 @@ Charles 是一个略爱折腾的数据工程师，关注数据库、数据工程
 + 20180316 - 迁移 [Hexo](https://hexo.io/zh-cn/) 到 [Pelican](https://blog.getpelican.com/) ，魔改 CachesToCaches 主题，启用 Travis-CI 。
 + 20140406 - 开启博客之旅，Hexo + Modernist 主题 + Github Pages 。
 
-<br/> 
-<div class="statcounter">本站总访问量: <img class="statcounter" src="https://c.statcounter.com/12954173/0/5f6cdd0b/0/" alt="web counter" referrerPolicy="no-referrer-when-downgrade" style="display:inline-block; width:3rem;"> 次</div>
-<br/>
+
+<br/>本站总访问量:  <span id="busuanzi_site_pv"></span> 次<br/>
 
 <br/>
 
