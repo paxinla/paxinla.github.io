@@ -55,7 +55,7 @@ Charles 是一个略爱折腾的数据工程师，关注数据库、数据工程
 + 20140406 - 开启博客之旅，Hexo + Modernist 主题 + Github Pages 。
 
 
-<br/>本站总访问量:  <span id="busuanzi_site_pv"></span> 次<br/>
+<br/><span id="busuanzi_container_site_pv">本站总访问量:  <span id="busuanzi_site_pv"></span> 次</span><br/>
 
 <br/>
 
