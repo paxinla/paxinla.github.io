@@ -37,8 +37,7 @@ Charles 是一个略爱折腾的数据工程师，关注数据库、数据工程
                 "Data Warehouse"]
        :familiar {:language [:Python
                              :Scala
-                             :Clojure
-                             :Rust]}
+                             :Clojure]}
                   :framework [:Spark]})))
 
 ```
