@@ -9,7 +9,7 @@ TitleImage: /images/evolution.png
 
 Charles 是一个略爱折腾的数据工程师，关注数据库、数据工程等领域的信息，梳理沉淀个人的知识点，还有一些自己折腾各种东东的记录。
 
-如果您想联系我，可以考虑下面 social-media 的任何一种方式。
+如果您想联系我，可以考虑下面 social 的任何一种方式。
 
 
 <div class="container-audio" style="text-align:center;margin-top:1.5rem;margin-bottom:2rem;"><span class="music">街灯りは揺らめいて</span><audio controls preload="none"><source src="http://music.163.com/song/media/outer/url?id=1803601924"/>~这里是一首好听的曲子，但你的浏览器不支持 audio 标签，很遗憾你听不到它~</audio></div>
@@ -26,7 +26,7 @@ Charles 是一个略爱折腾的数据工程师，关注数据库、数据工程
   (doto (DataEngineer.)
     (.location
       "Shenzhen Guangdong")
-    (.social-media 
+    (.social
       {:📧 "base64 -d <<< YWtzdXJhQHBhcmFub2lkLmVtYWlsCg=="
        :🐘 "base64 -d <<< aHR0cHM6Ly9tLmNteC5pbS9AYWtzdXJh"})
     (.technology-stack
