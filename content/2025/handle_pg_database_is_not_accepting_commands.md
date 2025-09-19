@@ -61,38 +61,51 @@ So, why do people believe that you need single-user mode to recover from "databa
 
 If you don't know how to analyze the history of the PostgreSQL code, I recommend that you read [my article about the true power of open source](https://www.cybertec-postgresql.com/en/the-power-of-open-source-in-postgresql/) .
 
-> [Commit 60b2444cc3](https://postgr.es/c/60b2444cc3ba037630c9b940c3c9ef01b954b87b) added the safety margin of three million transaction IDs in 2005 with a message like this:
-> ERROR:  database is shut down to avoid wraparound data loss in database "..."
-> HINT:  Stop the postmaster and use a standalone backend to VACUUM in "...".
+
+[Commit 60b2444cc3](https://postgr.es/c/60b2444cc3ba037630c9b940c3c9ef01b954b87b) added the safety margin of three million transaction IDs in 2005 with a message like this:
+<blockquote>
+<p>ERROR:  database is shut down to avoid wraparound data loss in database "..."</p>
+<p>HINT:  Stop the postmaster and use a standalone backend to VACUUM in "...".</p>
+</blockquote>
 
 You see the first mention of single-user mode in the form "standalone backend". Since the server didn't actually shut down, [commit 8ad3965a11](https://postgr.es/c/8ad3965a115bbd5fbd1bb2f3585c2e34d569af7d), also in 2005, amended the message to read
 
-> ERROR:  database is not accepting queries to avoid wraparound data loss in database "..."
-> HINT:  Stop the postmaster and use a standalone backend to VACUUM database "...".
+<blockquote>
+<p>ERROR:  database is not accepting queries to avoid wraparound data loss in database "..."</p>
+<p>HINT:  Stop the postmaster and use a standalone backend to VACUUM database "...".</p>
+</blockquote>
 
 Note that back then, the advice to use single-user mode was actually correct, since VACUUM used to consume a transaction ID back then. In 2009, [commit 8d4f2ecd41](https://postgr.es/c/8d4f2ecd41312e57422901952cbad234d293060b) extended the hint to
 
-> ERROR:  database is not accepting queries to avoid wraparound data loss in database "..."
-> HINT:  Stop the postmaster and use a standalone backend to VACUUM database "...".
-> You might also need to commit or roll back old prepared transactions.
+<blockquote>
+<p>ERROR:  database is not accepting queries to avoid wraparound data loss in database "..."</p>
+<p>HINT:  Stop the postmaster and use a standalone backend to VACUUM database "...".</p>
+<p>You might also need to commit or roll back old prepared transactions.</p>
+</blockquote>
 
 In 2013, [commit 7dfd5cd21c](https://postgr.es/c/7dfd5cd21c0091e467b16b31a10e20bbedd0a836) changed the wording to "single-user mode":
 
-> ERROR:  database is not accepting commands to avoid wraparound data loss in database "..."
-> HINT:  Stop the postmaster and vacuum that database in single-user mode.
-> You might also need to commit or roll back old prepared transactions.
+<blockquote>
+<p>ERROR:  database is not accepting commands to avoid wraparound data loss in database "..."</p>
+<p>HINT:  Stop the postmaster and vacuum that database in single-user mode.</p>
+<p>You might also need to commit or roll back old prepared transactions.</p>
+</blockquote>
 
 And in 2017, [commit 2958a672b1](https://postgr.es/c/2958a672b1fed35403b23c2b453aede9f7ef4b39) added stale replication slots as a possible cause:
 
-> ERROR:  database is not accepting commands to avoid wraparound data loss in database "..."
-> HINT:  Stop the postmaster and vacuum that database in single-user mode.
-> You might also need to commit or roll back old prepared transactions, or drop stale replication slots.
+<blockquote>
+<p>ERROR:  database is not accepting commands to avoid wraparound data loss in database "..."</p>
+<p>HINT:  Stop the postmaster and vacuum that database in single-user mode.</p>
+<p>You might also need to commit or roll back old prepared transactions, or drop stale replication slots.</p>
+</blockquote>
 
 This was the state of affairs until PostgreSQL v17. By then, the message had long been inaccurate, ever since [commit 295e63983d](https://postgr.es/c/295e63983d7596ccc5717ff4a0a235ba241a2614) introduced "lazy transaction ID allocation" in 2007. In October 2023, [commit 2406c4e34c](https://postgr.es/c/2406c4e34ccca697bd5a221f8375f335b5841dea) finally changed the error message to its current form:
 
-> ERROR:  database is not accepting commands that assign new XIDs to avoid wraparound data loss in database "..."
-> HINT:  Execute a database-wide VACUUM in that database.
-> You might also need to commit or roll back old prepared transactions, or drop stale replication slots.
+<blockquote>
+<p>ERROR:  database is not accepting commands that assign new XIDs to avoid wraparound data loss in database "..."</p>
+<p>HINT:  Execute a database-wide VACUUM in that database.</p>
+<p>You might also need to commit or roll back old prepared transactions, or drop stale replication slots.</p>
+</blockquote>
 
 So it is hardly surprising that many PostgreSQL old-timers still believe that you need single-user mode to recover from an impending transaction ID wraparound!
 
