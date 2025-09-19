@@ -19,7 +19,6 @@ Charles 是一个略爱折腾的数据工程师，关注数据库、数据工程
 
 <a href="https://paxinla.github.io/my-online-resume/cn/" style="display:inline-block;border:none;"><img src="https://img.shields.io/badge/Looingking%20for-Greener%20Pasture-green" /></a>
 <a href="https://paxinla.github.io/gpg_pub_key.html" target="_blank" rel="noopener noreferrer" style="display:inline-block;border:none;"><img src="https://img.shields.io/badge/GPG%20KEY-47E15BF5-da282a" /></a>
-<a href="https://snort.social/p/npub12zm89jjwq6x2aaxpv489w0hsx2fn5z0uzy7az4snncar3ygkr93q52kjeg" target="_blank" rel="noopener noreferrer" style="display:inline-block;border:none;"><img src="https://img.shields.io/badge/%F0%9F%92%AC%20nostr-aksura--bacae223@paxinla.github.io-14354C" /></a>
 
 
 ```clojure
@@ -55,7 +54,7 @@ Charles 是一个略爱折腾的数据工程师，关注数据库、数据工程
 + 20140406 - 开启博客之旅，Hexo + Modernist 主题 + Github Pages 。
 
 <br/> 
-本站总访问量: <span id="busuanzi_value_site_pv"></span> 次
+本站总访问量: <span id="vercount_value_site_pv">Loading</span> 次
 <br/>
 
 <br/>
