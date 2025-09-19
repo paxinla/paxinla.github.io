@@ -1,0 +1,282 @@
+<!Doctype html>
+<html lang="zh">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <base href="https://paxinla.github.io">
+        <meta property="og:title" content="Blog of Charles" />
+        <meta name="author" content="Charles" />
+        <meta property="article:author" content="Charles" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://paxinla.github.io" />
+        <meta property="og:image" content="https://paxinla.github.io/static/blog_url_qrcode.png" />
+        <meta property="og:image:secure_url" content="https://paxinla.github.io/static/blog_url_qrcode.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="120" />
+        <meta property="og:image:height" content="120" />
+        <meta property="og:image:alt" content="A QR code of the blog's URL." />
+        <meta property="og:description" content="This is the blog of Charles." />
+        <meta name="copyright" content="Charles" />
+        <meta name="description" content="Personal blog of Charles">
+        <meta name="generator" content="pelican 3.7.1">
+        <link href="https://paxinla.github.io/static/humans.txt" rel="author" type="text/plain" />
+        <title>浅谈数据漂移</title>
+        <link href="https://paxinla.github.io/posts/2020/04/qian-tan-shu-ju-piao-yi.html" rel="canonical" />
+
+        <link href="https://paxinla.github.io/theme/images/favicon.ico" rel="icon" type="image/png" />
+        <link href="https://paxinla.github.io/theme/images/safari-pinned-tab.svg" rel="mask-icon" color="#5bbad5" />
+
+        <link href="https://paxinla.github.io/theme/css/blogstyle.css?6748a722" rel="stylesheet" type="text/css" />
+
+        <!-- View Counter -->
+        <script defer src="https://events.vercount.one/js"></script>
+        <!-- End of View Counter Code -->
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-70MNYH18HG"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'G-70MNYH18HG');
+        </script>
+    </head>
+
+
+    <body data-spy="scroll" data-target="#left-navbar" data-offset="50" itemscope="" itemtype="http://schema.org/WebPage">
+
+        <!-- Cursor animation -->
+        <script defer="" src="https://paxinla.github.io/theme/js/animejs.js"></script>
+        <script defer="" src="https://paxinla.github.io/theme/js/fireworks.min.js"></script>
+        <canvas class="fireworks" style="width:100%; height:100%;"></canvas>
+
+        <div id="whole-page">
+        <!-- Left Sidebar -->
+        <nav id="left-navbar" class="sidebar">
+            <div class="content">
+                <div><a href="/"><img src="https://paxinla.github.io/static/icosahedron.jpg" class="img-responsive center-block" style="height:120px;width:120px;border-radius:20px;"/></a></div>
+                <br/>
+                <div class="center-text narrow-font" style="line-height: 28px;">
+                    <span class="nav-item"><i class="fas fa-home"></i><a href="https://paxinla.github.io/"> 首页 </a></span>
+                    <span class="center-dot"></span>
+                    <span class="nav-item"><i class="fas fa-file-archive"></i><a href="https://paxinla.github.io/archives.html"> 过往文章 </a></span>
+                    <br/>
+                    <span class="nav-item"><i class="fas fa-tags"></i><a href="https://paxinla.github.io/tags.html"> Tag </a></span>
+                    <span class="center-dot"></span>
+                    <span class="nav-item"><i class="fa fa-archive"></i><a href="https://paxinla.github.io/categories.html"> Category </a></span>
+                    <br/>
+                    <span class="nav-item"><i class="fa fa-link"></i><a href="https://paxinla.github.io/links.html"> 友邻 </a></span>
+                    <span class="center-dot"></span>
+                    <span class="nav-item"><i class="fas fa-user"></i><a href="https://paxinla.github.io/about.html"> 关于我 </a></span>
+                </div>
+                <hr/> <br/>
+
+<div class="title"><a href="#">浅谈数据漂移</a></div>
+<hr/>
+
+                <div id="nav-sidebar">
+                </div>
+
+<br/>
+
+                <div id="nav-visited-info" class="center-text floating-description">
+                    <div id="copyright-expression" class="copyright"><span style="color:#6fdcdc;">(</span>cons "<a href="https://github.com/paxinla" style="color:#999;">Charles</a> <span style="color:#00ec47;">&copy;</span>" <span style="color:#ff188c;">(</span>iterate inc <span style="color:#db4437;">2014</span><span style="color:#ff188c;">)</span><span style="color:#6fdcdc;">)</span></div><br/>
+                    <a id="powered-by" href="https://github.com/getpelican/pelican">Powered by <span id="icon-gear" class="rotating"></span><span style="color:#fbf3f3;"> Pelican</span></a><br/>
+                    <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" style="border: none;" ><img src="https://img.shields.io/badge/License-CC__BY--NC--SA-blue.svg" style="height: 17px;" /></a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Middle and right sections -->
+        <div class="page" itemsope="" itemtype="http://schema.org/Blog">
+<div class="content-top" style="padding-right: 0">
+    <div class="unit-line-height">
+        <!-- Post Title -->
+        <h1 class="title">
+            <div>
+                <span itemprop="name">浅谈数据漂移</span>
+            </div>
+        </h1>
+
+        <!-- Post Meta Info -->
+        <div class="marginnote invisible-sm post-detail">
+            <div>
+                <p><div class="date heading-font"><i class="fa fa-calendar"></i> 2020-04-21 星期二</div>
+                    <a href="#" style="margin-left:0.875em;border:none;">
+                        <span class="author" itemprop="name">Charles</span>
+                    </a>
+                </p>
+
+                <p><div class="heading-font"><i class="fas fa-folder"></i> Category</div>
+                    <a class="category" href="https://paxinla.github.io/category/shu-ju-guan-li.html" style="margin-left:0.875em;border:none;">
+                         数据管理
+                    </a>
+                </p>
+
+                <p><div class="heading-font"><i class="fas fa-tag"></i> Tags</div>
+                    <span style="padding-left:1.4em;"></span>
+                        <a class="tag" href="https://paxinla.github.io/tag/data-warehouse.html">data-warehouse</a>
+                        <a class="tag" href="https://paxinla.github.io/tag/etl.html">etl</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Post Image -->
+    <br/>
+    <img src="" class="cover img-responsive" style="max-height: 400px" itemprop="image">
+    <div class="note visible-sm post-detail"></div>
+
+    <hr class="dotty-split-line" />
+</div>
+
+            <!-- Content -->
+<div class="content"  id="content_of_post" style="padding-right: 0">
+    <div class="post" itemprop="blogPost">
+        <div id="content_of_article" class="justify word-break" itemprop="articleBody">
+            <p>当你被问到如何处理“数据漂移”问题(不是指 concept drift 或者 data skew)时，你的回答是什么？</p>
+
+<div id=section1><h2>什么是数据漂移</h2>
+<p>数据漂移(Data Drift)，指的是将进入数据仓库的数据，偏离标准、正常或预期的情况。它三种表现形式:</p>
+<ol>
+<li>Structural Drift ，指的是数据源的数据结构发生了改变，比如字段增减、字段数据类型变更等。</li>
+<li>Semantic Drift ，源于(历史)数据的改变，比如过了一段时间后，才发现已入仓库的历史数据有错误等。</li>
+<li>Infrastructure Drift ，源于系统依赖的软件或平台发生变化后，与变化前不兼容。</li>
+</ol>
+<p>数据漂移的后果主要有3个<sup id=sf-qian-tan-shu-ju-piao-yi-1-back><a href=#sf-qian-tan-shu-ju-piao-yi-1 class=simple-footnote title="Girish Pancha. Big Data's Hidden Scourge: Data Drift, Apr 8, 2016">1</a></sup>:</p>
+<ol>
+<li>Garbage in, garbage out.</li>
+<li>Trust takes a lifetime to build and only a moment to lose.</li>
+<li>The biggest expense is opportunity cost.</li>
+</ol>
+<p>传统的 ETL 过程是脆弱且不透明的，这意味着它对 structural drift 和 semantic drift 是敏感的。也就是说发生了“数据漂移”就是发生了异常状况。</p>
+</div><div id=section2><h2>如何处理数据漂移</h2>
+<p>国内面试一般提及“数据漂移”时，通常指的是 semantic drift ，特别是指 ETL 过程中的在预期的计算周期里不是刚好包含了所有预期的数据的情况。比如 ODS 里某个T+1表的同一个业务日期数据中包含前一天或者后一天凌晨附近的数据或者丢失当天的变更数据。这时就丢失了当天的变更数据，或者说“上一天”(D)的数据漂移到了“下一天”(D+1)。</p>
+<p>传统的 ETL 过程大多是周期性调度的。典型的 ETL 调度将一系列相互之间有数据依赖关系的 ETL 任务，组织为一个 DAG ，整个 DAG 依据事先设定的调度周期或触发条件启动本轮的执行。</p>
+<h3>场景一: 因积压造成数据“迟到”</h3>
+<p>假设，在D日发生的新数据，因网络故障/服务器处理能力等原因积压，在 ETL 过程运行时，尚未完全落到数据源上。待积压解决后，部分D日的数据就被当成了D+1日的数据。这种场景在那些7×24小时连续发生的业务过程上较为常见。</p>
+<p>网上有的解决方案是延迟重传。比如在D+4日对D日数据进行重传或重放，就能恢复在D日 ETL 时丢失的数据。这种做法，看起来能“修正”数据仓库中的历史数据，以使其“最终状态”是完整的。还有的方案是，既然知道了数据仓库的数据有漂移的情况，也知道漂移经常发生的时间长度，那么在使用这些数据的时候，就放宽时间窗口，往前往后都“多要”一部分数据。这样取到的数据就没有“丢失”了，但是会有“多余”的数据。</p>
+<p>可是，除非数据仓库的下游能接受在D+4日后才使用D日的数据。否则，D日时已丢失数据造成的结果，包括当时进入仓库的数据及依赖于它们的统计数据，都已经对下游造成了影响。对这种场景，我认为要么只能是对 ETL 任务的依赖条件判断上，与源系统达成一致，能明确判断每个周期里，预期的源数据是否全部就绪；要么就接受在D+1日才就绪的数据就属于D+1的数据。其他的方法只能算是“修补”上了漂移的数据，并不算解决了漂移的问题。</p>
+<h3>场景二: 业务过程里的特例</h3>
+<p>在业务过程发生时，因对部分特别客户的优待(比如大客户付费时间不固定)或者人为因素不可控(比如某些必须依赖人工提交的D日数据，他就是要在D+1或D+2日提交)等，造成源数据就绪情况难以预测。</p>
+<p>对这样的特殊业务，通常也只能根据各个企业自己实际的业务情况，在数据仓库用户的可接受范围内，采取特事特办的处理方法。</p>
+</div><div id=section3><h2>小结</h2>
+<p>如何处理迟到的数据，是 Kimball 的 ETL 子系统里的“迟到数据处理器”关注的情况。</p>
+<p>我的看法是，总的来说，数据发生了“漂移”，就可以认为是发生了异常。只能根据每个企业具体场景去事后修补数据，并没有什么自动化的通用方法来处理“漂移”<span class="sidenote note no-word-break invisible-sm"> 但是可重跑的任务和完整的历史数据，还是对这个修补的过程有助益。</span>。最好还是尽量在设计 ETL 过程时，能够确定好各个数据源的数据就绪条件和判断手段，从根源上尽量避免数据漂移。</p></div><br><h6 id=ref-docs-title>参考</h6><ol class=simple-footnotes><li id=sf-qian-tan-shu-ju-piao-yi-1><a href="https://www.cmswire.com/big-data/big-datas-hidden-scourge-data-drift/">Girish Pancha. Big Data's Hidden Scourge: Data Drift, Apr 8, 2016</a> <a href=#sf-qian-tan-shu-ju-piao-yi-1-back class=simple-footnote-back>↩</a></li></ol>
+        </div>
+    </div>
+</div>
+
+<a href="https://paxinla.github.io/posts/2020/04/qian-tan-shu-ju-piao-yi.html" class="current-page-link">本文链接: https://paxinla.github.io/posts/2020/04/qian-tan-shu-ju-piao-yi.html</a>
+
+<!-- Comments -->
+<div class="content-split-comment"><hr class="dotty-split-line" /></div>
+<div class="content-bottom">
+<section class="comments" id="comments">
+      <div class="panel panel-primary">
+        <div class="panel-heading" role="tab" id="githubissue-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#githubissue-comments" aria-expanded="true" aria-controls="githubissue-comments">
+                <i class="fa fa-comments"></i><i id="githubissue-comment_list"> Comments</i>
+            </a>
+          </h4>
+        </div>
+
+        <!-- utterances start -->
+        <div id="utter-container"></div>
+        <script src="https://utteranc.es/client.js"
+          repo="paxinla/paxinla.github.io"
+          issue-term="url"
+          label="blog_comment"
+          theme="boxy-light"
+          crossorigin="anonymous"
+          async>
+        </script>
+        <!-- utterances end -->
+
+      </div>
+</section>
+            <div class="cc-license">
+                <p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/"><img alt="知识共享许可协议" style="border-width:0;display:inline-block" src="https://licensebuttons.net/l/by-nc-sa/3.0/cn/88x31.png" /></a>&nbsp;本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/3.0/deed.zh" style="color:#00a67c">知识共享署名-非商业性使用-相同方式共享 3.0 中国大陆许可协议</a>进行许可，欢迎转载、演绎，<br/>但是必须保留本文的署名 <a href="https://paxinla.github.io" style="color:rgb(153,51,51);">Charles</a>（包含链接），且不得用于商业目的。</p>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        </div><!-- End Whole Page -->
+
+        <!-- Scripts -->
+        <script src="https://paxinla.github.io/theme/js/packed.js?e4252eaf"></script>
+
+        <script src="https://paxinla.github.io/theme/js/article_toc.js" type="text/javascript"></script>
+
+        <!-- Sidebar / Table of Contents -->
+        <script type="text/javascript">
+         $(function(){$("#toc").tableOfContents(null,{
+             startLevel: 2, depth: 1});
+             $('body').scrollspy({
+                 target: '#nav-sidebar',
+                 offset: 20});
+         });
+        </script>
+
+        <!-- Code Highlighting : highlight.js -->
+        <script type="text/javascript">
+            hljs.configure({languages:[]});
+            hljs.initHighlightingOnLoad();
+        </script>
+
+        <!-- Equation Rendering : mathjax -->
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+               jax: ["input/TeX","output/CommonHTML"],
+               tex2jax: { inlineMath: [["$","$"], ["\\(", "\\)"]] },
+               CommonHTML: {
+                   linebreaks: { automatic: true, width: "container" }
+               }
+            });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML" type="text/javascript"></script>
+
+        <!-- Cat -->
+        <script src="https://paxinla.github.io/theme/js/L2Dwidget.min.js"></script>
+        <script type="text/javascript">
+            var L2DModelArray = ['hijiki', 'tororo'];
+            var L2DModelIndex = Math.floor((Math.random()*L2DModelArray.length));
+            var L2DModelSelected = L2DModelArray[L2DModelIndex];
+            L2Dwidget.init({model: {
+                              jsonPath: "https://paxinla.github.io/theme/live2d-widget-model-"+L2DModelSelected+"/assets/"+L2DModelSelected+".model.json",
+                            },
+                            display: {
+                              superSample: 2,
+                              width: 100,
+                              height: 200,
+                              position: 'right',
+                              hOffset: 0,
+                              vOffset: 0,
+                            },
+                            mobile: {
+                              show: true,
+                              scale: 1,
+                              motion: true,
+                            },
+                            react: {
+                              opacityDefault: 0.85,
+                              opacityOnHover: 0.2,
+                            }
+                          })
+        </script>
+
+        <!-- Funny title -->
+        <script type="text/javascript">
+            var OriginTitle = document.title;
+            document.addEventListener('visibilitychange', function () {
+                if (document.hidden) {
+                    document.title = '_(:з」∠)_ 呀嚯嘿';
+                } else {
+                    document.title = OriginTitle;
+                }
+            });
+        </script>
+    </body>
+</html>

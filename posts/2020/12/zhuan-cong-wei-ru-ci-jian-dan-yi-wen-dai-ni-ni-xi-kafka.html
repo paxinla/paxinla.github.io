@@ -1,0 +1,523 @@
+<!Doctype html>
+<html lang="zh">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <base href="https://paxinla.github.io">
+        <meta property="og:title" content="Blog of Charles" />
+        <meta name="author" content="Charles" />
+        <meta property="article:author" content="Charles" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://paxinla.github.io" />
+        <meta property="og:image" content="https://paxinla.github.io/static/blog_url_qrcode.png" />
+        <meta property="og:image:secure_url" content="https://paxinla.github.io/static/blog_url_qrcode.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="120" />
+        <meta property="og:image:height" content="120" />
+        <meta property="og:image:alt" content="A QR code of the blog's URL." />
+        <meta property="og:description" content="This is the blog of Charles." />
+        <meta name="copyright" content="Charles" />
+        <meta name="description" content="Personal blog of Charles">
+        <meta name="generator" content="pelican 3.7.1">
+        <link href="https://paxinla.github.io/static/humans.txt" rel="author" type="text/plain" />
+        <title>[转] 从未如此简单，一文带你逆袭Kafka！</title>
+        <link href="https://paxinla.github.io/posts/2020/12/zhuan-cong-wei-ru-ci-jian-dan-yi-wen-dai-ni-ni-xi-kafka.html" rel="canonical" />
+
+        <link href="https://paxinla.github.io/theme/images/favicon.ico" rel="icon" type="image/png" />
+        <link href="https://paxinla.github.io/theme/images/safari-pinned-tab.svg" rel="mask-icon" color="#5bbad5" />
+
+        <link href="https://paxinla.github.io/theme/css/blogstyle.css?6748a722" rel="stylesheet" type="text/css" />
+
+        <!-- View Counter -->
+        <script defer src="https://events.vercount.one/js"></script>
+        <!-- End of View Counter Code -->
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-70MNYH18HG"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'G-70MNYH18HG');
+        </script>
+    </head>
+
+
+    <body data-spy="scroll" data-target="#left-navbar" data-offset="50" itemscope="" itemtype="http://schema.org/WebPage">
+
+        <!-- Cursor animation -->
+        <script defer="" src="https://paxinla.github.io/theme/js/animejs.js"></script>
+        <script defer="" src="https://paxinla.github.io/theme/js/fireworks.min.js"></script>
+        <canvas class="fireworks" style="width:100%; height:100%;"></canvas>
+
+        <div id="whole-page">
+        <!-- Left Sidebar -->
+        <nav id="left-navbar" class="sidebar">
+            <div class="content">
+                <div><a href="/"><img src="https://paxinla.github.io/static/icosahedron.jpg" class="img-responsive center-block" style="height:120px;width:120px;border-radius:20px;"/></a></div>
+                <br/>
+                <div class="center-text narrow-font" style="line-height: 28px;">
+                    <span class="nav-item"><i class="fas fa-home"></i><a href="https://paxinla.github.io/"> 首页 </a></span>
+                    <span class="center-dot"></span>
+                    <span class="nav-item"><i class="fas fa-file-archive"></i><a href="https://paxinla.github.io/archives.html"> 过往文章 </a></span>
+                    <br/>
+                    <span class="nav-item"><i class="fas fa-tags"></i><a href="https://paxinla.github.io/tags.html"> Tag </a></span>
+                    <span class="center-dot"></span>
+                    <span class="nav-item"><i class="fa fa-archive"></i><a href="https://paxinla.github.io/categories.html"> Category </a></span>
+                    <br/>
+                    <span class="nav-item"><i class="fa fa-link"></i><a href="https://paxinla.github.io/links.html"> 友邻 </a></span>
+                    <span class="center-dot"></span>
+                    <span class="nav-item"><i class="fas fa-user"></i><a href="https://paxinla.github.io/about.html"> 关于我 </a></span>
+                </div>
+                <hr/> <br/>
+
+<div class="title"><a href="#">[转] 从未如此简单，一文带你逆袭Kafka！</a></div>
+<hr/>
+
+                <div id="nav-sidebar">
+                </div>
+
+<br/>
+
+                <div id="nav-visited-info" class="center-text floating-description">
+                    <div id="copyright-expression" class="copyright"><span style="color:#6fdcdc;">(</span>cons "<a href="https://github.com/paxinla" style="color:#999;">Charles</a> <span style="color:#00ec47;">&copy;</span>" <span style="color:#ff188c;">(</span>iterate inc <span style="color:#db4437;">2014</span><span style="color:#ff188c;">)</span><span style="color:#6fdcdc;">)</span></div><br/>
+                    <a id="powered-by" href="https://github.com/getpelican/pelican">Powered by <span id="icon-gear" class="rotating"></span><span style="color:#fbf3f3;"> Pelican</span></a><br/>
+                    <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" style="border: none;" ><img src="https://img.shields.io/badge/License-CC__BY--NC--SA-blue.svg" style="height: 17px;" /></a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Middle and right sections -->
+        <div class="page" itemsope="" itemtype="http://schema.org/Blog">
+<div class="content-top" style="padding-right: 0">
+    <div class="unit-line-height">
+        <!-- Post Title -->
+        <h1 class="title">
+            <div>
+                <span itemprop="name">[转] 从未如此简单，一文带你逆袭Kafka！</span>
+            </div>
+        </h1>
+
+        <!-- Post Meta Info -->
+        <div class="marginnote invisible-sm post-detail">
+            <div>
+                <p><div class="date heading-font"><i class="fa fa-calendar"></i> 2020-12-17 星期四</div>
+                    <a href="#" style="margin-left:0.875em;border:none;">
+                        <span class="author" itemprop="name">Charles</span>
+                    </a>
+                </p>
+
+                <p><div class="heading-font"><i class="fas fa-folder"></i> Category</div>
+                    <a class="category" href="https://paxinla.github.io/category/xiao-xi-dui-lie.html" style="margin-left:0.875em;border:none;">
+                         消息队列
+                    </a>
+                </p>
+
+                <p><div class="heading-font"><i class="fas fa-tag"></i> Tags</div>
+                    <span style="padding-left:1.4em;"></span>
+                        <a class="tag" href="https://paxinla.github.io/tag/zhuan-zai.html">转载</a>
+                        <a class="tag" href="https://paxinla.github.io/tag/kafka.html">kafka</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Post Image -->
+    <br/>
+    <img src="" class="cover img-responsive" style="max-height: 400px" itemprop="image">
+    <div class="note visible-sm post-detail"></div>
+
+    <hr class="dotty-split-line" />
+</div>
+
+            <!-- Content -->
+<div class="content"  id="content_of_post" style="padding-right: 0">
+    <div class="post" itemprop="blogPost">
+        <div id="content_of_article" class="justify word-break" itemprop="articleBody">
+            <p>原文作者: 凌晶</p>
+<p>原文链接: <a href="https://mp.weixin.qq.com/s/R1en4V0Tlwlpt102BjotoA">https://mp.weixin.qq.com/s/R1en4V0Tlwlpt102BjotoA</a></p>
+<p>为防遗失，转载一份(不转“Kafka 集群搭建”部分)。加了一些注释。</p>
+
+<div id="section1"><h2>从未如此简单，一文带你逆袭Kafka！</h2>
+<p><a href="http://kafka.apache.org/">Apache Kafka</a> 是一个快速、可扩展的、高吞吐的、可容错的分布式“发布-订阅”消息系统， 使用 Scala 与 Java 语言编写，能够将消息从一个端点传递到另一个端点。</p>
+<p>较之传统的消息中间件（例如 ActiveMQ、RabbitMQ），Kafka 具有高吞吐量、内置分区、支持消息副本和高容错的特性，非常适合大规模消息处理应用程序。</p>
+<p class="list-title">Kafka 主要设计目标如下：</p>
+<ul>
+<li>以时间复杂度为 O(1) 的方式提供消息持久化能力，即使对 TB 级以上数据也能保证常数时间的访问性能。</li>
+<li>高吞吐率。即使在非常廉价的商用机器上也能做到单机支持每秒 100K 条消息的传输。</li>
+<li>支持 Kafka Server 间的消息分区，及分布式消费，同时保证每个 Partition 内的消息顺序传输。</li>
+<li>同时支持离线数据处理和实时数据处理。</li>
+<li>支持在线水平扩展。</li>
+</ul>
+</div><div class="mynotation">
+<p>写入数据时直接 append 到数据文件末尾，所以是 O(1) 的时间复杂度。</p>
+</div>
+<p class="list-title">Kafka 通常用于两大类应用程序：</p>
+<ul>
+<li>建立实时流数据管道，以可靠地在系统或应用程序之间获取数据。</li>
+<li>构建实时流应用程序，以转换或响应数据流。</li>
+</ul>
+<p>要了解 Kafka 如何执行这些操作，让我们从头开始深入研究 Kafka 的功能。</p>
+<p class="list-title">首先几个概念：</p>
+<ul>
+<li>Kafka 在一个或多个可以跨越多个数据中心的服务器上作为集群运行。</li>
+<li>Kafka 集群将记录流存储在称为主题的类别中。</li>
+<li>每个记录由一个键，一个值和一个时间戳组成。</li>
+</ul>
+<p>Kafka 架构体系如下图：</p>
+<p><img alt="Kafka 架构体系" src="/images/2020/kafka_1.png"/></p>
+<p class="list-title">Kafka 的应用场景非常多, 下面我们就来举几个我们最常见的场景：</p>
+<ul>
+<li>用户的活动跟踪：用户在网站的不同活动消息发布到不同的主题中心，然后可以对这些消息进行实时监测、实时处理。当然，也可以加载到 Hadoop 或离线处理数据仓库，对用户进行画像。像淘宝、天猫、京东这些大型电商平台，用户的所有活动都要进行追踪的。</li>
+<li>日志收集如下图：<span class="sidenote note no-word-break invisible-sm"> 日志收集这里都用别的图换了原文的图</span></li>
+</ul>
+<p><img alt="Kafka 日志收集" src="/images/2020/kafka_2.png"/></p>
+<ul>
+<li>限流削峰如下图：</li>
+</ul>
+<p><img alt="Kafka 限流削峰" src="/images/2020/kafka_3.png"/></p>
+<p>高吞吐率实现：Kafka 与其他 MQ 相比，最大的特点就是高吞吐率。为了增加存储能力，Kafka 将所有的消息都写入到了低速大容量的硬盘。按理说，这将导致性能损失，但实际上，Kafka 仍然可以保持超高的吞吐率，并且其性能并未受到影响。</p>
+<div class="mynotation">
+<p>作为基本的传递消息的消息队列、监控度量数据的收集传递等也是常见使用场景。</p>
+</div>
+<p class="list-title">其主要采用如下方式实现了高吞吐率：</p>
+<ul>
+<li>顺序读写：Kafka 将消息写入到了分区 Partition 中，而分区中的消息又是顺序读写的。顺序读写要快于随机读写。</li>
+<li>零拷贝：生产者、消费者对于 Kafka 中的消息是采用零拷贝实现的。</li>
+<li>批量发送：Kafka 允许批量发送模式。</li>
+<li>消息压缩：Kafka 允许对消息集合进行压缩。</li>
+</ul>
+<div class="mynotation">
+<p>这里还应加上 Partition 。其他消息队列产品里，一般一个主题只有一个主队列，镜像队列只做灾备用，读写都在主队列上。而 Kafka 由于一个 topic 可以有多个 partition 而且分布在不同的 server(broker) 上，虽然 follower partition 也只是 leader partition 的灾备，但是多个 partition 能同时被读写，提高了并发也提高了吞吐率。</p>
+<p>这里还应加上页缓存 Page Cache ，Kafka 不依赖于 JVM 的内存。</p>
+<p>零拷贝是通过内核提供的 sendfile 调用实现的，所以实际上是否能使用零拷贝与操作系统内核相关。</p>
+<p>即使是顺序读写，过于频繁的大量小IO操作一样会造成磁盘的瓶颈。Kafka把消息集合在一起批量发送，尽可能减少对磁盘的访问。所以 Kafka 的 Topic 和 Partition 数量不宜过多。</p>
+<p>一般如果在生产者端已经压缩了，就不需在 Broker 再处理(做校验也要解压缩)。但是如果生产者端和 Broker 的压缩算法不一致或者消息格式不一致，都会导致在 Broker 发生解压缩和再压缩。</p>
+</div>
+<p><span class="sidenote note no-word-break invisible-sm"> 参考了这篇文章: https://zhuanlan.zhihu.com/p/105509080</span></p>
+<p class="list-title">Kafka 的优点如下：</p>
+<ul>
+<li>解耦：在项目启动之初来预测将来项目会碰到什么需求，是极其困难的。消息系统在处理过程中间插入了一个隐含的、基于数据的接口层，两边的处理过程都要实现这一接口。这允许你独立地扩展或修改两边的处理过程，只要确保它们遵守同样的接口约束。</li>
+<li>冗余（副本）：有些情况下，处理数据的过程会失败。除非数据被持久化，否则将造成丢失。消息队列把数据进行持久化直到它们已经被完全处理，通过这一方式规避了数据丢失风险。许多消息队列所采用的"插入-获取-删除"范式中，在把一个消息从队列中删除之前，需要你的处理系统明确的指出该消息已经被处理完毕，从而确保你的数据被安全的保存直到你使用完毕。</li>
+<li>扩展性：因为消息队列解耦了你的处理过程，所以增大消息入队和处理的频率是很容易的，只要另外增加处理过程即可。不需要改变代码、不需要调节参数。扩展就像调大电力按钮一样简单。</li>
+<li>灵活性&amp;峰值处理能力：在访问量剧增的情况下，应用仍然需要继续发挥作用，但是这样的突发流量并不常见；如果为以能处理这类峰值访问为标准来投入资源随时待命无疑是巨大的浪费。使用消息队列能够使关键组件顶住突发的访问压力，而不会因为突发的超负荷的请求而完全崩溃。</li>
+<li>可恢复性：系统的一部分组件失效时，不会影响到整个系统。消息队列降低了进程间的耦合度，所以即使一个处理消息的进程挂掉，加入队列中的消息仍然可以在系统恢复后被处理。</li>
+<li>顺序保证：在大多使用场景下，数据处理的顺序都很重要。大部分消息队列本来就是排序的，并且能保证数据会按照特定的顺序来处理。Kafka 保证一个 Partition 内的消息的有序性。</li>
+<li>缓冲：在任何重要的系统中，都会有需要不同的处理时间的元素。例如，加载一张图片比应用过滤器花费更少的时间。消息队列通过一个缓冲层来帮助任务最高效率的执行，写入队列的处理会尽可能的快速。该缓冲有助于控制和优化数据流经过系统的速度。</li>
+<li>异步通信：很多时候，用户不想也不需要立即处理消息。消息队列提供了异步处理机制，允许用户把一个消息放入队列，但并不立即处理它。想向队列中放入多少消息就放多少，然后在需要的时候再去处理它们。</li>
+</ul>
+<p class="list-title">Kafka 与其他 MQ 对比如下：</p>
+<ul>
+<li>RabbitMQ： RabbitMQ 是使用 Erlang 编写的一个开源的消息队列，本身支持很多的协议：AMQP，XMPP，SMTP，STOMP，也正因如此，它非常重量级，更适合于企业级的开发。同时实现了 Broker 构架，这意味着消息在发送给客户端时先在中心队列排队。对路由，负载均衡或者数据持久化都有很好的支持。</li>
+<li>Redis： Redis 是一个基于 Key-Value 对的 NoSQL 数据库，开发维护很活跃。虽然它是一个 Key-Value 数据库存储系统，但它本身支持 MQ 功能，所以完全可以当做一个轻量级的队列服务来使用。对于 RabbitMQ 和 Redis 的入队和出队操作，各执行 100 万次，每 10 万次记录一次执行时间。测试数据分为 128Bytes、512Bytes、1K 和 10K 四个不同大小的数据。实验表明：入队时，当数据比较小时 Redis 的性能要高于 RabbitMQ，而如果数据大小超过了 10K，Redis 则慢的无法忍受；出队时，无论数据大小，Redis 都表现出非常好的性能，而 RabbitMQ 的出队性能则远低于 Redis。</li>
+<li>ZeroMQ： ZeroMQ 号称最快的消息队列系统，尤其针对大吞吐量的需求场景。ZeroMQ 能够实现 RabbitMQ 不擅长的高级/复杂的队列，但是开发人员需要自己组合多种技术框架，技术上的复杂度是对这 MQ 能够应用成功的挑战。ZeroMQ 具有一个独特的非中间件的模式，你不需要安装和运行一个消息服务器或中间件，因为你的应用程序将扮演这个服务器角色。你只需要简单的引用 ZeroMQ 程序库，可以使用 NuGet 安装，然后你就可以愉快的在应用程序之间发送消息了。但是 ZeroMQ 仅提供非持久性的队列，也就是说如果宕机，数据将会丢失。其中，Twitter 的 Storm 0.9.0 以前的版本中默认使用 ZeroMQ 作为数据流的传输（Storm 从 0.9 版本开始同时支持 ZeroMQ 和 Netty 作为传输模块）。</li>
+<li>ActiveMQ： ActiveMQ 是 Apache 下的一个子项目。类似于 ZeroMQ，它能够以代理人和点对点的技术实现队列。同时类似于 RabbitMQ，它少量代码就可以高效地实现高级应用场景。</li>
+<li>Kafka/Jafka： Kafka 是 Apache 下的一个子项目，是一个高性能跨语言分布式发布/订阅消息队列系统，而 Jafka 是在 Kafka 之上孵化而来的，即 Kafka 的一个升级版。</li>
+</ul>
+<p class="list-title">具有以下特性：</p>
+<ul>
+<li>快速持久化，可以在 O(1) 的系统开销下进行消息持久化。</li>
+<li>高吞吐，在一台普通的服务器上既可以达到 10W/s 的吞吐速率。</li>
+<li>完全的分布式系统，Broker、Producer、Consumer 都原生自动支持分布式，自动实现负载均衡。</li>
+<li>支持 Hadoop 数据并行加载，对于像 Hadoop 的一样的日志数据和离线分析系统，但又要求实时处理的限制，这是一个可行的解决方案。</li>
+</ul>
+<p>Kafka 通过 Hadoop 的并行加载机制统一了在线和离线的消息处理。Apache Kafka 相对于 ActiveMQ 是一个非常轻量级的消息系统，除了性能非常好之外，还是一个工作良好的分布式系统。</p>
+<p>Kafka 作为存储系统：任何允许发布与使用无关的消息发布的消息队列都有效地充当了运行中消息的存储系统。Kafka 的不同之处在于它是一个非常好的存储系统。写入 Kafka 的数据将写入磁盘并进行复制以实现容错功能。Kafka 允许生产者等待确认，以便直到完全复制并确保即使写入服务器失败的情况下写入也不会完成。</p>
+<div class="mynotation">
+<p>每个分区可以人为的配置几个副本（比如创建主题的时候指定 replication-factor，也可以在 Broker 级别进行配置 default.replication.factor），一般会设置为3。但是对已经存在的分区是不会自动调整副本数的(它们的副本数就是第一次创建主题时的副本数)，须用 Kafka 自带的 kafka-reassign-partitions.sh 来保证实际副本数。</p>
+<p>offset.storage.topic 、config.storage.topic 、status.storage.topic 等这些 topic 是 Kafka内置的队列，是自动创建的。需要关注它们的实际副本数。</p>
+</div>
+<p>Kafka 的磁盘结构可以很好地扩展使用——无论服务器上有 50KB 还是 50TB 的持久数据，Kafka 都将执行相同的操作。由于认真对待存储并允许客户端控制其读取位置，因此您可以将 Kafka 视为一种专用于高性能，低延迟提交日志存储，复制和传播的专用分布式文件系统。</p>
+<p>Kafka 作为消息传递系统： Kafka 的流概念与传统的企业消息传递系统相比如何？传统上，消息传递具有两种模型：排队和发布订阅。在队列中，一组使用者可以从服务器中读取内容，并且每条记录都将转到其中一个。在发布——订阅记录中广播给所有消费者。这两个模型中的每一个都有优点和缺点。排队的优势在于，它允许您将数据处理划分到多个使用者实例上，从而扩展处理量。</p>
+<p>不幸的是，队列不是多用户的——一次进程读取了丢失的数据。发布——订阅允许您将数据广播到多个进程，但是由于每条消息都传递给每个订阅者，因此无法扩展处理。Kafka 的消费者群体概念概括了这两个概念。与队列一样，使用者组允许您将处理划分为一组进程（使用者组的成员）。与发布订阅一样，Kafka 允许您将消息广播到多个消费者组。</p>
+<p>Kafka 模型的优点在于，每个主题都具有这些属性-可以扩展处理范围，并且是多订阅者，无需选择其中一个。与传统的消息传递系统相比，Kafka 还具有更强的订购保证。传统队列将记录按顺序保留在服务器上，如果多个使用者从队列中消费，则服务器将按记录的存储顺序分发记录。但是，尽管服务器按顺序分发记录，但是这些记录是异步传递给使用者的，因此它们可能在不同的使用者上乱序到达。</p>
+<p>这实际上意味着在并行使用的情况下会丢失记录的顺序。消息传递系统通常通过“专有使用者”的概念来解决此问题，该概念仅允许一个进程从队列中使用，但是，这当然意味着在处理中没有并行性。Kafka 做得更好，通过在主题内具有并行性（即分区）的概念，Kafka 能够在用户进程池中提供排序保证和负载均衡。</p>
+<p>这是通过将主题中的分区分配给消费者组中的消费者来实现的，以便每个分区都由组中的一个消费者完全消费。通过这样做，我们确保使用者是该分区的唯一读取器，并按顺序使用数据。由于存在许多分区，因此仍然可以平衡许多使用者实例上的负载。但是请注意，使用者组中的使用者实例不能超过分区。</p>
+<div class="mynotation">
+<p>我们可以增加主题的分区数量，但不能减少分区数量。</p>
+</div>
+<p>Kafka 用作流处理：仅读取，写入和存储数据流是不够的，目的是实现对流的实时处理。在 Kafka 中，流处理器是指从输入主题中获取连续数据流，对该输入进行一些处理并生成连续数据流以输出主题的任何东西。例如，零售应用程序可以接受销售和装运的输入流，并输出根据此数据计算出的重新订购和价格调整流。</p>
+<p>可以直接使用生产者和消费者 API 进行简单处理。但是，对于更复杂的转换，Kafka 提供了完全集成的 Streams API。这允许构建执行非重要处理的应用程序，这些应用程序计算流的聚合或将流连接在一起。该功能有助于解决此类应用程序所面临的难题：处理无序数据，在代码更改时重新处理输入，执行状态计算等。</p>
+<p>流 API 建立在 Kafka 提供的核心原语之上：它使用生产者和使用者 API 进行输入，使用 Kafka 进行状态存储，并使用相同的组机制来实现流处理器实例之间的容错。</p>
+<div class="mynotation">
+<p>Kafka 有4个核心 API ：Producer API、Consumer API、Streams API 和 Connector API 。</p>
+<p>Connector API 允许构建和运行将 Kafka Topic 连接到现有的应用程序或数据系统的可用生产者和消费者。</p>
+</div>
+<h3>Kafka 中的关键术语解释</h3>
+<ul>
+<li>Topic：主题。在 Kafka 中，使用一个类别属性来划分消息的所属类，划分消息的这个类称为 Topic。Topic 相当于消息的分类标签，是一个逻辑概念。物理上不同 Topic 的消息分开存储，逻辑上一个 Topic 的消息虽然保存于一个或多个 Broker 上但用户只需指定消息的 Topic 即可生产或消费数据而不必关心数据存于何处。</li>
+<li>Partition：分区。Topic 中的消息被分割为一个或多个 Partition，其是一个物理概念，对应到系统上 就是一个或若干个目录。Partition 内部的消息是有序的，但 Partition 间的消息是无序的。</li>
+<li>Segment：段。将 Partition 进一步细分为了若干的 Segment，每个 Segment 文件的大小相等。</li>
+<li>Broker：Kafka 集群包含一个或多个服务器，每个服务器节点称为一个 Broker。Broker 存储 Topic 的数据。如果某 Topic 有 N 个 Partition，集群有 N 个 Broker，那么每个 Broker 存储该 Topic 的一个 Partition。
+如果某 Topic 有 N 个 Partition，集群有（N+M）个 Broker，那么其中有 N 个 Broker 存储该 Topic 的一个 Partition，剩下的 M 个 Broker 不存储该 Topic 的 Partition 数据。如果某 Topic 有 N 个 Partition，集群中 Broker 数目少于 N 个，那么一个 Broker 存储该 Topic 的一个或多个 Partition。在实际生产环境中，尽量避免这种情况的发生，这种情况容易导致 Kafka 集群数据不均衡。</li>
+<li>Producer：生产者。即消息的发布者，生产者将数据发布到他们选择的主题。生产者负责选择将哪个记录分配给主题中的哪个分区。即：生产者生产的一条消息，会被写入到某一个 Partition。</li>
+<li>Consumer：消费者。可以从 Broker 中读取消息。一个消费者可以消费多个 Topic 的消息；一个消费者可以消费同一个 Topic 中的多个 Partition 中的消息；一个 Partiton 允许多个 Consumer 同时消费。</li>
+<li>Consumer Group：消费者组。Consumer Group 是 Kafka 提供的可扩展且具有容错性的消费者机制。组内可以有多个消费者，它们共享一个公共的 ID，即 Group ID。组内的所有消费者协调在一起来消费订阅主题 的所有分区。Kafka 保证同一个 Consumer Group 中只有一个 Consumer 会消费某条消息。</li>
+</ul>
+<div class="mynotation">
+<p>作者在 broker 这段关于 partition 的说法有问题。如果 partition 的副本数大于分区数(但是小于 broker 数量)呢？</p>
+<p>消费者订阅主题后，是采用轮询的方式定期到 broker 中检索数据，如有数据则消费，否则就再继续轮询等待。</p>
+</div>
+<p>实际上，Kafka 保证的是稳定状态下每一个 Consumer 实例只会消费某一个或多个特定的 Partition，而某个 Partition 的数据只会被某一个特定的 Consumer 实例所消费。</p>
+<p>下面我们用官网的一张图, 来标识 Consumer 数量和 Partition 数量的对应关系。</p>
+<p><img alt="Kafka Consumer 数量和 Partition 数量的对应关系" src="/images/2020/kafka_4.png"/></p>
+<p>由两台服务器组成的 Kafka 群集，其中包含四个带有两个使用者组的分区（P0-P3）。消费者组 A 有两个消费者实例，组 B 有四个。</p>
+<p>对于这个消费组, 以前一直搞不明白, 我自己的总结是：Topic 中的 Partition 到 Group 是发布订阅的通信方式。</p>
+<p>即一条 Topic 的 Partition 的消息会被所有的 Group 消费，属于一对多模式；Group 到 Consumer 是点对点通信方式，属于一对一模式。</p>
+<p>举个例子：不使用 Group 的话，启动 10 个 Consumer 消费一个 Topic，这 10 个 Consumer 都能得到 Topic 的所有数据，相当于这个 Topic 中的任一条消息被消费 10 次。</p>
+<p>使用 Group 的话，连接时带上 groupid，Topic 的消息会分发到 10 个 Consumer 上，每条消息只被消费 1 次。</p>
+<p>Replicas of partition：分区副本。副本是一个分区的备份，是为了防止消息丢失而创建的分区的备份。</p>
+<p>Partition Leader：每个 Partition 有多个副本，其中有且仅有一个作为 Leader，Leader 是当前负责消息读写的 Partition。即所有读写操作只能发生于 Leader 分区上。</p>
+<p>Partition Follower：所有 Follower 都需要从 Leader 同步消息，Follower 与 Leader 始终保持消息同步。Leader 与 Follower 的关系是主备关系，而非主从关系。</p>
+<p>ISR：</p>
+<ul>
+<li>ISR，In-Sync Replicas，是指副本同步列表。ISR 列表是由 Leader 负责维护。</li>
+<li>OSR，Outof-Sync Replicas，即非同步的副本列表。</li>
+<li>AR，Assigned Replicas，指某个 Partition 的所有副本, 即已分配的副本列表。</li>
+</ul>
+<p>AR=ISR+OSR</p>
+<p>Offset：偏移量。每条消息都有一个当前 Partition 下唯一的 64 字节的 Offset，它是相对于当前分区第一条消息的偏移量。</p>
+<p>Broker Controller：Kafka集群的多个 Broker 中，有一个会被选举 Controller，负责管理整个集群中 Partition 和 Replicas 的状态。</p>
+<p>只有 Broker Controller 会向 Zookeeper 中注册 Watcher，其他 Broker 及分区无需注册。即 Zookeeper 仅需监听 Broker Controller 的状态变化即可。</p>
+<p class="list-title">HW 与 LEO：</p>
+<ul>
+<li>HW，HighWatermark，高水位，表示 Consumer 可以消费到的最高 Partition 偏移量。HW 保证了 Kafka 集群中消息的一致性。确切地说，是保证了 Partition 的 Follower 与 Leader 间数 据的一致性。</li>
+<li>LEO，Log End Offset，日志最后消息的偏移量。消息是被写入到 Kafka 的日志文件中的， 这是当前最后一个写入的消息在 Partition 中的偏移量。</li>
+<li>对于 Leader 新写入的消息，Consumer 是不能立刻消费的。Leader 会等待该消息被所有 ISR 中的 Partition Follower 同步后才会更新 HW，此时消息才能被 Consumer 消费。</li>
+</ul>
+<p>我相信你看完上面的概念还是懵逼的，好吧！下面我们就用图来形象话的表示两者的关系吧：</p>
+<p><img alt="Kafka HW与LEO" src="/images/2020/kafka_5.png"/></p>
+<p>ZooKeeper：ZooKeeper 负责维护和协调 Broker，负责 Broker Controller 的选举。在 Kafka 0.9 之前版本，Offset 是由 ZooKeeper 负责管理的。</p>
+<p>总结：ZooKeeper 负责 Controller 的选举，Controller 负责 Leader 的选举。</p>
+<p>Coordinator：一般指的是运行在每个 Broker 上的 Group Coordinator 进程，用于管理 Consumer Group 中的各个成员，主要用于 Offset 位移管理和 Rebalance。一个 Coordinator 可以同时管理多个消费者组。</p>
+<div class="mynotation">
+<p>消费者通过向 Group Coordinator 发送心跳来维护自己是的消费者组的一员，并确认其拥有的分区。当消费者检索记录或提交它所消费的记录时就会发送心跳。如果心跳停止发送一段时间，会话过期，则 Group Coordinator 会认为这个消费者已经死亡，会触发一次 Rebalance 。</p>
+</div>
+<p>Rebalance：当消费者组中的数量发生变化，或者 Topic 中的 Partition 数量发生了变化时，Partition 的所有权会在消费者间转移，即 Partition 会重新分配，这个过程称为再均衡 Rebalance。</p>
+<p>再均衡能够给消费者组及 Broker 带来高性能、高可用性和伸缩，但在再均衡期间消费者是无法读取消息的，即整个 Broker 集群有小一段时间是不可用的。因此要避免不必要的再均衡。</p>
+<p>Offset Commit：Consumer 从 Broker 中取一批消息写入 Buffer 进行消费，在规定的时间内消费完消息后，会自动将其消费消息的 Offset 提交给 Broker，以记录下哪些消息是消费过的。当然，若在时限内没有消费完毕，其是不会提交 Offset 的。</p>
+<h3>Kafka的工作原理和过程</h3>
+<h4>消息写入算法</h4>
+<p class="list-title">消息发送者将消息发送给 Broker, 并形成最终的可供消费者消费的 log，是一个比较复杂的过程：</p>
+<ol>
+<li>Producer 先从 ZooKeeper 中找到该 Partition 的 Leader。</li>
+<li>Producer 将消息发送给该 Leader。</li>
+<li>Leader 将消息接入本地的 log，并通知 ISR 的 Followers。</li>
+<li>ISR 中的 Followers 从 Leader 中 Pull 消息, 写入本地 log 后向 Leader 发送 Ack。</li>
+<li>Leader 收到所有 ISR 中的 Followers 的 Ack 后，增加 HW 并向 Producer 发送 Ack，表示消息写入成功。</li>
+</ol>
+<div class="mynotation">
+<p>broker 在写入成功后，返回的信息中包含了主题和分区信息、记录在分区里的偏移量、时间戳。如果写入失败，会返回一个错误。生产者在收到错误之后会尝试重新发送消息，几次之后还是失败的话，就返回错误消息。</p>
+</div>
+<h4>消息路由策略</h4>
+<p>在通过 API 方式发布消息时，生产者是以 Record 为消息进行发布的。</p>
+<p>Record 中包含 Key 与 Value，Value 才是我们真正的消息本身，而 Key 用于路由消息所要存放的 Partition。</p>
+<p class="list-title">消息要写入到哪个 Partition 并不是随机的，而是有路由策略的：</p>
+<ul>
+<li>若指定了 Partition，则直接写入到指定的 Partition。</li>
+<li>若未指定 Partition 但指定了 Key，则通过对 Key 的 Hash 值与 Partition 数量取模，该取模结果就是要选出的 Partition 索引。</li>
+<li>若 Partition 和 Key 都未指定，则使用轮询算法选出一个 Partition。</li>
+</ul>
+<div class="mynotation">
+<p>record 中记录的是要发送到的主题名称、可选的分区号、可选的键值对，还有关联的时间戳(用户不提供的话则使用生产者当前的时间)。</p>
+<p>Kafka 最终使用的时间戳取决于主题配置的时间戳类型：CreateTime 为使用生产者记录中的时间戳；LogAppendTime 为 broker 在消息添加到日志中时重写时间戳。</p>
+<p>Kafka records 采用键/值格式，键可以为空（null）。Kafka 生产者不会立即发送记录，而是将它们放入特定分区的批次中，以便稍后发送。批处理是提高网络利用率的有效手段。有三种方法确定记录应该写入哪个分区。1. 可以通过重载的 ProducerRecord 构造函数在 ProducerRecord 对象中显式地提供分区。在这种情况下，生产者总是使用这个分区。2. 如果没有提供任何分区，并且 ProducerRecord 有一个键，则生产者将该键的哈希值除以分区的数量。计算得到的结果数就是生产者将要使用的分区。3. 如果 ProducerRecord 中没有键，也没有分区，那么以前的 Kafka 使用轮询方法来跨分区分配消息。生产者将批处理中的第一个记录分配给分区0，第二个记录分配给分区1，依此类推，直到分区结束。 然后，生产者将从分区0开始，并对所有剩余的记录重复整个过程。</p>
+<p>Apache Kafka 2.4.0 增加了粘性分区（sticky partitioner）的方法。与对每个记录使用轮询方法不同，粘性分区将记录分配给同一个分区，直到批处理被发送为止。然后，在发送一个批处理之后，粘性分区将分区增加以用于下一个批处理。</p>
+</div>
+<h4>HW 截断机制</h4>
+<p>如果 Partition Leader 接收到了新的消息， ISR 中其它 Follower 正在同步过程中，还未同步完毕时 leader 宕机。</p>
+<p>此时就需要选举出新的 Leader。若没有 HW 截断机制，将会导致 Partition 中 Leader 与 Follower 数据的不一致。</p>
+<p>当原 Leader 宕机后又恢复时，将其 LEO 回退到其宕机时的 HW，然后再与新的 Leader 进行数据同步，这样就可以保证老 Leader 与新 Leader 中数据一致了，这种机制称为 HW 截断机制。</p>
+<h4>消息发送的可靠性</h4>
+<p>生产者向 Kafka 发送消息时，可以选择需要的可靠性级别。通过 request.required.acks 参数的值进行设置。</p>
+<p>0 值：异步发送。生产者向 Kafka 发送消息而不需要 Kafka 反馈成功 Ack。该方式效率最高，但可靠性最低。</p>
+<p class="list-title">其可能会存在消息丢失的情况：</p>
+<ul>
+<li>在传输过程中会出现消息丢失。</li>
+<li>在 Broker 内部会出现消息丢失。</li>
+<li>会出现写入到 Kafka 中的消息的顺序与生产顺序不一致的情况。</li>
+</ul>
+<p>1 值：同步发送。生产者发送消息给 Kafka，Broker 的 Partition Leader 在收到消息后马上发送成功 Ack（无需等等 ISR 中的 Follower 同步）。<span class="sidenote note no-word-break invisible-sm"> 消息写入 PageCache 后就返回 Ack ，若此时 Leader 断电，消息会丢失。</span></p>
+<p>生产者收到后知道消息发送成功，然后会再发送消息。如果一直未收到 Kafka 的 Ack，则生产者会认为消息发送失败，会重发消息。</p>
+<p>该方式对于 Producer 来说，若没有收到 Ack，一定可以确认消息发送失败了，然后可以重发。</p>
+<p>但是，即使收到了 ACK，也不能保证消息一定就发送成功了。故，这种情况，也可能会发生消息丢失的情况。</p>
+<p>-1 值：同步发送。生产者发送消息给 Kafka，Kafka 收到消息后要等到 ISR 列表中的所有副本都同步消息完成后，才向生产者发送成功 Ack。<span class="sidenote note no-word-break invisible-sm"> 消息从 PageCache 被刷到磁盘，只有磁盘中的数据才能被同步到副本的 PageCache 。</span></p>
+<div class="mynotation">
+<p>这里这个参数在 0.8.2.X 版本之前是通过 request.required.acks 参数设置的，现在可定义 Producer 时通过 acks 参数指定，acks的可选值为 [0,1,all,-1] ，其中 -1 和 all 等同。</p>
+<p>当这个参数的值为 all 时，还须指定参数 min.insync.replicas 的值，则只要这个数量的副本已经完成写入，就认为这次写入是成功的。否则如果副本机器与 leader 之间的网络连接发生了故障，此时 Kafka 还是会返回 ok ，但是实际上只有 leader 同步了数据。</p>
+</div>
+<p>如果一直未收到 Kafka 的 Ack，则认为消息发送失败，会自动重发消息。该方式会出现消息重复接收的情况。</p>
+<h4>消费者消费过程解析</h4>
+<p class="list-title">生产者将消息发送到 Topitc 中，消费者即可对其进行消费，其消费过程如下：</p>
+<ol>
+<li>Consumer 向 Broker 提交连接请求，其所连接上的 Broker 都会向其发送Broker Controller 的通信 URL，即配置文件中的 Listeners 地址。</li>
+<li>当 Consumer 指定了要消费的 Topic 后，会向 Broker Controller 发送消费请求。</li>
+<li>Broker Controller 会为 Consumer 分配一个或几个 Partition Leader，并将该 Partition 的当前 Offset 发送给 Consumer。</li>
+<li>Consumer 会按照 Broker Controller 分配的 Partition 对其中的消息进行消费。</li>
+<li>当 Consumer 消费完该条消息后，Consumer 会向 Broker 发送一个消息已经被消费反馈，即该消息的 Offset。</li>
+<li>在 Broker 接收到 Consumer 的 Offset 后，会更新相应的 <code>__consumer_offset</code> 中。</li>
+<li>以上过程会一直重复，知道消费者停止请求消费。</li>
+<li>Consumer 可以重置 Offset，从而可以灵活消费存储在 Broker 上的消息。</li>
+</ol>
+<div class="mynotation">
+<p>当 enable.auto.commit 为 true 时，每过 auto.commit.interval.ms (默认5秒) 消费者自动提交偏移量<span class="sidenote note no-word-break invisible-sm"> 由 poll() 返回的最新偏移量。</span>。如果设为手动提交偏移量，则消费者可以在确定消息已经被处理后，才提交偏移量。</p>
+<p>异步提交 commitAsync() 与同步提交 commitSync() 最大的区别在于前者提交不会重试，后者会一直进行重试。两者都支持提交特定的偏移量。</p>
+</div>
+<h4>Partition Leader 选举范围</h4>
+<p>当 Leader 宕机后，Broker Controller 会从 ISR 中挑选一个 Follower 成为新的 Leader。</p>
+<p>如果 ISR 中没有其他副本怎么办？可以通过 unclean.leader.election.enable 的值来设置 Leader 选举范围。</p>
+<p>False：必须等到 ISR 列表中所有的副本都活过来才进行新的选举。该策略可靠性有保证，但可用性低。</p>
+<p>True：在 ISR 列表中没有副本的情况下，可以选择任意一个没有宕机的主机作为新的 Leader，该策略可用性高，但可靠性没有保证。</p>
+<h4>重复消费问题的解决方案</h4>
+<p>同一个 Consumer 重复消费：当 Consumer 由于消费能力低而引发了消费超时，则可能会形成重复消费。</p>
+<p>在某数据刚好消费完毕，但是正准备提交 Offset 时候，消费时间超时，则 Broker 认为这条消息未消费成功。这时就会产生重复消费问题。其解决方案：延长 Offset 提交时间。</p>
+<p>不同的 Consumer 重复消费：当 Consumer 消费了消息，但还没有提交 Offset 时宕机，则这些已经被消费过的消息会被重复消费。其解决方案：将自动提交改为手动提交。</p>
+<h4>从架构设计上解决 Kafka 重复消费的问题</h4>
+<p>我们在设计程序的时候，比如考虑到网络故障等一些异常的情况，我们都会设置消息的重试次数，可能还有其他可能出现消息重复，那我们应该如何解决呢？下面提供三个方案：</p>
+<p>我们在设计程序的时候，比如考虑到网络故障等一些异常的情况，我们都会设置消息的重试次数，可能还有其他可能出现消息重复，那我们应该如何解决呢？下面提供三个方案：</p>
+<h5>方案一：保存并查询</h5>
+<p>给每个消息都设置一个独一无二的 uuid，所有的消息，我们都要存一个 uuid。</p>
+<p>我们在消费消息的时候，首先去持久化系统中查询一下看这个看是否以前消费过，如没有消费过，在进行消费，如果已经消费过，丢弃就好了。</p>
+<p>下图表明了这种方案：</p>
+<p><img alt="Kafka 重复消费架构方案一" src="/images/2020/kafka_6.png"/></p>
+<h5>方案二：利用幂等</h5>
+<p>幂等（Idempotence）在数学上是这样定义的，如果一个函数 f(x) 满足：f(f(x)) = f(x)，则函数 f(x) 满足幂等性。</p>
+<p>这个概念被拓展到计算机领域，被用来描述一个操作、方法或者服务。一个幂等操作的特点是，其任意多次执行所产生的影响均与一次执行的影响相同。</p>
+<p>一个幂等的方法，使用同样的参数，对它进行多次调用和一次调用，对系统产生的影响是一样的。所以，对于幂等的方法，不用担心重复执行会对系统造成任何改变。</p>
+<p>我们举个例子来说明一下。在不考虑并发的情况下，“将 X 老师的账户余额设置为 100 万元”，执行一次后对系统的影响是，X 老师的账户余额变成了 100 万元。只要提供的参数 100 万元不变，那即使再执行多少次，X 老师的账户余额始终都是 100 万元，不会变化，这个操作就是一个幂等的操作。</p>
+<p>再举一个例子，“将 X 老师的余额加 100 万元”，这个操作它就不是幂等的，每执行一次，账户余额就会增加 100 万元，执行多次和执行一次对系统的影响（也就是账户的余额）是不一样的。</p>
+<p>所以，通过这两个例子，我们可以想到如果系统消费消息的业务逻辑具备幂等性，那就不用担心消息重复的问题了，因为同一条消息，消费一次和消费多次对系统的影响是完全一样的。也就可以认为，消费多次等于消费一次。</p>
+<p>那么，如何实现幂等操作呢？最好的方式就是，从业务逻辑设计上入手，将消费的业务逻辑设计成具备幂等性的操作。</p>
+<p>但是，不是所有的业务都能设计成天然幂等的，这里就需要一些方法和技巧来实现幂等。</p>
+<p>下面我们介绍一种常用的方法：利用数据库的唯一约束实现幂等。</p>
+<p>例如，我们刚刚提到的那个不具备幂等特性的转账的例子：将 X 老师的账户余额加 100 万元。在这个例子中，我们可以通过改造业务逻辑，让它具备幂等性。</p>
+<p>首先，我们可以限定，对于每个转账单每个账户只可以执行一次变更操作，在分布式系统中，这个限制实现的方法非常多，最简单的是我们在数据库中建一张转账流水表。</p>
+<p>这个表有三个字段：转账单 ID、账户 ID 和变更金额，然后给转账单 ID 和账户 ID 这两个字段联合起来创建一个唯一约束，这样对于相同的转账单 ID 和账户 ID，表里至多只能存在一条记录。</p>
+<p>这样，我们消费消息的逻辑可以变为：“在转账流水表中增加一条转账记录，然后再根据转账记录，异步操作更新用户余额即可。”</p>
+<p>在转账流水表增加一条转账记录这个操作中，由于我们在这个表中预先定义了“账户 ID 转账单 ID”的唯一约束，对于同一个转账单同一个账户只能插入一条记录，后续重复的插入操作都会失败，这样就实现了一个幂等的操作。</p>
+<p><img alt="Kafka 重复消费架构方案二" src="/images/2020/kafka_7.png"/></p>
+<h5>方案三：设置前提条件</h5>
+<p>为更新的数据设置前置条件另外一种实现幂等的思路是，给数据变更设置一个前置条件，如果满足条件就更新数据，否则拒绝更新数据，在更新数据的时候，同时变更前置条件中需要判断的数据。</p>
+<p>这样，重复执行这个操作时，由于第一次更新数据的时候已经变更了前置条件中需要判断的数据，不满足前置条件，则不会重复执行更新数据操作。</p>
+<p>比如，刚刚我们说过，“将 X 老师的账户的余额增加 100 万元”这个操作并不满足幂等性，我们可以把这个操作加上一个前置条件，变为：“如果 X 老师的账户当前的余额为 500 万元，将余额加 100 万元”，这个操作就具备了幂等性。</p>
+<p>对应到消息队列中的使用时，可以在发消息时在消息体中带上当前的余额，在消费的时候进行判断数据库中，当前余额是否与消息中的余额相等，只有相等才执行变更操作。</p>
+<p>但是，如果我们要更新的数据不是数值，或者我们要做一个比较复杂的更新操作怎么办？用什么作为前置判断条件呢？</p>
+<p>更加通用的方法是，给你的数据增加一个版本号属性，每次更数据前，比较当前数据的版本号是否和消息中的版本号一致，如果不一致就拒绝更新数据，更新数据的同时将版本号 +1，一样可以实现幂等。</p>
+<p><img alt="Kafka 重复消费架构方案三" src="/images/2020/kafka_8.png"/></p>
+        </div>
+    </div>
+</div>
+
+<a href="https://paxinla.github.io/posts/2020/12/zhuan-cong-wei-ru-ci-jian-dan-yi-wen-dai-ni-ni-xi-kafka.html" class="current-page-link">本文链接: https://paxinla.github.io/posts/2020/12/zhuan-cong-wei-ru-ci-jian-dan-yi-wen-dai-ni-ni-xi-kafka.html</a>
+
+<!-- Comments -->
+<div class="content-split-comment"><hr class="dotty-split-line" /></div>
+<div class="content-bottom">
+<section class="comments" id="comments">
+      <div class="panel panel-primary">
+        <div class="panel-heading" role="tab" id="githubissue-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#githubissue-comments" aria-expanded="true" aria-controls="githubissue-comments">
+                <i class="fa fa-comments"></i><i id="githubissue-comment_list"> Comments</i>
+            </a>
+          </h4>
+        </div>
+
+        <!-- utterances start -->
+        <div id="utter-container"></div>
+        <script src="https://utteranc.es/client.js"
+          repo="paxinla/paxinla.github.io"
+          issue-term="url"
+          label="blog_comment"
+          theme="boxy-light"
+          crossorigin="anonymous"
+          async>
+        </script>
+        <!-- utterances end -->
+
+      </div>
+</section>
+            <div class="cc-license">
+                <p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/"><img alt="知识共享许可协议" style="border-width:0;display:inline-block" src="https://licensebuttons.net/l/by-nc-sa/3.0/cn/88x31.png" /></a>&nbsp;本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/3.0/deed.zh" style="color:#00a67c">知识共享署名-非商业性使用-相同方式共享 3.0 中国大陆许可协议</a>进行许可，欢迎转载、演绎，<br/>但是必须保留本文的署名 <a href="https://paxinla.github.io" style="color:rgb(153,51,51);">Charles</a>（包含链接），且不得用于商业目的。</p>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        </div><!-- End Whole Page -->
+
+        <!-- Scripts -->
+        <script src="https://paxinla.github.io/theme/js/packed.js?e4252eaf"></script>
+
+        <script src="https://paxinla.github.io/theme/js/article_toc.js" type="text/javascript"></script>
+
+        <!-- Sidebar / Table of Contents -->
+        <script type="text/javascript">
+         $(function(){$("#toc").tableOfContents(null,{
+             startLevel: 2, depth: 1});
+             $('body').scrollspy({
+                 target: '#nav-sidebar',
+                 offset: 20});
+         });
+        </script>
+
+        <!-- Code Highlighting : highlight.js -->
+        <script type="text/javascript">
+            hljs.configure({languages:[]});
+            hljs.initHighlightingOnLoad();
+        </script>
+
+        <!-- Equation Rendering : mathjax -->
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+               jax: ["input/TeX","output/CommonHTML"],
+               tex2jax: { inlineMath: [["$","$"], ["\\(", "\\)"]] },
+               CommonHTML: {
+                   linebreaks: { automatic: true, width: "container" }
+               }
+            });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML" type="text/javascript"></script>
+
+        <!-- Cat -->
+        <script src="https://paxinla.github.io/theme/js/L2Dwidget.min.js"></script>
+        <script type="text/javascript">
+            var L2DModelArray = ['hijiki', 'tororo'];
+            var L2DModelIndex = Math.floor((Math.random()*L2DModelArray.length));
+            var L2DModelSelected = L2DModelArray[L2DModelIndex];
+            L2Dwidget.init({model: {
+                              jsonPath: "https://paxinla.github.io/theme/live2d-widget-model-"+L2DModelSelected+"/assets/"+L2DModelSelected+".model.json",
+                            },
+                            display: {
+                              superSample: 2,
+                              width: 100,
+                              height: 200,
+                              position: 'right',
+                              hOffset: 0,
+                              vOffset: 0,
+                            },
+                            mobile: {
+                              show: true,
+                              scale: 1,
+                              motion: true,
+                            },
+                            react: {
+                              opacityDefault: 0.85,
+                              opacityOnHover: 0.2,
+                            }
+                          })
+        </script>
+
+        <!-- Funny title -->
+        <script type="text/javascript">
+            var OriginTitle = document.title;
+            document.addEventListener('visibilitychange', function () {
+                if (document.hidden) {
+                    document.title = '_(:з」∠)_ 呀嚯嘿';
+                } else {
+                    document.title = OriginTitle;
+                }
+            });
+        </script>
+    </body>
+</html>
