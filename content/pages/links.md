@@ -46,6 +46,8 @@ Save_as: links.html
 
 [flink:https://onetimesecret.com name:OneTimeSecret desc:一个阅后即焚粘贴板. logo:https://paxinla.github.io/static/tools/logo_OneTimeSecret.png]
 
+[flink:https://tools.pdf24.org/zh name:PDF24 Tools desc:免费且易于使用的在线PDF工具. logo:https://paxinla.github.io/static/tools/logo_pdf24.png]
+
 </div>
 
 <div style="background: url(/theme/images/ornate-border.svg) center top no-repeat transparent; background-size: auto; background-size: contain; height: 1.5rem; width: 100%; margin-top: 1rem;"></div>
