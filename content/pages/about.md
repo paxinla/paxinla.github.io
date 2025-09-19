@@ -29,21 +29,22 @@ Charles 是一个略爱折腾的数据工程师，关注数据库、数据工程
       "Shenzhen Guangdong")
     (.social-media 
       {:📧 "base64 -d <<< YWtzdXJhQHBhcmFub2lkLmVtYWlsCg=="
-       :🐘 "base64 -d <<< aHR0cHM6Ly9tLmNteC5pbS9AYWtzdXJh"
-       :ff14 "base64 -d <<< 56We5oSP5LmL5ZywIOecn+mYv+WFi+iLj+aLiQ=="})
+       :🐘 "base64 -d <<< aHR0cHM6Ly9tLmNteC5pbS9AYWtzdXJh"})
     (.technology-stack
       {:domain ["Data Engineering"
                 "Database"
                 "Data Warehouse"]
-       :familiar {:language [:Python
-                             :Scala
-                             :Clojure]}
-                  :framework [:Spark]})))
+       :familiar {:language [:Clojure
+                             :Python
+                             :Scala]}
+                  :platform [:PostgreSQL
+                             :Spark]})))
 
 ```
 
 <h3 class="no-bullet">站点更新日志</h3>
 
++ 20250919 - 迁移访问计数到 [Vercount](https://github.com/EvanNotFound/vercount) 。
 + 20240102 - 迁移访问计数到 [statcounter.com](https://statcounter.com) 。
 + 20210225 - 迁移评论系统到 [utterances](https://utteranc.es) 。
 + 20201127 - 迁移 CI 到 [Github Actions](https://github.com/features/actions) 。
@@ -54,7 +55,7 @@ Charles 是一个略爱折腾的数据工程师，关注数据库、数据工程
 + 20140406 - 开启博客之旅，Hexo + Modernist 主题 + Github Pages 。
 
 <br/> 
-<div class="statcounter">本站总访问量: <img class="statcounter" src="https://c.statcounter.com/12954173/0/5f6cdd0b/0/" alt="web counter" referrerPolicy="no-referrer-when-downgrade" style="display:inline-block; width:3rem; box-shadow:none;"> 次</div>
+本站总访问量: <script defer src="https://events.vercount.one/js"></script> 次
 <br/>
 
 <br/>
