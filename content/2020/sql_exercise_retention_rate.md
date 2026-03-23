@@ -34,42 +34,51 @@ CommentId: X
 以 PostgreSQL 写法作答:
 
 ```pgsql
-WITH user_first_login AS (
+WITH dedup_user_login AS (
     SELECT DISTINCT
            ulog.user_id
          , ulog.login_date
-         , FIRST_VALUE(ulog.login_date)
-           OVER (PARTITION BY ulog.user_id
-                     ORDER BY ulog.login_date ASC)  AS first_login_date
-         , ulog.login_date
-         - FIRST_VALUE(ulog.login_date)
-           OVER (PARTITION BY ulog.user_id
-                     ORDER BY ulog.login_date ASC)  AS login_date_gap
-        
-         , COUNT(1)
-           OVER (PARTITION BY ulog.login_date)      AS user_count_day0
       FROM user_login ulog
+, user_first_login AS (
+    SELECT g.user_id
+         , g.login_date
+         , FIRST_VALUE(g.login_date)
+           OVER(PARTITION BY g.user_id
+                    ORDER BY g.login_date ASC)  AS first_login_date
+         , g.login_date
+         - FIRST_VALUE(g.login_date)
+           OVER(PARTITION BY g.user_id
+                    ORDER BY g.login_date ASC)  AS login_date_gap
+         , COUNT(DISTINCT g.user_id)
+           OVER(PARTITION BY g.login_date)      AS user_count_day0
+      FROM dedup_user_login g
 ), user_retention_count AS (
      SELECT ufd.login_date
           , ufd.first_login_date
           , ufd.login_date_gap
-          , COUNT(1)       AS user_count
           , ufd.user_count_day0
+          , COUNT(DISTINCT ufd.user_id)  AS user_count
        FROM user_first_login ufd
       WHERE ufd.login_date_gap IN (0,1,3,5,7,13,15)
-   GROUP BY ufd.login_date, ufd.first_login_date
-          , ufd.login_date_gap, ufd.user_count_day0
-)      SELECT urc.login_date
-            , urc.login_date_gap
-            , urc.user_count       AS retention_count
-            , urc.user_count::float/urc2.user_count_day0::float AS retention_rate
-         FROM user_retention_count urc
-    LEFT JOIN user_retention_count urc2
-           ON urc2.login_date = urc.first_login_date
-          AND urc2.login_date_gap = 0
- ORDER BY urc.login_date, urc.login_date_gap
+   GROUP BY ufd.login_date
+          , ufd.first_login_date
+          , ufd.login_date_gap
+          , ufd.user_count_day0
+)
+     SELECT urc.login_date
+          , urc.first_login_date
+          , urc.login_date_gap
+          , urc.user_count                AS retention_count
+          , urc.user_count::float
+          / urc2.user_count_day0::float   AS retention_rate
+       FROM user_retention_count urc
+  LEFT JOIN user_retention_count urc2
+         ON urc2.login_date = urc.first_login_date
+        AND urc2.login_date_gap = 0
+   ORDER BY urc.login_date, urc.login_date_gap
 ;
 
 ```
 
 如果在子查询 `user_retention_count` 中不限定 where 条件，则最后得到的结果可以查任意 N 日用户留存率。
+
