@@ -31,7 +31,7 @@ Save_as: links.html
 
 <div style="display: inline-block;margin-left: 5.6rem;">
 
-[flink:https://blog.douchi.space?utm_source=paxinla.github.io name:椒盐鸵鸟 desc:喜欢就买，不行就分，多喝热水，重启电脑。 logo:https://i.loli.net/2021/01/05/ladoO5s2TZnvNL3.png]
+[fdlink:https://blog.douchi.space?utm_source=paxinla.github.io name:椒盐鸵鸟 desc:喜欢就买，不行就分，多喝热水，重启电脑。 logo:https://i.loli.net/2021/01/05/ladoO5s2TZnvNL3.png]
 
 [flink:https://www.dbanote.com/?utm_source=paxinla.github.io name:牧人池塘 desc:时光匆匆，记录是对思维的沉淀。 logo:https://www.dbanote.com/usr/themes/wind/images/face.jpg]
 
