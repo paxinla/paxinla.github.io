@@ -1,0 +1,355 @@
+<!Doctype html>
+<html lang="zh">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <base href="https://paxinla.github.io">
+        <meta property="og:title" content="Blog of Charles" />
+        <meta name="author" content="Charles" />
+        <meta property="article:author" content="Charles" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://paxinla.github.io" />
+        <meta property="og:image" content="https://paxinla.github.io/static/blog_url_qrcode.png" />
+        <meta property="og:image:secure_url" content="https://paxinla.github.io/static/blog_url_qrcode.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="120" />
+        <meta property="og:image:height" content="120" />
+        <meta property="og:image:alt" content="A QR code of the blog's URL." />
+        <meta property="og:description" content="This is the blog of Charles." />
+        <meta name="copyright" content="Charles" />
+        <meta name="description" content="Personal blog of Charles">
+        <meta name="generator" content="pelican 3.7.1">
+        <link href="https://paxinla.github.io/static/humans.txt" rel="author" type="text/plain" />
+        <title>一道取数题目：购物车 hold 货时长</title>
+        <link href="https://paxinla.github.io/posts/2020/06/yi-dao-qu-shu-ti-mu-gou-wu-che-hold-huo-shi-chang.html" rel="canonical" />
+
+        <link href="https://paxinla.github.io/theme/images/favicon.ico" rel="icon" type="image/png" />
+        <link href="https://paxinla.github.io/theme/images/safari-pinned-tab.svg" rel="mask-icon" color="#5bbad5" />
+
+        <link href="https://paxinla.github.io/theme/css/blogstyle.css?6748a722" rel="stylesheet" type="text/css" />
+
+        <!-- View Counter -->
+        <script defer src="https://events.vercount.one/js"></script>
+        <!-- End of View Counter Code -->
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-70MNYH18HG"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'G-70MNYH18HG');
+        </script>
+    </head>
+
+
+    <body data-spy="scroll" data-target="#left-navbar" data-offset="50" itemscope="" itemtype="http://schema.org/WebPage">
+
+        <!-- Cursor animation -->
+        <script defer="" src="https://paxinla.github.io/theme/js/animejs.js"></script>
+        <script defer="" src="https://paxinla.github.io/theme/js/fireworks.min.js"></script>
+        <canvas class="fireworks" style="width:100%; height:100%;"></canvas>
+
+        <div id="whole-page">
+        <!-- Left Sidebar -->
+        <nav id="left-navbar" class="sidebar">
+            <div class="content">
+                <div><a href="/"><img src="https://paxinla.github.io/static/icosahedron.jpg" class="img-responsive center-block" style="height:120px;width:120px;border-radius:20px;"/></a></div>
+                <br/>
+                <div class="center-text narrow-font" style="line-height: 28px;">
+                    <span class="nav-item"><i class="fas fa-home"></i><a href="https://paxinla.github.io/"> 首页 </a></span>
+                    <span class="center-dot"></span>
+                    <span class="nav-item"><i class="fas fa-file-archive"></i><a href="https://paxinla.github.io/archives.html"> 过往文章 </a></span>
+                    <br/>
+                    <span class="nav-item"><i class="fas fa-tags"></i><a href="https://paxinla.github.io/tags.html"> Tag </a></span>
+                    <span class="center-dot"></span>
+                    <span class="nav-item"><i class="fa fa-archive"></i><a href="https://paxinla.github.io/categories.html"> Category </a></span>
+                    <br/>
+                    <span class="nav-item"><i class="fa fa-link"></i><a href="https://paxinla.github.io/links.html"> 友邻 </a></span>
+                    <span class="center-dot"></span>
+                    <span class="nav-item"><i class="fas fa-user"></i><a href="https://paxinla.github.io/about.html"> 关于我 </a></span>
+                </div>
+                <hr/> <br/>
+
+<div class="title"><a href="#">一道取数题目：购物车 hold 货时长</a></div>
+<hr/>
+
+                <div id="nav-sidebar">
+                </div>
+
+<br/>
+
+                <div id="nav-visited-info" class="center-text floating-description">
+                    <div id="copyright-expression" class="copyright"><span style="color:#6fdcdc;">(</span>cons "<a href="https://github.com/paxinla" style="color:#999;">Charles</a> <span style="color:#00ec47;">&copy;</span>" <span style="color:#ff188c;">(</span>iterate inc <span style="color:#db4437;">2014</span><span style="color:#ff188c;">)</span><span style="color:#6fdcdc;">)</span></div><br/>
+                    <a id="powered-by" href="https://github.com/getpelican/pelican">Powered by <span id="icon-gear" class="rotating"></span><span style="color:#fbf3f3;"> Pelican</span></a><br/>
+                    <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" style="border: none;" ><img src="https://img.shields.io/badge/License-CC__BY--NC--SA-blue.svg" style="height: 17px;" /></a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Middle and right sections -->
+        <div class="page" itemsope="" itemtype="http://schema.org/Blog">
+<div class="content-top" style="padding-right: 0">
+    <div class="unit-line-height">
+        <!-- Post Title -->
+        <h1 class="title">
+            <div>
+                <span itemprop="name">一道取数题目：购物车 hold 货时长</span>
+            </div>
+        </h1>
+
+        <!-- Post Meta Info -->
+        <div class="marginnote invisible-sm post-detail">
+            <div>
+                <p><div class="date heading-font"><i class="fa fa-calendar"></i> 2020-06-10 星期三</div>
+                    <a href="#" style="margin-left:0.875em;border:none;">
+                        <span class="author" itemprop="name">Charles</span>
+                    </a>
+                </p>
+
+                <p><div class="heading-font"><i class="fas fa-folder"></i> Category</div>
+                    <a class="category" href="https://paxinla.github.io/category/sqlxi-ti.html" style="margin-left:0.875em;border:none;">
+                         SQL习题
+                    </a>
+                </p>
+
+                <p><div class="heading-font"><i class="fas fa-tag"></i> Tags</div>
+                    <span style="padding-left:1.4em;"></span>
+                        <a class="tag" href="https://paxinla.github.io/tag/exercise.html">exercise</a>
+                        <a class="tag" href="https://paxinla.github.io/tag/sql.html">sql</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Post Image -->
+    <br/>
+    <img src="" class="cover img-responsive" style="max-height: 400px" itemprop="image">
+    <div class="note visible-sm post-detail"></div>
+
+    <hr class="dotty-split-line" />
+</div>
+
+            <!-- Content -->
+<div class="content"  id="content_of_post" style="padding-right: 0">
+    <div class="post" itemprop="blogPost">
+        <div id="content_of_article" class="justify word-break" itemprop="articleBody">
+            <p>数仓微信群里，有群友问了这样一道SQL题目：</p>
+
+<pre><code class="lang-vim hljs">
+表: 购物车表(表名: table_cart)，主键是 user_id+goods_id+add_time ，用于记录
+客户不同时点放入购物车的商品情况(商品ID、商品数量、商品删除时间、商品购买
+时间)
+
+ +---------+----------+--------+---------------------+---------------------+---------------------+
+ | user_id | goods_id | amount | add_time            | delete_time         | buy_time            |
+ +---------+----------+--------+---------------------+---------------------+---------------------+
+ |     111 | 56235    |      2 | 2014-10-22 10:01:10 |                     | 2014-10-22 10:20:10 |
+ |     111 | 24466    |      1 | 2014-10-22 10:21:02 | 2014-10-22 10:29:25 |                     |
+ |     111 | 25948    |      3 | 2014-10-22 10:24:03 |                     |                     |
+ |     111 | 39555    |      1 | 2014-10-22 21:20:30 | 2014-10-22 21:56:50 |                     |
+ |     111 | 98303    |      4 | 2014-10-22 21:24:10 |                     |                     |
+ |     111 | 20249    |      2 | 2014-10-22 21:39:19 |                     |                     |
+ +---------+----------+--------+---------------------+---------------------+---------------------+
+
+备注: 客户主动删除商品或购买商品，时间分别记录在 delete_time 和 buy_time 两个
+      字段，否则记录为空。
+
+特卖模式下，客户把商品放入购物车后，需在20分钟内完成购买，每加入一件新的商品，购物
+时长（即20分钟）将重新计算，若在20分钟内无放入购物车行为，购物车内商品会由系统自动
+释放。请结合购物车表的数据结构，写出计算2014年3月每日平均每件商品 hold 货时长（即
+商品的锁定时间）的逻辑和SQL代码，结果格式要求如下:
+
+ +----------+----------------+
+ | 日期     | 平均hold货时长 |
+ +----------+----------------+
+ | 2014/3/1 |                |
+ | 2014/3/2 |                |
+ |  ......  |                |
+ +----------+----------------+
+
+</code></pre>
+<p>群友补充，该表不做物理删除，多次添加对应多条记录。</p>
+<p>在这里假定时间戳字段都是同一时区。</p>
+<p>题目里没有说明在特卖模式下，这张购物车表会如何记录。假如，当一个客户放入购物车内的商品，由于20分钟内既没有发生购买该物品行为，又没有新的商品放入购物车内，而导致该商品被系统自动释放。且这个自动释放的行为，在表中体现为，释放时间戳记录到 <code>delete_time</code> 字段中。那么所有的商品的生命周期还是好确定的:</p>
+<ol>
+<li>设统计结果的日期列为 <code>stat_time</code> ，计算时统一取时间部分为 23:59:59 ，展示时只取日期部分 。</li>
+<li>商品的 <code>start_time</code> &lt;= 2014-03-01 。</li>
+<li>商品的 (<code>delete_time</code> 或 <code>buy_time</code>) &gt;= 2014-03-01 或者 <code>delete_time</code> 与 <code>buy_time</code> 均为空。</li>
+<li>若商品最终被购买，则它(们)的 hold 货时长为 min(<code>stat_time</code>, coalesce(<code>delete_time</code>, <code>buy_time</code>)) - <code>start_time</code> 。</li>
+</ol>
+<pre><code class="lang-sql hljs">
+WITH src AS (
+    SELECT tc.goods_id
+         , tc.add_time       AS start_time
+         , CASE WHEN tc.buy_time IS NOT NULL
+                THEN tc.buy_time
+                WHEN tc.delete_time IS NOT NULL
+                THEN tc.delete_time
+                ELSE NULL
+           END               AS end_time
+      FROM table_cart tc
+     WHERE tc.start_time &lt;= timestamp '2014-03-01 00:00:00'
+       AND (   (     tc.delete_time IS NOT NULL
+                 AND tc.delete_time &gt;= timestamp '2014-03-01 00:00:00'
+               )
+            OR (     tc.buy_time IS NOT NULL
+                 AND tc.delete_time &gt;= timestamp '2014-03-01 00:00:00'
+               )
+            OR (     tc.delete_time IS NULL
+                 AND tc.buy_time IS NULL
+               )
+           )
+), stat_time_mar AS (
+    SELECT dd                    AS stat_date
+         , dd + time '00:00:00'  AS stat_time_start
+         , dd + time '23:59:59'  AS stat_time
+      FROM generate_series('2014-03-01'::date,
+                           '2014-03-31'::date,
+                           '1 day'::interval) dd
+) 
+SELECT t1.stat_date
+     , SUM(t1.goods_life_time)/COUNT(1)  AS avg_hold_time_interval
+  FROM (  SELECT t.goods_id
+               , CASE WHEN t.end_time IS NULL
+                      THEN d.stat_time
+                      ELSE MIN(d.stat_time, t.end_time)
+                 END - t.start_time     AS goods_life_time
+               , d.stat_date
+            FROM src t
+               , stat_time_mar d
+           WHERE t.start_time &lt;= d.stat_time 
+             AND (   t.end_time IS NULL
+                  OR t.end_time &gt;= d.stat_time_start
+                 )
+       ) t1
+GROUP BY t1.stat_date
+ORDER BY t1.stat_date
+
+</code></pre>
+<p>假如，特卖模式的自动释放行为并没有体现到 <code>delete_time</code> 字段。即 <code>delete_time</code> 字段就仅表示客户自行删除商品这一种情况了。这种情况下，虽然题目没有讲明，但是若 <code>buy_time</code> 不为空时，则这一行的商品必定没有被系统自动释放。并且，对一个客户按 <code>add_time</code> 升序查询 ，若某一行的 <code>buy_time</code> 不为空，则 <code>add_time</code> 在这一行之前的 <code>delete_time</code> 与 <code>buy_time</code> 的行的商品，要么随这一行的购买行为而被购买，要么已经因20分钟的超时限制已被系统自动释放。</p>
+<p>此时，对购物车表中的每一行，若 <code>delete_time</code> 与 <code>buy_time</code> 均不为空，则这一行的商品实际终止时间，须由该客户从本行起在 <code>add_time</code> 增长方向上的下一条记录的 <code>add_time</code> 来判断: </p>
+<ul>
+<li>若下一行的 <code>add_time</code> 已经超出本行的 <code>add_time + 20分钟</code> ，则本行的终止时间就是 <code>add_time + 20分钟</code> （即本行的商品已经被系统自动释放了）；并且在本行之前未被判断为购买的行，也应视为已经被系统自动释放了。</li>
+<li>若下一行的 <code>add_time</code> 尚未超出本行的 <code>add_time + 20分钟</code> ，且下一行的 <code>buy_time</code> 为空 ，则继续查询下一行的下一行的 <code>add_time</code> 作判断；</li>
+<li>若下一行的 <code>add_time</code> 尚未超出本行的 <code>add_time + 20分钟</code> ，且下一行的 <code>buy_time</code> 不为空，则本行及本行之前未被判断为已释放的行的终止时间，均为下一行的 <code>buy_time</code> 。</li>
+</ul>
+<p>可以看出，这种情况下，虽然可以依靠分析函数和多层子查询写出统计 SQL ，但是代码的可读性不会好，也很容易出错。原因就在于，购物车表的结构设计，在这种假设下是糟糕的。这种结构不应该直接进入数据仓库，<span class="sidenote note no-word-break invisible-sm"> 我觉得对联机应用来说，这种结构也不会好用到哪里去。</span> 而是要先洗出每一行的终止时间，最好还能标识出每一行的商品是否是在特卖模式下产生的。尽量使每一行自身的状态、动作信息，在它本行的字段里就能找到，而不是依赖于其他行。</p>
+<p>能写出复杂又高效的 SQL 取数，是数据仓库工程师的基本要求；但它绝不是应对数据统计需求的首选。用合理的模型、结构来储存数据，使它易于理解、易于使用，才是我们应当追求的第一选择。</p>
+        </div>
+    </div>
+</div>
+
+<a href="https://paxinla.github.io/posts/2020/06/yi-dao-qu-shu-ti-mu-gou-wu-che-hold-huo-shi-chang.html" class="current-page-link">本文链接: https://paxinla.github.io/posts/2020/06/yi-dao-qu-shu-ti-mu-gou-wu-che-hold-huo-shi-chang.html</a>
+
+<!-- Comments -->
+<div class="content-split-comment"><hr class="dotty-split-line" /></div>
+<div class="content-bottom">
+<section class="comments" id="comments">
+      <div class="panel panel-primary">
+        <div class="panel-heading" role="tab" id="githubissue-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#githubissue-comments" aria-expanded="true" aria-controls="githubissue-comments">
+                <i class="fa fa-comments"></i><i id="githubissue-comment_list"> Comments</i>
+            </a>
+          </h4>
+        </div>
+
+        <!-- utterances start -->
+        <div id="utter-container"></div>
+        <script src="https://utteranc.es/client.js"
+          repo="paxinla/paxinla.github.io"
+          issue-term="url"
+          label="blog_comment"
+          theme="boxy-light"
+          crossorigin="anonymous"
+          async>
+        </script>
+        <!-- utterances end -->
+
+      </div>
+</section>
+            <div class="cc-license">
+                <p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/"><img alt="知识共享许可协议" style="border-width:0;display:inline-block" src="https://licensebuttons.net/l/by-nc-sa/3.0/cn/88x31.png" /></a>&nbsp;本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/3.0/deed.zh" style="color:#00a67c">知识共享署名-非商业性使用-相同方式共享 3.0 中国大陆许可协议</a>进行许可，欢迎转载、演绎，<br/>但是必须保留本文的署名 <a href="https://paxinla.github.io" style="color:rgb(153,51,51);">Charles</a>（包含链接），且不得用于商业目的。</p>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        </div><!-- End Whole Page -->
+
+        <!-- Scripts -->
+        <script src="https://paxinla.github.io/theme/js/packed.js?e4252eaf"></script>
+
+        <script src="https://paxinla.github.io/theme/js/article_toc.js" type="text/javascript"></script>
+
+        <!-- Sidebar / Table of Contents -->
+        <script type="text/javascript">
+         $(function(){$("#toc").tableOfContents(null,{
+             startLevel: 2, depth: 1});
+             $('body').scrollspy({
+                 target: '#nav-sidebar',
+                 offset: 20});
+         });
+        </script>
+
+        <!-- Code Highlighting : highlight.js -->
+        <script type="text/javascript">
+            hljs.configure({languages:[]});
+            hljs.initHighlightingOnLoad();
+        </script>
+
+        <!-- Equation Rendering : mathjax -->
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+               jax: ["input/TeX","output/CommonHTML"],
+               tex2jax: { inlineMath: [["$","$"], ["\\(", "\\)"]] },
+               CommonHTML: {
+                   linebreaks: { automatic: true, width: "container" }
+               }
+            });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML" type="text/javascript"></script>
+
+        <!-- Cat -->
+        <script src="https://paxinla.github.io/theme/js/L2Dwidget.min.js"></script>
+        <script type="text/javascript">
+            var L2DModelArray = ['hijiki', 'tororo'];
+            var L2DModelIndex = Math.floor((Math.random()*L2DModelArray.length));
+            var L2DModelSelected = L2DModelArray[L2DModelIndex];
+            L2Dwidget.init({model: {
+                              jsonPath: "https://paxinla.github.io/theme/live2d-widget-model-"+L2DModelSelected+"/assets/"+L2DModelSelected+".model.json",
+                            },
+                            display: {
+                              superSample: 2,
+                              width: 100,
+                              height: 200,
+                              position: 'right',
+                              hOffset: 0,
+                              vOffset: 0,
+                            },
+                            mobile: {
+                              show: true,
+                              scale: 1,
+                              motion: true,
+                            },
+                            react: {
+                              opacityDefault: 0.85,
+                              opacityOnHover: 0.2,
+                            }
+                          })
+        </script>
+
+        <!-- Funny title -->
+        <script type="text/javascript">
+            var OriginTitle = document.title;
+            document.addEventListener('visibilitychange', function () {
+                if (document.hidden) {
+                    document.title = '_(:з」∠)_ 呀嚯嘿';
+                } else {
+                    document.title = OriginTitle;
+                }
+            });
+        </script>
+    </body>
+</html>

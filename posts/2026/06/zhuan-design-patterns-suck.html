@@ -1,0 +1,325 @@
+<!Doctype html>
+<html lang="zh">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <base href="https://paxinla.github.io">
+        <meta property="og:title" content="Blog of Charles" />
+        <meta name="author" content="Charles" />
+        <meta property="article:author" content="Charles" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://paxinla.github.io" />
+        <meta property="og:image" content="https://paxinla.github.io/static/blog_url_qrcode.png" />
+        <meta property="og:image:secure_url" content="https://paxinla.github.io/static/blog_url_qrcode.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="120" />
+        <meta property="og:image:height" content="120" />
+        <meta property="og:image:alt" content="A QR code of the blog's URL." />
+        <meta property="og:description" content="This is the blog of Charles." />
+        <meta name="copyright" content="Charles" />
+        <meta name="description" content="Personal blog of Charles">
+        <meta name="generator" content="pelican 3.7.1">
+        <link href="https://paxinla.github.io/static/humans.txt" rel="author" type="text/plain" />
+        <title>[转] Design Patterns Suck</title>
+        <link href="https://paxinla.github.io/posts/2026/06/zhuan-design-patterns-suck.html" rel="canonical" />
+
+        <link href="https://paxinla.github.io/theme/images/favicon.ico" rel="icon" type="image/png" />
+        <link href="https://paxinla.github.io/theme/images/safari-pinned-tab.svg" rel="mask-icon" color="#5bbad5" />
+
+        <link href="https://paxinla.github.io/theme/css/blogstyle.css?6748a722" rel="stylesheet" type="text/css" />
+
+        <!-- View Counter -->
+        <script defer src="https://events.vercount.one/js"></script>
+        <!-- End of View Counter Code -->
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-70MNYH18HG"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'G-70MNYH18HG');
+        </script>
+    </head>
+
+
+    <body data-spy="scroll" data-target="#left-navbar" data-offset="50" itemscope="" itemtype="http://schema.org/WebPage">
+
+        <!-- Cursor animation -->
+        <script defer="" src="https://paxinla.github.io/theme/js/animejs.js"></script>
+        <script defer="" src="https://paxinla.github.io/theme/js/fireworks.min.js"></script>
+        <canvas class="fireworks" style="width:100%; height:100%;"></canvas>
+
+        <div id="whole-page">
+        <!-- Left Sidebar -->
+        <nav id="left-navbar" class="sidebar">
+            <div class="content">
+                <div><a href="/"><img src="https://paxinla.github.io/static/icosahedron.jpg" class="img-responsive center-block" style="height:120px;width:120px;border-radius:20px;"/></a></div>
+                <br/>
+                <div class="center-text narrow-font" style="line-height: 28px;">
+                    <span class="nav-item"><i class="fas fa-home"></i><a href="https://paxinla.github.io/"> 首页 </a></span>
+                    <span class="center-dot"></span>
+                    <span class="nav-item"><i class="fas fa-file-archive"></i><a href="https://paxinla.github.io/archives.html"> 过往文章 </a></span>
+                    <br/>
+                    <span class="nav-item"><i class="fas fa-tags"></i><a href="https://paxinla.github.io/tags.html"> Tag </a></span>
+                    <span class="center-dot"></span>
+                    <span class="nav-item"><i class="fa fa-archive"></i><a href="https://paxinla.github.io/categories.html"> Category </a></span>
+                    <br/>
+                    <span class="nav-item"><i class="fa fa-link"></i><a href="https://paxinla.github.io/links.html"> 友邻 </a></span>
+                    <span class="center-dot"></span>
+                    <span class="nav-item"><i class="fas fa-user"></i><a href="https://paxinla.github.io/about.html"> 关于我 </a></span>
+                </div>
+                <hr/> <br/>
+
+<div class="title"><a href="#">[转] Design Patterns Suck</a></div>
+<hr/>
+
+                <div id="nav-sidebar">
+                </div>
+
+<br/>
+
+                <div id="nav-visited-info" class="center-text floating-description">
+                    <div id="copyright-expression" class="copyright"><span style="color:#6fdcdc;">(</span>cons "<a href="https://github.com/paxinla" style="color:#999;">Charles</a> <span style="color:#00ec47;">&copy;</span>" <span style="color:#ff188c;">(</span>iterate inc <span style="color:#db4437;">2014</span><span style="color:#ff188c;">)</span><span style="color:#6fdcdc;">)</span></div><br/>
+                    <a id="powered-by" href="https://github.com/getpelican/pelican">Powered by <span id="icon-gear" class="rotating"></span><span style="color:#fbf3f3;"> Pelican</span></a><br/>
+                    <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" style="border: none;" ><img src="https://img.shields.io/badge/License-CC__BY--NC--SA-blue.svg" style="height: 17px;" /></a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Middle and right sections -->
+        <div class="page" itemsope="" itemtype="http://schema.org/Blog">
+<div class="content-top" style="padding-right: 0">
+    <div class="unit-line-height">
+        <!-- Post Title -->
+        <h1 class="title">
+            <div>
+                <span itemprop="name">[转] Design Patterns Suck</span>
+            </div>
+        </h1>
+
+        <!-- Post Meta Info -->
+        <div class="marginnote invisible-sm post-detail">
+            <div>
+                <p><div class="date heading-font"><i class="fa fa-calendar"></i> 2026-06-11 星期四</div>
+                    <a href="#" style="margin-left:0.875em;border:none;">
+                        <span class="author" itemprop="name">Charles</span>
+                    </a>
+                </p>
+
+                <p><div class="heading-font"><i class="fas fa-folder"></i> Category</div>
+                    <a class="category" href="https://paxinla.github.io/category/bian-cheng.html" style="margin-left:0.875em;border:none;">
+                         编程
+                    </a>
+                </p>
+
+                <p><div class="heading-font"><i class="fas fa-tag"></i> Tags</div>
+                    <span style="padding-left:1.4em;"></span>
+                        <a class="tag" href="https://paxinla.github.io/tag/zhuan-zai.html">转载</a>
+                        <a class="tag" href="https://paxinla.github.io/tag/programming.html">programming</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Post Image -->
+    <br/>
+    <img src="" class="cover img-responsive" style="max-height: 400px" itemprop="image">
+    <div class="note visible-sm post-detail"></div>
+
+    <hr class="dotty-split-line" />
+</div>
+
+            <!-- Content -->
+<div class="content"  id="content_of_post" style="padding-right: 0">
+    <div class="post" itemprop="blogPost">
+        <div id="content_of_article" class="justify word-break" itemprop="articleBody">
+            <p>原文作者: Kirill Bobrov</p>
+<p>原文链接: <a href="https://luminousmen.com/post/design-patterns-suck/">https://luminousmen.com/post/design-patterns-suck/</a></p>
+<p>为防遗失，转载一份。</p>
+
+<p>In software engineering, the term "design pattern" (which, honestly, is kind of redundant — aren't all patterns designs?) gets thrown around a lot. It originally came from architecture — actual architecture, with buildings and floorplans — not software.</p>
+<p>But in 1994, the software world got its own version when the now-infamous book"Design Patterns" was published by Gamma, Helm, Johnson, and Vlissides — aka the "Gang of Four" (GoF). They introduced 23 canonical patterns as higher-level abstractions than function calls. These patterns were meant to be language-agnostic, reusable templates for solving recurring software design problems.</p>
+<p>Sounds nice, right? Almost too nice...</p>
+<p>The problem is that design patterns have been elevated from useful vocabulary into something closer to dogma. They're taught as universal solutions, applied where they aren't needed, and treated as a mark of good engineering.</p>
+<p>The reality is: <strong>Design patterns suck.</strong></p>
+<p>Yeah, I said it.</p>
+<p><strong>Design patterns are overrated, overused, and often flat-out unnecessary.</strong></p>
+<p>That might sound harsh, especially those of you who keep their Gang of Four books near their bedsides, but hear me out. Most of the time, design patterns are nothing but ugly workarounds for the fact that our programming languages aren't powerful enough or flexible enough to express what we actually want.</p>
+<div id="section1"><h2>Java and Its Love Affair with Boilerplate</h2>
+<p>Take Java, for example (I'll be bashing Java quite a bit today, so get comfortable). Where do we even start? Java is the poster child for "design-pattern-mania". Every single project looks like a carbon copy of itself because Java developers are taught to just dump in as many patterns as possible.</p>
+<p>It's the language that practically forced design patterns into mainstream use. Why? Because Java is verbose, stiff, and lacks expressiveness. It's like writing a novel where you're only allowed to use three-syllable words — every problem feels ten times harder than it has to be.</p>
+<p><em>Oh, you're working on a simple CRUD app?</em> Better throw in a Factory, maybe an Observer for that database change notification, and don't forget the Singleton — because, y'know, we all need a global logger, right?</p>
+<p>💡 Singleton is a pattern that is 95% used for logging and 5% for creating problems in concurrent apps.</p>
+</div><div id="section2"><h2>Pattern vs Language Feature</h2>
+<p>The crux of why design patterns are often garbage is that most of the time they exist only because the language itself is missing some capability. You're basically doing workarounds for language limitations.</p>
+<p>Take the Singleton pattern as an example. You've seen this a thousand times:</p>
+<pre><code class="lang-java hljs">
+public class Logger {
+
+    private static Logger instance;
+
+    private Logger() {}
+
+    public static Logger getInstance() {
+        if (instance == null) {
+            instance = new Logger();
+        }
+        return instance;
+    }
+}
+</code></pre>
+<p>That's like 15 lines of code just to say, "I want only one instance of this thing". What are we, cavemen? We shouldn't need to hand-write this kind of thing. A modern language should provide constructs to handle this elegantly, but nope, not Java. Instead, we get tons of boilerplate and complexity masquerading as "best practices".</p>
+<p>Want to see how Scala handles it?</p>
+<pre><code class="lang-scala hljs">
+object Logger
+</code></pre>
+<p>That's it. That's the entire Singleton pattern. Done.</p>
+<p>No need to mess around with static blocks, thread safety, or lazy instantiation nonsense. Scala does what Java should have done in the first place: treat this as a basic language feature, not a pattern you need to manually enforce. Java forces you into this mess because it doesn't have first-class functions. It's the language's fault, not yours, that you're writing a Strategy pattern.</p>
+<p>Design patterns aren't solving problems with your code; they're solving problems with your language.</p>
+<p>A Factory pattern? That's just Java's refusal to give you proper constructors or a way to handle complex object creation natively. In languages like Python, Ruby, or Scala, you rarely need a Factory. In fact, most of the design patterns Java developers go on about just vanish in more flexible, expressive languages.</p>
+<p>Take Python for example:</p>
+<ul>
+<li>Need a Factory? Just pass a function or use <code>__init__</code> smartly.</li>
+<li>Want a Singleton? Throw in a module or a class that you initialize once, and call it a day.</li>
+<li>Observer? Well, functions are first-class citizens. Just pass them around.</li>
+</ul>
+<p>The fact is, in a language that's expressive enough, patterns either become trivial or, better yet, they just don't exist. You handle the problems directly, not by wrapping them in abstractions that someone else cooked up 20 years ago in a language that hasn't aged well.</p>
+<p>💡 In Lisp, you can override the behavior of any construct. Patterns didn't take root there at all — you just write a macro, and the language bends to you.</p>
+</div><div id="section3"><h2>The Cult of Overengineering</h2>
+<p><img alt="design_patterns_suck_1" src="/images/2026/design-patterns-suck-p1.png"/></p>
+<p>Design patterns also feed into a deeper problem in the software world: overengineering. I've seen junior engineers (and some senior ones, unfortunately) who get this wide-eyed look when they hear "design patterns" and immediately try to shoehorn as many as possible into their project.</p>
+<p>They're solving imaginary problems.</p>
+<p>When this happens, the codebase goes from something understandable to something unreadable, fragile, and overly abstracted. It becomes a labyrinth of interfaces, factory methods, and weird naming conventions that make you feel like you're trying to interpret ancient texts.</p>
+<p>💡 You know how you know you're writing in Java? When 80% of the files in the repository are interfaces that implement interfaces that do nothing but throw the call further away.</p>
+<p>"Good" design patterns tend to be over-engineered because they are required to cater to as many use cases as possible. Over-engineered code has a cost though: you have to read it, understand what it does, and understand how it works within the context of the entire software system. Consequently, as with any other software development technique, you have to evaluate the technique against the cost of using the technique, and decide if the benefits exceed the cost.</p>
+<p>Not every problem needs a design pattern. In fact, most problems don't. Often the simplest, most straightforward solution is the right one. As a rule of thumb, if your solution needs a diagram to explain it, you've gone too far.</p>
+</div><div id="section4"><h2>Where Patterns are Actually Useful</h2>
+<p>The most honest value of patterns: giving a short name to a big idea. In a team, it's easier to say "that's a facade" than to explain every time why we're hiding three classes behind one wrapper.</p>
+<p>That's it. That's the real use case.</p>
+<p>Patterns aren't for teaching you to write good code. They're for talking about code that's already written. So you can ask "what's this class?" and hear "oh, that's part of the mediator". Not for frantically comparing your code to UML diagrams going "which pattern do I apply here?!"</p>
+<p>A developer who understands the underlying concepts — separation of concerns, encapsulation, composition over inheritance — will write clean code naturally, even if they've never heard the word "Singleton". The patterns are just labels for what good developers already know how to do.</p>
+<p>I've worked at several of the biggest tech companies. Nobody uses these terms day to day, and I've never once been asked about them in an interview (it would be a red flag for me).</p>
+</div><div id="section5"><h2>The Gosling Philosophy vs The Guido Philosophy</h2>
+<p>There's a <a href="https://youtube.com/watch?v=vagyIcmIGOQ&amp;t=3264">great bit from DHH</a> that nails why Java ended up this way.</p>
+<p>James Gosling, the designer of Java, had a dark view of programmers. His premise: the average developer is going to shoot themselves in the foot if you give them too much power. So Java was built as a sandbox — keep it rigid, keep it safe, don't let them hurt themselves. Great for a mid-tier insurance company writing code that has to last 20 years. Not so great for expressiveness.</p>
+<p>Guido van Rossum went the opposite direction with Python. His premise: code is read more than it's written, so optimize for clarity and give programmers real tools. First-class functions, decorators, context managers, duck typing — Python gives you the building blocks to solve problems directly instead of routing everything through class hierarchies and interface ceremonies.</p>
+<p>Design patterns are a Gosling-world solution. They exist because the language doesn't trust you to solve the problem directly. In a Guido-world language, you just... solve it.</p>
+<p>Design patterns are relics of a time when languages weren't expressive enough. The fact that half of the GoF patterns disappear in Python, Ruby, or Scala tells you everything — they were never about design. They were about the language getting out of your way.</p></div>
+        </div>
+    </div>
+</div>
+
+<a href="https://paxinla.github.io/posts/2026/06/zhuan-design-patterns-suck.html" class="current-page-link">本文链接: https://paxinla.github.io/posts/2026/06/zhuan-design-patterns-suck.html</a>
+
+<!-- Comments -->
+<div class="content-split-comment"><hr class="dotty-split-line" /></div>
+<div class="content-bottom">
+<section class="comments" id="comments">
+      <div class="panel panel-primary">
+        <div class="panel-heading" role="tab" id="githubissue-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#githubissue-comments" aria-expanded="true" aria-controls="githubissue-comments">
+                <i class="fa fa-comments"></i><i id="githubissue-comment_list"> Comments</i>
+            </a>
+          </h4>
+        </div>
+
+        <!-- utterances start -->
+        <div id="utter-container"></div>
+        <script src="https://utteranc.es/client.js"
+          repo="paxinla/paxinla.github.io"
+          issue-term="url"
+          label="blog_comment"
+          theme="boxy-light"
+          crossorigin="anonymous"
+          async>
+        </script>
+        <!-- utterances end -->
+
+      </div>
+</section>
+            <div class="cc-license">
+                <p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/"><img alt="知识共享许可协议" style="border-width:0;display:inline-block" src="https://licensebuttons.net/l/by-nc-sa/3.0/cn/88x31.png" /></a>&nbsp;本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/3.0/deed.zh" style="color:#00a67c">知识共享署名-非商业性使用-相同方式共享 3.0 中国大陆许可协议</a>进行许可，欢迎转载、演绎，<br/>但是必须保留本文的署名 <a href="https://paxinla.github.io" style="color:rgb(153,51,51);">Charles</a>（包含链接），且不得用于商业目的。</p>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        </div><!-- End Whole Page -->
+
+        <!-- Scripts -->
+        <script src="https://paxinla.github.io/theme/js/packed.js?e4252eaf"></script>
+
+        <script src="https://paxinla.github.io/theme/js/article_toc.js" type="text/javascript"></script>
+
+        <!-- Sidebar / Table of Contents -->
+        <script type="text/javascript">
+         $(function(){$("#toc").tableOfContents(null,{
+             startLevel: 2, depth: 1});
+             $('body').scrollspy({
+                 target: '#nav-sidebar',
+                 offset: 20});
+         });
+        </script>
+
+        <!-- Code Highlighting : highlight.js -->
+        <script type="text/javascript">
+            hljs.configure({languages:[]});
+            hljs.initHighlightingOnLoad();
+        </script>
+
+        <!-- Equation Rendering : mathjax -->
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+               jax: ["input/TeX","output/CommonHTML"],
+               tex2jax: { inlineMath: [["$","$"], ["\\(", "\\)"]] },
+               CommonHTML: {
+                   linebreaks: { automatic: true, width: "container" }
+               }
+            });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML" type="text/javascript"></script>
+
+        <!-- Cat -->
+        <script src="https://paxinla.github.io/theme/js/L2Dwidget.min.js"></script>
+        <script type="text/javascript">
+            var L2DModelArray = ['hijiki', 'tororo'];
+            var L2DModelIndex = Math.floor((Math.random()*L2DModelArray.length));
+            var L2DModelSelected = L2DModelArray[L2DModelIndex];
+            L2Dwidget.init({model: {
+                              jsonPath: "https://paxinla.github.io/theme/live2d-widget-model-"+L2DModelSelected+"/assets/"+L2DModelSelected+".model.json",
+                            },
+                            display: {
+                              superSample: 2,
+                              width: 100,
+                              height: 200,
+                              position: 'right',
+                              hOffset: 0,
+                              vOffset: 0,
+                            },
+                            mobile: {
+                              show: true,
+                              scale: 1,
+                              motion: true,
+                            },
+                            react: {
+                              opacityDefault: 0.85,
+                              opacityOnHover: 0.2,
+                            }
+                          })
+        </script>
+
+        <!-- Funny title -->
+        <script type="text/javascript">
+            var OriginTitle = document.title;
+            document.addEventListener('visibilitychange', function () {
+                if (document.hidden) {
+                    document.title = '_(:з」∠)_ 呀嚯嘿';
+                } else {
+                    document.title = OriginTitle;
+                }
+            });
+        </script>
+    </body>
+</html>

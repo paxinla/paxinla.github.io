@@ -1,0 +1,443 @@
+<!Doctype html>
+<html lang="zh">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <base href="https://paxinla.github.io">
+        <meta property="og:title" content="Blog of Charles" />
+        <meta name="author" content="Charles" />
+        <meta property="article:author" content="Charles" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://paxinla.github.io" />
+        <meta property="og:image" content="https://paxinla.github.io/static/blog_url_qrcode.png" />
+        <meta property="og:image:secure_url" content="https://paxinla.github.io/static/blog_url_qrcode.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="120" />
+        <meta property="og:image:height" content="120" />
+        <meta property="og:image:alt" content="A QR code of the blog's URL." />
+        <meta property="og:description" content="This is the blog of Charles." />
+        <meta name="copyright" content="Charles" />
+        <meta name="description" content="Personal blog of Charles">
+        <meta name="generator" content="pelican 3.7.1">
+        <link href="https://paxinla.github.io/static/humans.txt" rel="author" type="text/plain" />
+        <title>[转] What are skiplists good for?</title>
+        <link href="https://paxinla.github.io/posts/2026/04/zhuan-what-are-skiplists-good-for.html" rel="canonical" />
+
+        <link href="https://paxinla.github.io/theme/images/favicon.ico" rel="icon" type="image/png" />
+        <link href="https://paxinla.github.io/theme/images/safari-pinned-tab.svg" rel="mask-icon" color="#5bbad5" />
+
+        <link href="https://paxinla.github.io/theme/css/blogstyle.css?6748a722" rel="stylesheet" type="text/css" />
+
+        <!-- View Counter -->
+        <script defer src="https://events.vercount.one/js"></script>
+        <!-- End of View Counter Code -->
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-70MNYH18HG"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'G-70MNYH18HG');
+        </script>
+    </head>
+
+
+    <body data-spy="scroll" data-target="#left-navbar" data-offset="50" itemscope="" itemtype="http://schema.org/WebPage">
+
+        <!-- Cursor animation -->
+        <script defer="" src="https://paxinla.github.io/theme/js/animejs.js"></script>
+        <script defer="" src="https://paxinla.github.io/theme/js/fireworks.min.js"></script>
+        <canvas class="fireworks" style="width:100%; height:100%;"></canvas>
+
+        <div id="whole-page">
+        <!-- Left Sidebar -->
+        <nav id="left-navbar" class="sidebar">
+            <div class="content">
+                <div><a href="/"><img src="https://paxinla.github.io/static/icosahedron.jpg" class="img-responsive center-block" style="height:120px;width:120px;border-radius:20px;"/></a></div>
+                <br/>
+                <div class="center-text narrow-font" style="line-height: 28px;">
+                    <span class="nav-item"><i class="fas fa-home"></i><a href="https://paxinla.github.io/"> 首页 </a></span>
+                    <span class="center-dot"></span>
+                    <span class="nav-item"><i class="fas fa-file-archive"></i><a href="https://paxinla.github.io/archives.html"> 过往文章 </a></span>
+                    <br/>
+                    <span class="nav-item"><i class="fas fa-tags"></i><a href="https://paxinla.github.io/tags.html"> Tag </a></span>
+                    <span class="center-dot"></span>
+                    <span class="nav-item"><i class="fa fa-archive"></i><a href="https://paxinla.github.io/categories.html"> Category </a></span>
+                    <br/>
+                    <span class="nav-item"><i class="fa fa-link"></i><a href="https://paxinla.github.io/links.html"> 友邻 </a></span>
+                    <span class="center-dot"></span>
+                    <span class="nav-item"><i class="fas fa-user"></i><a href="https://paxinla.github.io/about.html"> 关于我 </a></span>
+                </div>
+                <hr/> <br/>
+
+<div class="title"><a href="#">[转] What are skiplists good for?</a></div>
+<hr/>
+
+                <div id="nav-sidebar">
+                </div>
+
+<br/>
+
+                <div id="nav-visited-info" class="center-text floating-description">
+                    <div id="copyright-expression" class="copyright"><span style="color:#6fdcdc;">(</span>cons "<a href="https://github.com/paxinla" style="color:#999;">Charles</a> <span style="color:#00ec47;">&copy;</span>" <span style="color:#ff188c;">(</span>iterate inc <span style="color:#db4437;">2014</span><span style="color:#ff188c;">)</span><span style="color:#6fdcdc;">)</span></div><br/>
+                    <a id="powered-by" href="https://github.com/getpelican/pelican">Powered by <span id="icon-gear" class="rotating"></span><span style="color:#fbf3f3;"> Pelican</span></a><br/>
+                    <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" style="border: none;" ><img src="https://img.shields.io/badge/License-CC__BY--NC--SA-blue.svg" style="height: 17px;" /></a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Middle and right sections -->
+        <div class="page" itemsope="" itemtype="http://schema.org/Blog">
+<div class="content-top" style="padding-right: 0">
+    <div class="unit-line-height">
+        <!-- Post Title -->
+        <h1 class="title">
+            <div>
+                <span itemprop="name">[转] What are skiplists good for?</span>
+            </div>
+        </h1>
+
+        <!-- Post Meta Info -->
+        <div class="marginnote invisible-sm post-detail">
+            <div>
+                <p><div class="date heading-font"><i class="fa fa-calendar"></i> 2026-04-21 星期二</div>
+                    <a href="#" style="margin-left:0.875em;border:none;">
+                        <span class="author" itemprop="name">Charles</span>
+                    </a>
+                </p>
+
+                <p><div class="heading-font"><i class="fas fa-folder"></i> Category</div>
+                    <a class="category" href="https://paxinla.github.io/category/sqlji-qiao.html" style="margin-left:0.875em;border:none;">
+                         SQL技巧
+                    </a>
+                </p>
+
+                <p><div class="heading-font"><i class="fas fa-tag"></i> Tags</div>
+                    <span style="padding-left:1.4em;"></span>
+                        <a class="tag" href="https://paxinla.github.io/tag/zhuan-zai.html">转载</a>
+                        <a class="tag" href="https://paxinla.github.io/tag/sql.html">sql</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Post Image -->
+    <br/>
+    <img src="" class="cover img-responsive" style="max-height: 400px" itemprop="image">
+    <div class="note visible-sm post-detail"></div>
+
+    <hr class="dotty-split-line" />
+</div>
+
+            <!-- Content -->
+<div class="content"  id="content_of_post" style="padding-right: 0">
+    <div class="post" itemprop="blogPost">
+        <div id="content_of_article" class="justify word-break" itemprop="articleBody">
+            <p>原文作者: Will Wilson</p>
+<p>原文链接: <a href="https://antithesis.com/blog/2026/skiptrees/">https://antithesis.com/blog/2026/skiptrees/</a></p>
+<p>为防遗失，转载一份。</p>
+
+<p>A while back, I joined Phil Eaton’s <a href="https://eatonphil.com/bookclub.html">book club</a> on The Art of Multiprocessor Programming, and the topic of <a href="https://en.wikipedia.org/wiki/Skip_list">skiplists</a> came up.</p>
+<p>For most of my career, skiplists had always seemed like a niche data structure, with a rabid cult following but not a whole ton of applicability to my life. Then six or so years ago, we encountered a problem at Antithesis that seemed intractable until it turned out that a generalization of skiplists was exactly what we needed.</p>
+<p>Before I tell you about that, though, let me explain what skiplists are (feel free to skip ahead if you already know them well).</p>
+<div id="section1"><h2>What are skiplists?</h2>
+<p>A skiplist is a randomized data structure that’s basically a drop-in replacement for a binary search tree with the same interface and the same asymptotic complexity on each of its operations. Some people like them because you can produce relatively simple and understandable lock-free concurrent implementations, and others like them as a matter of taste, or because they enjoy listening to bands that you’ve totally never heard of.</p>
+<p>In implementation terms, you can think of them roughly as linked lists plus “express lanes”:</p>
+<p><img alt="skip_list_example_1" src="/images/2026/skip_trees_p1.png"/></p>
+<p>You start with a basic linked list, and then add a hierarchy of linked lists with progressively fewer nodes in them. In the example above, the nodes in the higher-level lists are chosen probabilistically, with each node having a 50% chance of being promoted to the next level.<span class="sidenote note no-word-break invisible-sm"> For (much) more on skiplists, see The Ubiquitous Skiplist(https://arxiv.org/pdf/2403.04582).</span></p>
+<p>This helps with search, because you can use the higher-level lists to skip more quickly to the node you want:</p>
+<p><img alt="skip_list_example_2" src="/images/2026/skip_trees_p2.png"/></p>
+<p>Here we’ve found the node with an ID of 38 by starting at the top level and working downwards. At each level we advance until the next node would have an ID that’s too high, then jump down a level.</p>
+<p>In a regular linked list of <strong>n</strong> nodes, finding a node would take <strong>O(n)</strong> time, because you’re walking through the nodes one by one. Skiplists let you jump levels, with each level halving the number of nodes you need to check, so you end up finding the node in <strong>O(log n)</strong> time.</p>
+<p>This is all very nice, but after reading about this data structure I literally never thought about it again, until one day we encountered the following problem at Antithesis…</p>
+</div><div id="section2"><h2>The problem</h2>
+<p>Antithesis runs customers’ software many times to look for bugs. Each time, our fuzzer injects different <a href="https://antithesis.com/docs/environment/fault_injection">faults</a> and tells your testing code to make different random decisions. Over many runs, these choices create a branching tree of timelines: each path from root to leaf represents one sequence of choices the fuzzer made and what happened as a result.</p>
+<p>There were a lot of queries that we wanted to do which basically amounted to fold operations up or down this tree. For example, given a particular log message, what’s the unique history of events that led to it? (Walk up the parent pointers from that node to the root.)</p>
+<p>The trouble was that the amount of data output by the software we were testing was so huge, we had to throw it all into an analytic database, and at the time we were using Google BigQuery. Analytic databases are optimized for scanning massive amounts of data in parallel to compute aggregate results. The tradeoff is that they’re slow at point lookups, where you fetch a specific row by its ID.</p>
+<p>This matters, because the natural way to represent a tree in a database is with parent pointers — each node is a row in the table, with a <code>parent_id</code> column pointing to its parent. To answer a question like “show me the history leading to this log message”, you’d need to walk up the tree one node at a time: look up the node, get its parent ID, look up the parent node, and so on. Each step is a point lookup. In an OLTP database designed for point lookups, that’s fine.<span class="sidenote note no-word-break invisible-sm"> I mean, not actually, but it's less bad.</span> But in BigQuery, basically every operation results in a full table scan, which means even the most basic queries would end up doing <strong>O(depth)</strong> reads over your entire data set. Yikes!</p>
+<p>One alternative would have been to split the data: store just the tree structure (the parent pointers) in a database that’s good at point lookups, and keep the bulk data in BigQuery. But this approach would have created other problems. Every insert would need to write to both systems, and since we want to analyze the data online (while new writes are streaming in) keeping the two databases consistent would require something like two-phase commit (2PC). I prefer not to invent new 2PC problems where I don’t need them. And anyway, at the time BigQuery had very loose consistency semantics, so it’s not even clear that keeping the two systems in sync would have been possible.</p>
+<p>Skiplists to the rescue! Or rather, a weird thing we invented called a “skiptree”…</p>
+</div><div id="section3"><h2>What’s a skiptree?</h2>
+<p>Well, it’s like a skiplist, but it’s a tree.</p>
+<p>More helpfully, here’s an example:</p>
+<p><img alt="skip_trees_example_1" src="/images/2026/skip_trees_p3.png"/></p>
+<p>You have a level-0 tree, and then a hierarchy of trees above it. Each tree has roughly 50% of the nodes of the level below (the removed nodes are shown with grey dotted lines on the diagram).</p>
+<p>If you pick any path from the root to a leaf, the nodes along that path — together with their appearances in the higher-level trees — form a skiplist. So a skiptree is really just a bunch of skiplists sharing structure, one for every root-to-leaf path in the tree.</p>
+<p>To store the skiptree, you create a SQL table for each level: <strong>tree0</strong>, <strong>tree1</strong>, and so on. Each table has a row for every node in that tree. Instead of having a single <code>parent_id</code> column, it has a column for the closest ancestor node in the tree above (we’ll call that <code>next_level_ancestor</code>) and another column (call it <code>ancestors_between</code>) with a list of all nodes between the current node and the next-level ancestor.</p>
+<p>For the diagram above, <strong>tree0</strong> would look like this:</p>
+<table style="margin: auto auto 15px; border: 1px solid #909ba2; border-radius: 2px; max-width: fit-content; hyphens: auto;">
+<thead>
+<tr style="background-color: hsl(264, 35%, 35%); color: #fff;">
+<th style="padding: 0.125rem 0.75rem; border-bottom: 2px solid #909ba2; border-right: 1px solid #909ba2;"><span>id</span></th>
+<th style="padding: 0.125rem 0.75re0; border-bottom: 2px solid #909ba2; border-right: 1px solid #909ba2;">next_level_ancestor</th>
+<th style="padding: 0.125rem 0.75re0; border-bottom: 2px solid #909ba2; border-right: none;">ancestors_between</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 0.125rem 0.75rem; border-top: none; border-right: 1px solid #909ba2;">A</td>
+<td style="padding: 0.125rem 0.75rem; border-top: none; border-right: 1px solid #909ba2;">null</td>
+<td style="padding: 0.125rem 0.75rem; border-top: none; border-right: non2;">[]</td>
+</tr>
+<tr>
+<td style="padding: 0.125rem 0.75rem; border-top: 1px solid #909ba2; border-right: 1px solid #909ba2;">B</td>
+<td style="padding: 0.125rem 0.75rem; border-top: 1px solid #909ba2; border-right: 1px solid #909ba2;">A</td>
+<td style="padding: 0.125rem 0.75rem; border-top: 1px solid #909ba2; border-right: none;">[]</td>
+</tr>
+<tr>
+<td style="padding: 0.125rem 0.75rem; border-top: 1px solid #909ba2; border-right: 1px solid #909ba2;">C</td>
+<td style="padding: 0.125rem 0.75rem; border-top: 1px solid #909ba2; border-right: 1px solid #909ba2;">A</td>
+<td style="padding: 0.125rem 0.75rem; border-top: 1px solid #909ba2; border-right: none;">[]</td>
+</tr>
+<tr>
+<td style="padding: 0.125rem 0.75rem; border-top: 1px solid #909ba2; border-right: 1px solid #909ba2;">D</td>
+<td style="padding: 0.125rem 0.75rem; border-top: 1px solid #909ba2; border-right: 1px solid #909ba2;">A</td>
+<td style="padding: 0.125rem 0.75rem; border-top: 1px solid #909ba2; border-right: none;">[B]</td>
+</tr>
+<tr>
+<td style="padding: 0.125rem 0.75rem; border-top: 1px solid #909ba2; border-right: 1px solid #909ba2;">E</td>
+<td style="padding: 0.125rem 0.75rem; border-top: 1px solid #909ba2; border-right: 1px solid #909ba2;">A</td>
+<td style="padding: 0.125rem 0.75rem; border-top: 1px solid #909ba2; border-right: none;">[B]</td>
+</tr>
+<tr>
+<td style="padding: 0.125rem 0.75rem; border-top: 1px solid #909ba2; border-right: 1px solid #909ba2;">F</td>
+<td style="padding: 0.125rem 0.75rem; border-top: 1px solid #909ba2; border-right: 1px solid #909ba2;">C</td>
+<td style="padding: 0.125rem 0.75rem; border-top: 1px solid #909ba2; border-right: none;">[]</td>
+</tr>
+<tr>
+<td style="padding: 0.125rem 0.75rem; border-top: 1px solid #909ba2; border-right: 1px solid #909ba2;">G</td>
+<td style="padding: 0.125rem 0.75rem; border-top: 1px solid #909ba2; border-right: 1px solid #909ba2;">C</td>
+<td style="padding: 0.125rem 0.75rem; border-top: 1px solid #909ba2; border-right: none;">[]</td>
+</tr>
+<tr>
+<td style="padding: 0.125rem 0.75rem; border-top: 1px solid #909ba2; border-right: 1px solid #909ba2;">H</td>
+<td style="padding: 0.125rem 0.75rem; border-top: 1px solid #909ba2; border-right: 1px solid #909ba2;">A</td>
+<td style="padding: 0.125rem 0.75rem; border-top: 1px solid #909ba2; border-right: none;">[B,D]</td>
+</tr>
+<tr>
+<td style="padding: 0.125rem 0.75rem; border-top: 1px solid #909ba2; border-right: 1px solid #909ba2;">I</td>
+<td style="padding: 0.125rem 0.75rem; border-top: 1px solid #909ba2; border-right: 1px solid #909ba2;">C</td>
+<td style="padding: 0.125rem 0.75rem; border-top: 1px solid #909ba2; border-right: none;">[G]</td>
+</tr>
+</tbody>
+</table>
+<p>As an example, take the row for node H. Node H’s parent is D, which is not in tree1. D’s parent B is also not in tree1, but B’s parent A is, so <code>next_level_ancestor</code> is A. Then <code>ancestors_between</code> stores B and D.</p>
+<p>The higher-level tables work the same way:</p>
+<p>tree1:</p>
+<table style="margin: auto auto 15px; border: 1px solid #909ba2; border-radius: 2px; max-width: fit-content; hyphens: auto;">
+<thead>
+<tr style="background-color: hsl(264, 35%, 35%); color: #fff;">
+<th style="padding: 0.125rem 0.75rem; border-bottom: 2px solid #909ba2; border-right: 1px solid #909ba2;"><span>id</span></th>
+<th style="padding: 0.125rem 0.75re0; border-bottom: 2px solid #909ba2; border-right: 1px solid #909ba2;">next_level_ancestor</th>
+<th style="padding: 0.125rem 0.75re0; border-bottom: 2px solid #909ba2; border-right: none;">ancestors_between</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 0.125rem 0.75rem; border-top: 1px solid #909ba2; border-right: 1px solid #909ba2;">A</td>
+<td style="padding: 0.125rem 0.75rem; border-top: 1px solid #909ba2; border-right: 1px solid #909ba2;">null</td>
+<td style="padding: 0.125rem 0.75rem; border-top: 1px solid #909ba2; border-right: none;">[]</td>
+</tr>
+<tr>
+<td style="padding: 0.125rem 0.75rem; border-top: 1px solid #909ba2; border-right: 1px solid #909ba2;">C</td>
+<td style="padding: 0.125rem 0.75rem; border-top: 1px solid #909ba2; border-right: 1px solid #909ba2;">A</td>
+<td style="padding: 0.125rem 0.75rem; border-top: 1px solid #909ba2; border-right: none;">[]</td>
+</tr>
+<tr>
+<td style="padding: 0.125rem 0.75rem; border-top: 1px solid #909ba2; border-right: 1px solid #909ba2;">E</td>
+<td style="padding: 0.125rem 0.75rem; border-top: 1px solid #909ba2; border-right: 1px solid #909ba2;">A</td>
+<td style="padding: 0.125rem 0.75rem; border-top: 1px solid #909ba2; border-right: none;">[B]</td>
+</tr>
+<tr>
+<td style="padding: 0.125rem 0.75rem; border-top: 1px solid #909ba2; border-right: 1px solid #909ba2;">F</td>
+<td style="padding: 0.125rem 0.75rem; border-top: 1px solid #909ba2; border-right: 1px solid #909ba2;">C</td>
+<td style="padding: 0.125rem 0.75rem; border-top: 1px solid #909ba2; border-right: none;">[]</td>
+</tr>
+<tr>
+<td style="padding: 0.125rem 0.75rem; border-top: 1px solid #909ba2; border-right: 1px solid #909ba2;">H</td>
+<td style="padding: 0.125rem 0.75rem; border-top: 1px solid #909ba2; border-right: 1px solid #909ba2;">A</td>
+<td style="padding: 0.125rem 0.75rem; border-top: 1px solid #909ba2; border-right: none;">[B,D]</td>
+</tr>
+</tbody>
+</table>
+<p>tree2:</p>
+<table style="margin: auto auto 15px; border: 1px solid #909ba2; border-radius: 2px; max-width: fit-content; hyphens: auto;">
+<thead>
+<tr style="background-color: hsl(264, 35%, 35%); color: #fff;">
+<th style="padding: 0.125rem 0.75rem; border-bottom: 2px solid #909ba2; border-right: 1px solid #909ba2;"><span>id</span></th>
+<th style="padding: 0.125rem 0.75re0; border-bottom: 2px solid #909ba2; border-right: 1px solid #909ba2;">next_level_ancestor</th>
+<th style="padding: 0.125rem 0.75re0; border-bottom: 2px solid #909ba2; border-right: none;">ancestors_between</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 0.125rem 0.75rem; border-top: 1px solid #909ba2; border-right: 1px solid #909ba2;">A</td>
+<td style="padding: 0.125rem 0.75rem; border-top: 1px solid #909ba2; border-right: 1px solid #909ba2;">null</td>
+<td style="padding: 0.125rem 0.75rem; border-top: 1px solid #909ba2; border-right: none;">[]</td>
+</tr>
+<tr>
+<td style="padding: 0.125rem 0.75rem; border-top: 1px solid #909ba2; border-right: 1px solid #909ba2;">E</td>
+<td style="padding: 0.125rem 0.75rem; border-top: 1px solid #909ba2; border-right: 1px solid #909ba2;">A</td>
+<td style="padding: 0.125rem 0.75rem; border-top: 1px solid #909ba2; border-right: none;">[B]</td>
+</tr>
+<tr>
+<td style="padding: 0.125rem 0.75rem; border-top: 1px solid #909ba2; border-right: 1px solid #909ba2;">F</td>
+<td style="padding: 0.125rem 0.75rem; border-top: 1px solid #909ba2; border-right: 1px solid #909ba2;">A</td>
+<td style="padding: 0.125rem 0.75rem; border-top: 1px solid #909ba2; border-right: none;">[C]</td>
+</tr>
+</tbody>
+</table>
+<p>tree3:</p>
+<table style="margin: auto auto 15px; border: 1px solid #909ba2; border-radius: 2px; max-width: fit-content; hyphens: auto;">
+<thead>
+<tr style="background-color: hsl(264, 35%, 35%); color: #fff;">
+<th style="padding: 0.125rem 0.75rem; border-bottom: 2px solid #909ba2; border-right: 1px solid #909ba2;"><span>id</span></th>
+<th style="padding: 0.125rem 0.75re0; border-bottom: 2px solid #909ba2; border-right: 1px solid #909ba2;">next_level_ancestor</th>
+<th style="padding: 0.125rem 0.75re0; border-bottom: 2px solid #909ba2; border-right: none;">ancestors_between</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 0.125rem 0.75rem; border-top: 1px solid #909ba2; border-right: 1px solid #909ba2;">A</td>
+<td style="padding: 0.125rem 0.75rem; border-top: 1px solid #909ba2; border-right: 1px solid #909ba2;">null</td>
+<td style="padding: 0.125rem 0.75rem; border-top: 1px solid #909ba2; border-right: none;">[]</td>
+</tr>
+</tbody>
+</table>
+<p>You can use these tables to find the ancestors of a node by chaining together <strong>JOIN</strong>s, working your way up the tables.</p>
+</div><div class="mynotation">
+<p>这里构建表的步骤是:</p>
+<p>1. 从 level 0 (即 tree0)开始构造，每个 level 表构造完成后再构造下一级的表。所有层级的表都包含根节点，“最深层级”的表仅包含根节点。tree0 表的行包含了全部的节点，每“增加一级”的表中，除去根节点以外的行数为“上一级”表的一半。</p>
+<p>2. 首先构造 tree0 表。从根节点(它的 next_level_ancestor 固定为 null ，ancestors_between 固定为空数组)开始，广度优先遍历所有节点，每遍历到一个节点，将其作为一个新行插入到 tree0 表中，id 列保持这个插入的顺序。每个被遍历到的节点，如果它的父节点为根节点，则它的 next_level_ancestor 的值为根节点，ancestors_between 的值为空数组；如果它的父节点不是根节点，则以 50% 的概率按以下两种情况之一来取 next_level_ancestor 和 ancestors_between 列的值：
+</p>
+<p>    2-1. 取它的父节点的 id 为自己的的 next_level_ancestor ， ancestors_between 的值为空数组。</p>
+<p>    2-2. 取它的父节点在 tree0 表中的行的 next_level_ancestor 及 ancestors_between 的值为自己相应列的值，再将父节点的id加入到 ancestors_between 数组的尾部。</p>
+<p>3. 接着构造 tree1 表。从 tree0 表中以 50% 的概率取除去根节点外的一半节点，加上根节点，作为 tree1 表中的行。检查 tree1 表中的每一行/节点的 next_level_ancestor 列的值，如果这个值对应的节点 x 不在 tree1 表中，则从低一个层级的表(对 tree1 表来说，就是 tree0 表)中，取 id=x 的行的 next_level_ancestor 及 ancestors_between 的值为自己相应列的值，再将 x 加入到 ancestors_between 数组的尾部。更新后的 next_level_ancestor 的值 y 如果还是不在 tree1 表中，则继续从 tree0 表中取 y 的 next_level_ancestor 作为这一行 next_level_ancestor 新的值，y 再加入到 ancestors_between 数组的尾部 ... ... 重复这个过程，直到 next_level_ancestor 最新的值代表的节点，是 tree1 表中已存在的节点。</p>
+<p>4. 类似上面的步骤，依次构造 tree2 、tree3 ... treeN 表，直到“最高层级”的表中只有根节点一个节点。</p>
+</div>
+<p>For example, to find all ancestors of node <strong>I</strong>, start at <strong>table0</strong>. The <code>next_level_ancestor</code> column tells you to <strong>JOIN</strong> on node <strong>C</strong> in <strong>table1</strong>, collecting node G from the <code>ancestors_between</code> column on the way. Then in <strong>table1</strong> you find that the <code>next_level_ancestor</code> is node <strong>A</strong>, with no other nodes to collect on the way. Node <strong>A</strong> is the root of the tree so you’re now done: the total list of ancestors is <strong>[G, C, A]</strong>. In a deeper tree you’d keep going by looking in <strong>tree2</strong>, <strong>tree3</strong> and so on.</p>
+<p>Hey! Now we can find ancestors with a single non-recursive SQL query with a fixed number of <strong>JOIN</strong>s. We just had to do… 40 or so <strong>JOIN</strong>.<span class="sidenote note no-word-break invisible-sm"> The number of skip levels was precisely chosen to generate a number of joins just under the BigQuery planner's hard-coded limit.</span></p>
+<p>Best of all, at the time BigQuery’s pricing charged you for the amount of data scanned, rather than for compute, and the geometric distribution of table sizes meant that each of these queries only cost twice a normal table scan.<span class="sidenote note no-word-break invisible-sm"> I'm sure it cost Google a whole lot more.</span></p>
+<p>Of course, there were disadvantages, like the SQL itself. The textual size of these queries was often measured in the kilobytes. But what do I look like, a caveman? We didn’t write the SQL. We wrote a compiler in JavaScript that generated it. And that is how most test properties in Antithesis were evaluated for the first six years of the company, until we finally <a href="https://antithesis.com/blog/2025/testing_pangolin/">wrote our own analytic database</a> that could do efficient tree-shaped queries.<span class="sidenote note no-word-break invisible-sm"> Migrating from BigQuery to Pangolin (our in-house tree database) was what enabled us to launch our new pre-observability(https://antithesis.com/blog/2025/logs_explorer/) feature last year.</span></p>
+<div id="section4"><h2>Skiplists, skiptrees, skipgraphs…</h2>
+<p>Later I discovered that a skiptree is closely related to a real data structure called a <a href="https://en.wikipedia.org/wiki/Skip_graph">skip graph</a>, a distributed data structure based on skiplists. Which just goes to show that there is nothing new under the sun. Whatever crazy idea you have, there’s a good chance some other crazy person has already done it. Moral of the story: you never know when an exotic data structure will save you a lot of time and money.</p>
+<p>Also, while <a href="https://www.reddit.com/r/databasedevelopment/comments/1bah8ev/what_cannot_be_skipped_about_the_skiplist_a/">Andy Pavlo is correct that</a> a <em>well-written</em> tree will always trounce a skiplist, the great thing about skiplists is that a <em>totally naive implementation</em> has adequate performance. That comes in handy when you’re writing them in, say, SQL.</p>
+<p>Thank you to <a href="https://eatonphil.com/">Phil Eaton</a> for suggesting that we write this up.</p></div>
+        </div>
+    </div>
+</div>
+
+<a href="https://paxinla.github.io/posts/2026/04/zhuan-what-are-skiplists-good-for.html" class="current-page-link">本文链接: https://paxinla.github.io/posts/2026/04/zhuan-what-are-skiplists-good-for.html</a>
+
+<!-- Comments -->
+<div class="content-split-comment"><hr class="dotty-split-line" /></div>
+<div class="content-bottom">
+<section class="comments" id="comments">
+      <div class="panel panel-primary">
+        <div class="panel-heading" role="tab" id="githubissue-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#githubissue-comments" aria-expanded="true" aria-controls="githubissue-comments">
+                <i class="fa fa-comments"></i><i id="githubissue-comment_list"> Comments</i>
+            </a>
+          </h4>
+        </div>
+
+        <!-- utterances start -->
+        <div id="utter-container"></div>
+        <script src="https://utteranc.es/client.js"
+          repo="paxinla/paxinla.github.io"
+          issue-term="url"
+          label="blog_comment"
+          theme="boxy-light"
+          crossorigin="anonymous"
+          async>
+        </script>
+        <!-- utterances end -->
+
+      </div>
+</section>
+            <div class="cc-license">
+                <p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/"><img alt="知识共享许可协议" style="border-width:0;display:inline-block" src="https://licensebuttons.net/l/by-nc-sa/3.0/cn/88x31.png" /></a>&nbsp;本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/3.0/deed.zh" style="color:#00a67c">知识共享署名-非商业性使用-相同方式共享 3.0 中国大陆许可协议</a>进行许可，欢迎转载、演绎，<br/>但是必须保留本文的署名 <a href="https://paxinla.github.io" style="color:rgb(153,51,51);">Charles</a>（包含链接），且不得用于商业目的。</p>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        </div><!-- End Whole Page -->
+
+        <!-- Scripts -->
+        <script src="https://paxinla.github.io/theme/js/packed.js?e4252eaf"></script>
+
+        <script src="https://paxinla.github.io/theme/js/article_toc.js" type="text/javascript"></script>
+
+        <!-- Sidebar / Table of Contents -->
+        <script type="text/javascript">
+         $(function(){$("#toc").tableOfContents(null,{
+             startLevel: 2, depth: 1});
+             $('body').scrollspy({
+                 target: '#nav-sidebar',
+                 offset: 20});
+         });
+        </script>
+
+        <!-- Code Highlighting : highlight.js -->
+        <script type="text/javascript">
+            hljs.configure({languages:[]});
+            hljs.initHighlightingOnLoad();
+        </script>
+
+        <!-- Equation Rendering : mathjax -->
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+               jax: ["input/TeX","output/CommonHTML"],
+               tex2jax: { inlineMath: [["$","$"], ["\\(", "\\)"]] },
+               CommonHTML: {
+                   linebreaks: { automatic: true, width: "container" }
+               }
+            });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML" type="text/javascript"></script>
+
+        <!-- Cat -->
+        <script src="https://paxinla.github.io/theme/js/L2Dwidget.min.js"></script>
+        <script type="text/javascript">
+            var L2DModelArray = ['hijiki', 'tororo'];
+            var L2DModelIndex = Math.floor((Math.random()*L2DModelArray.length));
+            var L2DModelSelected = L2DModelArray[L2DModelIndex];
+            L2Dwidget.init({model: {
+                              jsonPath: "https://paxinla.github.io/theme/live2d-widget-model-"+L2DModelSelected+"/assets/"+L2DModelSelected+".model.json",
+                            },
+                            display: {
+                              superSample: 2,
+                              width: 100,
+                              height: 200,
+                              position: 'right',
+                              hOffset: 0,
+                              vOffset: 0,
+                            },
+                            mobile: {
+                              show: true,
+                              scale: 1,
+                              motion: true,
+                            },
+                            react: {
+                              opacityDefault: 0.85,
+                              opacityOnHover: 0.2,
+                            }
+                          })
+        </script>
+
+        <!-- Funny title -->
+        <script type="text/javascript">
+            var OriginTitle = document.title;
+            document.addEventListener('visibilitychange', function () {
+                if (document.hidden) {
+                    document.title = '_(:з」∠)_ 呀嚯嘿';
+                } else {
+                    document.title = OriginTitle;
+                }
+            });
+        </script>
+    </body>
+</html>

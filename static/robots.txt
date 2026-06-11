@@ -1,0 +1,6 @@
+User-agent: Baiduspider
+Disallow: /
+User-agent: Googlebot
+Disallow:
+Sitemap: /sitemap.xml
+sitemap: /sitemap.xml

@@ -1,0 +1,330 @@
+<!Doctype html>
+<html lang="zh">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <base href="https://paxinla.github.io">
+        <meta property="og:title" content="Blog of Charles" />
+        <meta name="author" content="Charles" />
+        <meta property="article:author" content="Charles" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://paxinla.github.io" />
+        <meta property="og:image" content="https://paxinla.github.io/static/blog_url_qrcode.png" />
+        <meta property="og:image:secure_url" content="https://paxinla.github.io/static/blog_url_qrcode.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="120" />
+        <meta property="og:image:height" content="120" />
+        <meta property="og:image:alt" content="A QR code of the blog's URL." />
+        <meta property="og:description" content="This is the blog of Charles." />
+        <meta name="copyright" content="Charles" />
+        <meta name="description" content="Personal blog of Charles">
+        <meta name="generator" content="pelican 3.7.1">
+        <link href="https://paxinla.github.io/static/humans.txt" rel="author" type="text/plain" />
+        <title>Spark Structured Streaming 概览</title>
+        <link href="https://paxinla.github.io/posts/2021/02/spark-structured-streaming-gai-lan.html" rel="canonical" />
+
+        <link href="https://paxinla.github.io/theme/images/favicon.ico" rel="icon" type="image/png" />
+        <link href="https://paxinla.github.io/theme/images/safari-pinned-tab.svg" rel="mask-icon" color="#5bbad5" />
+
+        <link href="https://paxinla.github.io/theme/css/blogstyle.css?6748a722" rel="stylesheet" type="text/css" />
+
+        <!-- View Counter -->
+        <script defer src="https://events.vercount.one/js"></script>
+        <!-- End of View Counter Code -->
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-70MNYH18HG"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'G-70MNYH18HG');
+        </script>
+    </head>
+
+
+    <body data-spy="scroll" data-target="#left-navbar" data-offset="50" itemscope="" itemtype="http://schema.org/WebPage">
+
+        <!-- Cursor animation -->
+        <script defer="" src="https://paxinla.github.io/theme/js/animejs.js"></script>
+        <script defer="" src="https://paxinla.github.io/theme/js/fireworks.min.js"></script>
+        <canvas class="fireworks" style="width:100%; height:100%;"></canvas>
+
+        <div id="whole-page">
+        <!-- Left Sidebar -->
+        <nav id="left-navbar" class="sidebar">
+            <div class="content">
+                <div><a href="/"><img src="https://paxinla.github.io/static/icosahedron.jpg" class="img-responsive center-block" style="height:120px;width:120px;border-radius:20px;"/></a></div>
+                <br/>
+                <div class="center-text narrow-font" style="line-height: 28px;">
+                    <span class="nav-item"><i class="fas fa-home"></i><a href="https://paxinla.github.io/"> 首页 </a></span>
+                    <span class="center-dot"></span>
+                    <span class="nav-item"><i class="fas fa-file-archive"></i><a href="https://paxinla.github.io/archives.html"> 过往文章 </a></span>
+                    <br/>
+                    <span class="nav-item"><i class="fas fa-tags"></i><a href="https://paxinla.github.io/tags.html"> Tag </a></span>
+                    <span class="center-dot"></span>
+                    <span class="nav-item"><i class="fa fa-archive"></i><a href="https://paxinla.github.io/categories.html"> Category </a></span>
+                    <br/>
+                    <span class="nav-item"><i class="fa fa-link"></i><a href="https://paxinla.github.io/links.html"> 友邻 </a></span>
+                    <span class="center-dot"></span>
+                    <span class="nav-item"><i class="fas fa-user"></i><a href="https://paxinla.github.io/about.html"> 关于我 </a></span>
+                </div>
+                <hr/> <br/>
+
+<div class="title"><a href="#">Spark Structured Streaming 概览</a></div>
+<hr/>
+
+                <div id="nav-sidebar">
+                </div>
+
+<br/>
+
+                <div id="nav-visited-info" class="center-text floating-description">
+                    <div id="copyright-expression" class="copyright"><span style="color:#6fdcdc;">(</span>cons "<a href="https://github.com/paxinla" style="color:#999;">Charles</a> <span style="color:#00ec47;">&copy;</span>" <span style="color:#ff188c;">(</span>iterate inc <span style="color:#db4437;">2014</span><span style="color:#ff188c;">)</span><span style="color:#6fdcdc;">)</span></div><br/>
+                    <a id="powered-by" href="https://github.com/getpelican/pelican">Powered by <span id="icon-gear" class="rotating"></span><span style="color:#fbf3f3;"> Pelican</span></a><br/>
+                    <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" style="border: none;" ><img src="https://img.shields.io/badge/License-CC__BY--NC--SA-blue.svg" style="height: 17px;" /></a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Middle and right sections -->
+        <div class="page" itemsope="" itemtype="http://schema.org/Blog">
+<div class="content-top" style="padding-right: 0">
+    <div class="unit-line-height">
+        <!-- Post Title -->
+        <h1 class="title">
+            <div>
+                <span itemprop="name">Spark Structured Streaming 概览</span>
+            </div>
+        </h1>
+
+        <!-- Post Meta Info -->
+        <div class="marginnote invisible-sm post-detail">
+            <div>
+                <p><div class="date heading-font"><i class="fa fa-calendar"></i> 2021-02-20 星期六</div>
+                    <a href="#" style="margin-left:0.875em;border:none;">
+                        <span class="author" itemprop="name">Charles</span>
+                    </a>
+                </p>
+
+                <p><div class="heading-font"><i class="fas fa-folder"></i> Category</div>
+                    <a class="category" href="https://paxinla.github.io/category/shu-ju-ping-tai.html" style="margin-left:0.875em;border:none;">
+                         数据平台
+                    </a>
+                </p>
+
+                <p><div class="heading-font"><i class="fas fa-tag"></i> Tags</div>
+                    <span style="padding-left:1.4em;"></span>
+                        <a class="tag" href="https://paxinla.github.io/tag/spark.html">spark</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Post Image -->
+    <br/>
+    <img src="" class="cover img-responsive" style="max-height: 400px" itemprop="image">
+    <div class="note visible-sm post-detail"></div>
+
+    <hr class="dotty-split-line" />
+</div>
+
+            <!-- Content -->
+<div class="content"  id="content_of_post" style="padding-right: 0">
+    <div class="post" itemprop="blogPost">
+        <div id="content_of_article" class="justify word-break" itemprop="articleBody">
+            <p>Spark 3 后主流的流处理 API 。</p>
+
+<div id=section1><h2>Spark 的流数据处理</h2>
+<p>Spark 处理流数据的模型就是用(微)批模拟流。</p>
+<p>Spark Streaming 是 Spark 上的流处理库，抽象出基于 RDD 的 Dstream 。</p>
+<p>Spark Structured Streaming<sup id=sf-spark-structured-streaming-gai-lan-1-back><a href=#sf-spark-structured-streaming-gai-lan-1 class=simple-footnote title="Spark Structured Streaming">1</a></sup> 从 Spark 2.0 开始引入，它是基于 SparkSQL 的流处理引擎，抽象出基于 Dataset/DataFrame 的 Stream DataFrame 。<span class="sidenote note no-word-break invisible-sm"> Spark 2.0 时，Dataset/DataFrame 不局限于 SparkSQL ，成为 Spark 全局的主要 API 。</span>它与 Spark Streaming 最大的区别就是它用几乎同一套 Dataset/DataFrame 的 API 来处理流数据和批数据。</p>
+<p class=list-title>部分算子不能用在流数据上：</p>
+<ul>
+<li>不可链式对多个流的聚合。</li>
+<li>无法只取流的前N行。</li>
+<li>不能对流 distinct ，应当通过流数据中的数据唯一的字段来 dropDuplicates 。</li>
+<li>只有在输出模式为 complete 且流数据已经被聚合后才能进行排序。</li>
+<li>不能直接对流 count ，应当 ds.groupBy().count() 。</li>
+<li>不能直接对流 foreach ，应当 ds.writeStream.foreach(...) 。</li>
+<li>不能直接对流 show ，只能用 Console sink 。</li>
+<li>流不能和流或静态数据作 full outer join 。流和流之间依照水位线有条件地 join 、流和静态数据之间的 join ，静态数据不能作为“驱动方”。</li>
+</ul>
+<p>Structured Streaming 的代码是先定义 Dataset/DataFrame 的产生、变换和输出，再 start 一个新的执行线程来触发执行之前的定义。在新的执行线程里需要<span class=emp-text>持续地</span>去发现新数据，进而<span class=emp-text>持续地</span>查询最新计算结果至输出，这个过程就是 continous query (<span class=emp-text>持续查询</span>)。</p>
+<h3>SparkSession</h3>
+<p>在 Spark 2.x 种，程序入口简化为只有一个 SparkSession 。不用再显示创建 SparkConf, SparkContext 或 SQLContext ，它们都被封装在 SparkSession 中。</p>
+<pre><code class="lang-scala hljs">
+import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.functions._
+
+val spark: SparkSession = SparkSession
+                            .builder
+                            .master("...")
+                            .appName("example")
+                            .enableHiveSupport()
+                            .getOrCreate()
+
+// 可以读取嵌套结构
+import spark.implicits._
+</code></pre>
+<pre><code class="lang-scala hljs">
+// 设定 Spark 的运行时配置属性
+spark.conf.set("spark.sql.shuffle.partitions", 10)
+spark.conf.set("spark.executor.memory", "6g")
+
+// 获取所有设定
+val configMap: Map[String, String] = spark.conf.getAll()
+</code></pre>
+<p>SparkSession 将 catalog 作为一个公开的公共实例，该实例的操作元数据的方法返回 Dataset 形式的结果。</p>
+<pre><code class="lang-scala hljs">
+// 访问所有的表和数据库
+spark.catalog.listDatabases.show(false)
+spark.catalog.listTables.show(false)
+</code></pre>
+<h3>Source 和 Sink</h3>
+<p>Structured Streaming 通过 source 读取外部数据(不用像 Spark Streaming 里 StreamingContext 要设置 batch 的 duration )，通过 sink 写出到外部目标。Structured Streaming 对数据的容错一致性语义和 source/sink 息息相关。当 source 支持对已消费数据的定位和重放，且 sink 的输出操作是幂等时，Structured Streaming 可以做到 end-to-end exactly-once 语义。</p>
+<p>截至本文写下时，Spark 内置的 source 有： File source, Kafka source, Socket source 和 Rate source ；内置的 sink 有： File sink, Kafka sink, Foreach sink, Console sink 和 Memory sink 。</p>
+<h3>Window 和 watermark</h3>
+<p>Structured Streaming 的窗口使用的是数据时间 event time 。</p>
+<p>当输出模式为 append 或 update 时，<span class="sidenote note no-word-break invisible-sm"> 输出模式有: append(默认,增量)、update(仅变动)、 complete(全量)这3种。</span>用户可以设置一个“迟到阈值”，在每个窗口的结束时间点，当前流中最大的 event time 减去这个阈值后得到的时间点就是水位线 watermark ，后续如果有“迟到”的数据，只要它的时间点比水位线低/小，这个数据就会被忽略掉。</p>
+<p>当输出模式为 append 时，只有窗口的结束时间点小于水位线时，才会有结果输出，不会输出“中间”结果。</p>
+<p>当输出模式为 update 时，每个窗口的 trigger 时间点，都有结果输出，所以可以看到输出里位于水位线上的“迟到”数据会被更新进结果中。</p>
+<p>两个流在 join 时，“驱动方”需要设置 watermark ，关联条件中需要“被驱动方”设置好 event time + accepted delay time 。</p>
+<h3>Trigger</h3>
+<p>Trigger 的机制是用来指示 StreamingQuery 多久生成一次结果的策略。<span class="sidenote note no-word-break invisible-sm"> Structured Streaming 目前没有背压机制，为防止单批次 query 查询的数据源数据量过大，可通过参数 maxOffsetsPerTrigger 来设置单个批次允许抓取的最大消息条数。</span></p>
+<p>Trigger 有3个实现类:</p>
+<ul>
+<li>OneTimeTrigger : 一次性 query 。在一个 StreamingQuery 中只处理一个 batch 的数据，然后终止这个 query 。</li>
+<li>ProcessingTime(默认) : 根据 processing time 定时触发一个 query 。如果 interval 的值是 0 ，则尽快跑完zhege query 。</li>
+<li>ContinuousTrigger : 持续处理流数据，根据 interval 异步地执行 checkpoint 。</li>
+</ul>
+<h3>Checkpoint</h3>
+<p>检查点使 Structured Streaming 处理过程失败后重新开始时，获知上个检查点时处理状态。检查点功能需要在 HDFS 上使用一个目录。</p>
+<pre><code class="lang-scala hljs">
+someDF.writeStream
+  .outputMode("complete")
+  .option("checkpointLocation", "/someHDFSpath")
+  .format("memory")
+  .start()
+</code></pre>
+<p>Structured Streaming 默认所有的作业总是要有 Checkpoint 的。每一个 Structured Streaming 作业都应当设置 checkpointLocation ，否则作业就会尝试 HDFS 的默认路径当作 checkpointLocation ，这往往会导致作业启动失败，报无权限写某个路径的错误。</p>
+<p>Structured Streaming 是不支持对同一个流做多次聚合的<span class="sidenote note no-word-break invisible-sm"> 在 append 模式下，多个 flapMapGroupsWithState 是可以进行连续的多次聚合操作的(注意设置 withWatermark)。</span>，比如要做多维度的分析时，就不能对流多次分组。因此多聚合往往需要多个 query 。每个 query 都应该单独设置 checkpointLocation ，query 的 id 是记录在 checkpointLocation 里的。</p>
+<p>可以为 ProcessingTime 指定一个时间或使用指定时间的 ContinuousTrigger ，固定生成 checkpoint 的周期以避免 checkpoint 生成过于频繁，减轻 NameNode 的压力。</p>
+<p>参数 <code>spark.sql.streaming.minBatchesToRetain</code> 为必须保留并使其可恢复的最小批次数，默认为 100 。可调小保留的 batch 的次数，比如调小到 20 ，这样 checkpoint 小文件数量整体可以减少到原来的 20% 。</p></div><br><h6 id=ref-docs-title>参考</h6><ol class=simple-footnotes><li id=sf-spark-structured-streaming-gai-lan-1><a href="http://spark.apache.org/docs/latest/structured-streaming-programming-guide.html">Spark Structured Streaming</a> <a href=#sf-spark-structured-streaming-gai-lan-1-back class=simple-footnote-back>↩</a></li></ol>
+        </div>
+    </div>
+</div>
+
+<a href="https://paxinla.github.io/posts/2021/02/spark-structured-streaming-gai-lan.html" class="current-page-link">本文链接: https://paxinla.github.io/posts/2021/02/spark-structured-streaming-gai-lan.html</a>
+
+<!-- Comments -->
+<div class="content-split-comment"><hr class="dotty-split-line" /></div>
+<div class="content-bottom">
+<section class="comments" id="comments">
+      <div class="panel panel-primary">
+        <div class="panel-heading" role="tab" id="githubissue-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#githubissue-comments" aria-expanded="true" aria-controls="githubissue-comments">
+                <i class="fa fa-comments"></i><i id="githubissue-comment_list"> Comments</i>
+            </a>
+          </h4>
+        </div>
+
+        <!-- utterances start -->
+        <div id="utter-container"></div>
+        <script src="https://utteranc.es/client.js"
+          repo="paxinla/paxinla.github.io"
+          issue-term="url"
+          label="blog_comment"
+          theme="boxy-light"
+          crossorigin="anonymous"
+          async>
+        </script>
+        <!-- utterances end -->
+
+      </div>
+</section>
+            <div class="cc-license">
+                <p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/"><img alt="知识共享许可协议" style="border-width:0;display:inline-block" src="https://licensebuttons.net/l/by-nc-sa/3.0/cn/88x31.png" /></a>&nbsp;本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/3.0/deed.zh" style="color:#00a67c">知识共享署名-非商业性使用-相同方式共享 3.0 中国大陆许可协议</a>进行许可，欢迎转载、演绎，<br/>但是必须保留本文的署名 <a href="https://paxinla.github.io" style="color:rgb(153,51,51);">Charles</a>（包含链接），且不得用于商业目的。</p>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        </div><!-- End Whole Page -->
+
+        <!-- Scripts -->
+        <script src="https://paxinla.github.io/theme/js/packed.js?e4252eaf"></script>
+
+        <script src="https://paxinla.github.io/theme/js/article_toc.js" type="text/javascript"></script>
+
+        <!-- Sidebar / Table of Contents -->
+        <script type="text/javascript">
+         $(function(){$("#toc").tableOfContents(null,{
+             startLevel: 2, depth: 1});
+             $('body').scrollspy({
+                 target: '#nav-sidebar',
+                 offset: 20});
+         });
+        </script>
+
+        <!-- Code Highlighting : highlight.js -->
+        <script type="text/javascript">
+            hljs.configure({languages:[]});
+            hljs.initHighlightingOnLoad();
+        </script>
+
+        <!-- Equation Rendering : mathjax -->
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+               jax: ["input/TeX","output/CommonHTML"],
+               tex2jax: { inlineMath: [["$","$"], ["\\(", "\\)"]] },
+               CommonHTML: {
+                   linebreaks: { automatic: true, width: "container" }
+               }
+            });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML" type="text/javascript"></script>
+
+        <!-- Cat -->
+        <script src="https://paxinla.github.io/theme/js/L2Dwidget.min.js"></script>
+        <script type="text/javascript">
+            var L2DModelArray = ['hijiki', 'tororo'];
+            var L2DModelIndex = Math.floor((Math.random()*L2DModelArray.length));
+            var L2DModelSelected = L2DModelArray[L2DModelIndex];
+            L2Dwidget.init({model: {
+                              jsonPath: "https://paxinla.github.io/theme/live2d-widget-model-"+L2DModelSelected+"/assets/"+L2DModelSelected+".model.json",
+                            },
+                            display: {
+                              superSample: 2,
+                              width: 100,
+                              height: 200,
+                              position: 'right',
+                              hOffset: 0,
+                              vOffset: 0,
+                            },
+                            mobile: {
+                              show: true,
+                              scale: 1,
+                              motion: true,
+                            },
+                            react: {
+                              opacityDefault: 0.85,
+                              opacityOnHover: 0.2,
+                            }
+                          })
+        </script>
+
+        <!-- Funny title -->
+        <script type="text/javascript">
+            var OriginTitle = document.title;
+            document.addEventListener('visibilitychange', function () {
+                if (document.hidden) {
+                    document.title = '_(:з」∠)_ 呀嚯嘿';
+                } else {
+                    document.title = OriginTitle;
+                }
+            });
+        </script>
+    </body>
+</html>
